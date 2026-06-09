@@ -1,6 +1,6 @@
 # Muse Game Workshop
 
-> 面向独立游戏的 AI tool-agnostic 制作工作流系统，让 AI 参与 Godot / Unreal 游戏开发时仍然可计划、可审查、可追踪、可发布。
+> 面向独立游戏的 AI tool-agnostic 制作工作流系统，让 AI 参与 Godot / Unreal 游戏开发时仍然可计划、可审查、可追踪、可验证、可发布。
 
 English version: [README.en.md](README.en.md)
 
@@ -9,6 +9,32 @@ English version: [README.en.md](README.en.md)
 Muse Game Workshop 是一套面向独立游戏开发者和小团队的 AI-assisted game production operating model。它不是游戏引擎，也不是一键生成游戏工具，而是把游戏从创意、预制作、原型、垂直切片、正式制作、试玩迭代、QA、打磨到发布的流程，沉淀成可复用的 workflow skills、文档模板、检查清单、项目规则和工具适配策略。
 
 它的核心目标很简单：让 AI 帮忙加速制作，但不夺走人类对游戏方向、创意资产、玩法判断和发布质量的控制权。
+
+## 快速开始
+
+如果你只是想先看项目：
+
+```sh
+git clone https://github.com/wikieden/MuseGameWorkshop.git
+cd MuseGameWorkshop
+tools/checks/check-doc-links
+tools/checks/check-doc-pairs
+tools/checks/check-startup-prompts
+```
+
+当前 GitHub 仓库是 private，clone 需要仓库权限。
+
+如果你想快速理解应该从哪里开始：
+
+| 目标 | 入口 |
+|---|---|
+| 理解项目愿景 | [vision.zh.md](docs/muse-game-workshop-docs/vision.zh.md) |
+| 理解产品范围 | [prd.zh.md](docs/muse-game-workshop-docs/prd.zh.md) |
+| 看整体版本规划 | [mvp-roadmap.zh.md](docs/muse-game-workshop-docs/mvp-roadmap.zh.md) |
+| 用 AI coding tool 接手项目 | 先读 `AGENTS.md`，再用本文的“启动 Prompt” |
+| 从一个游戏点子开始 | `templates/design/pitch.md`、`core-loop.md`、`mechanic-spec.md` |
+| 跑 Godot 示例 | `examples/godot-boss-rush/project.godot` |
+| 看 Unreal 映射状态 | `examples/unreal-boss-rush/README.md` |
 
 ## 为什么需要它
 
@@ -28,8 +54,8 @@ Muse Game Workshop 用游戏行业已经理解的语言组织 AI 辅助开发：
 
 - **Production stages / 制作阶段**：Concept / 概念阶段、Pre-production / 预制作、Prototype / 原型验证、Vertical Slice / 垂直切片、Production / 正式制作、Playtest / 试玩测试、Polish / 打磨、QA / 测试、Release / 发布、Postmortem / 项目复盘。
 - **Production disciplines / 制作职能**：Producer / 制作人、Game Designer / 游戏策划、Technical Designer / 技术策划、Art Director / 美术总监、Gameplay Programmer / 玩法程序、QA / 测试、Release Manager / 发布负责人。
-- **Workflow Skills / 工作流技能**：把具体任务拆成可复用流程，例如 `game-intake`、`mechanic-spec`、`creative-asset-pipeline`、`playtest-report`、`release-checklist`。
-- **Review Gates / 评审节点**：所有实现任务和结构性改动都必须先输出设计摘要与执行计划，等待 review 通过后再动手。
+- **Workflow Skills / 工作流技能**：把具体任务拆成可复用流程，例如 `game-intake`、`mechanic-spec`、`creative-asset-pipeline`、`playtest-report`。
+- **Review Gates / 评审节点**：所有实现任务和结构性改动都必须先输出设计摘要与执行计划，等待 review gate 通过后再动手。
 - **Evidence Records / 证据记录**：关键设计、资产来源、授权、prompt、测试结果、发布风险必须落盘，而不是只存在聊天记录里。
 
 命名策略是“双层语言”：对外用游戏行业习惯叫法，对内保留 AI workflow 的可执行机制。不要把产品讲成一堆 agent，也不要为了贴近传统流程而牺牲 AI-native 的 dry run、tool adapter、evidence、provenance 和自动检查能力。
@@ -49,9 +75,26 @@ Muse Game Workshop 用游戏行业已经理解的语言组织 AI 辅助开发：
 - 希望把图像、音频、视频、3D、动作、UI、本地化等 creative AI tools 纳入可审查资产流程的人。
 - 想把 AI 辅助开发从 vibe coding 升级成可控制作流程的人。
 
+## 仓库结构
+
+```text
+.
+  AGENTS.md                         项目规则，所有 AI coding tools 应先读
+  CLAUDE.md                         Claude Code 适配说明
+  docs/
+    muse-game-workshop-docs/        Vision、PRD、架构、路线图、测试策略等核心文档
+    evidence/                       dry run、playtest、asset review、engine validation 证据
+  .agents/skills/                   14 个 P0 workflow skill
+  templates/                        设计、制作、美术、UX、发布模板
+  examples/
+    godot-boss-rush/                Godot Boss Rush / 《反击试炼》示例
+    unreal-boss-rush/               Unreal 静态映射骨架
+  tools/checks/                     文档、模板、manifest、Godot、Unreal 检查入口
+```
+
 ## 当前状态
 
-当前仓库已完成 v0.3 Creative Production Ready：
+当前仓库已完成 v0.3 Creative Production Ready，并有 v0.4 Unreal Mapping Slice 静态骨架：
 
 - `AGENTS.md`
 - 14 个 P0 workflow skills：`.agents/skills/*/SKILL.md`
@@ -66,30 +109,162 @@ Muse Game Workshop 用游戏行业已经理解的语言组织 AI 辅助开发：
 
 v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。仍然没有正式或 release-candidate 美术/音频资产。
 
-## 覆盖范围
+## 如何配合 AI Coding Tools 使用
 
-P0 已进入 v0.1 workflow pack：
+Muse Game Workshop 不是 Codex-only。Codex、Claude Code、Kiro CLI、opencode 或其他能读取项目规则和文件的 AI coding tools，都应该遵守同一套 Workflow Core / 工作流核心。
 
-- Creative Asset Pipeline：美术、动作、VFX、音乐、音效、UI 资产从 brief 到引擎验证。
-- Asset Provenance：AI 工具、prompt、参考、授权、人工 review、使用范围。
-- UX/UI & Onboarding：菜单、HUD、设置、新手引导、反馈层级、基础可访问性。
-- Level Design：blockout、encounter、节奏、导航、视线引导和关卡 review。
+推荐工作方式：
 
-P1 进入近期设计：
+1. 让 AI 先读 `AGENTS.md`。
+2. 明确 target language / 目标语言、target audience / 目标用户群体、locale / 地区语境。
+3. 让 AI 读取 Vision、PRD、technical architecture、bilingual audience strategy、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。
+4. 面向实现或结构改动时，先输出 design summary / 设计摘要、execution plan / 执行计划、impact scope / 影响范围、files to edit / 文件范围、validation plan / 验证计划。
+5. 等 review gate 通过后再修改代码、资产或项目结构。
+6. 修改后运行最小相关检查，并把证据写回 `docs/evidence/`。
 
-- Narrative & Worldbuilding。
-- Platform & Store Readiness。
-- Localization。
-- Accessibility。
+## 推荐启动 Prompt
 
-P2 放入未来规划：
+```text
+我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.4 Unreal Mapping Slice review gate 已 Approved，静态骨架已落地；UE Editor 未安装时不要创建 .uasset 或 .umap。不要导入 final 或 release-candidate 资产。
+```
 
-- Analytics & Telemetry。
-- Community & Marketing。
-- Monetization。
-- LiveOps & Post-launch。
-- Modding / UGC。
-- Security & Privacy。
+## 从一个新游戏想法开始
+
+不要一上来就让 AI 写游戏代码。先把游戏的制作记忆落盘：
+
+1. 用 `templates/design/pitch.md` 写一句话卖点、受众、平台、风险。
+2. 用 `templates/design/core-loop.md` 写核心循环、玩家动机、失败和奖励。
+3. 用 `templates/design/mechanic-spec.md` 写机制输入、状态转换、参数、反馈、边界情况和测试。
+4. 用 `templates/design/vertical-slice.md` 定义最小垂直切片。
+5. 用 `templates/design/engine-mapping.md` 把 engine-neutral 机制映射到 Godot 或 Unreal。
+6. 用 `templates/production/review-gate.md` 记录 review 结论。
+7. review 通过后，再让 AI 或人类进入 Godot / Unreal 实现。
+
+建议把新项目证据放到：
+
+```text
+docs/evidence/<project-or-version>/
+```
+
+## 使用 Godot 示例
+
+Godot 示例位于：
+
+```text
+examples/godot-boss-rush/
+```
+
+运行方式：
+
+1. 安装 Godot，并确保命令行可使用 `godot`。
+2. 用 Godot 打开 `examples/godot-boss-rush/project.godot`。
+3. 运行 `scenes/TestArena.tscn`。
+4. 使用方向键或 WASD 移动。
+5. 使用 `F` 进行格挡/招架。
+6. 在反击窗口使用 `J` 反击。
+7. 使用 `R` 重开。
+
+命令行验证：
+
+```sh
+tools/checks/check-v0.2-godot
+tools/checks/check-v0.3-creative-assets
+python3 examples/godot-boss-rush/tests/simulate_core_loop.py
+```
+
+## Unreal 当前状态
+
+Unreal 示例位于：
+
+```text
+examples/unreal-boss-rush/
+```
+
+当前状态是 static mapping scaffold / 静态映射骨架，包含 `.uproject`、配置、C++ 类、Data Asset 契约和调试 HUD 契约。由于本机暂未找到 Unreal Editor，PIE test map、Blueprint、UMG、Animation Montage placeholder 和 `.uasset` / `.umap` 需要等 UE 装好后补。
+
+验证当前静态骨架：
+
+```sh
+tools/checks/check-v0.4-unreal
+```
+
+## Creative Asset Pipeline / 创意资产流程
+
+美术、动作、场景、音乐、音效、UI、本地化和其他 AI-assisted assets 不能直接丢进示例项目。进入项目之前至少需要：
+
+- `templates/creative/art-direction.md`
+- `templates/creative/asset-brief.md`
+- `templates/creative/asset-provenance.md`
+- `templates/creative/asset-review.md`
+- `templates/creative/asset-integration.md`
+- `templates/creative/ai-asset-disclosure.md`
+
+资产记录必须说明：
+
+- 使用的 AI 工具、模型或服务。
+- prompt、参考来源或生成设置。
+- 授权和使用权。
+- 人类修改内容。
+- 人工 review 结论。
+- 引擎导入和运行验证。
+- 平台披露风险。
+
+没有 brief、provenance、review 和 engine validation 的资产，不能进入 example project。
+
+## 检查与验证
+
+日常文档改动建议至少跑：
+
+```sh
+tools/checks/check-doc-links
+tools/checks/check-doc-pairs
+tools/checks/check-startup-prompts
+```
+
+模板或 skill 改动建议再跑：
+
+```sh
+tools/checks/check-template-metadata
+tools/checks/check-v0.1-manifest
+```
+
+示例或资产改动建议跑全量：
+
+```sh
+tools/checks/check-doc-links
+tools/checks/check-doc-pairs
+tools/checks/check-startup-prompts
+tools/checks/check-template-metadata
+tools/checks/check-v0.1-manifest
+tools/checks/check-v0.2-godot
+tools/checks/check-v0.3-creative-assets
+tools/checks/check-v0.4-unreal
+python3 examples/godot-boss-rush/tests/simulate_core_loop.py
+```
+
+## 常见任务
+
+| 任务 | 入口 |
+|---|---|
+| 新游戏立项 | `game-intake` skill + `templates/design/pitch.md` |
+| 核心循环设计 | `core-loop` skill + `templates/design/core-loop.md` |
+| 机制规格 | `mechanic-spec` skill + `templates/design/mechanic-spec.md` |
+| 垂直切片计划 | `vertical-slice-planner` skill + `templates/design/vertical-slice.md` |
+| Godot 实现 | `godot-workflow` skill + `examples/godot-boss-rush/` |
+| Unreal 映射 | `unreal-workflow` skill + `examples/unreal-boss-rush/` |
+| 美术/音频资产 | `creative-asset-pipeline`、`asset-brief`、`asset-review` |
+| 试玩记录 | `playtest-report` skill + `templates/design/playtest-log.md` |
+| 发布准备 | `templates/design/release-checklist.md`、`templates/publishing/localization-readiness.md` |
+
+## 不要这样用
+
+- 不要把 Muse Game Workshop 当作游戏引擎。
+- 不要把它当作一键生成完整游戏的工具。
+- 不要把它写成 Codex-only 流程。
+- 不要在 review gate 之前修改代码、资产或项目结构。
+- 不要导入没有 brief、provenance、license、review 和 engine validation 的 AI 资产。
+- 不要把 prototype asset 当成 release-candidate asset。
+- 不要在 UE Editor 不可用时伪造 PIE 验证或 `.uasset` / `.umap`。
 
 ## 文档
 
@@ -116,21 +291,3 @@ P2 放入未来规划：
 | Testing Strategy | [testing-strategy.zh.md](docs/muse-game-workshop-docs/testing-strategy.zh.md) | [testing-strategy.en.md](docs/muse-game-workshop-docs/testing-strategy.en.md) |
 | Versioned MVP Roadmap | [mvp-roadmap.zh.md](docs/muse-game-workshop-docs/mvp-roadmap.zh.md) | [mvp-roadmap.en.md](docs/muse-game-workshop-docs/mvp-roadmap.en.md) |
 
-## 第一条启动 Prompt
-
-```text
-我们要创建 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。v0.4 Unreal Mapping Slice review gate 已 Approved，静态骨架已落地；下一步先确认 Unreal Editor 可用性，再做 PIE test map、Data Asset、UMG 和动画占位验证。不要导入 final 或 release-candidate 资产。
-```
-
-## 检查
-
-```sh
-tools/checks/check-doc-links
-tools/checks/check-doc-pairs
-tools/checks/check-startup-prompts
-tools/checks/check-template-metadata
-tools/checks/check-v0.1-manifest
-tools/checks/check-v0.2-godot
-tools/checks/check-v0.3-creative-assets
-tools/checks/check-v0.4-unreal
-```
