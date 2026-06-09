@@ -60,7 +60,7 @@ Recommended workflow:
 ### Recommended Startup Prompt
 
 ```text
-We are using Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, technical architecture, workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. All implementation tasks and structural changes must first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then wait for review gate approval before editing. The v0.4 Unreal Mapping Slice review gate is Approved and the static scaffold has landed; if Unreal Editor is unavailable, do not create .uasset or .umap files. Do not import final or release-candidate assets.
+We are using Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, technical architecture, workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. All implementation tasks and structural changes must first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then wait for review gate approval before editing. The v0.4 Unreal Mapping Slice review gate is Approved and the static scaffold has landed; v0.5b AI art dry-run evidence has landed but does not mean assets were generated or imported; if Unreal Editor is unavailable, do not create .uasset or .umap files. Do not import final or release-candidate assets.
 ```
 
 ## 2. Start From A New Game Idea
@@ -195,6 +195,7 @@ tools/checks/check-v0.1-manifest
 tools/checks/check-v0.2-godot
 tools/checks/check-v0.3-creative-assets
 tools/checks/check-v0.4-unreal
+tools/checks/check-v0.5-ai-art-dry-run
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
 
@@ -238,18 +239,19 @@ Detailed vision:
 
 ## Current Status
 
-The repository has completed v0.3 Creative Production Ready and has a v0.4 Unreal Mapping Slice static scaffold:
+The repository has completed v0.3 Creative Production Ready, v0.4 Unreal Mapping Slice static scaffold, and v0.5b AI art dry-run evidence:
 
 - `AGENTS.md`
 - 14 P0 workflow skills: `.agents/skills/*/SKILL.md`
 - 27 templates under `templates/`: 22 from v0.1 plus 5 v0.3 creative templates
-- 8 check entry points under `tools/checks/`
+- 9 check entry points under `tools/checks/`
 - Boss Rush / Counter Trial no-code dry-run evidence under `docs/evidence/dry-runs/`
 - Godot Boss Rush prototype under `examples/godot-boss-rush/`
 - v0.3 creative asset evidence under `docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold under `examples/unreal-boss-rush/`
+- v0.5b AI art asset dry-run evidence under `docs/evidence/v0.5/`
 
-v0.4 Unreal Mapping Slice has an approved review gate and a static scaffold, but Unreal Editor was not found locally. PIE validation and binary `.uasset` / `.umap` creation are still blocked. No final or release-candidate art/audio assets have been imported.
+v0.4 Unreal Mapping Slice has an approved review gate and a static scaffold, but Unreal Editor was not found locally. PIE validation and binary `.uasset` / `.umap` creation are still blocked. v0.5b only dry-runs asset briefs, provenance planning, and review criteria; it does not generate or import production assets. No final or release-candidate art/audio assets have been imported.
 
 ## What Not To Do
 

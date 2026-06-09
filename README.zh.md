@@ -60,7 +60,7 @@ Muse Game Workshop 不是 Codex-only。Codex、Claude Code、Kiro CLI、opencode
 ### 推荐启动 Prompt
 
 ```text
-我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.4 Unreal Mapping Slice review gate 已 Approved，静态骨架已落地；UE Editor 未安装时不要创建 .uasset 或 .umap。不要导入 final 或 release-candidate 资产。
+我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.4 Unreal Mapping Slice review gate 已 Approved，静态骨架已落地；v0.5b AI art dry-run evidence 已落地但不代表资产已生成或导入；UE Editor 未安装时不要创建 .uasset 或 .umap。不要导入 final 或 release-candidate 资产。
 ```
 
 ## 2. 从一个新游戏想法开始
@@ -195,6 +195,7 @@ tools/checks/check-v0.1-manifest
 tools/checks/check-v0.2-godot
 tools/checks/check-v0.3-creative-assets
 tools/checks/check-v0.4-unreal
+tools/checks/check-v0.5-ai-art-dry-run
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
 
@@ -238,18 +239,19 @@ Muse Game Workshop 的远景是成为独立游戏团队可复用的 AI 制作工
 
 ## 当前状态
 
-当前仓库已完成 v0.3 Creative Production Ready，并有 v0.4 Unreal Mapping Slice 静态骨架：
+当前仓库已完成 v0.3 Creative Production Ready、v0.4 Unreal Mapping Slice 静态骨架，以及 v0.5b AI art dry-run evidence：
 
 - `AGENTS.md`
 - 14 个 P0 workflow skills：`.agents/skills/*/SKILL.md`
 - 27 个模板：`templates/`，其中 22 个来自 v0.1，5 个来自 v0.3 creative templates
-- 8 个检查入口：`tools/checks/`
+- 9 个检查入口：`tools/checks/`
 - Boss Rush / 《反击试炼》无代码 dry-run evidence：`docs/evidence/dry-runs/`
 - Godot Boss Rush prototype：`examples/godot-boss-rush/`
 - v0.3 creative asset evidence：`docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold：`examples/unreal-boss-rush/`
+- v0.5b AI art asset dry-run evidence：`docs/evidence/v0.5/`
 
-v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。仍然没有正式或 release-candidate 美术/音频资产。
+v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。v0.5b 只完成 asset brief、provenance plan 和 review criteria 的 dry run，没有生成或导入正式资产；仍然没有正式或 release-candidate 美术/音频资产。
 
 ## 不要这样用
 

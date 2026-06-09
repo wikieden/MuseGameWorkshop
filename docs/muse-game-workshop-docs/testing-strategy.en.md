@@ -138,6 +138,7 @@ Check contracts:
 | `check-v0.2-godot` | Godot Boss Rush prototype paths, script contracts, input mapping, core-loop simulation, and Godot headless validation pass. | Project files are missing, script contracts are missing, the core loop fails, or Godot reports errors. |
 | `check-v0.3-creative-assets` | v0.3 creative templates, asset briefs/provenance/review/evidence, prototype visual/audio assets, Godot scene wiring, and engine validation pass. | Assets are missing briefs/provenance/review, file formats are invalid, scene wiring is missing, or Godot reports errors. |
 | `check-v0.4-unreal` | v0.4 Unreal static scaffold, C++ mapping contracts, review gate, and blocked playtest evidence pass; if Unreal Editor is available, an editor smoke is attempted. | Scaffold files are missing, Data Asset/Component/HUD contracts are missing, review gate is not Approved, or Unreal editor smoke fails. |
+| `check-v0.5-ai-art-dry-run` | v0.5b AI art dry-run art direction, asset list, asset briefs, provenance plan, review criteria, and approved review gate pass; no new assets are generated or imported. | Brief/provenance/review files are missing, the review gate is not approved, or the dry run implies assets entered `reviewed` or `release-candidate` state. |
 
 Acceptance:
 
@@ -322,6 +323,7 @@ Checks:
 - Audio assets must have trigger timing and mix checks.
 - Animation assets must have gameplay feedback and import specs.
 - UI assets must have readability and resolution checks.
+- The v0.5b AI art dry run must prove that assets can move through brief, provenance planning, and review criteria before generation, engine import, or release-candidate approval.
 
 ## 10. Godot Tests
 

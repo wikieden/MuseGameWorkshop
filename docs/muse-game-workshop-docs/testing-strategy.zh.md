@@ -138,6 +138,7 @@ FAIL <check-name>: <reason>
 | `check-v0.2-godot` | Godot Boss Rush prototype 路径、脚本契约、输入映射、核心循环仿真和 Godot headless validation 通过。 | 项目文件缺失、脚本契约缺失、核心循环失败，或 Godot 报告错误。 |
 | `check-v0.3-creative-assets` | v0.3 creative templates、资产 brief/provenance/review/evidence、prototype visual/audio assets、Godot 场景引用和 engine validation 通过。 | 资产缺少 brief/provenance/review、文件格式无效、场景未接入，或 Godot 报告错误。 |
 | `check-v0.4-unreal` | v0.4 Unreal static scaffold、C++ mapping contracts、review gate、blocked playtest evidence 通过；如果 Unreal Editor 可用，则尝试 editor smoke。 | scaffold 缺失、Data Asset/Component/HUD 契约缺失、review gate 未 Approved，或 Unreal editor smoke 失败。 |
+| `check-v0.5-ai-art-dry-run` | v0.5b AI art dry-run 的 art direction、asset list、asset briefs、provenance plan、review criteria 和 Approved review gate 通过；没有生成或导入新资产。 | brief/provenance/review 缺失，review gate 未 Approved，或 dry run 暗示新资产已进入 reviewed / release-candidate 状态。 |
 
 验收标准：
 
@@ -322,6 +323,7 @@ creative pipeline 测试必须证明 AI 生成资产不会无记录地进入项�
 - 音频资产必须有触发时机和混音检查。
 - 动作资产必须有机制反馈和导入规格。
 - UI 资产必须有可读性和分辨率检查。
+- v0.5b AI art dry run 必须证明资产可以先经过 brief、provenance plan 和 review criteria，再决定是否进入生成、引擎导入或 release-candidate 流程。
 
 ## 10. Godot Tests
 

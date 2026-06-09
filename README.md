@@ -54,18 +54,19 @@ Detailed vision:
 
 ## Current Status
 
-v0.3 Creative Production Ready is complete, and v0.4 Unreal Mapping Slice has an approved static scaffold:
+v0.3 Creative Production Ready is complete, v0.4 Unreal Mapping Slice has an approved static scaffold, and v0.5b AI art dry-run evidence is in place:
 
 - `AGENTS.md`
 - 14 P0 workflow skills under `.agents/skills/`
 - 27 templates under `templates/`
-- 8 check entry points under `tools/checks/`
+- 9 check entry points under `tools/checks/`
 - Boss Rush / Counter Trial no-code dry-run evidence under `docs/evidence/dry-runs/`
 - Godot Boss Rush prototype under `examples/godot-boss-rush/`
 - v0.3 creative asset evidence under `docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold under `examples/unreal-boss-rush/`
+- v0.5b AI art asset dry-run evidence under `docs/evidence/v0.5/`
 
-Unreal Editor was not found locally during v0.4 work, so PIE validation and binary `.uasset` / `.umap` creation remain blocked. No final or release-candidate art/audio assets have been imported.
+Unreal Editor was not found locally during v0.4 work, so PIE validation and binary `.uasset` / `.umap` creation remain blocked. The v0.5b AI art dry run defines briefs, provenance, and review criteria only. No final or release-candidate art/audio assets have been imported.
 
 ## Main Documentation
 
@@ -90,5 +91,6 @@ tools/checks/check-v0.1-manifest
 tools/checks/check-v0.2-godot
 tools/checks/check-v0.3-creative-assets
 tools/checks/check-v0.4-unreal
+tools/checks/check-v0.5-ai-art-dry-run
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
