@@ -23,17 +23,36 @@ tools/checks/check-startup-prompts
 
 The repository is currently private. Access requires permission from the repository owner.
 
-## How To Use This Repo
+## Use This Repo
 
 | If you want to... | Start here |
 |---|---|
-| Understand the project | [Vision](docs/muse-game-workshop-docs/vision.en.md) / [愿景](docs/muse-game-workshop-docs/vision.zh.md) |
-| See the product scope | [PRD](docs/muse-game-workshop-docs/prd.en.md) / [PRD 中文](docs/muse-game-workshop-docs/prd.zh.md) |
-| Start a new game idea | `templates/design/pitch.md`, `templates/design/core-loop.md`, `templates/design/mechanic-spec.md` |
-| Use an AI coding tool | Read `AGENTS.md`, then use the startup prompt in [README.en.md](README.en.md) or [README.zh.md](README.zh.md) |
+| Use the Chinese guide | [README.zh.md](README.zh.md) |
+| Use the English guide | [README.en.md](README.en.md) |
+| Start a game idea | `templates/design/pitch.md`, `templates/design/core-loop.md`, `templates/design/mechanic-spec.md` |
+| Use an AI coding tool | Read `AGENTS.md`, then use the startup prompt in the language README |
 | Run the Godot example | `examples/godot-boss-rush/project.godot` |
 | Inspect Unreal mapping | `examples/unreal-boss-rush/README.md` |
 | Validate the repo | Run the checks listed below |
+
+## Workflow Rule
+
+Structural work and implementation work must follow:
+
+```text
+design summary -> execution plan -> review gate approval -> implementation -> validation -> evidence record
+```
+
+Startup prompts must declare target language, target audience, and locale. They must read the bilingual audience strategy, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap before proposing implementation.
+
+## Short Vision
+
+Muse Game Workshop aims to become a reusable production workflow pack for small game teams using Godot, Unreal, AI coding tools, and creative AI tools. It should help teams move from an idea to a playable, reviewable, and release-aware demo while keeping human creative direction, asset approval, and production judgment in control.
+
+Detailed vision:
+
+- [vision.zh.md](docs/muse-game-workshop-docs/vision.zh.md)
+- [vision.en.md](docs/muse-game-workshop-docs/vision.en.md)
 
 ## Current Status
 
@@ -45,22 +64,10 @@ v0.3 Creative Production Ready is complete, and v0.4 Unreal Mapping Slice has an
 - 8 check entry points under `tools/checks/`
 - Boss Rush / 《反击试炼》 no-code dry-run evidence under `docs/evidence/dry-runs/`
 - Godot Boss Rush prototype under `examples/godot-boss-rush/`
-- v0.2 evidence under `docs/evidence/v0.2/`
 - v0.3 creative asset evidence under `docs/evidence/v0.3/`
-- Prototype visual/audio assets under `examples/godot-boss-rush/assets/`
 - v0.4 Unreal static mapping scaffold under `examples/unreal-boss-rush/`
 
 Unreal Editor was not found locally during v0.4 work, so PIE validation and binary `.uasset` / `.umap` creation remain blocked. No final or release-candidate art/audio assets have been imported.
-
-## Workflow Rule
-
-Structural work and implementation work must follow:
-
-```text
-design summary -> execution plan -> review gate approval -> implementation -> validation -> evidence record
-```
-
-Startup prompts must declare target language, target audience, and locale. They must also read the bilingual audience strategy, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap before proposing implementation.
 
 ## Main Documentation
 
