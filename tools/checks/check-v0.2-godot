@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+PROJECT = ROOT / "examples" / "godot-boss-rush"
+CHECK = "check-v0.2-godot"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required_files = [
+    "project.godot",
+    "README.md",
+    "resources/combat_data.tres",
+    "scripts/combat_data.gd",
+    "scripts/player.gd",
+    "scripts/boss.gd",
+    "scripts/hud.gd",
+    "scripts/test_arena.gd",
+    "scenes/TestArena.tscn",
+    "scenes/Player.tscn",
+    "scenes/Boss.tscn",
+    "scenes/ui/HUD.tscn",
+    "tests/simulate_core_loop.py",
+]
+
+for rel in required_files:
+    if not (PROJECT / rel).exists():
+        fail(f"missing examples/godot-boss-rush/{rel}")
+
+project_text = (PROJECT / "project.godot").read_text(encoding="utf-8")
+for token in [
+    'run/main_scene="res://scenes/TestArena.tscn"',
+    "move_left",
+    "move_right",
+    "move_up",
+    "move_down",
+    "dodge",
+    "parry",
+    "counter",
+    "retry",
+]:
+    if token not in project_text:
+        fail(f"project.godot missing {token}")
+
+data_text = (PROJECT / "resources" / "combat_data.tres").read_text(encoding="utf-8")
+for token in [
+    "stamina_max",
+    "stamina_dodge_cost",
+    "stamina_parry_cost",
+    "counter_window",
+    "counter_damage",
+    "boss_health",
+    "boss_phase_2_threshold",
+    "boss_phase_3_threshold",
+]:
+    if token not in data_text:
+        fail(f"combat_data.tres missing {token}")
+
+script_contracts = {
+    "scripts/player.gd": ["start_dodge", "start_parry", "try_counter", "receive_boss_attack", "counter_window_remaining"],
+    "scripts/boss.gd": ["attack_state", "take_counter_damage", "phase_changed", "boss_defeated"],
+    "scripts/test_arena.gd": ["core_loop_count", "_on_counter_landed", "_reset_run", "retry"],
+    "scripts/hud.gd": ["set_stamina", "set_boss_health", "set_phase", "set_status"],
+}
+
+for rel, tokens in script_contracts.items():
+    text = (PROJECT / rel).read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+scene_contracts = {
+    "scenes/TestArena.tscn": ["res://scenes/Player.tscn", "res://scenes/Boss.tscn", "res://scenes/ui/HUD.tscn"],
+    "scenes/Player.tscn": ["res://scripts/player.gd", "res://resources/combat_data.tres"],
+    "scenes/Boss.tscn": ["res://scripts/boss.gd", "res://resources/combat_data.tres"],
+    "scenes/ui/HUD.tscn": ["res://scripts/hud.gd", "StaminaLabel", "BossLabel", "PhaseLabel", "StatusLabel"],
+}
+
+for rel, tokens in scene_contracts.items():
+    text = (PROJECT / rel).read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+evidence_requirements = {
+    "docs/evidence/v0.2/godot-boss-rush-design.zh.md": ["## 1. Design Summary", "## 2. Execution Plan", "## 5. Validation Plan"],
+    "docs/evidence/v0.2/godot-boss-rush-review-gate.zh.md": ["Review Status: Approved", "v0.2 Godot Playable Loop"],
+    "docs/evidence/v0.2/godot-boss-rush-playtest.zh.md": ["Playtest Verdict:", "10 次核心循环"],
+}
+for rel, tokens in evidence_requirements.items():
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+sim = subprocess.run(
+    [sys.executable, str(PROJECT / "tests" / "simulate_core_loop.py")],
+    cwd=str(PROJECT),
+    text=True,
+    capture_output=True,
+    check=False,
+)
+if sim.returncode != 0:
+    fail(sim.stdout.strip() or sim.stderr.strip() or "simulate_core_loop.py failed")
+
+godot_bin = shutil.which("godot") or shutil.which("godot4")
+if godot_bin:
+    asset_import = subprocess.run(
+        [godot_bin, "--headless", "--path", str(PROJECT), "--import"],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=60,
+    )
+    if asset_import.returncode != 0:
+        fail("Godot asset import failed: " + (asset_import.stderr.strip() or asset_import.stdout.strip())[:400])
+    import_combined = (asset_import.stdout + "\n" + asset_import.stderr).upper()
+    if "SCRIPT ERROR" in import_combined or "ERROR:" in import_combined:
+        fail("Godot asset import reported errors: " + (asset_import.stderr.strip() or asset_import.stdout.strip())[:400])
+    smoke = subprocess.run(
+        [godot_bin, "--headless", "--path", str(PROJECT), "--quit-after", "1"],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=30,
+    )
+    if smoke.returncode != 0:
+        fail("Godot headless open failed: " + (smoke.stderr.strip() or smoke.stdout.strip())[:400])
+    combined = (smoke.stdout + "\n" + smoke.stderr).upper()
+    if "SCRIPT ERROR" in combined or "ERROR:" in combined:
+        fail("Godot headless open reported errors: " + (smoke.stderr.strip() or smoke.stdout.strip())[:400])
+
+print(f"PASS {CHECK}")

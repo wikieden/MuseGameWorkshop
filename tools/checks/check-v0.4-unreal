@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import json
+import shutil
+import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+PROJECT = ROOT / "examples" / "unreal-boss-rush"
+CHECK = "check-v0.4-unreal"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required_files = [
+    "CounterTrial.uproject",
+    "README.md",
+    "Config/DefaultEngine.ini",
+    "Config/DefaultInput.ini",
+    "Source/CounterTrial.Target.cs",
+    "Source/CounterTrialEditor.Target.cs",
+    "Source/CounterTrial/CounterTrial.Build.cs",
+    "Source/CounterTrial/CounterTrial.cpp",
+    "Source/CounterTrial/Public/CounterTrialCombatData.h",
+    "Source/CounterTrial/Public/CounterTrialCombatComponent.h",
+    "Source/CounterTrial/Private/CounterTrialCombatComponent.cpp",
+    "Source/CounterTrial/Public/CounterTrialCharacter.h",
+    "Source/CounterTrial/Private/CounterTrialCharacter.cpp",
+    "Source/CounterTrial/Public/CounterTrialBoss.h",
+    "Source/CounterTrial/Private/CounterTrialBoss.cpp",
+    "Source/CounterTrial/Public/CounterTrialDebugHUD.h",
+]
+
+for rel in required_files:
+    if not (PROJECT / rel).exists():
+        fail(f"missing examples/unreal-boss-rush/{rel}")
+
+try:
+    descriptor = json.loads((PROJECT / "CounterTrial.uproject").read_text(encoding="utf-8"))
+except json.JSONDecodeError as exc:
+    fail(f"CounterTrial.uproject is invalid JSON: {exc}")
+
+modules = descriptor.get("Modules", [])
+if not any(module.get("Name") == "CounterTrial" for module in modules):
+    fail("CounterTrial.uproject missing CounterTrial module")
+
+source_contracts = {
+    "Source/CounterTrial/Public/CounterTrialCombatData.h": [
+        "UDataAsset",
+        "StaminaMax",
+        "StaminaDodgeCost",
+        "StaminaParryCost",
+        "CounterWindow",
+        "CounterDamage",
+        "BossPhase2Threshold",
+        "BossPhase3Threshold",
+    ],
+    "Source/CounterTrial/Public/CounterTrialCombatComponent.h": [
+        "StartDodge",
+        "StartParry",
+        "TryCounter",
+        "ReceiveBossAttack",
+        "OnCounterLanded",
+    ],
+    "Source/CounterTrial/Private/CounterTrialCombatComponent.cpp": [
+        "CounterWindowRemaining",
+        "OnParrySucceeded.Broadcast",
+        "OnCounterLanded.Broadcast",
+        "RegenerateStamina",
+    ],
+    "Source/CounterTrial/Public/CounterTrialCharacter.h": ["Dodge", "Parry", "Counter"],
+    "Source/CounterTrial/Public/CounterTrialBoss.h": ["ApplyCounterDamage", "OnBossPhaseChanged", "OnBossDefeated"],
+    "Source/CounterTrial/Public/CounterTrialDebugHUD.h": ["SetStamina", "SetBossHealth", "SetPhase", "SetStatusText"],
+}
+
+for rel, tokens in source_contracts.items():
+    text = (PROJECT / rel).read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+evidence_requirements = {
+    "docs/evidence/v0.4/unreal-mapping-design.zh.md": [
+        "## 1. Design Summary",
+        "## 4. Mechanic Mapping",
+        "## 9. Validation Plan",
+    ],
+    "docs/evidence/v0.4/unreal-mapping-review-gate.zh.md": [
+        "Review Status: Approved",
+        "ok没问题",
+    ],
+    "docs/evidence/v0.4/unreal-playtest-report.zh.md": [
+        "Playtest Verdict: Blocked by missing Unreal Editor",
+        "Static Validation Completed",
+    ],
+}
+
+for rel, tokens in evidence_requirements.items():
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+unreal_editor = shutil.which("UnrealEditor") or shutil.which("ue5") or shutil.which("unreal")
+if unreal_editor:
+    smoke = subprocess.run(
+        [unreal_editor, str(PROJECT / "CounterTrial.uproject"), "-NullRHI", "-ExecCmds=Quit"],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=120,
+    )
+    if smoke.returncode != 0:
+        fail("Unreal editor smoke failed: " + (smoke.stderr.strip() or smoke.stdout.strip())[:400])
+
+print(f"PASS {CHECK}")

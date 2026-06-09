@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfs2q84n7v3tl"]
+
+[ext_resource type="Script" uid="uid://dqlx4mubhngnt" path="res://scripts/test_arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/Boss.tscn" id="3_boss"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="4_hud"]
+[ext_resource type="Texture2D" path="res://assets/visual/counter_window_flash.svg" id="5_flash"]
+[ext_resource type="AudioStream" path="res://assets/audio/counter_hit_prototype.wav" id="6_sfx"]
+
+[node name="TestArena" type="Node2D" unique_id=1005743096]
+script = ExtResource("1_arena")
+
+[node name="ArenaFloor" type="Polygon2D" parent="." unique_id=2121119997]
+color = Color(0.12, 0.13, 0.16, 1)
+polygon = PackedVector2Array(80, 80, 880, 80, 880, 460, 80, 460)
+
+[node name="ArenaBorder" type="Line2D" parent="." unique_id=2110919740]
+points = PackedVector2Array(80, 80, 880, 80, 880, 460, 80, 460, 80, 80)
+width = 4.0
+default_color = Color(0.55, 0.58, 0.62, 1)
+
+[node name="CounterFlash" type="Sprite2D" parent="." unique_id=157424486]
+visible = false
+z_index = 5
+position = Vector2(490, 270)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("5_flash")
+
+[node name="CounterHitSfx" type="AudioStreamPlayer" parent="." unique_id=550764200]
+stream = ExtResource("6_sfx")
+volume_db = -9.0
+
+[node name="Player" parent="." unique_id=1458790229 instance=ExtResource("2_player")]
+position = Vector2(320, 270)
+
+[node name="Boss" parent="." unique_id=1634521132 instance=ExtResource("3_boss")]
+position = Vector2(660, 270)
+
+[node name="HUD" parent="." unique_id=893188895 instance=ExtResource("4_hud")]

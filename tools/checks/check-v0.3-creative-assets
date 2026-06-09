@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import wave
+
+ROOT = Path(__file__).resolve().parents[2]
+PROJECT = ROOT / "examples" / "godot-boss-rush"
+CHECK = "check-v0.3-creative-assets"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required_templates = [
+    "templates/creative/animation-brief.md",
+    "templates/creative/music-brief.md",
+    "templates/creative/sfx-brief.md",
+    "templates/creative/asset-integration.md",
+    "templates/creative/ai-asset-disclosure.md",
+]
+
+for rel in required_templates:
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in ["## Metadata", "- Review Status:", "## Engine Validation"]:
+        if token not in text and rel != "templates/creative/ai-asset-disclosure.md":
+            fail(f"{rel} missing {token}")
+
+
+evidence_requirements = {
+    "docs/evidence/v0.3/boss-rush-creative-production-design.zh.md": [
+        "## 1. Design Summary",
+        "## 2. Execution Plan",
+        "## 6. Validation Plan",
+    ],
+    "docs/evidence/v0.3/boss-rush-creative-production-review-gate.zh.md": [
+        "Review Status: Approved",
+        "v0.3 Creative Production Ready",
+    ],
+    "docs/evidence/v0.3/boss-rush-art-direction.zh.md": ["## 2. Readability Goals", "## 6. Reject Criteria"],
+    "docs/evidence/v0.3/counter-window-flash-asset-brief.zh.md": ["## 1. Asset Purpose", "## 6. Review Criteria"],
+    "docs/evidence/v0.3/counter-hit-sfx-asset-brief.zh.md": ["## 1. Asset Purpose", "## 6. Engine Validation"],
+    "docs/evidence/v0.3/boss-rush-asset-provenance.zh.md": [
+        "counter_window_flash.svg",
+        "counter_hit_prototype.wav",
+        "No external generative AI model",
+    ],
+    "docs/evidence/v0.3/boss-rush-asset-review.zh.md": [
+        "Review Status: Approved for prototype engine validation",
+        "Neither asset is approved as release-candidate",
+    ],
+    "docs/evidence/v0.3/boss-rush-ux-level-gate.zh.md": ["## 1. UX Gate", "## 2. Level Blockout Gate"],
+    "docs/evidence/v0.3/boss-rush-engine-validation.zh.md": [
+        "Engine Validation Status: Passed",
+        "CounterFlash",
+        "CounterHitSfx",
+    ],
+}
+
+for rel, tokens in evidence_requirements.items():
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+
+
+asset_files = [
+    "assets/README.md",
+    "assets/visual/counter_window_flash.svg",
+    "assets/audio/counter_hit_prototype.wav",
+    "tools/generate_v0_3_prototype_assets.py",
+]
+
+for rel in asset_files:
+    if not (PROJECT / rel).exists():
+        fail(f"missing examples/godot-boss-rush/{rel}")
+
+svg_text = (PROJECT / "assets" / "visual" / "counter_window_flash.svg").read_text(encoding="utf-8")
+for token in ["counter-window-flash", "<circle", "<path"]:
+    if token not in svg_text:
+        fail(f"counter_window_flash.svg missing {token}")
+
+wav_path = PROJECT / "assets" / "audio" / "counter_hit_prototype.wav"
+try:
+    with wave.open(str(wav_path), "rb") as wav:
+        if wav.getnchannels() != 1:
+            fail("counter_hit_prototype.wav must be mono")
+        if wav.getframerate() != 44100:
+            fail("counter_hit_prototype.wav must be 44100 Hz")
+        if wav.getnframes() < 8000:
+            fail("counter_hit_prototype.wav is too short for the prototype cue")
+except wave.Error as exc:
+    fail(f"counter_hit_prototype.wav is invalid: {exc}")
+
+scene_text = (PROJECT / "scenes" / "TestArena.tscn").read_text(encoding="utf-8")
+for token in [
+    "res://assets/visual/counter_window_flash.svg",
+    "res://assets/audio/counter_hit_prototype.wav",
+    "CounterFlash",
+    "CounterHitSfx",
+]:
+    if token not in scene_text:
+        fail(f"TestArena.tscn missing {token}")
+
+script_text = (PROJECT / "scripts" / "test_arena.gd").read_text(encoding="utf-8")
+for token in [
+    "counter_flash",
+    "counter_hit_sfx",
+    "COUNTER_FEEDBACK_DURATION",
+    "counter_hit_sfx.play",
+    "_on_counter_landed",
+]:
+    if token not in script_text:
+        fail(f"test_arena.gd missing {token}")
+
+sim = subprocess.run(
+    [sys.executable, str(PROJECT / "tests" / "simulate_core_loop.py")],
+    cwd=str(PROJECT),
+    text=True,
+    capture_output=True,
+    check=False,
+)
+if sim.returncode != 0:
+    fail(sim.stdout.strip() or sim.stderr.strip() or "simulate_core_loop.py failed")
+
+godot_bin = shutil.which("godot") or shutil.which("godot4")
+if godot_bin:
+    asset_import = subprocess.run(
+        [godot_bin, "--headless", "--path", str(PROJECT), "--import"],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=60,
+    )
+    if asset_import.returncode != 0:
+        fail("Godot asset import failed: " + (asset_import.stderr.strip() or asset_import.stdout.strip())[:400])
+    import_combined = (asset_import.stdout + "\n" + asset_import.stderr).upper()
+    if "SCRIPT ERROR" in import_combined or "ERROR:" in import_combined:
+        fail("Godot asset import reported errors: " + (asset_import.stderr.strip() or asset_import.stdout.strip())[:400])
+    smoke = subprocess.run(
+        [godot_bin, "--headless", "--path", str(PROJECT), "--quit-after", "1"],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=30,
+    )
+    if smoke.returncode != 0:
+        fail("Godot headless open failed: " + (smoke.stderr.strip() or smoke.stdout.strip())[:400])
+    combined = (smoke.stdout + "\n" + smoke.stderr).upper()
+    if "SCRIPT ERROR" in combined or "ERROR:" in combined:
+        fail("Godot headless open reported errors: " + (smoke.stderr.strip() or smoke.stdout.strip())[:400])
+
+print(f"PASS {CHECK}")

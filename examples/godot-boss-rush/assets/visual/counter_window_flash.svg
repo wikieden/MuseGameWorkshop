@@ -1,0 +1,8 @@
+<svg id="counter-window-flash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Counter Window Flash Prototype</title>
+  <desc>Prototype visual feedback for a successful parry to counter window.</desc>
+  <circle cx="64" cy="64" r="52" fill="none" stroke="#f5f7ff" stroke-width="8"/>
+  <circle cx="64" cy="64" r="34" fill="none" stroke="#29d6a3" stroke-width="6"/>
+  <path d="M22 64h84M64 22v84" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/>
+  <path d="M40 86l48-48" stroke="#f5f7ff" stroke-width="7" stroke-linecap="round"/>
+</svg>

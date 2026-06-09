@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-template-metadata"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+templates = [
+    "templates/design/pitch.md",
+    "templates/design/player-fantasy.md",
+    "templates/design/core-loop.md",
+    "templates/design/mechanic-spec.md",
+    "templates/design/content-matrix.md",
+    "templates/design/engine-mapping.md",
+    "templates/design/vertical-slice.md",
+    "templates/design/playtest-log.md",
+    "templates/design/balance-report.md",
+    "templates/design/decision-log.md",
+    "templates/design/release-checklist.md",
+    "templates/production/handoff-record.md",
+    "templates/production/review-gate.md",
+    "templates/production/acceptance-checklist.md",
+    "templates/production/milestone-plan.md",
+    "templates/creative/art-direction.md",
+    "templates/creative/asset-brief.md",
+    "templates/creative/animation-brief.md",
+    "templates/creative/music-brief.md",
+    "templates/creative/sfx-brief.md",
+    "templates/creative/asset-provenance.md",
+    "templates/creative/asset-review.md",
+    "templates/creative/asset-integration.md",
+    "templates/creative/ai-asset-disclosure.md",
+    "templates/ux/ux-flow.md",
+    "templates/ux/level-blockout.md",
+    "templates/publishing/localization-readiness.md",
+]
+
+fields = [
+    "## Metadata",
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+
+for rel in templates:
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    first = text.splitlines()[:20]
+    if not first or first[0].strip() != "## Metadata":
+        fail(f"{rel} does not start with metadata block")
+    for field in fields:
+        if field not in text:
+            fail(f"{rel} missing {field}")
+
+print(f"PASS {CHECK}")

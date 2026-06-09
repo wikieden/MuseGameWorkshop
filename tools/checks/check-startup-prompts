@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-startup-prompts"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+files = [
+    "README.md",
+    "README.zh.md",
+    "README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+]
+
+required_terms = [
+    ("target language", ["目标语言", "target language"]),
+    ("target audience", ["目标用户群体", "target audience"]),
+    ("bilingual audience strategy", ["bilingual audience strategy"]),
+    ("v0.1 execution plan", ["v0.1 execution plan"]),
+    ("P0 skill skeleton plan", ["P0 skill skeleton plan"]),
+    ("v0.1 manifest", ["v0.1 manifest"]),
+    ("testing strategy", ["testing strategy"]),
+    ("review gate", ["review gate", "review 通过", "review approval"]),
+]
+
+for rel in files:
+    path = ROOT / rel
+    if not path.exists():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8").lower()
+    for label, variants in required_terms:
+        if not any(term.lower() in text for term in variants):
+            fail(f"{rel} missing {label}")
+
+claude = ROOT / "CLAUDE.md"
+agents = ROOT / "AGENTS.md"
+manifest = ROOT / "docs/muse-game-workshop-docs/v0.1-manifest.zh.md"
+for path in [claude, agents, manifest]:
+    if not path.exists():
+        fail(f"missing {path.relative_to(ROOT)}")
+
+claude_text = claude.read_text(encoding="utf-8")
+claude_lower = claude_text.lower()
+if (
+    "do not write a game" not in claude_text
+    and "no game code" not in claude_lower
+    and "no godot/unreal game code" not in claude_lower
+    and "do not start by writing game code" not in claude_lower
+):
+    fail("CLAUDE.md missing no-game-code rule")
+if "v0.1-manifest" not in claude_text:
+    fail("CLAUDE.md missing manifest source-of-truth rule")
+
+print(f"PASS {CHECK}")

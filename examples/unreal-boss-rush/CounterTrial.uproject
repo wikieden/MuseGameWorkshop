@@ -1,0 +1,13 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.0",
+  "Category": "Games",
+  "Description": "Muse Game Workshop v0.4 Unreal Mapping Slice fixture for Counter Trial.",
+  "Modules": [
+    {
+      "Name": "CounterTrial",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

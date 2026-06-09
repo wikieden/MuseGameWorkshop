@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editor state
+.idea/
+.vscode/
+
+# Local AI tool runtime state
+.omc/
+.omx/
+
+# Godot generated cache
+.godot/
+
+# Unreal generated folders
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Python cache
+__pycache__/
+*.py[cod]

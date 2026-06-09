@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.1-manifest"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+skills = [
+    "game-intake",
+    "core-loop",
+    "mechanic-spec",
+    "vertical-slice-planner",
+    "engine-portability",
+    "godot-workflow",
+    "unreal-workflow",
+    "playtest-report",
+    "creative-asset-pipeline",
+    "art-direction",
+    "asset-brief",
+    "asset-review",
+    "ux-flow",
+    "level-blockout",
+]
+
+skill_root = ROOT / ".agents" / "skills"
+if not skill_root.exists():
+    fail("missing .agents/skills")
+
+actual_skill_dirs = sorted(p.name for p in skill_root.iterdir() if p.is_dir())
+if actual_skill_dirs != sorted(skills):
+    fail(f"skill dirs mismatch: {actual_skill_dirs}")
+
+required_skill_terms = [
+    "name:",
+    "description:",
+    "## Use When",
+    "## Do Not Use When",
+    "## Inputs",
+    "## Outputs",
+    "## Workflow",
+    "## Quality Bar",
+    "## Common Failure Modes",
+    "## Next Skills",
+]
+for skill in skills:
+    path = skill_root / skill / "SKILL.md"
+    if not path.exists():
+        fail(f"missing {path.relative_to(ROOT)}")
+    text = path.read_text(encoding="utf-8")
+    for term in required_skill_terms:
+        if term not in text:
+            fail(f"{path.relative_to(ROOT)} missing {term}")
+
+required_paths = [
+    "templates/design/pitch.md",
+    "templates/design/player-fantasy.md",
+    "templates/design/core-loop.md",
+    "templates/design/mechanic-spec.md",
+    "templates/design/content-matrix.md",
+    "templates/design/engine-mapping.md",
+    "templates/design/vertical-slice.md",
+    "templates/design/playtest-log.md",
+    "templates/design/balance-report.md",
+    "templates/design/decision-log.md",
+    "templates/design/release-checklist.md",
+    "templates/production/handoff-record.md",
+    "templates/production/review-gate.md",
+    "templates/production/acceptance-checklist.md",
+    "templates/production/milestone-plan.md",
+    "templates/creative/art-direction.md",
+    "templates/creative/asset-brief.md",
+    "templates/creative/asset-provenance.md",
+    "templates/creative/asset-review.md",
+    "templates/ux/ux-flow.md",
+    "templates/ux/level-blockout.md",
+    "templates/publishing/localization-readiness.md",
+    "tools/checks/check-doc-links",
+    "tools/checks/check-doc-pairs",
+    "tools/checks/check-startup-prompts",
+    "tools/checks/check-template-metadata",
+    "tools/checks/check-v0.1-manifest",
+    "docs/evidence/dry-runs/boss-rush-intake.zh.md",
+    "docs/evidence/dry-runs/boss-rush-plan.zh.md",
+    "docs/evidence/dry-runs/boss-rush-review-gate.zh.md",
+]
+
+missing = [rel for rel in required_paths if not (ROOT / rel).exists()]
+if missing:
+    fail("missing " + ", ".join(missing))
+
+v02_gate = ROOT / "docs" / "evidence" / "v0.2" / "godot-boss-rush-review-gate.zh.md"
+v02_godot_approved = v02_gate.exists() and "Review Status: Approved" in v02_gate.read_text(encoding="utf-8")
+v03_gate = ROOT / "docs" / "evidence" / "v0.3" / "boss-rush-creative-production-review-gate.zh.md"
+v03_assets_approved = v03_gate.exists() and "Review Status: Approved" in v03_gate.read_text(encoding="utf-8")
+v04_gate = ROOT / "docs" / "evidence" / "v0.4" / "unreal-mapping-review-gate.zh.md"
+v04_unreal_approved = v04_gate.exists() and "Review Status: Approved" in v04_gate.read_text(encoding="utf-8")
+
+for pattern in ["*.gd", "*.tscn", "*.tres", "*.uasset", "*.umap", "*.uproject", "*.cpp", "*.h", "*.cs", "*.shader", "*.import"]:
+    for path in ROOT.glob(f"**/{pattern}"):
+        rel = path.relative_to(ROOT)
+        if rel.parts[0] in {".omc", ".omx"}:
+            continue
+        if v02_godot_approved and rel.parts[:2] == ("examples", "godot-boss-rush") and pattern in {"*.gd", "*.tscn", "*.tres"}:
+            continue
+        if v03_assets_approved and rel.parts[:2] == ("examples", "godot-boss-rush") and pattern == "*.import":
+            continue
+        if v04_unreal_approved and rel.parts[:2] == ("examples", "unreal-boss-rush") and pattern in {"*.uproject", "*.cpp", "*.h", "*.cs"}:
+            continue
+        fail(f"premature game file {rel}")
+
+print(f"PASS {CHECK}")

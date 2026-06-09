@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://counter_trial_hud"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 150.0
+
+[node name="StaminaLabel" type="Label" parent="Panel"]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 320.0
+offset_bottom = 34.0
+text = "Stamina: --"
+
+[node name="BossLabel" type="Label" parent="Panel"]
+offset_left = 12.0
+offset_top = 38.0
+offset_right = 320.0
+offset_bottom = 62.0
+text = "Boss: --"
+
+[node name="PhaseLabel" type="Label" parent="Panel"]
+offset_left = 12.0
+offset_top = 66.0
+offset_right = 320.0
+offset_bottom = 90.0
+text = "Phase: --"
+
+[node name="StatusLabel" type="Label" parent="Panel"]
+offset_left = 12.0
+offset_top = 94.0
+offset_right = 330.0
+offset_bottom = 126.0
+text = "Read the boss, parry, then counter."
+autowrap_mode = 2
