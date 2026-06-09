@@ -194,7 +194,13 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 | v0.3 | Creative Production Ready / 创意资产生产就绪 | AI 辅助资产是否能从 brief 进入 engine validation？ | 至少视觉和音频资产各完成一次 brief、provenance、review、engine validation。 |
 | v0.4 | Unreal Mapping Slice / Unreal 映射切片 | 同一机制是否能映射到 3D 动作表现？ | Unreal PIE test map 可玩，Data Asset、UMG、动画占位和检查入口存在。 |
 | v0.5 | Publishing Readiness / 发布准备 | Demo 是否能判断公开试玩条件？ | release checklist、store/trailer brief、localization、accessibility、AI disclosure 完整。 |
+| v0.6 | Game Design Deepening Pack / 策划流程细化包 | 核心玩法、系统、战斗、关卡、数值和试玩假设是否能形成可交接规格？ | system design、combat design、encounter design、tuning plan 和 playtest hypothesis 能交给程序、QA 和创意职能。 |
+| v0.7 | Narrative Design Pack / 叙事设计包 | 世界观、剧情动线、角色、任务和对白是否能服务玩法与关卡？ | world bible、narrative flow、character profile、quest brief、dialogue brief 和 lore consistency check 可审查。 |
+| v0.8 | Genre Tracks / 类型流程分支 | 通用流程是否能适配不同类型游戏？ | 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说；Tactics 作为重点分支。 |
+| v0.9 | Economy, Progression & Telemetry / 经济、成长与数据 | 奖励、成长、资源循环和试玩数据是否能闭环调优？ | economy model、progression map、reward table、telemetry plan 和 playtest analytics report 成立。 |
+| v0.10 | Procedural Content Pack / 程序化内容设计包 | 稳定规则能否生成可控内容变体？ | procedural rules、content validation、seed/evidence record 和人工 review gate 完整。 |
 | v1.0 | Reusable Production Pack / 可复用制作包 | 其他项目是否能拿来启动？ | 新项目能快速完成 intake、core loop、mechanic spec，并推进到可试玩切片。 |
+| v1.1+ | LiveOps & Post-launch / 上线后运营与迭代 | 已发布项目如何持续更新和响应玩家反馈？ | patch plan、hotfix flow、feedback triage、update roadmap 和运营风险记录可用。 |
 
 ## 10. P0 / P1 / P2 Scope
 
@@ -207,7 +213,10 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 
 ### P1: Near-Term Design
 
-- Narrative & Worldbuilding：世界观、角色、任务、对白和文本一致性。
+- Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
+- Narrative & Worldbuilding：世界观、剧情动线、角色、任务、对白和文本一致性。
+- Genre Tracks：类型流程分支，首批包含 Action、Tactics / 战棋类、RPG、Puzzle 和 Visual Novel。
+- Economy / Progression / Telemetry：经济系统、成长线和试玩数据分析，进入 v0.9。
 - Platform & Store Readiness：商店页、trailer brief、截图、平台差异、基础认证检查。
 - Localization：文本外置、术语表、翻译风险、字体和布局。
 - Bilingual Audience Strategy：中文和英文用户入口、术语风格、模板元数据和双语测试。
@@ -215,14 +224,14 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 
 ### P2: Future Planning
 
-- Analytics & Telemetry。
 - Community & Marketing。
 - Monetization。
 - LiveOps & Post-launch。
 - Modding / UGC。
+- Procedural Content advanced tooling。
 - Security & Privacy。
 
-P2 不应拖慢首个可试玩 demo。它们需要在路线图中保留位置，但只有当 demo 和发布准备真实需要时再启动。
+P2 不应拖慢首个可试玩 demo。Analytics / Telemetry、经济系统和成长系统的基础能力从 v0.9 开始；复杂商业化、LiveOps、UGC 和安全隐私能力保留到 v1.1+ 或更晚。
 
 ## 11. Non-Negotiables
 

@@ -106,16 +106,22 @@ P0 must be included in the current design:
 - UX/UI & Onboarding: menus, settings, tutorial flow, onboarding, readability, feedback hierarchy, and basic accessibility switches.
 - Level Design: blockout, encounter design, sightline guidance, pacing, navigation, difficulty curve, and level review.
 
-P1 should enter v0.3-v0.5 design:
+P1 should enter v0.6-v0.8 design:
 
-- Narrative / Worldbuilding / Quest: world, character motivation, dialogue, quest structure, text style, and narrative consistency.
+- Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
+- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
+- Genre Tracks: genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel; Tactics is the priority track.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosure.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, input remapping, vibration toggle, difficulty assists, and text size.
 
-P2 stays in future planning:
+Mid-term capabilities enter v0.9-v0.10:
 
-- Analytics / Telemetry: playtest data, death points, funnels, retention, and privacy boundaries.
+- Economy / Progression / Telemetry: economy systems, progression, reward structure, playtest data, tuning reports, and privacy boundaries.
+- Procedural Content: procedural maps, encounters, loot, and quest variations after rules are stable.
+
+P2 stays in v1.1+ or later future planning:
+
 - Community & Marketing: devlog, Discord/community feedback, version update cadence.
 - Monetization: pricing, demo strategy, DLC, paid content boundaries.
 - LiveOps / Post-launch: patches, hotfixes, update roadmap, player feedback triage.
@@ -863,7 +869,7 @@ When uncertain:
 
 ## 13. MVP Scope
 
-Here, MVP means the full validation chain from the v0.1 workflow pack to v0.5 publishing readiness. v0.1 materialization still uses `docs/muse-game-workshop-docs/v0.1-manifest.en.md` as the single source of truth.
+Here, MVP means the full validation chain from the v0.1 workflow pack to the v1.0 reusable production pack. v0.6-v0.10 add game design deepening, narrative design, genre tracks, economy/progression/telemetry, and procedural content; v0.1 materialization still uses `docs/muse-game-workshop-docs/v0.1-manifest.en.md` as the single source of truth.
 
 The MVP chain includes only:
 
@@ -875,6 +881,11 @@ The MVP chain includes only:
 - One Godot 2D/lightweight 3D example in v0.2.
 - One Unreal third-person gameplay mapping example in v0.4.
 - One Godot/Unreal dual-engine mapping template.
+- One v0.6 game design deepening pack covering systems, combat, encounters, tuning, and playtest hypotheses.
+- One v0.7 narrative design pack covering worldbuilding, narrative flow, characters, quests, dialogue, and lore consistency.
+- One v0.8 genre track pack with Tactics as a first priority track.
+- One v0.9 economy, progression, and telemetry pack.
+- One v0.10 procedural content design pack.
 - One full walkthrough from pitch to playtest.
 
 Out of scope:

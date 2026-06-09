@@ -57,8 +57,8 @@ Gameplay, mechanics, content, and asset briefs should stay engine-neutral first,
 P0 and P1 are the current delivery scope. P2 must stay on the roadmap, but should not enter the first implementation batch.
 
 - P0: creative asset pipeline, provenance, UX/onboarding, level blockout.
-- P1: narrative, publishing readiness, localization, accessibility.
-- P2: analytics, community, monetization, LiveOps, UGC, security/privacy.
+- P1: game design deepening, narrative, genre tracks, publishing readiness, localization, accessibility.
+- P2: community, monetization, LiveOps, UGC, security/privacy. Basic economy, progression, and telemetry enter mid-term design in v0.9 rather than staying as generic P2.
 
 ## 3. Delivery Workflow
 
@@ -237,7 +237,13 @@ Muse Game Workshop versions do not progress by adding more features for their ow
 | v0.3 | Creative assets cannot safely enter the project | Creative asset pipeline, provenance, asset review | One visual asset and one audio asset complete engine validation |
 | v0.4 | 2D/lightweight gameplay cannot map to 3D action presentation | Unreal mapping slice | PIE test map is playable, Data Asset and presentation mapping work |
 | v0.5 | Demo readiness for external release is unclear | Publishing readiness | Demo release readiness report is complete |
+| v0.6 | Design specs are too shallow for downstream handoff | Game design deepening pack | System, combat, encounter, tuning, and playtest hypotheses can hand off |
+| v0.7 | World, characters, and quests drift away from gameplay | Narrative design pack | Narrative deliverables serve gameplay, level design, art, audio, and localization |
+| v0.8 | One shared flow distorts different genres | Genre tracks | First genre tracks reuse the core workflow; Tactics passes a dry run |
+| v0.9 | Tuning lacks economy, progression, and playtest data loops | Economy, progression, telemetry | Data fields and tuning reports feed design decisions |
+| v0.10 | Procedural content adds risk if introduced too early | Procedural content pack | Generated content is reproducible, reviewable, and reversible |
 | v1.0 | The pack only works for this project and is not reusable | Reusable production pack | A new project can quickly complete intake, spec, and playable slice |
+| v1.1+ | Released projects need sustained updates | LiveOps & post-launch | Patch, hotfix, feedback triage, and update roadmap are executable |
 
 ### v0.0: Documentation Foundation
 
@@ -368,6 +374,72 @@ Release bar:
 - Blocking release issues are visible.
 - A demo package readiness report can be produced.
 
+### v0.6: Game Design Deepening Pack
+
+Goal:
+
+- Add design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
+- Provide handoff-ready specs for engineering, art, audio, QA, and later narrative workflows.
+- Use Boss Rush and Tactics to validate that the workflow generalizes.
+
+Release bar:
+
+- At least one action gameplay flow and one tactics gameplay flow complete design dry runs.
+- Downstream roles do not need to guess design intent, parameter meaning, or testing method.
+- Design changes are recorded in the decision log.
+
+### v0.7: Narrative Design Pack
+
+Goal:
+
+- Add worldbuilding, narrative flow, character design, quests, dialogue, environmental storytelling, and lore consistency.
+- Align narrative deliverables with level design, missions, art, audio, localization, and platform risk.
+
+Release bar:
+
+- Major lore has canon status.
+- Characters and quests can explain their gameplay role.
+- Text, dialogue, and environmental storytelling carry spoiler level, localization risk, and cultural/platform risk records.
+
+### v0.8: Genre Tracks
+
+Goal:
+
+- Add genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Prioritize Tactics rules, grid maps, unit matrices, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
+
+Release bar:
+
+- Genre tracks reuse review gates, evidence, handoffs, and provenance.
+- Each genre track explains its distinct design priorities, testing methods, and asset needs.
+- Tactics completes a dry run from rules to mission validation plan.
+
+### v0.9: Economy, Progression & Telemetry
+
+Goal:
+
+- Add economy, progression, and telemetry after the playable loop and content matrix are stable.
+- Support tuning reports that connect playtest data back to design hypotheses.
+
+Release bar:
+
+- Economy model, progression map, telemetry event plan, and playtest analytics report can reference each other.
+- Data collection has privacy and platform boundaries.
+- Tuning decisions have evidence records.
+
+### v0.10: Procedural Content Pack
+
+Goal:
+
+- Design procedural maps, encounters, loot, and quest variations after rules are stable.
+- Preserve controlled randomness, human review, and rollback.
+
+Release bar:
+
+- Generated content is reproducible.
+- Generated content has rejection rules and human review gates.
+- Procedural rules do not break difficulty, rewards, narrative, or asset constraints.
+
 ### v1.0: Reusable Production Pack
 
 Goal:
@@ -382,6 +454,19 @@ Release bar:
 - A first mechanic spec can be completed in one day.
 - A playable slice can be reached in seven days.
 - AI-assisted assets, code, tests, and release decisions all have evidence records.
+
+### v1.1+: LiveOps & Post-launch
+
+Goal:
+
+- Enter post-launch operations, patches, hotfixes, update roadmaps, and player feedback triage.
+- Keep community, marketing, monetization, UGC, and security/privacy as post-release capabilities rather than early-demo blockers.
+
+Entry criteria:
+
+- v1.0 is stable.
+- At least one demo or small release has entered public playtest/release.
+- Telemetry, release readiness, and feedback triage already have basic evidence.
 
 ## 6. Versioning Rules
 

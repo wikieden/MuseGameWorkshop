@@ -106,16 +106,22 @@ P0 必须纳入当前设计：
 - UX/UI 与 Onboarding：菜单、设置、教程、新手引导、可读性、反馈层级和基础无障碍开关。
 - Level Design：blockout、遭遇设计、视线引导、节奏、导航、难度曲线和关卡 review。
 
-P1 应纳入 v0.3-v0.5 设计：
+P1 应纳入 v0.6-v0.8 设计：
 
-- Narrative / Worldbuilding / Quest：世界观、角色动机、对白、任务结构、文本风格和叙事一致性。
+- Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
+- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
+- Genre Tracks：类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel；Tactics / 战棋类作为重点分支。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。
 
-P2 放入未来规划：
+中期能力纳入 v0.9-v0.10：
 
-- Analytics / Telemetry：试玩数据、死亡点、漏斗、留存、隐私边界。
+- Economy / Progression / Telemetry：经济系统、成长线、奖励结构、试玩数据、调优报告和隐私边界。
+- Procedural Content：规则稳定后的程序化地图、遭遇、掉落和任务变体。
+
+P2 放入 v1.1+ 或更晚未来规划：
+
 - Community & Marketing：devlog、Discord/社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
 - LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
@@ -863,7 +869,7 @@ Muse Game Workshop 第一阶段采用轻量原则：
 
 ## 13. MVP 范围
 
-这里的 MVP 指从 v0.1 workflow pack 到 v0.5 publishing readiness 的完整验证链路。v0.1 的实际创建范围仍以 `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` 为唯一真源。
+这里的 MVP 指从 v0.1 workflow pack 到 v1.0 reusable production pack 的完整验证链路。v0.6-v0.10 分别补齐策划流程、叙事设计、类型流程分支、经济/成长/数据和程序化内容；v0.1 的实际创建范围仍以 `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` 为唯一真源。
 
 MVP 链路只做这些：
 
@@ -875,6 +881,11 @@ MVP 链路只做这些：
 - 一个 Godot 2D/轻量 3D 示例，进入 v0.2。
 - 一个 Unreal 第三人称玩法映射示例，进入 v0.4。
 - 一个 Godot/Unreal 双引擎映射模板。
+- 一个 v0.6 策划流程细化包，覆盖系统、战斗、遭遇、调优和试玩假设。
+- 一个 v0.7 叙事设计包，覆盖世界观、剧情动线、角色、任务、对白和设定一致性。
+- 一个 v0.8 类型流程分支包，首批重点支持 Tactics / 战棋类。
+- 一个 v0.9 经济、成长与数据包。
+- 一个 v0.10 程序化内容设计包。
 - 一个完整从 pitch 到 playtest 的 walkthrough。
 
 不做：

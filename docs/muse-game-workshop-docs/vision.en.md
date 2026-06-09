@@ -194,7 +194,13 @@ Vision must guide version tradeoffs. The current version horizon is:
 | v0.3 | Creative Production Ready | Can AI-assisted assets move from brief to engine validation? | At least one visual asset and one audio asset complete brief, provenance, review, and engine validation. |
 | v0.4 | Unreal Mapping Slice | Can the same mechanic map into 3D action presentation? | Unreal PIE test map is playable, with Data Asset, UMG, animation placeholder, and check entry points. |
 | v0.5 | Publishing Readiness | Can the demo be judged for public playtest readiness? | Release checklist, store/trailer brief, localization, accessibility, and AI disclosure are complete. |
+| v0.6 | Game Design Deepening Pack | Can core gameplay, systems, combat, levels, tuning, and playtest hypotheses become handoff-ready specs? | System design, combat design, encounter design, tuning plan, and playtest hypotheses can hand off to programmers, QA, and creative disciplines. |
+| v0.7 | Narrative Design Pack | Can worldbuilding, narrative flow, characters, quests, and dialogue serve gameplay and level design? | World bible, narrative flow, character profile, quest brief, dialogue brief, and lore consistency check are reviewable. |
+| v0.8 | Genre Tracks | Can the shared workflow adapt to different game genres? | First tracks support Action, Tactics, RPG, Puzzle, and Visual Novel; Tactics is a priority track. |
+| v0.9 | Economy, Progression & Telemetry | Can rewards, progression, resource loops, and playtest data support tuning? | Economy model, progression map, reward table, telemetry plan, and playtest analytics report work together. |
+| v0.10 | Procedural Content Pack | Can stable rules generate controlled content variations? | Procedural rules, content validation, seed/evidence records, and human review gates are complete. |
 | v1.0 | Reusable Production Pack | Can another project start from this pack? | A new project can complete intake, core loop, and mechanic spec quickly, then move toward a playable slice. |
+| v1.1+ | LiveOps & Post-launch | How does a released project keep updating and responding to player feedback? | Patch plan, hotfix flow, feedback triage, update roadmap, and operations risk records are usable. |
 
 ## 10. P0 / P1 / P2 Scope
 
@@ -207,7 +213,10 @@ Vision must guide version tradeoffs. The current version horizon is:
 
 ### P1: Near-Term Design
 
-- Narrative & Worldbuilding: world, characters, quests, dialogue, and text consistency.
+- Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
+- Narrative & Worldbuilding: world, narrative flow, characters, quests, dialogue, and text consistency.
+- Genre Tracks: genre-specific workflow branches, first covering Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Economy / Progression / Telemetry: economy systems, progression, and playtest analytics, entering in v0.9.
 - Platform & Store Readiness: store page, trailer brief, screenshots, platform differences, and basic certification checks.
 - Localization: externalized text, glossary, translation risks, fonts, and layout.
 - Bilingual Audience Strategy: Chinese and English entry points, terminology style, template metadata, and bilingual tests.
@@ -215,14 +224,14 @@ Vision must guide version tradeoffs. The current version horizon is:
 
 ### P2: Future Planning
 
-- Analytics & Telemetry.
 - Community & Marketing.
 - Monetization.
 - LiveOps & Post-launch.
 - Modding / UGC.
+- Advanced procedural content tooling.
 - Security & Privacy.
 
-P2 should not slow down the first playable demo. It needs a place on the roadmap, but it should only start when the demo and release-prep workflow actually need it.
+P2 should not slow down the first playable demo. Basic analytics/telemetry, economy, and progression begin in v0.9; complex commercialization, LiveOps, UGC, and security/privacy capabilities stay in v1.1+ or later.
 
 ## 11. Non-Negotiables
 

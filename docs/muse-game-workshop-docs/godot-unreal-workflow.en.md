@@ -78,17 +78,20 @@ P0 must be covered now:
 
 P1 enters the next complete workflow batch:
 
+- Game Design Deepening.
 - Narrative / Worldbuilding / Quest.
+- Genre Tracks, first including Tactics.
+- Economy / Progression / Telemetry, entering mid-term design in v0.9.
 - Platform & Store Readiness.
 - Localization.
 - Accessibility.
 
-P2 stays in future planning rather than the first implementation batch:
+P2 stays in v1.1+ or later future planning rather than the first implementation batch:
 
-- Analytics / Telemetry.
 - Community & Marketing.
 - Monetization.
 - LiveOps / Post-launch.
+- Advanced procedural content tooling.
 - Modding / UGC.
 - Security / Privacy.
 

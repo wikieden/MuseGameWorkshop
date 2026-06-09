@@ -76,7 +76,13 @@ Muse Game Workshop 使用三层 roadmap：
 | v0.3 | 创意资产生产就绪 | P0 creative pipeline、资产 brief/review/provenance、UX/level gate | 已完成：视觉和音频 prototype assets 各跑通一次 engine validation | 大规模资产生产、商业 API 深度接入 |
 | v0.4 | Unreal 映射切片 | Unreal Third-person Combat Slice | 进行中：静态 C++/配置骨架已通过检查，PIE/editor validation 待 Unreal Editor | 完整 3D 游戏 |
 | v0.5 | 发布准备 | release checklist、store/trailer brief、localization、accessibility、AI disclosure | demo release readiness report | 自动发布、账号系统、LiveOps |
+| v0.6 | 策划流程细化 | game design deepening pack、system/combat/encounter/tuning specs | Boss Rush + Tactics 设计 dry run | 引擎新功能、复杂经济系统 |
+| v0.7 | 叙事设计包 | world bible、narrative flow、character/quest/dialogue briefs | lore consistency check + narrative handoff review | 大规模剧情内容量产 |
+| v0.8 | 类型流程分支 | Action、Tactics、RPG、Puzzle、Visual Novel tracks | Tactics / 战棋类 track dry run | 覆盖所有游戏类型 |
+| v0.9 | 经济、成长与数据 | economy model、progression map、telemetry plan、playtest analytics | 数据字段和调优报告能回到设计决策 | 商业化后台、真实用户数据平台 |
+| v0.10 | 程序化内容 | procedural rules、seed/evidence record、content validation | 生成内容可复现、可 review、可回退 | 无限内容生成、无人工审核 |
 | v1.0 | 可复用制作包 | 稳定 docs、skills、templates、examples、checks | 新项目可快速 intake、spec、prototype | 重型平台化 |
+| v1.1+ | 上线后运营与迭代 | patch plan、hotfix flow、feedback triage、update roadmap | 已发布项目能持续更新且风险可追踪 | 拖慢 v1.0 前的 demo 制作 |
 
 ## 6. v0.0: Documentation Foundation
 
@@ -291,7 +297,132 @@ v0.1 只有同时满足以下条件才算完成：
 - 能说明 AI 辅助内容的使用方式和披露状态。
 - 能输出一份对外 demo 包准备报告。
 
-## 12. v1.0: Reusable Production Pack
+## 12. v0.6: Game Design Deepening Pack
+
+目标：
+
+- 把策划流程从 pitch/core loop/mechanic spec 扩展到可交接的系统、战斗、关卡遭遇、数值调优和试玩假设。
+- 明确 Game Designer / 游戏策划、Technical Designer / 技术策划、Combat Designer / 战斗策划、Level Designer / 关卡策划和 QA 之间的交付关系。
+- 用 Boss Rush 和 Tactics / 战棋类作为验证案例，确认同一套策划流程能服务不同玩法结构。
+
+交付形态：
+
+- game pillars。
+- system design brief。
+- combat design brief。
+- encounter design brief。
+- tuning plan。
+- playtest hypothesis。
+- design review gate。
+
+发布标准：
+
+- 机制、系统、关卡、数值和试玩假设能交给程序、QA、美术和音频继续执行。
+- 可调参数不会散落在实现里。
+- 试玩反馈能回到明确的设计假设。
+- Tactics / 战棋类至少完成一轮规则、格子、单位、技能和任务目标 dry run。
+
+## 13. v0.7: Narrative Design Pack
+
+目标：
+
+- 把世界观、剧情动线、角色人物、任务、对白和环境叙事纳入正式 workflow。
+- 让叙事产物能服务玩法、关卡、美术、音频和本地化，而不是停留在灵感文本。
+- 记录 AI 参与叙事设计时的来源、正史状态、参考边界和文化/平台风险。
+
+交付形态：
+
+- world bible。
+- narrative flow。
+- character profile。
+- faction design。
+- quest brief。
+- dialogue brief。
+- environmental storytelling brief。
+- lore consistency check。
+
+发布标准：
+
+- 主要设定有 canon status。
+- 关键角色有动机、冲突、玩法角色和语言风格。
+- 任务与关卡目标能互相解释。
+- 对白、文本和环境叙事有本地化与剧透风险标记。
+
+## 14. v0.8: Genre Tracks
+
+目标：
+
+- 在通用主流程之上建立类型流程分支。
+- 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说。
+- 将 Tactics / 战棋类作为重点类型分支，优先验证规则、地图、单位、技能、任务和 AI 的交付链。
+
+Tactics / 战棋类交付形态：
+
+- tactics ruleset。
+- grid map spec。
+- unit matrix。
+- ability spec。
+- terrain rules。
+- mission brief。
+- encounter table。
+- tactical AI brief。
+- tactics balance report。
+- tactics playtest checklist。
+
+发布标准：
+
+- 类型分支能复用 review gate、handoff、evidence 和 provenance。
+- 类型分支能说明哪些策划重点、测试方式和资产需求不同。
+- Tactics / 战棋类能从规则和任务 brief 推进到地图/单位/技能验证计划。
+
+## 15. v0.9: Economy, Progression & Telemetry
+
+目标：
+
+- 在有可试玩循环和内容矩阵后补经济系统、成长线和数据埋点。
+- 支持资源产出/消耗、奖励、成长、关卡/任务收益和试玩数据分析。
+- 让数值调整有证据来源，而不是只靠主观感觉。
+
+交付形态：
+
+- economy model。
+- resource flow table。
+- progression map。
+- reward table。
+- telemetry event plan。
+- playtest analytics report。
+- tuning decision log。
+
+发布标准：
+
+- 每个关键数据点都能对应设计问题。
+- 数据采集有隐私和平台边界。
+- 调参报告能说明观察、假设、改动和下一轮验证。
+
+## 16. v0.10: Procedural Content Pack
+
+目标：
+
+- 在机制、关卡规则和内容矩阵稳定后，再设计程序化内容。
+- 支持地图、遭遇、掉落、任务变体等可控随机。
+- 避免“无限生成”掩盖不可玩的规则。
+
+交付形态：
+
+- procedural content rules。
+- seed/evidence record。
+- content validation checklist。
+- rejection rules。
+- human review gate。
+- rollback plan。
+
+发布标准：
+
+- 生成内容可复现。
+- 生成结果能被人类 review。
+- 难度、奖励、叙事和资产约束不会被随机性破坏。
+
+## 17. v1.0: Reusable Production Pack
 
 目标：
 
@@ -307,21 +438,41 @@ v0.1 只有同时满足以下条件才算完成：
 - AI 辅助资产、代码、测试和发布决策都有证据记录。
 - 中文和英文入口都自然、清楚、可执行。
 
-## 13. Future Planning: P2
+## 18. v1.1+: LiveOps & Post-launch
+
+目标：
+
+- 支持上线后运营、补丁、热修、更新计划和玩家反馈 triage。
+- 将 community、marketing、monetization、UGC、security/privacy 纳入发布后能力，而不是拖慢早期 demo。
+
+交付形态：
+
+- patch plan。
+- hotfix flow。
+- update roadmap。
+- feedback triage。
+- known issues policy。
+- community risk record。
+
+进入条件：
+
+- v1.0 reusable production pack 已稳定。
+- 至少一个 demo 或小版本进入公开试玩/发布阶段。
+- telemetry、release readiness 和 feedback triage 已有基础证据。
+
+## 19. Future Planning: P2
 
 P2 暂不进入首批实现，只保留研究和路线方向：
 
-- Analytics / Telemetry：试玩数据、死亡点、漏斗、留存、隐私边界。
 - Community & Marketing：devlog、社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
-- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
+- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage，进入 v1.1+。
 - Modding / UGC：编辑器、用户内容、审核和版权边界。
 - Security / Privacy：在线功能、第三方 SDK、数据采集和安全风险。
 
 进入条件：
 
-- v0.1/v0.2 的制作闭环已经跑通。
-- 创意资产管线和发布准备有基础证据。
+- v0.6-v0.10 的设计、叙事、类型、经济/成长/数据和程序化内容路线已经证明必要。
 - 项目确实进入发布、增长、运营或玩家社区阶段。
 - 有明确隐私、合规和维护责任。
 
@@ -335,7 +486,13 @@ P2 暂不进入首批实现，只保留研究和路线方向：
 | M3 | Creative Production Ready | v0.3 | 资产 brief/provenance/review/engine validation 跑通。 |
 | M4 | Unreal 映射 | v0.4 | 同一机制能映射到 Unreal 3D 动作切片。 |
 | M5 | Publishing Readiness Ready | v0.5 | demo release readiness 可判断。 |
-| M6 | Reusable Production Pack | v1.0 | 其他项目可以复用完整工作流。 |
+| M6 | 策划流程细化 | v0.6 | 系统、战斗、遭遇、调优和试玩假设可交接。 |
+| M7 | 叙事设计就绪 | v0.7 | 世界观、角色、任务、对白和设定一致性可 review。 |
+| M8 | 类型流程分支 | v0.8 | Tactics / 战棋类等首批类型分支完成 dry run。 |
+| M9 | 经济成长数据闭环 | v0.9 | 经济、成长和 telemetry 能回到调优决策。 |
+| M10 | 程序化内容就绪 | v0.10 | 生成内容可复现、可 review、可回退。 |
+| M11 | Reusable Production Pack | v1.0 | 其他项目可以复用完整工作流。 |
+| M12 | LiveOps Ready | v1.1+ | 已发布项目能持续更新并处理玩家反馈。 |
 
 ## 15. Recommended First Project Initialization Prompt
 

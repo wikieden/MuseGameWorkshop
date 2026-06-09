@@ -100,11 +100,47 @@ v0.5 goals:
 - Establish the demo release checklist.
 - Complete AI usage disclosure and platform checklist.
 
+v0.6 goals:
+
+- Complete the Game Design Deepening Pack.
+- Turn design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses into handoff-ready specs.
+- Use Boss Rush and Tactics to validate that the shared design workflow can support different gameplay structures.
+
+v0.7 goals:
+
+- Complete the Narrative Design Pack.
+- Support worldbuilding, narrative flow, character design, quest design, dialogue design, environmental storytelling, and lore consistency checks.
+- Define canon status, prompt records, reference boundaries, spoiler levels, and cultural/platform risk when AI assists narrative work.
+
+v0.8 goals:
+
+- Establish Genre Tracks.
+- First support Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Treat Tactics as a priority track covering grid rules, unit matrix, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
+
+v0.9 goals:
+
+- Complete the Economy, Progression & Telemetry Pack.
+- Support sources/sinks, reward structure, progression, level/quest rewards, playtest telemetry, and tuning reports.
+- Keep this to verifiable design and analysis loops, not commercialization backends or real user-data platforms.
+
+v0.10 goals:
+
+- Complete the Procedural Content Pack.
+- Support rule-based map, encounter, loot, quest variation, and content-quality checks.
+- Procedural content must include seed/evidence records, human review gates, and rollback plans.
+
 v1.0 goals:
 
 - Become an installable, reusable, extensible AI tool-agnostic game workflow pack.
 - Support project-stage detection, task breakdown, QA, and release checks for Godot and Unreal.
 - Integrate with AI coding tools such as Codex, Claude Code, Kiro CLI, and opencode, common creative generation/editing AI tools, plus Godot/Unreal MCP servers or official editor automation where practical.
+
+v1.1+ goals:
+
+- Enter LiveOps / post-launch iteration capabilities.
+- Support patch plans, hotfix flow, player feedback triage, update roadmaps, community feedback, and operations risk records.
+- Do not implement this before the first playable demo or v1.0 reusable pack scope.
 
 ## 5. Non-goals
 
@@ -180,16 +216,22 @@ P0 must be included in the current design:
 - UX/UI and Onboarding: menus, settings, tutorial flow, first-time user experience, readability, feedback hierarchy, and basic accessibility switches.
 - Level Design: blockout, encounter design, sightline guidance, pacing, navigation, difficulty curve, and level review.
 
-P1 should enter v0.3-v0.5 design:
+P1 should enter v0.6-v0.8 design:
 
-- Narrative / Worldbuilding / Quest: world premise, character motivation, dialogue, quest structure, text style, and narrative consistency.
+- Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
+- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
+- Genre Tracks: genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosures.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, remapping, vibration toggle, difficulty assists, and text size.
 
-P2 belongs in future planning:
+v0.9-v0.10 mid-term capabilities:
 
-- Analytics / Telemetry: playtest data, death points, funnels, retention, and privacy boundaries.
+- Economy / Progression / Telemetry: economy systems, progression, reward structure, playtest data, tuning reports, and privacy boundaries.
+- Procedural Content: procedural maps, encounters, loot, and quest variations after rules are stable.
+
+P2 belongs in v1.1+ or later future planning:
+
 - Community & Marketing: devlogs, community feedback, and update cadence.
 - Monetization: pricing, demo strategy, DLC, and paid-content boundaries.
 - LiveOps / Post-launch: patches, hotfixes, update roadmap, and player feedback triage.
@@ -287,9 +329,14 @@ The product-level target should provide these template directions. v0.1 scaffold
 
 - Pitch template.
 - Player fantasy template.
+- Game pillars template.
 - Core loop template.
 - Mechanic spec template.
+- System design template.
+- Combat design template.
 - Content matrix template.
+- Encounter design template.
+- Tuning plan template.
 - Engine mapping template.
 - Playtest log template.
 - Balance report template.
@@ -304,7 +351,15 @@ The product-level target should provide these template directions. v0.1 scaffold
 - Asset review template.
 - UX flow template.
 - Level blockout template.
-- Narrative brief template.
+- World bible template.
+- Narrative flow template.
+- Character profile template.
+- Quest brief template.
+- Dialogue brief template.
+- Lore consistency check template.
+- Tactics ruleset / grid map / unit matrix / ability spec templates.
+- Economy model, progression map, and telemetry plan templates.
+- Procedural content rule template.
 - Localization readiness template.
 - Accessibility checklist template.
 
@@ -413,14 +468,23 @@ P0/P1 must support:
 - Text keys, fonts, UI overflow, translation workflow, and cultural risk.
 - Subtitles, contrast, input remapping, vibration toggle, difficulty assists, and text size.
 
-### 9.8 Future Planning
+### 9.8 Game Design, Narrative, Genre Tracks, And Mid-Term Systems
+
+v0.6-v0.10 must follow dependency order:
+
+- v0.6 Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
+- v0.7 Narrative Design: worldbuilding, narrative flow, characters, quests, dialogue, environmental storytelling, and lore consistency.
+- v0.8 Genre Tracks: first tracks cover Action, Tactics, RPG, Puzzle, and Visual Novel; Tactics is the priority track.
+- v0.9 Economy / Progression / Telemetry: economy systems, progression, reward structure, and playtest analytics.
+- v0.10 Procedural Content: controlled randomness, content variation, and quality checks only after rules are stable.
+
+### 9.9 Future Planning
 
 P2 should stay in roadmap rather than the first implementation batch:
 
-- Analytics / Telemetry.
 - Community & Marketing.
 - Monetization.
-- LiveOps / Post-launch.
+- LiveOps / Post-launch, entering in v1.1+.
 - Modding / UGC.
 - Security / Privacy.
 

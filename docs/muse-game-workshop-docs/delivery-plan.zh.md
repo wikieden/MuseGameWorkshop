@@ -57,8 +57,8 @@
 P0 和 P1 是当前可落地范围。P2 必须保留在路线图里，但不能进入首批实现。
 
 - P0：creative asset pipeline、provenance、UX/onboarding、level blockout。
-- P1：narrative、publishing readiness、localization、accessibility。
-- P2：analytics、community、monetization、LiveOps、UGC、security/privacy。
+- P1：game design deepening、narrative、genre tracks、publishing readiness、localization、accessibility。
+- P2：community、monetization、LiveOps、UGC、security/privacy。基础 economy、progression 和 telemetry 从 v0.9 进入中期设计，不再作为泛泛 P2。
 
 ## 3. 落地工作流
 
@@ -237,7 +237,13 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 | v0.3 | 创意资产无法安全进入项目 | creative asset pipeline、provenance、asset review | 视觉和音频资产各完成一次 engine validation |
 | v0.4 | 2D/轻量玩法无法映射到 3D 动作表现 | Unreal mapping slice | PIE test map 可玩，Data Asset 和表现映射成立 |
 | v0.5 | Demo 不知道是否能对外发布 | publishing readiness | demo release readiness report 完成 |
+| v0.6 | 策划规格不够细，难以下游交接 | game design deepening pack | 系统、战斗、遭遇、调优和试玩假设能交接 |
+| v0.7 | 世界观、角色和任务与玩法脱节 | narrative design pack | 叙事交付物能服务玩法、关卡、美术、音频和本地化 |
+| v0.8 | 不同游戏类型套同一流程导致失真 | genre tracks | 首批类型分支可复用核心 workflow，Tactics / 战棋类通过 dry run |
+| v0.9 | 数值、成长和试玩数据无法闭环调优 | economy、progression、telemetry | 数据字段和调优报告能回到设计决策 |
+| v0.10 | 程序化内容过早引入会扩大风险 | procedural content pack | 生成内容可复现、可 review、可回退 |
 | v1.0 | 只适合本项目，无法复用 | reusable production pack | 新项目能快速完成 intake、spec、playable slice |
+| v1.1+ | 已发布项目需要持续更新 | LiveOps & post-launch | patch、hotfix、feedback triage 和 update roadmap 可执行 |
 
 ### v0.0: Documentation Foundation
 
@@ -368,6 +374,72 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 能列出发布前必须修复的问题。
 - 能输出一份对外 demo 包准备报告。
 
+### v0.6: Game Design Deepening Pack
+
+目标：
+
+- 补齐设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
+- 将可交接规格提供给程序、美术、音频、QA 和后续叙事流程。
+- 用 Boss Rush 和 Tactics / 战棋类验证流程的泛化能力。
+
+发布标准：
+
+- 至少一条动作玩法和一条战棋玩法都能完成 design dry run。
+- 下游不需要猜测玩法意图、参数含义或测试方式。
+- 设计变更能记录到 decision log。
+
+### v0.7: Narrative Design Pack
+
+目标：
+
+- 补齐世界观、剧情动线、角色人物、任务、对白、环境叙事和设定一致性。
+- 让叙事交付物能与关卡、任务、美术、音频、本地化和平台风险对齐。
+
+发布标准：
+
+- 主要设定有 canon status。
+- 角色和任务能说明玩法作用。
+- 文本、对白和环境叙事有剧透等级、本地化风险和文化/平台风险记录。
+
+### v0.8: Genre Tracks
+
+目标：
+
+- 建立类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel。
+- Tactics / 战棋类优先落规则、格子地图、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
+
+发布标准：
+
+- 类型分支复用 review gate、evidence、handoff 和 provenance。
+- 每个类型分支都说明不同的策划重点、测试方式和资产需求。
+- Tactics / 战棋类能完成一轮从规则到任务验证计划的 dry run。
+
+### v0.9: Economy, Progression & Telemetry
+
+目标：
+
+- 在可试玩循环和内容矩阵稳定后补经济系统、成长线和数据埋点。
+- 支持调优报告，把试玩数据回接到设计假设。
+
+发布标准：
+
+- economy model、progression map、telemetry event plan 和 playtest analytics report 可互相引用。
+- 数据采集有隐私和平台边界。
+- 调参数值有证据记录。
+
+### v0.10: Procedural Content Pack
+
+目标：
+
+- 在规则稳定后设计程序化地图、遭遇、掉落和任务变体。
+- 保持可控随机、人工 review 和可回退。
+
+发布标准：
+
+- 生成内容可复现。
+- 生成内容有 rejection rules 和 human review gate。
+- 程序化规则不会破坏难度、奖励、叙事或资产约束。
+
 ### v1.0: Reusable Production Pack
 
 目标：
@@ -382,6 +454,19 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 1 天内完成第一个 mechanic spec。
 - 7 天内能推进到可试玩小切片。
 - AI 辅助资产、代码、测试和发布决策都有证据记录。
+
+### v1.1+: LiveOps & Post-launch
+
+目标：
+
+- 进入上线后运营、补丁、热修、更新路线和玩家反馈 triage。
+- 将 community、marketing、monetization、UGC、security/privacy 作为发布后能力，而不是早期 demo 阻塞项。
+
+进入条件：
+
+- v1.0 已稳定。
+- 至少一个 demo 或小版本进入公开试玩/发布。
+- telemetry、release readiness 和 feedback triage 已有基础证据。
 
 ## 6. 版本命名规则
 

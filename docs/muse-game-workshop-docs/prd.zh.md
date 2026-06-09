@@ -100,11 +100,47 @@ v0.5 目标：
 - 建立 demo release checklist。
 - 完成 AI usage disclosure 和 platform checklist。
 
+v0.6 目标：
+
+- 完成 Game Design Deepening Pack / 策划流程细化包。
+- 把设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设变成可交接规格。
+- 用 Boss Rush 和 Tactics / 战棋类验证“通用策划流程能支撑不同玩法结构”。
+
+v0.7 目标：
+
+- 完成 Narrative Design Pack / 叙事设计包。
+- 支持世界观、剧情动线、角色人物设计、任务设计、对白设计、环境叙事和设定一致性检查。
+- 明确 AI 参与叙事设计时的 canon status、prompt record、reference boundary、spoiler level 和文化/平台风险。
+
+v0.8 目标：
+
+- 建立 Genre Tracks / 类型流程分支。
+- 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说。
+- 将 Tactics / 战棋类作为重点分支，覆盖格子规则、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
+
+v0.9 目标：
+
+- 完成 Economy, Progression & Telemetry Pack / 经济、成长与数据包。
+- 支持资源产出/消耗、奖励结构、成长线、关卡/任务奖励、试玩数据埋点和调优报告。
+- 只做可验证的设计与分析闭环，不做商业化后台或真实用户数据平台。
+
+v0.10 目标：
+
+- 完成 Procedural Content Pack / 程序化内容设计包。
+- 支持基于稳定规则的地图、遭遇、掉落、任务变体和内容质量检查。
+- 程序化内容必须有 seed/evidence record、人工 review gate 和可回退方案。
+
 v1.0 目标：
 
 - 形成可安装、可复用、可扩展的 AI tool-agnostic game workflow pack。
 - 支持 Godot 与 Unreal 的项目阶段检测、任务拆分、QA、发布检查。
 - 可接入 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools，常见创意生成/编辑 AI tools，以及 Godot/Unreal MCP 或官方编辑器自动化能力。
+
+v1.1+ 目标：
+
+- 进入 LiveOps / 上线后运营与迭代能力。
+- 支持 patch plan、hotfix flow、玩家反馈 triage、更新路线、社区反馈和运营风险记录。
+- 不在首个可试玩 demo 或 v1.0 前置范围中实现。
 
 ## 5. 非目标
 
@@ -180,16 +216,22 @@ P0 必须纳入当前设计：
 - UX/UI 与 Onboarding：菜单、设置、教程、新手引导、可读性、反馈层级和基础无障碍开关。
 - Level Design：blockout、遭遇设计、视线引导、节奏、导航、难度曲线和关卡 review。
 
-P1 纳入 v0.3-v0.5 设计：
+P1 纳入 v0.6-v0.8 设计：
 
-- Narrative / Worldbuilding / Quest：世界观、角色动机、对白、任务结构、文本风格和叙事一致性。
+- Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
+- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
+- Genre Tracks：类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。
 
-P2 放入未来规划：
+v0.9-v0.10 中期能力：
 
-- Analytics / Telemetry：试玩数据、死亡点、漏斗、留存、隐私边界。
+- Economy / Progression / Telemetry：经济系统、成长线、奖励结构、试玩数据、调优报告和隐私边界。
+- Procedural Content：规则稳定后的程序化地图、遭遇、掉落和任务变体。
+
+P2 放入 v1.1+ 或更晚未来规划：
+
 - Community & Marketing：devlog、社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
 - LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
@@ -287,9 +329,14 @@ AI 工具辅助工作：
 
 - Pitch 模板。
 - Player fantasy 模板。
+- Game pillars 模板。
 - Core loop 模板。
 - Mechanic spec 模板。
+- System design 模板。
+- Combat design 模板。
 - Content matrix 模板。
+- Encounter design 模板。
+- Tuning plan 模板。
 - Engine mapping 模板。
 - Playtest log 模板。
 - Balance report 模板。
@@ -304,7 +351,15 @@ AI 工具辅助工作：
 - Asset review 模板。
 - UX flow 模板。
 - Level blockout 模板。
-- Narrative brief 模板。
+- World bible 模板。
+- Narrative flow 模板。
+- Character profile 模板。
+- Quest brief 模板。
+- Dialogue brief 模板。
+- Lore consistency check 模板。
+- Tactics ruleset / grid map / unit matrix / ability spec 模板。
+- Economy model、progression map、telemetry plan 模板。
+- Procedural content rule 模板。
 - Localization readiness 模板。
 - Accessibility checklist 模板。
 
@@ -413,14 +468,23 @@ P0/P1 必须支持：
 - 文本 key、字体、UI 溢出、翻译工作流和文化风险。
 - 字幕、对比度、按键重映射、震动开关、难度辅助和文字大小。
 
-### 9.8 Future Planning
+### 9.8 策划、叙事、类型分支与中期系统
+
+v0.6-v0.10 必须按依赖顺序推进：
+
+- v0.6 Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优、试玩假设。
+- v0.7 Narrative Design：世界观、剧情动线、角色人物、任务、对白、环境叙事、设定一致性。
+- v0.8 Genre Tracks：首批类型分支覆盖 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel；Tactics 是重点分支。
+- v0.9 Economy / Progression / Telemetry：经济系统、成长线、奖励结构和试玩数据分析。
+- v0.10 Procedural Content：规则稳定后再做可控随机、内容变体和质量检查。
+
+### 9.9 Future Planning
 
 P2 暂不进入首批实现，但需要在 roadmap 保留：
 
-- Analytics / Telemetry。
 - Community & Marketing。
 - Monetization。
-- LiveOps / Post-launch。
+- LiveOps / Post-launch，进入 v1.1+。
 - Modding / UGC。
 - Security / Privacy。
 

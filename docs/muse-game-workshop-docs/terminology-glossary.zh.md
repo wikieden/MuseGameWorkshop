@@ -41,6 +41,8 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | QA | 测试 | 质量保证、功能测试、回归测试 | 国内常直接说“测试”或 QA。 |
 | Release Readiness | 发布准备 | 发行准备、上线准备、提审准备 | Demo、Steam/itch、平台包都适用。 |
 | Release | 发布 | 上线、发版、对外发布 | 根据平台语境选择“发布/上线/发版”。 |
+| Post-launch | 上线后 | 发布后、运营期 | 用于补丁、玩家反馈、持续更新。 |
+| LiveOps | 上线后运营 | 运营活动、持续运营 | 不建议放入早期 demo 范围。 |
 | Postmortem | 项目复盘 | 复盘、阶段复盘 | 不建议直译为“尸检”。 |
 | Milestone | 里程碑 | 节点、阶段目标 | 用于阶段验收。 |
 | Greenlight | 立项放行 | 绿灯、立项通过 | 国内更自然说“立项通过”或“放行”。 |
@@ -62,6 +64,9 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | Combat Designer | 战斗策划 | 战斗设计 | 适合动作/射击/ARPG 等项目。 |
 | Level Designer | 关卡策划 | 关卡设计 | 负责关卡结构、节奏、遭遇。 |
 | Narrative Designer | 叙事策划 | 剧情策划、文案策划 | 国内常见“剧情策划/文案策划”。 |
+| Economy Designer | 数值策划 | 经济系统策划、成长策划 | 负责资源、成长、奖励和调参。 |
+| Data Analyst | 数据分析 | 数据策划、分析师 | 负责埋点、试玩数据和调优依据。 |
+| LiveOps Manager | 运营负责人 | 运营策划、版本运营 | 进入上线后运营阶段再使用。 |
 | Technical Designer | 技术策划 | 玩法技术策划、技术向策划 | 国内不是所有团队都有该岗位，解释为“把设计转成可实现规格”。 |
 | Gameplay Programmer | 玩法程序 | 逻辑程序、客户端玩法程序 | 实现输入、状态、交互和反馈。 |
 | Engine Programmer | 引擎程序 | 底层程序、引擎专项 | 负责引擎、性能、工具链。 |
@@ -92,12 +97,28 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | GDD | 游戏设计文档 | 设计案、策划案 | 小团队可以用 GDD slice，不必写完整大文档。 |
 | GDD Slice | 设计案切片 | 局部设计案、玩法设计片段 | 对应某个机制或切片的轻量设计文档。 |
 | Mechanic Spec | 机制规格 | 玩法机制说明、规则规格 | 包含输入、状态、参数、反馈、边界和测试。 |
+| System Design | 系统策划规格 | 系统设计、系统规则 | 规则、模块、状态、参数和交互关系。 |
+| Combat Design | 战斗策划规格 | 战斗设计 | 动作、回合、敌人、技能、判定和反馈。 |
 | Content Matrix | 内容矩阵 | 内容表、内容关系表 | 敌人、武器、关卡、奖励等内容关系。 |
 | Progression | 成长线 | 进度、养成、推进曲线 | 根据游戏类型选择“成长/进度”。 |
 | Economy | 经济系统 | 数值经济、资源循环 | 资源产出、消耗、回收。 |
+| Telemetry | 数据埋点 | 数据采集、事件埋点 | 用于试玩分析和调优，不等于商业化监控。 |
+| Playtest Analytics | 试玩数据分析 | 测试数据分析 | 将试玩行为回接到设计假设。 |
+| Tuning Plan | 调优计划 | 调参计划、数值调整计划 | 记录观察、假设、改动和验证方式。 |
 | Balance | 数值平衡 | 平衡性、调参 | 国内常说“数值/平衡”。 |
 | Level Blockout | 关卡灰盒 | 白盒、Blockout、灰盒关卡 | 国内常用“灰盒/白盒”，建议首选“关卡灰盒”。 |
 | Encounter | 遭遇设计 | 战斗遭遇、关卡事件 | 敌人、障碍、节奏点组合。 |
+| Mission Brief | 任务设计说明 | 任务 brief、关卡任务说明 | 目标、失败条件、奖励和叙事作用。 |
+| Genre Track | 类型流程分支 | 类型分支、类型工作流 | 在通用流程上按游戏类型细化策划、测试和资产需求。 |
+| Tactics | 战棋类 | 回合制战术、战术游戏 | 中文面向文档优先用“战棋类”。 |
+| Turn-based Tactics | 回合制战术 | 战棋玩法 | 英文面向文档用于 tactics genre。 |
+| Tactical RPG | 战棋 RPG | 策略角色扮演 | 国内常说“战棋 RPG”。 |
+| Grid System | 格子规则 | 方格/六边格规则 | 移动、攻击、阻挡、占位和范围。 |
+| Grid Map Spec | 格子地图规格 | 战棋地图规格 | 地图尺寸、格子类型、阻挡、出生点和目标点。 |
+| Unit Matrix | 单位矩阵 | 角色/职业矩阵 | 单位属性、职业、阵营、能力和克制关系。 |
+| Ability Spec | 技能规格 | 技能说明 | 范围、消耗、冷却、目标、效果和反制。 |
+| Terrain Rules | 地形规则 | 地形效果 | 高低差、掩体、危险地形、加成和减益。 |
+| Tactical AI | 战术 AI | 敌方 AI、战棋 AI | 目标选择、移动、攻击优先级、撤退和协同。 |
 | Onboarding | 新手引导 | 首次体验、FTUE | 国内常说“新手引导”。 |
 | FTUE | 首次用户体验 | First Time User Experience | 对外用“首次体验/新手引导”。 |
 | HUD | HUD | 战斗界面、状态显示 | 国内也常说 HUD。 |
@@ -113,6 +134,15 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | Release Checklist | 发布检查表 | 上线检查表、提审清单 | Demo/平台发布前检查。 |
 | Store Page Brief | 商店页素材需求 | Steam 页面需求、商店页 brief | 商店文案、截图、短描述、标签。 |
 | Trailer Brief | 宣传片需求说明 | 预告片 brief、PV 需求 | 国内常说 PV/宣传片。 |
+| World Bible | 世界观圣经 | 世界观设定集、设定总表 | 设定真源，不等于美术设定集。 |
+| Narrative Flow | 剧情动线 | 叙事流程、剧情流程 | 玩家经历的章节、节拍、揭示和转折。 |
+| Character Profile | 角色人物设计 | 角色设定、人物小传 | 动机、冲突、玩法角色、语言风格和关系。 |
+| Dialogue Brief | 对白设计说明 | 对白 brief、台词需求 | 角色声音、触发、分支、禁用表达和本地化风险。 |
+| Environmental Storytelling | 环境叙事 | 场景叙事、环境讲故事 | 用场景、物件、痕迹和空间关系讲故事。 |
+| Lore Consistency Check | 设定一致性检查 | 世界观一致性检查 | 检查正史状态、冲突、剧透和文化风险。 |
+| Procedural Content | 程序化内容 | 程序生成内容、PCG | 需要稳定规则、可复现 seed 和人工 review。 |
+| Seed Record | 随机种子记录 | seed 记录 | 程序化内容的可复现证据。 |
+| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v1.1+ 使用，包含补丁、热修、更新和反馈 triage。 |
 | Postmortem | 复盘报告 | 项目复盘、阶段复盘 | 阶段经验沉淀。 |
 
 ## 5. AI Workflow 术语

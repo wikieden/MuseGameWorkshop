@@ -41,6 +41,8 @@ Examples:
 | QA | 测试 | 质量保证、功能测试、回归测试 | Chinese teams often say 测试 or QA. |
 | Release Readiness | 发布准备 | 发行准备、上线准备、提审准备 | Applies to demos, Steam/itch, and platform builds. |
 | Release | 发布 | 上线、发版、对外发布 | Choose based on platform context. |
+| Post-launch | 上线后 | 发布后、运营期 | Patches, player feedback, sustained updates. |
+| LiveOps | 上线后运营 | 运营活动、持续运营 | Do not put this in early demo scope. |
 | Postmortem | 项目复盘 | 复盘、阶段复盘 | Do not literally translate as “尸检”. |
 | Milestone | 里程碑 | 节点、阶段目标 | Stage acceptance target. |
 | Greenlight | 立项放行 | 绿灯、立项通过 | Prefer 立项通过 or 放行 in Chinese docs. |
@@ -62,6 +64,9 @@ Examples:
 | Combat Designer | 战斗策划 | 战斗设计 | Useful for action, shooter, ARPG projects. |
 | Level Designer | 关卡策划 | 关卡设计 | Level structure, pacing, encounters. |
 | Narrative Designer | 叙事策划 | 剧情策划、文案策划 | Chinese teams often say 剧情策划 or 文案策划. |
+| Economy Designer | 数值策划 | 经济系统策划、成长策划 | Resources, progression, rewards, tuning. |
+| Data Analyst | 数据分析 | 数据策划、分析师 | Telemetry, playtest data, tuning evidence. |
+| LiveOps Manager | 运营负责人 | 运营策划、版本运营 | Use after the project enters post-launch operations. |
 | Technical Designer | 技术策划 | 玩法技术策划、技术向策划 | Explain as “turns design into implementable specs”. |
 | Gameplay Programmer | 玩法程序 | 逻辑程序、客户端玩法程序 | Input, states, interactions, feedback. |
 | Engine Programmer | 引擎程序 | 底层程序、引擎专项 | Engine, performance, tooling. |
@@ -92,12 +97,28 @@ Examples:
 | GDD | 游戏设计文档 | 设计案、策划案 | Small teams can use GDD slices. |
 | GDD Slice | 设计案切片 | 局部设计案、玩法设计片段 | Lightweight doc for one mechanic or slice. |
 | Mechanic Spec | 机制规格 | 玩法机制说明、规则规格 | Inputs, states, parameters, feedback, edge cases, tests. |
+| System Design | 系统策划规格 | 系统设计、系统规则 | Rules, modules, states, parameters, and relationships. |
+| Combat Design | 战斗策划规格 | 战斗设计 | Action, turns, enemies, abilities, hit logic, and feedback. |
 | Content Matrix | 内容矩阵 | 内容表、内容关系表 | Enemies, weapons, levels, rewards, relationships. |
 | Progression | 成长线 | 进度、养成、推进曲线 | Choose 成长 or 进度 based on genre. |
 | Economy | 经济系统 | 数值经济、资源循环 | Sources, sinks, loops. |
+| Telemetry | 数据埋点 | 数据采集、事件埋点 | Playtest analytics and tuning, not commercialization monitoring by default. |
+| Playtest Analytics | 试玩数据分析 | 测试数据分析 | Connects observed playtest behavior back to design hypotheses. |
+| Tuning Plan | 调优计划 | 调参计划、数值调整计划 | Observation, hypothesis, change, validation. |
 | Balance | 数值平衡 | 平衡性、调参 | Chinese teams often say 数值 or 平衡. |
 | Level Blockout | 关卡灰盒 | 白盒、Blockout、灰盒关卡 | Prefer 关卡灰盒. |
 | Encounter | 遭遇设计 | 战斗遭遇、关卡事件 | Enemy/obstacle/pacing combinations. |
+| Mission Brief | 任务设计说明 | 任务 brief、关卡任务说明 | Objectives, failure conditions, rewards, narrative role. |
+| Genre Track | 类型流程分支 | 类型分支、类型工作流 | Genre-specific branch on top of the shared workflow. |
+| Tactics | 战棋类 | 回合制战术、战术游戏 | Prefer 战棋类 in Chinese-facing docs. |
+| Turn-based Tactics | 回合制战术 | 战棋玩法 | English-facing genre term for tactics games. |
+| Tactical RPG | 战棋 RPG | 策略角色扮演 | Chinese teams often say 战棋 RPG. |
+| Grid System | 格子规则 | 方格/六边格规则 | Movement, attack, blocking, occupancy, range. |
+| Grid Map Spec | 格子地图规格 | 战棋地图规格 | Map size, cell types, blockers, spawn points, objectives. |
+| Unit Matrix | 单位矩阵 | 角色/职业矩阵 | Unit stats, classes, factions, abilities, counters. |
+| Ability Spec | 技能规格 | 技能说明 | Range, cost, cooldown, target, effect, counterplay. |
+| Terrain Rules | 地形规则 | 地形效果 | Elevation, cover, hazards, buffs, debuffs. |
+| Tactical AI | 战术 AI | 敌方 AI、战棋 AI | Target choice, movement, attack priority, retreat, cooperation. |
 | Onboarding | 新手引导 | 首次体验、FTUE | Prefer 新手引导. |
 | FTUE | 首次用户体验 | First Time User Experience | Use 首次体验 or 新手引导 externally. |
 | HUD | HUD | 战斗界面、状态显示 | HUD is acceptable in Chinese teams. |
@@ -113,6 +134,15 @@ Examples:
 | Release Checklist | 发布检查表 | 上线检查表、提审清单 | Pre-demo/platform release checks. |
 | Store Page Brief | 商店页素材需求 | Steam 页面需求、商店页 brief | Store copy, screenshots, short description, tags. |
 | Trailer Brief | 宣传片需求说明 | 预告片 brief、PV 需求 | PV is common in Chinese game publishing. |
+| World Bible | 世界观圣经 | 世界观设定集、设定总表 | Lore source of truth, not an art bible. |
+| Narrative Flow | 剧情动线 | 叙事流程、剧情流程 | Chapters, beats, reveals, and turning points. |
+| Character Profile | 角色人物设计 | 角色设定、人物小传 | Motivation, conflict, gameplay role, voice, relationships. |
+| Dialogue Brief | 对白设计说明 | 对白 brief、台词需求 | Voice, triggers, branches, forbidden phrases, localization risk. |
+| Environmental Storytelling | 环境叙事 | 场景叙事、环境讲故事 | Story through locations, props, traces, and spatial relationships. |
+| Lore Consistency Check | 设定一致性检查 | 世界观一致性检查 | Checks canon status, contradictions, spoilers, cultural risk. |
+| Procedural Content | 程序化内容 | 程序生成内容、PCG | Needs stable rules, reproducible seeds, and human review. |
+| Seed Record | 随机种子记录 | seed 记录 | Reproducibility evidence for procedural content. |
+| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v1.1+ artifact for patches, hotfixes, updates, and feedback triage. |
 | Postmortem | 复盘报告 | 项目复盘、阶段复盘 | Stage learning artifact. |
 
 ## 5. AI Workflow Terms

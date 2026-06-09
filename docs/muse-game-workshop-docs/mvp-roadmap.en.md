@@ -76,7 +76,13 @@ When layers conflict:
 | v0.3 | Creative Production Ready | P0 creative pipeline, asset brief/review/provenance, UX/level gates | Complete: one visual prototype asset and one audio prototype asset passed engine validation | Large-scale asset production, deep commercial API integration |
 | v0.4 | Unreal Mapping Slice | Unreal Third-person Combat Slice | In progress: static C++/config scaffold passes checks; PIE/editor validation waits for Unreal Editor | Full 3D game |
 | v0.5 | Publishing Readiness | Release checklist, store/trailer brief, localization, accessibility, AI disclosure | Demo release readiness report | Automatic publishing, account system, LiveOps |
+| v0.6 | Game Design Deepening | Game design deepening pack, system/combat/encounter/tuning specs | Boss Rush + Tactics design dry run | New engine features, complex economy systems |
+| v0.7 | Narrative Design Pack | World bible, narrative flow, character/quest/dialogue briefs | Lore consistency check + narrative handoff review | Large-scale narrative content production |
+| v0.8 | Genre Tracks | Action, Tactics, RPG, Puzzle, and Visual Novel tracks | Tactics track dry run | Covering every game genre |
+| v0.9 | Economy, Progression & Telemetry | Economy model, progression map, telemetry plan, playtest analytics | Data fields and tuning reports feed design decisions | Commercialization backend, real user-data platform |
+| v0.10 | Procedural Content | Procedural rules, seed/evidence records, content validation | Generated content is reproducible, reviewable, and reversible | Infinite content generation without human review |
 | v1.0 | Reusable Production Pack | Stable docs, skills, templates, examples, checks | A new project can quickly complete intake, spec, and prototype path | Heavy platformization |
+| v1.1+ | LiveOps & Post-launch | Patch plan, hotfix flow, feedback triage, update roadmap | Released projects can keep updating with traceable risk | Slowing demo production before v1.0 |
 
 ## 6. v0.0: Documentation Foundation
 
@@ -291,7 +297,132 @@ Release bar:
 - AI-assisted content usage and disclosure status are clear.
 - A demo package readiness report can be produced.
 
-## 12. v1.0: Reusable Production Pack
+## 12. v0.6: Game Design Deepening Pack
+
+Goals:
+
+- Expand design from pitch/core loop/mechanic spec into handoff-ready system, combat, level encounter, tuning, and playtest hypothesis specs.
+- Clarify handoffs between Game Designer, Technical Designer, Combat Designer, Level Designer, and QA.
+- Use Boss Rush and Tactics as validation cases to prove that one design workflow can serve different gameplay structures.
+
+Delivery form:
+
+- Game pillars.
+- System design brief.
+- Combat design brief.
+- Encounter design brief.
+- Tuning plan.
+- Playtest hypothesis.
+- Design review gate.
+
+Release bar:
+
+- Mechanics, systems, levels, tuning, and playtest hypotheses can hand off to engineering, QA, art, and audio.
+- Tunable parameters do not scatter into implementation.
+- Playtest feedback can return to explicit design hypotheses.
+- Tactics completes at least one dry run covering rules, grid, units, abilities, and mission objectives.
+
+## 13. v0.7: Narrative Design Pack
+
+Goals:
+
+- Add worldbuilding, narrative flow, characters, quests, dialogue, and environmental storytelling to the formal workflow.
+- Make narrative deliverables serve gameplay, level design, art, audio, and localization instead of staying as inspiration text.
+- Record source, canon status, reference boundary, and cultural/platform risk when AI assists narrative design.
+
+Delivery form:
+
+- World bible.
+- Narrative flow.
+- Character profile.
+- Faction design.
+- Quest brief.
+- Dialogue brief.
+- Environmental storytelling brief.
+- Lore consistency check.
+
+Release bar:
+
+- Major lore has canon status.
+- Key characters have motivation, conflict, gameplay role, and voice.
+- Quest and level goals explain each other.
+- Dialogue, text, and environmental storytelling carry localization and spoiler-risk tags.
+
+## 14. v0.8: Genre Tracks
+
+Goals:
+
+- Add genre-specific workflow branches on top of the shared main workflow.
+- First support Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Treat Tactics as a priority track to validate the handoff chain across rules, maps, units, abilities, missions, and AI.
+
+Tactics delivery form:
+
+- Tactics ruleset.
+- Grid map spec.
+- Unit matrix.
+- Ability spec.
+- Terrain rules.
+- Mission brief.
+- Encounter table.
+- Tactical AI brief.
+- Tactics balance report.
+- Tactics playtest checklist.
+
+Release bar:
+
+- Genre tracks reuse review gates, handoffs, evidence, and provenance.
+- Genre tracks explain which design priorities, testing methods, and asset needs differ.
+- Tactics can move from rules and mission briefs into map/unit/ability validation plans.
+
+## 15. v0.9: Economy, Progression & Telemetry
+
+Goals:
+
+- Add economy, progression, and telemetry after a playable loop and content matrix exist.
+- Support sources/sinks, rewards, progression, level/quest payouts, and playtest analytics.
+- Give tuning evidence instead of relying only on subjective feel.
+
+Delivery form:
+
+- Economy model.
+- Resource flow table.
+- Progression map.
+- Reward table.
+- Telemetry event plan.
+- Playtest analytics report.
+- Tuning decision log.
+
+Release bar:
+
+- Every key data point maps to a design question.
+- Data collection has privacy and platform boundaries.
+- Tuning reports explain observation, hypothesis, change, and next validation.
+
+## 16. v0.10: Procedural Content Pack
+
+Goals:
+
+- Design procedural content only after mechanics, level rules, and content matrices are stable.
+- Support controlled randomness for maps, encounters, loot, and quest variations.
+- Avoid using infinite generation to hide weak rules.
+
+Delivery form:
+
+- Procedural content rules.
+- Seed/evidence record.
+- Content validation checklist.
+- Rejection rules.
+- Human review gate.
+- Rollback plan.
+
+Release bar:
+
+- Generated content is reproducible.
+- Generated outputs can be reviewed by humans.
+- Randomness does not break difficulty, rewards, narrative, or asset constraints.
+
+## 17. v1.0: Reusable Production Pack
 
 Goals:
 
@@ -307,21 +438,41 @@ Release bar:
 - AI-assisted assets, code, tests, and release decisions all have evidence records.
 - Chinese and English entry points are natural, clear, and executable.
 
-## 13. Future Planning: P2
+## 18. v1.1+: LiveOps & Post-launch
+
+Goals:
+
+- Support post-launch operations, patches, hotfixes, update plans, and player feedback triage.
+- Keep community, marketing, monetization, UGC, and security/privacy as post-release capabilities rather than early-demo blockers.
+
+Delivery form:
+
+- Patch plan.
+- Hotfix flow.
+- Update roadmap.
+- Feedback triage.
+- Known issues policy.
+- Community risk record.
+
+Entry criteria:
+
+- v1.0 reusable production pack is stable.
+- At least one demo or small release has entered public playtest/release.
+- Telemetry, release readiness, and feedback triage already have basic evidence.
+
+## 19. Future Planning: P2
 
 P2 is not part of the first implementation batch; preserve it as research and roadmap direction:
 
-- Analytics / Telemetry: playtest data, death points, funnels, retention, privacy boundaries.
 - Community & Marketing: devlogs, community feedback, and update cadence.
 - Monetization: pricing, demo strategy, DLC, and paid-content boundaries.
-- LiveOps / Post-launch: patches, hotfixes, update roadmap, player feedback triage.
+- LiveOps / Post-launch: patches, hotfixes, update roadmap, and player feedback triage, entering in v1.1+.
 - Modding / UGC: editors, user content, moderation, and copyright boundaries.
 - Security / Privacy: online features, third-party SDKs, data collection, and security risk.
 
 Entry criteria:
 
-- v0.1/v0.2 production loop has been validated.
-- Creative asset pipeline and publishing readiness have basic evidence.
+- v0.6-v0.10 design, narrative, genre, economy/progression/telemetry, and procedural-content tracks have proved necessary.
 - The project is truly entering release, growth, operations, or community phases.
 - Privacy, compliance, and maintenance ownership are clear.
 
@@ -335,7 +486,13 @@ Entry criteria:
 | M3 | Creative Production Ready | v0.3 | Asset brief/provenance/review/engine validation runs end to end. |
 | M4 | Unreal Mapping Ready | v0.4 | The same mechanic maps to an Unreal 3D action slice. |
 | M5 | Publishing Readiness Ready | v0.5 | Demo release readiness can be judged. |
-| M6 | Reusable Production Pack | v1.0 | Other projects can reuse the full workflow. |
+| M6 | Game Design Deepening | v0.6 | System, combat, encounter, tuning, and playtest hypotheses can hand off. |
+| M7 | Narrative Design Ready | v0.7 | World, characters, quests, dialogue, and lore consistency can be reviewed. |
+| M8 | Genre Tracks Ready | v0.8 | Tactics and other first genre tracks complete dry runs. |
+| M9 | Economy Progression Telemetry Loop | v0.9 | Economy, progression, and telemetry feed tuning decisions. |
+| M10 | Procedural Content Ready | v0.10 | Generated content is reproducible, reviewable, and reversible. |
+| M11 | Reusable Production Pack | v1.0 | Other projects can reuse the full workflow. |
+| M12 | LiveOps Ready | v1.1+ | Released projects can keep updating and handling player feedback. |
 
 ## 15. Recommended First Project Initialization Prompt
 
