@@ -115,7 +115,7 @@ v0.7 goals:
 v0.8 goals:
 
 - Establish Genre Tracks.
-- First support Action, Tactics, RPG, Puzzle, and Visual Novel.
+- First support Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
 - Treat Tactics as a priority track covering grid rules, unit matrix, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
 
 v0.9 goals:
@@ -220,7 +220,7 @@ P1 should enter v0.6-v0.8 design:
 
 - Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
 - Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
-- Genre Tracks: genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Genre Tracks: genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosures.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, remapping, vibration toggle, difficulty assists, and text size.
@@ -474,7 +474,7 @@ v0.6-v0.10 must follow dependency order:
 
 - v0.6 Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
 - v0.7 Narrative Design: worldbuilding, narrative flow, characters, quests, dialogue, environmental storytelling, and lore consistency.
-- v0.8 Genre Tracks: first tracks cover Action, Tactics, RPG, Puzzle, and Visual Novel; Tactics is the priority track.
+- v0.8 Genre Tracks: first tracks cover Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG; Tactics is the priority validation track.
 - v0.9 Economy / Progression / Telemetry: economy systems, progression, reward structure, and playtest analytics.
 - v0.10 Procedural Content: controlled randomness, content variation, and quality checks only after rules are stable.
 

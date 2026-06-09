@@ -78,7 +78,7 @@ Muse Game Workshop 使用三层 roadmap：
 | v0.5 | 发布准备 | release checklist、store/trailer brief、localization、accessibility、AI disclosure | demo release readiness report | 自动发布、账号系统、LiveOps |
 | v0.6 | 策划流程细化 | game design deepening pack、system/combat/encounter/tuning specs | Boss Rush + Tactics 设计 dry run | 引擎新功能、复杂经济系统 |
 | v0.7 | 叙事设计包 | world bible、narrative flow、character/quest/dialogue briefs | lore consistency check + narrative handoff review | 大规模剧情内容量产 |
-| v0.8 | 类型流程分支 | Action、Tactics、RPG、Puzzle、Visual Novel tracks | Tactics / 战棋类 track dry run | 覆盖所有游戏类型 |
+| v0.8 | 类型流程分支 | Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险 tracks | Tactics / 战棋类 track dry run | 覆盖所有游戏类型 |
 | v0.9 | 经济、成长与数据 | economy model、progression map、telemetry plan、playtest analytics | 数据字段和调优报告能回到设计决策 | 商业化后台、真实用户数据平台 |
 | v0.10 | 程序化内容 | procedural rules、seed/evidence record、content validation | 生成内容可复现、可 review、可回退 | 无限内容生成、无人工审核 |
 | v1.0 | 可复用制作包 | 稳定 docs、skills、templates、examples、checks | 新项目可快速 intake、spec、prototype | 重型平台化 |
@@ -353,7 +353,7 @@ v0.1 只有同时满足以下条件才算完成：
 目标：
 
 - 在通用主流程之上建立类型流程分支。
-- 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说。
+- 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
 - 将 Tactics / 战棋类作为重点类型分支，优先验证规则、地图、单位、技能、任务和 AI 的交付链。
 
 Tactics / 战棋类交付形态：
@@ -488,7 +488,7 @@ P2 暂不进入首批实现，只保留研究和路线方向：
 | M5 | Publishing Readiness Ready | v0.5 | demo release readiness 可判断。 |
 | M6 | 策划流程细化 | v0.6 | 系统、战斗、遭遇、调优和试玩假设可交接。 |
 | M7 | 叙事设计就绪 | v0.7 | 世界观、角色、任务、对白和设定一致性可 review。 |
-| M8 | 类型流程分支 | v0.8 | Tactics / 战棋类等首批类型分支完成 dry run。 |
+| M8 | 类型流程分支 | v0.8 | 首批 7 类类型分支完成 dry run，其中包含 Tactics / 战棋类和 Adventure / AVG 冒险。 |
 | M9 | 经济成长数据闭环 | v0.9 | 经济、成长和 telemetry 能回到调优决策。 |
 | M10 | 程序化内容就绪 | v0.10 | 生成内容可复现、可 review、可回退。 |
 | M11 | Reusable Production Pack | v1.0 | 其他项目可以复用完整工作流。 |

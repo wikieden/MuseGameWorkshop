@@ -110,9 +110,15 @@ Examples:
 | Encounter | 遭遇设计 | 战斗遭遇、关卡事件 | Enemy/obstacle/pacing combinations. |
 | Mission Brief | 任务设计说明 | 任务 brief、关卡任务说明 | Objectives, failure conditions, rewards, narrative role. |
 | Genre Track | 类型流程分支 | 类型分支、类型工作流 | Genre-specific branch on top of the shared workflow. |
+| Action | 动作 | 动作游戏、ACT | Feel, hit logic, feedback, enemy rhythm, action presentation. |
+| Roguelike | Roguelike / 肉鸽 | Roguelite、肉鸽类 | Chinese players often say 肉鸽; needs run structure, builds, loot, replay value. |
+| RPG | 角色扮演 | ARPG、JRPG、CRPG 等 | Progression, equipment, quests, builds, narrative advancement. |
+| Puzzle | 解谜 | 益智解谜、谜题游戏 | Puzzle grammar, difficulty curve, hint system, level order. |
+| Visual Novel | 视觉小说 | VN、文字视觉小说 | Text, relationships, choices, consequences; separate from AVG adventure in this project. |
 | Tactics | 战棋类 | 回合制战术、战术游戏 | Prefer 战棋类 in Chinese-facing docs. |
 | Turn-based Tactics | 回合制战术 | 战棋玩法 | English-facing genre term for tactics games. |
 | Tactical RPG | 战棋 RPG | 策略角色扮演 | Chinese teams often say 战棋 RPG. |
+| Adventure / AVG | AVG 冒险 | 冒险游戏、调查冒险 | In this project, exploration, investigation, item use, scene puzzles, and environmental storytelling; not the same as Visual Novel. |
 | Grid System | 格子规则 | 方格/六边格规则 | Movement, attack, blocking, occupancy, range. |
 | Grid Map Spec | 格子地图规格 | 战棋地图规格 | Map size, cell types, blockers, spawn points, objectives. |
 | Unit Matrix | 单位矩阵 | 角色/职业矩阵 | Unit stats, classes, factions, abilities, counters. |

@@ -80,7 +80,7 @@ P1 enters the next complete workflow batch:
 
 - Game Design Deepening.
 - Narrative / Worldbuilding / Quest.
-- Genre Tracks, first including Tactics.
+- Genre Tracks, first including Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
 - Economy / Progression / Telemetry, entering mid-term design in v0.9.
 - Platform & Store Readiness.
 - Localization.

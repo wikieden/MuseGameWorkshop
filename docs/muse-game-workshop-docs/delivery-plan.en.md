@@ -239,7 +239,7 @@ Muse Game Workshop versions do not progress by adding more features for their ow
 | v0.5 | Demo readiness for external release is unclear | Publishing readiness | Demo release readiness report is complete |
 | v0.6 | Design specs are too shallow for downstream handoff | Game design deepening pack | System, combat, encounter, tuning, and playtest hypotheses can hand off |
 | v0.7 | World, characters, and quests drift away from gameplay | Narrative design pack | Narrative deliverables serve gameplay, level design, art, audio, and localization |
-| v0.8 | One shared flow distorts different genres | Genre tracks | First genre tracks reuse the core workflow; Tactics passes a dry run |
+| v0.8 | One shared flow distorts different genres | Genre tracks | Seven first genre tracks reuse the core workflow; Tactics passes a dry run |
 | v0.9 | Tuning lacks economy, progression, and playtest data loops | Economy, progression, telemetry | Data fields and tuning reports feed design decisions |
 | v0.10 | Procedural content adds risk if introduced too early | Procedural content pack | Generated content is reproducible, reviewable, and reversible |
 | v1.0 | The pack only works for this project and is not reusable | Reusable production pack | A new project can quickly complete intake, spec, and playable slice |
@@ -405,7 +405,7 @@ Release bar:
 
 Goal:
 
-- Add genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel.
+- Add genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
 - Prioritize Tactics rules, grid maps, unit matrices, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
 
 Release bar:

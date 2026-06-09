@@ -196,7 +196,7 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 | v0.5 | Publishing Readiness / 发布准备 | Demo 是否能判断公开试玩条件？ | release checklist、store/trailer brief、localization、accessibility、AI disclosure 完整。 |
 | v0.6 | Game Design Deepening Pack / 策划流程细化包 | 核心玩法、系统、战斗、关卡、数值和试玩假设是否能形成可交接规格？ | system design、combat design、encounter design、tuning plan 和 playtest hypothesis 能交给程序、QA 和创意职能。 |
 | v0.7 | Narrative Design Pack / 叙事设计包 | 世界观、剧情动线、角色、任务和对白是否能服务玩法与关卡？ | world bible、narrative flow、character profile、quest brief、dialogue brief 和 lore consistency check 可审查。 |
-| v0.8 | Genre Tracks / 类型流程分支 | 通用流程是否能适配不同类型游戏？ | 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说；Tactics 作为重点分支。 |
+| v0.8 | Genre Tracks / 类型流程分支 | 通用流程是否能适配不同类型游戏？ | 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics 作为重点验证分支。 |
 | v0.9 | Economy, Progression & Telemetry / 经济、成长与数据 | 奖励、成长、资源循环和试玩数据是否能闭环调优？ | economy model、progression map、reward table、telemetry plan 和 playtest analytics report 成立。 |
 | v0.10 | Procedural Content Pack / 程序化内容设计包 | 稳定规则能否生成可控内容变体？ | procedural rules、content validation、seed/evidence record 和人工 review gate 完整。 |
 | v1.0 | Reusable Production Pack / 可复用制作包 | 其他项目是否能拿来启动？ | 新项目能快速完成 intake、core loop、mechanic spec，并推进到可试玩切片。 |
@@ -215,7 +215,7 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
 - Narrative & Worldbuilding：世界观、剧情动线、角色、任务、对白和文本一致性。
-- Genre Tracks：类型流程分支，首批包含 Action、Tactics / 战棋类、RPG、Puzzle 和 Visual Novel。
+- Genre Tracks：类型流程分支，首批包含 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类和 Adventure / AVG 冒险。
 - Economy / Progression / Telemetry：经济系统、成长线和试玩数据分析，进入 v0.9。
 - Platform & Store Readiness：商店页、trailer brief、截图、平台差异、基础认证检查。
 - Localization：文本外置、术语表、翻译风险、字体和布局。

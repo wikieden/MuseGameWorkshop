@@ -110,7 +110,7 @@ P1 应纳入 v0.6-v0.8 设计：
 
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
 - Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
-- Genre Tracks：类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel；Tactics / 战棋类作为重点分支。
+- Genre Tracks：类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics / 战棋类作为重点验证分支。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。

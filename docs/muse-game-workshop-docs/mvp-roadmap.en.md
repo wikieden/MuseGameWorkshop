@@ -78,7 +78,7 @@ When layers conflict:
 | v0.5 | Publishing Readiness | Release checklist, store/trailer brief, localization, accessibility, AI disclosure | Demo release readiness report | Automatic publishing, account system, LiveOps |
 | v0.6 | Game Design Deepening | Game design deepening pack, system/combat/encounter/tuning specs | Boss Rush + Tactics design dry run | New engine features, complex economy systems |
 | v0.7 | Narrative Design Pack | World bible, narrative flow, character/quest/dialogue briefs | Lore consistency check + narrative handoff review | Large-scale narrative content production |
-| v0.8 | Genre Tracks | Action, Tactics, RPG, Puzzle, and Visual Novel tracks | Tactics track dry run | Covering every game genre |
+| v0.8 | Genre Tracks | Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG tracks | Tactics track dry run | Covering every game genre |
 | v0.9 | Economy, Progression & Telemetry | Economy model, progression map, telemetry plan, playtest analytics | Data fields and tuning reports feed design decisions | Commercialization backend, real user-data platform |
 | v0.10 | Procedural Content | Procedural rules, seed/evidence records, content validation | Generated content is reproducible, reviewable, and reversible | Infinite content generation without human review |
 | v1.0 | Reusable Production Pack | Stable docs, skills, templates, examples, checks | A new project can quickly complete intake, spec, and prototype path | Heavy platformization |
@@ -353,7 +353,7 @@ Release bar:
 Goals:
 
 - Add genre-specific workflow branches on top of the shared main workflow.
-- First support Action, Tactics, RPG, Puzzle, and Visual Novel.
+- First support Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
 - Treat Tactics as a priority track to validate the handoff chain across rules, maps, units, abilities, missions, and AI.
 
 Tactics delivery form:
@@ -488,7 +488,7 @@ Entry criteria:
 | M5 | Publishing Readiness Ready | v0.5 | Demo release readiness can be judged. |
 | M6 | Game Design Deepening | v0.6 | System, combat, encounter, tuning, and playtest hypotheses can hand off. |
 | M7 | Narrative Design Ready | v0.7 | World, characters, quests, dialogue, and lore consistency can be reviewed. |
-| M8 | Genre Tracks Ready | v0.8 | Tactics and other first genre tracks complete dry runs. |
+| M8 | Genre Tracks Ready | v0.8 | The seven first genre tracks complete dry runs, including Tactics and Adventure / AVG. |
 | M9 | Economy Progression Telemetry Loop | v0.9 | Economy, progression, and telemetry feed tuning decisions. |
 | M10 | Procedural Content Ready | v0.10 | Generated content is reproducible, reviewable, and reversible. |
 | M11 | Reusable Production Pack | v1.0 | Other projects can reuse the full workflow. |

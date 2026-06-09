@@ -80,7 +80,7 @@ P1 进入下一批完整 workflow：
 
 - Game Design Deepening。
 - Narrative / Worldbuilding / Quest。
-- Genre Tracks，首批包含 Tactics / 战棋类。
+- Genre Tracks，首批包含 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
 - Economy / Progression / Telemetry，进入 v0.9 中期设计。
 - Platform & Store Readiness。
 - Localization。

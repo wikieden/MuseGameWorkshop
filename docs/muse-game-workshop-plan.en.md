@@ -110,7 +110,7 @@ P1 should enter v0.6-v0.8 design:
 
 - Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
 - Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
-- Genre Tracks: genre workflow branches, first supporting Action, Tactics, RPG, Puzzle, and Visual Novel; Tactics is the priority track.
+- Genre Tracks: genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG; Tactics is the priority validation track.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosure.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, input remapping, vibration toggle, difficulty assists, and text size.

@@ -115,7 +115,7 @@ v0.7 目标：
 v0.8 目标：
 
 - 建立 Genre Tracks / 类型流程分支。
-- 首批支持 Action / 动作、Tactics / 战棋类、RPG、Puzzle / 解谜、Visual Novel / 视觉小说。
+- 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
 - 将 Tactics / 战棋类作为重点分支，覆盖格子规则、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
 
 v0.9 目标：
@@ -220,7 +220,7 @@ P1 纳入 v0.6-v0.8 设计：
 
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
 - Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
-- Genre Tracks：类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel。
+- Genre Tracks：类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。
@@ -474,7 +474,7 @@ v0.6-v0.10 必须按依赖顺序推进：
 
 - v0.6 Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优、试玩假设。
 - v0.7 Narrative Design：世界观、剧情动线、角色人物、任务、对白、环境叙事、设定一致性。
-- v0.8 Genre Tracks：首批类型分支覆盖 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel；Tactics 是重点分支。
+- v0.8 Genre Tracks：首批类型分支覆盖 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics 是重点验证分支。
 - v0.9 Economy / Progression / Telemetry：经济系统、成长线、奖励结构和试玩数据分析。
 - v0.10 Procedural Content：规则稳定后再做可控随机、内容变体和质量检查。
 

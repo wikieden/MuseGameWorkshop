@@ -239,7 +239,7 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 | v0.5 | Demo 不知道是否能对外发布 | publishing readiness | demo release readiness report 完成 |
 | v0.6 | 策划规格不够细，难以下游交接 | game design deepening pack | 系统、战斗、遭遇、调优和试玩假设能交接 |
 | v0.7 | 世界观、角色和任务与玩法脱节 | narrative design pack | 叙事交付物能服务玩法、关卡、美术、音频和本地化 |
-| v0.8 | 不同游戏类型套同一流程导致失真 | genre tracks | 首批类型分支可复用核心 workflow，Tactics / 战棋类通过 dry run |
+| v0.8 | 不同游戏类型套同一流程导致失真 | genre tracks | 首批 7 类类型分支可复用核心 workflow，Tactics / 战棋类通过 dry run |
 | v0.9 | 数值、成长和试玩数据无法闭环调优 | economy、progression、telemetry | 数据字段和调优报告能回到设计决策 |
 | v0.10 | 程序化内容过早引入会扩大风险 | procedural content pack | 生成内容可复现、可 review、可回退 |
 | v1.0 | 只适合本项目，无法复用 | reusable production pack | 新项目能快速完成 intake、spec、playable slice |
@@ -405,7 +405,7 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 
 目标：
 
-- 建立类型流程分支，首批支持 Action、Tactics / 战棋类、RPG、Puzzle、Visual Novel。
+- 建立类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
 - Tactics / 战棋类优先落规则、格子地图、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
 
 发布标准：
