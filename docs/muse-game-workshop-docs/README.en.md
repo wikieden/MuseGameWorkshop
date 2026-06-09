@@ -22,13 +22,14 @@ It is not a game engine and not a one-click game generator. It is a workflow lay
 8. `bilingual-audience-strategy.en.md`
 9. `terminology-glossary.en.md`
 10. `handoff-contracts.en.md`
-11. `templates.en.md`
-12. `delivery-plan.en.md`
-13. `v0.1-execution-plan.en.md`
-14. `p0-skill-skeleton-plan.en.md`
-15. `v0.1-manifest.en.md`
-16. `testing-strategy.en.md`
-17. `mvp-roadmap.en.md`
+11. `ai-art-asset-pipeline.en.md`
+12. `templates.en.md`
+13. `delivery-plan.en.md`
+14. `v0.1-execution-plan.en.md`
+15. `p0-skill-skeleton-plan.en.md`
+16. `v0.1-manifest.en.md`
+17. `testing-strategy.en.md`
+18. `mvp-roadmap.en.md`
 
 Chinese versions:
 
@@ -42,13 +43,14 @@ Chinese versions:
 8. `bilingual-audience-strategy.zh.md`
 9. `terminology-glossary.zh.md`
 10. `handoff-contracts.zh.md`
-11. `templates.zh.md`
-12. `delivery-plan.zh.md`
-13. `v0.1-execution-plan.zh.md`
-14. `p0-skill-skeleton-plan.zh.md`
-15. `v0.1-manifest.zh.md`
-16. `testing-strategy.zh.md`
-17. `mvp-roadmap.zh.md`
+11. `ai-art-asset-pipeline.zh.md`
+12. `templates.zh.md`
+13. `delivery-plan.zh.md`
+14. `v0.1-execution-plan.zh.md`
+15. `p0-skill-skeleton-plan.zh.md`
+16. `v0.1-manifest.zh.md`
+17. `testing-strategy.zh.md`
+18. `mvp-roadmap.zh.md`
 
 ## 3. Document Map
 
@@ -64,6 +66,7 @@ Chinese versions:
 | `bilingual-audience-strategy.zh.md` / `bilingual-audience-strategy.en.md` | Defines Chinese and English audience surfaces, documentation localization, template metadata, and bilingual tests. |
 | `terminology-glossary.zh.md` / `terminology-glossary.en.md` | Maps English terms to Chinese game-industry terminology. |
 | `handoff-contracts.zh.md` / `handoff-contracts.en.md` | Defines deliverables, delivery forms, acceptance gates, and evidence between roles, processes, and AI tools. |
+| `ai-art-asset-pipeline.zh.md` / `ai-art-asset-pipeline.en.md` | Defines the AI art asset flow from art direction, brief, generation, human edit, provenance, and review to engine validation. |
 | `templates.zh.md` / `templates.en.md` | Defines document templates to implement in the future repo. |
 | `delivery-plan.zh.md` / `delivery-plan.en.md` | Defines delivery tracks, version planning, stage acceptance, and release checklist. |
 | `v0.1-execution-plan.zh.md` / `v0.1-execution-plan.en.md` | Defines the pre-implementation review plan, file plan, test method, and review decisions for v0.1. |

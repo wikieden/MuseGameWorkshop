@@ -105,6 +105,7 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | User Flow | 用户流程 | 交互流程、操作路径 | 用于菜单、设置、商店、教程。 |
 | Art Bible | 美术风格指南 | 美术规范、Art Bible | 国内也会说 Art Bible。 |
 | Moodboard | 情绪板 | 参考板、风格参考板 | 视觉方向参考。 |
+| AI Art Asset Pipeline | AI 美术资产流程 | AI 辅助美术流程 | 从美术方向、brief、生成、人工修改、来源记录、评审到引擎验证。 |
 | Asset Brief | 资产需求说明 | 美术需求单、资源需求说明 | 给美术/AI 工具/外包的输入。 |
 | Asset List | 资产清单 | 资源清单 | 需要制作或导入的内容。 |
 | Playtest Report | 试玩报告 | 测试反馈报告、可玩性测试报告 | 记录观察、问题、假设、下一步。 |
@@ -130,6 +131,8 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | Asset Provenance | 资产来源与授权记录 | 资产溯源、来源记录 | 记录工具、prompt、参考、license、人工修改。 |
 | Prompt Record | 提示词记录 | prompt 记录 | 记录生成输入。 |
 | AI Usage Disclosure | AI 使用披露 | AI 生成说明、平台披露 | 发布/商店/平台合规。 |
+| Content Credentials | 内容凭证 | C2PA 内容凭证 | 用于记录媒体来源与修改历史的可验证凭证。 |
+| C2PA | C2PA 内容来源标准 | Content Credentials 标准 | 可保留英文缩写，解释为内容来源与真实性标准。 |
 | Handoff | 交接 | 交付交接 | 角色/流程之间的交付。 |
 | Deliverable | 交付物 | 产物、交付件 | 更推荐“交付物”。 |
 | Delivery Form | 交付形态 | 交付格式、产物形态 | Markdown、表格、资产、证据。 |
@@ -170,8 +173,11 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | English Term | 推荐中文叫法 | 常见别名 / 说明 | 使用建议 |
 |---|---|---|---|
 | Placeholder Asset | 占位资源 | 临时资源、灰盒资源 | 不可直接当发布资产。 |
+| Reference-only Asset | 仅作参考资源 | 参考图、方向参考 | 只用于 moodboard、构图、配色、风格探索，不直接进引擎。 |
 | Prototype Asset | 原型资源 | 原型资产、测试资源 | 用于验证，不代表最终品质。 |
+| Reviewed Asset | 已评审资源 | 已审核资源 | 经过 brief、provenance、human review，可进入项目。 |
 | Release Candidate Asset | 发布候选资源 | 可发布候选资源 | 经过 review、provenance、引擎验证。 |
+| Rejected Asset | 已拒绝资源 | 拒绝资源 | 风格、授权、技术或可读性不通过。 |
 | Source File | 源文件 | 原始工程文件 | psd、blend、wav 工程等。 |
 | Import Spec | 导入规格 | 接入规格、资源规范 | 尺寸、格式、命名、压缩、预算。 |
 | License | 授权 | 版权许可、使用许可 | 必须记录可商用性。 |

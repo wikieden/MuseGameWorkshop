@@ -22,13 +22,14 @@
 8. `bilingual-audience-strategy.zh.md`
 9. `terminology-glossary.zh.md`
 10. `handoff-contracts.zh.md`
-11. `templates.zh.md`
-12. `delivery-plan.zh.md`
-13. `v0.1-execution-plan.zh.md`
-14. `p0-skill-skeleton-plan.zh.md`
-15. `v0.1-manifest.zh.md`
-16. `testing-strategy.zh.md`
-17. `mvp-roadmap.zh.md`
+11. `ai-art-asset-pipeline.zh.md`
+12. `templates.zh.md`
+13. `delivery-plan.zh.md`
+14. `v0.1-execution-plan.zh.md`
+15. `p0-skill-skeleton-plan.zh.md`
+16. `v0.1-manifest.zh.md`
+17. `testing-strategy.zh.md`
+18. `mvp-roadmap.zh.md`
 
 英文版本：
 
@@ -42,13 +43,14 @@
 8. `bilingual-audience-strategy.en.md`
 9. `terminology-glossary.en.md`
 10. `handoff-contracts.en.md`
-11. `templates.en.md`
-12. `delivery-plan.en.md`
-13. `v0.1-execution-plan.en.md`
-14. `p0-skill-skeleton-plan.en.md`
-15. `v0.1-manifest.en.md`
-16. `testing-strategy.en.md`
-17. `mvp-roadmap.en.md`
+11. `ai-art-asset-pipeline.en.md`
+12. `templates.en.md`
+13. `delivery-plan.en.md`
+14. `v0.1-execution-plan.en.md`
+15. `p0-skill-skeleton-plan.en.md`
+16. `v0.1-manifest.en.md`
+17. `testing-strategy.en.md`
+18. `mvp-roadmap.en.md`
 
 ## 3. 文档说明
 
@@ -64,6 +66,7 @@
 | `bilingual-audience-strategy.zh.md` / `bilingual-audience-strategy.en.md` | 定义中文和英文两类用户群体、文档本地化、模板元数据和双语测试策略。 |
 | `terminology-glossary.zh.md` / `terminology-glossary.en.md` | 定义英文术语到中国游戏行业常用中文叫法的对应表。 |
 | `handoff-contracts.zh.md` / `handoff-contracts.en.md` | 定义角色、流程和 AI tools 之间的交付物、交付形态、验收门和 evidence。 |
+| `ai-art-asset-pipeline.zh.md` / `ai-art-asset-pipeline.en.md` | 定义 AI 美术资产从 art direction、brief、generation、human edit、provenance、review 到 engine validation 的流程。 |
 | `templates.zh.md` / `templates.en.md` | 定义后续 repo 要落地的文档模板。 |
 | `delivery-plan.zh.md` / `delivery-plan.en.md` | 定义落地分轨、版本规划、阶段验收和 release checklist。 |
 | `v0.1-execution-plan.zh.md` / `v0.1-execution-plan.en.md` | 定义 v0.1 落地前的执行评审计划、文件计划、测试方式和 review 决策点。 |

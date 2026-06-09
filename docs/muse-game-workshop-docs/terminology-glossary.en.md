@@ -105,6 +105,7 @@ Examples:
 | User Flow | 用户流程 | 交互流程、操作路径 | Menus, settings, store, tutorials. |
 | Art Bible | 美术风格指南 | 美术规范、Art Bible | Art Bible is also common. |
 | Moodboard | 情绪板 | 参考板、风格参考板 | Visual direction reference. |
+| AI Art Asset Pipeline | AI 美术资产流程 | AI 辅助美术流程 | From art direction, brief, generation, human edit, provenance, and review to engine validation. |
 | Asset Brief | 资产需求说明 | 美术需求单、资源需求说明 | Input for artists, AI tools, or outsourcing. |
 | Asset List | 资产清单 | 资源清单 | Assets to produce or import. |
 | Playtest Report | 试玩报告 | 测试反馈报告、可玩性测试报告 | Observations, issues, hypotheses, next steps. |
@@ -130,6 +131,8 @@ Examples:
 | Asset Provenance | 资产来源与授权记录 | 资产溯源、来源记录 | Tool, prompt, reference, license, human edits. |
 | Prompt Record | 提示词记录 | prompt 记录 | Generation input record. |
 | AI Usage Disclosure | AI 使用披露 | AI 生成说明、平台披露 | Compliance for store/platform release. |
+| Content Credentials | 内容凭证 | C2PA 内容凭证 | Verifiable credentials that record media provenance and edit history. |
+| C2PA | C2PA 内容来源标准 | Content Credentials standard | Keep the acronym; explain it as a content provenance and authenticity standard. |
 | Handoff | 交接 | 交付交接 | Between roles or processes. |
 | Deliverable | 交付物 | 产物、交付件 | Prefer 交付物. |
 | Delivery Form | 交付形态 | 交付格式、产物形态 | Markdown, table, asset, evidence. |
@@ -170,8 +173,11 @@ Examples:
 | English Term | Recommended Chinese Term | Aliases / Notes | Usage |
 |---|---|---|---|
 | Placeholder Asset | 占位资源 | 临时资源、灰盒资源 | Not a release asset. |
+| Reference-only Asset | 仅作参考资源 | 参考图、方向参考 | Moodboard, composition, color, or style reference; not imported directly into the engine. |
 | Prototype Asset | 原型资源 | 原型资产、测试资源 | For validation, not final quality. |
+| Reviewed Asset | 已评审资源 | 已审核资源 | Briefed, provenance-recorded, human-reviewed asset that may enter a project. |
 | Release Candidate Asset | 发布候选资源 | 可发布候选资源 | Reviewed, provenance-recorded, engine-validated. |
+| Rejected Asset | 已拒绝资源 | 拒绝资源 | Failed style, rights, technical, or readability review. |
 | Source File | 源文件 | 原始工程文件 | psd, blend, wav session, etc. |
 | Import Spec | 导入规格 | 接入规格、资源规范 | Size, format, naming, compression, budget. |
 | License | 授权 | 版权许可、使用许可 | Commercial use must be recorded. |
