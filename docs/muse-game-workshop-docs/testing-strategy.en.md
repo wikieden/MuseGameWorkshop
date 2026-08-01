@@ -81,6 +81,7 @@ Checks:
 - Reading order includes Vision.
 - Reading order includes bilingual audience strategy.
 - Reading order includes terminology glossary.
+- Reading order includes Godot Prototype Asset Kit when Godot prototype assets are involved.
 - Reading order includes v0.1 execution plan.
 - Reading order includes P0 skill skeleton plan.
 - Reading order includes v0.1 manifest.
@@ -117,6 +118,9 @@ tools/checks/check-doc-pairs
 tools/checks/check-startup-prompts
 tools/checks/check-template-metadata
 tools/checks/check-v0.1-manifest
+tools/checks/check-v0.9-economy-progression
+tools/checks/check-v0.9.1-numerical-planning
+tools/checks/check-v0.9.2-design-skills
 ```
 
 Unified output format:
@@ -131,14 +135,21 @@ Check contracts:
 | Check | Pass Condition | Fail Condition |
 |---|---|---|
 | `check-doc-links` | All local Markdown links exist. | Any local link target is missing. |
-| `check-doc-pairs` | The root README exists; the core document set exists in pairs: overall project plan, Vision, PRD, technical architecture, Godot/Unreal workflow, skill pack spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, delivery plan, v0.1 execution plan, v0.1 manifest, testing strategy, and MVP roadmap. | README is missing, or any core doc is missing its paired language version. |
+| `check-doc-pairs` | The root README exists; the core document set exists in pairs: overall project plan, Vision, PRD, Product Entry & `mgw init`, User Journey, technical architecture, Godot/Unreal workflow, Godot Prototype Asset Kit, Genre Tracks, Economy & Progression, Numerical Planning, Agent Skill Composition, skill pack spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, game design systems, delivery plan, v0.1 execution plan, v0.1 manifest, testing strategy, and MVP roadmap. | README is missing, or any core doc is missing its paired language version. |
 | `check-startup-prompts` | README, package indexes, roadmap, and testing strategy starting prompts include target language, target audience, bilingual audience strategy, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and review gate; CLAUDE.md must not conflict with AGENTS.md or the manifest. | A prompt misses any required read item, does not declare target language, or tool rules conflict. |
-| `check-template-metadata` | The current template set includes the shared metadata block, including v0.1 templates and v0.3 creative templates. | Any template is missing Language, Target Audience, Locale, Terminology Source, Owner, or Review Status. |
+| `check-template-metadata` | The current template set includes the shared metadata block, including v0.1 templates, v0.3 creative templates, v0.6 design systems templates, v0.9 economy/progression templates, and v0.9.1 numerical planning templates. | Any template is missing Language, Target Audience, Locale, Terminology Source, Owner, or Review Status. |
 | `check-v0.1-manifest` | Skills/templates/checks/dry-run evidence listed in the manifest exist, and no Godot/Unreal example code enters v0.1 early; forbidden patterns include `*.gd`, `*.tscn`, `*.tres`, `*.uasset`, `*.umap`, `*.uproject`, `*.cpp`, `*.h`, `*.cs`, `*.shader`, and `*.import`. | A manifest item is missing, or v0.1 contains premature game implementation code. |
 | `check-v0.2-godot` | Godot Boss Rush prototype paths, script contracts, input mapping, core-loop simulation, and Godot headless validation pass. | Project files are missing, script contracts are missing, the core loop fails, or Godot reports errors. |
 | `check-v0.3-creative-assets` | v0.3 creative templates, asset briefs/provenance/review/evidence, prototype visual/audio assets, Godot scene wiring, and engine validation pass. | Assets are missing briefs/provenance/review, file formats are invalid, scene wiring is missing, or Godot reports errors. |
 | `check-v0.4-unreal` | v0.4 Unreal static scaffold, C++ mapping contracts, review gate, and blocked playtest evidence pass; if Unreal Editor is available, an editor smoke is attempted. | Scaffold files are missing, Data Asset/Component/HUD contracts are missing, review gate is not Approved, or Unreal editor smoke fails. |
 | `check-v0.5-ai-art-dry-run` | v0.5b AI art dry-run art direction, asset list, asset briefs, provenance plan, review criteria, and approved review gate pass; no new assets are generated or imported. | Brief/provenance/review files are missing, the review gate is not approved, or the dry run implies assets entered `reviewed` or `release-candidate` state. |
+| `check-v0.5-consolidation` | v0.5 consolidation evidence, review gate, Engine AI Development Adapters, seven independent research reports, user feedback scan, Godot integration decision, and v0.5-v0.15 version rebase pass. | v0.5 evidence is missing, research reports are not paired, the Godot integration decision is missing, or roadmap/delivery/overall plan still jumps to v1.1. |
+| `check-v0.6-game-design-systems` | v0.6 Game Design & Systems overview, review gate, evidence, five design templates, Boss Rush / Tactics dry runs, v0.7 next step, and boundary checks pass. | v0.6 evidence is missing, templates lack metadata, dry runs do not cover systems/combat/encounters/tuning/playtest hypotheses, or v0.6 creates engine files/assets. |
+| `check-v0.7-product-entry` | v0.7 Product Entry & `mgw init`, User Journey, review gate, evidence, README, docs index, roadmap, and boundary checks pass. | v0.7 docs are missing, `mgw init` is described as a one-click generator, MCP is installed by default, or the version plan does not move Genre Tracks to v0.8. |
+| `check-v0.8-genre-tracks` | v0.8 Genre Tracks overview, seven genre branch docs, Tactics dry run, Godot Prototype Asset Kit needs, review gate, evidence, README/docs index/roadmap updates, and boundary checks pass. | A genre branch is missing, Tactics lacks rules/map/unit/ability/asset-kit needs, v0.8 evidence is missing, or v0.8 creates real assets, engine files, MCP integration, or game code. |
+| `check-v0.9-economy-progression` | v0.9 Economy & Progression docs, economy model/progression map/resource-reward/tuning-loop templates, Tactics economy dry run, review gate, evidence, README/docs index/roadmap updates, v0.10 Telemetry & Playtest Analytics next-version handoff, and boundary checks pass. | v0.9 docs/templates/evidence are missing, Tactics lacks action points/stamina/cooldowns/rewards/failure compensation/unit growth, v0.10 is not identified as the next version, or v0.9 creates commercial backend, payment, real telemetry service, engine files, or assets. |
+| `check-v0.9.1-numerical-planning` | v0.9.1 Numerical Planning docs, level curve/combat parameter table/system numerical plan templates, Tactics numerical dry run, review gate, evidence, README/docs index/roadmap updates, v0.10 next-version handoff, and boundary checks pass. | v0.9.1 docs/templates/evidence are missing, Tactics lacks level/combat/system-number validation, v0.10 is not identified as the next major version, or v0.9.1 creates engine code, real telemetry, commercial backend, payment, assets, or release balance approval. |
+| `check-v0.9.2-design-skills` | v0.9.2 Specialized Design Skills exist, Agent Skill Composition docs are paired, role-agent bundles and skill routing are documented, existing core skills route to the new specialist skills, README/docs index/roadmap updates exist, v0.10 next-version handoff is preserved, and boundary checks pass. | Any specialist skill is missing or malformed, Agent Skill Composition is missing, role-agent bundles lack production roles, core skills do not route to specialist skills, v0.10 is not identified as the next major version, or v0.9.2 creates engine code, real telemetry, commercial backend, payment, assets, or release balance approval. |
 
 Acceptance:
 
@@ -197,6 +208,11 @@ Key templates:
 - `pitch.md`
 - `core-loop.md`
 - `mechanic-spec.md`
+- `system-design.md`
+- `combat-design.md`
+- `encounter-design.md`
+- `tuning-plan.md`
+- `playtest-hypothesis.md`
 - `engine-mapping.md`
 - `playtest-log.md`
 - `decision-log.md`

@@ -236,14 +236,20 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 | v0.2 | 机制规格无法进入引擎 | Godot playable loop | 可启动、可试玩、有参数和 playtest report |
 | v0.3 | 创意资产无法安全进入项目 | creative asset pipeline、provenance、asset review | 视觉和音频资产各完成一次 engine validation |
 | v0.4 | 2D/轻量玩法无法映射到 3D 动作表现 | Unreal mapping slice | PIE test map 可玩，Data Asset 和表现映射成立 |
-| v0.5 | Demo 不知道是否能对外发布 | publishing readiness | demo release readiness report 完成 |
-| v0.6 | 策划规格不够细，难以下游交接 | game design deepening pack | 系统、战斗、遭遇、调优和试玩假设能交接 |
-| v0.7 | 世界观、角色和任务与玩法脱节 | narrative design pack | 叙事交付物能服务玩法、关卡、美术、音频和本地化 |
-| v0.8 | 不同游戏类型套同一流程导致失真 | genre tracks | 首批 7 类类型分支可复用核心 workflow，Tactics / 战棋类通过 dry run |
-| v0.9 | 数值、成长和试玩数据无法闭环调优 | economy、progression、telemetry | 数据字段和调优报告能回到设计决策 |
-| v0.10 | 程序化内容过早引入会扩大风险 | procedural content pack | 生成内容可复现、可 review、可回退 |
+| v0.5 | v0.5b、研究包和路线计划分散 | roadmap rebase & research consolidation | 研究包、用户反馈、Godot 对接决策和版本重排都有证据 |
+| v0.6 | 策划规格不够细，难以下游交接 | game design & systems pack | 系统、战斗、遭遇、调优和试玩假设能交接 |
+| v0.7 | 用户不知道如何用 Muse 创建自己的游戏项目 | product entry & `mgw init` | 项目初始化入口、用户流程、adapter rules 和安全边界清楚 |
+| v0.8 | 不同游戏类型套同一流程导致失真，Godot 原型缺少可读代理资产 | genre tracks + Godot Prototype Asset Kit plan | 首批 7 类类型分支可复用核心 workflow，Tactics / 战棋类通过 dry run，Godot 代理资产需求明确 |
+| v0.9 | 经济和成长缺少系统闭环 | economy & progression | economy model、progression map、resource/reward table 和 tuning loop 能回到系统设计与调优 |
+| v0.9.1 | 等级、战斗和系统数值停留在讨论层，难以 review | numerical planning | level curve、combat parameter table 和 system numerical plan 在实现前连接到调优 |
+| v0.9.2 | 专业策划工作太宽，不能继续全靠单一通用策划流程 | specialized design skills / 专业策划 skills | 系统、战斗、数值、等级曲线、战斗参数和系统数值 skills 能按制作职能组合 |
+| v0.10 | 试玩数据无法闭环调优 | telemetry & playtest analytics | 数据字段和调优报告能回到设计决策 |
+| v0.11 | 世界观、角色和任务与玩法脱节 | narrative design pack | 叙事交付物能服务玩法、关卡、美术、音频和本地化 |
+| v0.12 | 创意资产流程已验证但未扩展 | creative production expansion | 多类资产能通过 brief、provenance、review 和 engine validation |
+| v0.13 | 程序化内容过早引入会扩大风险 | procedural content pack | 生成内容可复现、可 review、可回退 |
+| v0.14 | Demo 不知道是否能对外发布 | publishing & release readiness | demo release readiness report 完成 |
+| v0.15 | 已发布项目需要持续更新 | LiveOps & post-launch | patch、hotfix、feedback triage 和 update roadmap 可执行 |
 | v1.0 | 只适合本项目，无法复用 | reusable production pack | 新项目能快速完成 intake、spec、playable slice |
-| v1.1+ | 已发布项目需要持续更新 | LiveOps & post-launch | patch、hotfix、feedback triage 和 update roadmap 可执行 |
 
 ### v0.0: Documentation Foundation
 
@@ -360,21 +366,28 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 能验证 Data Asset 参数。
 - 有 Unreal 自动化或半自动检查入口。
 
-### v0.5: Publishing Readiness
+### v0.5: Roadmap Rebase & Research Consolidation
+
+状态：已完成。本版本已把 v0.5b AI art dry run、engine AI adapter research、用户反馈扫描、Godot 对接决策和后续版本重排收口为一个可验证版本。
 
 目标：
 
-- 补齐 P1 发布、本地化、无障碍、store readiness。
-- 建立 demo release checklist。
-- 完成 AI usage disclosure 和 platform checklist。
+- 确认 v0.5b 只验证 AI 美术资产流程，不进入正式资产生产。
+- 建立 Engine AI Development Adapters 研究包和用户反馈证据。
+- 明确 Godot 方向优先对接 Godot AI，GodotIQ 作为项目理解层预留，GodotPrompter 作为内部 skill 设计参考。
+- 将 v0.10 之后的版本继续使用 v0.11、v0.12、v0.13、v0.14、v0.15，v1.0 只保留给可复用制作包。
 
 发布标准：
 
-- 能判断 demo 是否能公开发布。
-- 能列出发布前必须修复的问题。
-- 能输出一份对外 demo 包准备报告。
+- 研究包和用户反馈扫描有中英文文档。
+- v0.5 consolidation evidence 存在。
+- v0.5 检查入口通过。
+- roadmap、delivery plan、overall plan 和 README 对 v0.5-v1.0 的定义一致。
+- 没有安装 MCP、没有生成新资产、没有导入引擎资产。
 
-### v0.6: Game Design Deepening Pack
+### v0.6: Game Design & Systems Pack
+
+状态：已完成。v0.6 已把策划与系统交付链落到总纲、模板、Boss Rush / 动作玩法 dry run、Tactics / 战棋类 dry run、completion evidence 和检查入口。
 
 目标：
 
@@ -387,8 +400,118 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 至少一条动作玩法和一条战棋玩法都能完成 design dry run。
 - 下游不需要猜测玩法意图、参数含义或测试方式。
 - 设计变更能记录到 decision log。
+- `check-v0.6-game-design-systems` 通过。
+- 没有创建新引擎文件、没有安装 MCP、没有生成或导入资产。
 
-### v0.7: Narrative Design Pack
+### v0.7: Product Entry & mgw init
+
+状态：已完成设计落盘。v0.7 定义 `mgw init` 作为创建游戏制作工作台的入口，不实现真实 CLI。
+
+目标：
+
+- 定义 `mgw init` 的命令契约、默认安全行为、profiles 和 `muse.project.yaml`。
+- 定义初始化后的项目结构、tool adapter 和 MCP adapter 规则。
+- 定义用户从获取 Muse、初始化项目、选择 AI 工具到概念、预制作、原型、垂直切片、试玩、资产和发布准备的流程。
+
+发布标准：
+
+- `product-entry-and-mgw-init.zh.md` / `.en.md` 存在。
+- `user-journey.zh.md` / `.en.md` 存在。
+- v0.7 review gate 和 evidence 存在。
+- `check-v0.7-product-entry` 通过。
+- README、docs index、roadmap、testing strategy 和 startup prompt 指向新入口。
+- 不实现真实 CLI、不安装 MCP、不创建新引擎工程、不生成或导入资产。
+
+### v0.8: Genre Tracks
+
+状态：已完成。v0.8 已新增首批类型分支、Tactics / 战棋类 dry run、Godot Prototype Asset Kit / Godot 原型资产包计划、review/evidence 记录和 `check-v0.8-genre-tracks`。
+
+目标：
+
+- 建立类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
+- Tactics / 战棋类优先落规则、格子地图、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
+- 定义 Godot Prototype Asset Kit / Godot 原型资产包计划，覆盖可读 player/enemy/NPC proxies、战术 marker 和 AI-generated 3D asset validation。
+
+发布标准：
+
+- 类型分支复用 review gate、evidence、handoff 和 provenance。
+- 每个类型分支都说明不同的策划重点、测试方式和资产需求。
+- Tactics / 战棋类能完成一轮从规则到任务验证计划的 dry run。
+- Godot 原型资产策略已文档化，但 v0.8 不默认批准真实资产生成或导入，除非另走单独 review。
+- `check-v0.8-genre-tracks` 通过。
+
+### v0.9: Economy & Progression
+
+状态：已完成。v0.9 已新增 Economy & Progression / 经济与成长文档、4 个模板、Tactics / 战棋类 no-code dry-run evidence、review/evidence 记录和 `check-v0.9-economy-progression`。
+
+目标：
+
+- 在可试玩循环和内容矩阵稳定后补经济系统和成长线。
+- 支持资源产出/消耗、奖励、成长、关卡/任务收益和数值调优。
+- 将商业化后台、支付、付费内容设计、真实 telemetry service、引擎文件和资产排除在本版本之外。
+
+发布标准：
+
+- economy model、progression map、resource/reward table 和 tuning loop 可互相引用。
+- 资源产出与消耗能闭环。
+- 成长线能解释玩家目标、节奏和奖励。
+- 调参数值有证据记录。
+- Tactics / 战棋类 dry run 覆盖 action points / 行动点、stamina / 体力、cooldowns / 冷却、mission rewards / 关卡奖励、secondary objective rewards / 次要目标奖励、failure compensation / 失败补偿、unit level / 单位等级和 skill unlocks / 技能解锁。
+- `check-v0.9-economy-progression` 通过。
+- v0.9.1 Numerical Planning / 数值规划是下一补丁；v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析仍然是下一主版本。
+
+### v0.9.1: Numerical Planning
+
+状态：已完成。v0.9.1 已新增 Numerical Planning / 数值规划文档、3 个模板、Tactics / 战棋类 no-code numerical dry-run evidence、review/evidence 记录和 `check-v0.9.1-numerical-planning`。
+
+目标：
+
+- 让等级、战斗和系统数值在实现前可 review。
+- 连接 level curve / 等级曲线、combat parameter table / 战斗参数表、system numerical plan / 系统数值规划、经济、成长、奖励和 tuning loop / 数值调优闭环。
+- 将引擎实现、真实 telemetry、商业化后台、支付、资产生成和 release balance / 发布版本最终平衡批准排除在本版本之外。
+
+发布标准：
+
+- 等级曲线包含体验目标、锚点、解锁、TTK/EHP/DPR 目标和防刷规则。
+- 战斗参数表包含公式、角色基准、行动经济、cooldown / 冷却、stamina / 体力和 threat range / 威胁范围。
+- 系统数值规划能连接奖励、成本、节奏、成长、战斗、经济和失败补偿。
+- Tactics / 战棋类 numerical dry run 验证至少一条等级、战斗和系统数值链路。
+- `check-v0.9.1-numerical-planning` 通过。
+- v0.9.2 Specialized Design Skills / 专业策划 Skill 包是下一补丁；v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析仍然是下一主版本。
+
+### v0.9.2: Specialized Design Skills / 专业策划 Skill 包
+
+状态：已完成。v0.9.2 已新增 6 个专业策划 skills、Agent Skill Composition / Agent 与 Skill 组合设计文档、Role Agent / 角色型 Agent 组合、更新后的 skill 路由和 `check-v0.9.2-design-skills`。
+
+目标：
+
+- 把系统策划、战斗策划、数值规划、等级曲线、战斗参数和系统数值工作拆成专门 skills。
+- 让 Role Agent / 角色型 Agent 组合能被游戏开发者理解，同时保持 skills 工具无关。
+- 将引擎实现、真实 telemetry、商业化后台、支付、资产生成和 release balance / 发布版本最终平衡批准排除在本版本之外。
+
+发布标准：
+
+- 6 个专业策划 skills 已在 `.agents/skills/` 下存在。
+- Agent Skill Composition / Agent 与 Skill 组合设计文档有中英文版本。
+- 现有核心 skills 已路由到新专业 skills。
+- `check-v0.9.2-design-skills` 通过。
+- v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析仍然是下一主版本。
+
+### v0.10: Telemetry & Playtest Analytics
+
+目标：
+
+- 在经济与成长规格稳定后补数据埋点和试玩分析。
+- 支持试玩数据回接到设计假设。
+- 明确隐私、平台、数据最小化和本地 dry-run 边界。
+
+发布标准：
+
+- telemetry event plan、playtest analytics report 和 tuning decision log 可互相引用。
+- 数据采集有隐私和平台边界。
+- 每个关键数据点都能对应设计问题。
+
+### v0.11: Narrative Design Pack
 
 目标：
 
@@ -401,33 +524,21 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 角色和任务能说明玩法作用。
 - 文本、对白和环境叙事有剧透等级、本地化风险和文化/平台风险记录。
 
-### v0.8: Genre Tracks
+### v0.12: Creative Production Expansion
 
 目标：
 
-- 建立类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
-- Tactics / 战棋类优先落规则、格子地图、单位矩阵、技能规格、地形规则、任务目标、战术 AI 和战棋试玩检查。
+- 在策划、类型、系统、经济、数据和叙事规格稳定后扩展美术、动作、场景、音乐、音效和 UI 资产生产。
+- 复用 v0.3 / v0.5b 验证过的 brief、provenance、review 和 engine validation 流程。
+- 研究创意 AI 工具适配，但不接生产 API。
 
 发布标准：
 
-- 类型分支复用 review gate、evidence、handoff 和 provenance。
-- 每个类型分支都说明不同的策划重点、测试方式和资产需求。
-- Tactics / 战棋类能完成一轮从规则到任务验证计划的 dry run。
+- 每类资产都有 brief、provenance、review 和 engine validation 要求。
+- 资产不会绕过人类美术、技术美术、音频或 QA review。
+- creative tool adapter notes 不绑定单一商业工具。
 
-### v0.9: Economy, Progression & Telemetry
-
-目标：
-
-- 在可试玩循环和内容矩阵稳定后补经济系统、成长线和数据埋点。
-- 支持调优报告，把试玩数据回接到设计假设。
-
-发布标准：
-
-- economy model、progression map、telemetry event plan 和 playtest analytics report 可互相引用。
-- 数据采集有隐私和平台边界。
-- 调参数值有证据记录。
-
-### v0.10: Procedural Content Pack
+### v0.13: Procedural Content Pack
 
 目标：
 
@@ -439,6 +550,33 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 生成内容可复现。
 - 生成内容有 rejection rules 和 human review gate。
 - 程序化规则不会破坏难度、奖励、叙事或资产约束。
+
+### v0.14: Publishing & Release Readiness
+
+目标：
+
+- 补齐发布、本地化、无障碍、store readiness。
+- 建立 demo release checklist。
+- 完成 AI usage disclosure 和 platform checklist。
+
+发布标准：
+
+- 能判断 demo 是否能公开发布。
+- 能列出发布前必须修复的问题。
+- 能输出一份对外 demo 包准备报告。
+
+### v0.15: LiveOps & Post-launch
+
+目标：
+
+- 进入上线后运营、补丁、热修、更新路线和玩家反馈 triage。
+- 将 community、marketing、monetization、UGC、security/privacy 作为发布后能力，而不是早期 demo 阻塞项。
+
+进入条件：
+
+- v0.14 release readiness 已具备基础证据。
+- 至少一个 demo 或小版本进入公开试玩/发布。
+- telemetry、release readiness 和 feedback triage 已有基础证据。
 
 ### v1.0: Reusable Production Pack
 
@@ -455,24 +593,12 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - 7 天内能推进到可试玩小切片。
 - AI 辅助资产、代码、测试和发布决策都有证据记录。
 
-### v1.1+: LiveOps & Post-launch
-
-目标：
-
-- 进入上线后运营、补丁、热修、更新路线和玩家反馈 triage。
-- 将 community、marketing、monetization、UGC、security/privacy 作为发布后能力，而不是早期 demo 阻塞项。
-
-进入条件：
-
-- v1.0 已稳定。
-- 至少一个 demo 或小版本进入公开试玩/发布。
-- telemetry、release readiness 和 feedback triage 已有基础证据。
-
 ## 6. 版本命名规则
 
 在 v1.0 之前：
 
 - `v0.x` 表示能力批次。
+- `v0.10` 之后继续使用 `v0.11`、`v0.12`、`v0.13`、`v0.14`、`v0.15`，不直接跳到 `v1.0`。
 - `v0.x.y` 表示文档修正、模板修正、skill bugfix 或示例修复。
 - 不承诺向后兼容，但必须在 changelog 记录破坏性变化。
 

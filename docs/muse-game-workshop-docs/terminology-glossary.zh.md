@@ -148,7 +148,7 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 | Lore Consistency Check | 设定一致性检查 | 世界观一致性检查 | 检查正史状态、冲突、剧透和文化风险。 |
 | Procedural Content | 程序化内容 | 程序生成内容、PCG | 需要稳定规则、可复现 seed 和人工 review。 |
 | Seed Record | 随机种子记录 | seed 记录 | 程序化内容的可复现证据。 |
-| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v1.1+ 使用，包含补丁、热修、更新和反馈 triage。 |
+| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v0.15 使用，包含补丁、热修、更新和反馈 triage。 |
 | Postmortem | 复盘报告 | 项目复盘、阶段复盘 | 阶段经验沉淀。 |
 
 ## 5. AI Workflow 术语

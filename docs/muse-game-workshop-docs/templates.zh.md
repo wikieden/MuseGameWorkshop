@@ -1,6 +1,6 @@
 # 文档模板索引
 
-版本：v0.3
+版本：v0.9.1
 
 语言：中文
 
@@ -8,7 +8,7 @@
 
 本文件定义 Muse Game Workshop 模板体系，并以 `v0.1-manifest.zh.md` 为 v0.1 实际落地唯一真源。模板目标不是写长文档，而是让策划、机制、实现、创意资产、试玩和发布有稳定记录。
 
-本文件中的 v0.1 模板子集固定为 22 个。v0.3 在不改变 v0.1 manifest 边界的前提下，补充 `animation-brief`、`music-brief`、`sfx-brief`、`asset-integration` 和 `ai-asset-disclosure`，用于 Creative Production Ready 的资产管线验证。
+本文件中的 v0.1 模板子集固定为 22 个。v0.3 在不改变 v0.1 manifest 边界的前提下，补充 `animation-brief`、`music-brief`、`sfx-brief`、`asset-integration` 和 `ai-asset-disclosure`，用于 Creative Production Ready 的资产管线验证。v0.6 继续补充 `system-design`、`combat-design`、`encounter-design`、`tuning-plan` 和 `playtest-hypothesis`，用于 Game Design & Systems / 策划与系统设计。v0.9 增加 `economy-model`、`progression-map`、`resource-reward-table` 和 `tuning-loop`，用于 Economy & Progression / 经济与成长。v0.9.1 增加 `level-curve`、`combat-parameter-table` 和 `system-numerical-plan`，用于 Numerical Planning / 数值规划。
 
 所有模板都应遵循：
 
@@ -50,6 +50,18 @@ templates/design/
   balance-report.md
   decision-log.md
   release-checklist.md
+  system-design.md
+  combat-design.md
+  encounter-design.md
+  tuning-plan.md
+  playtest-hypothesis.md
+  economy-model.md
+  progression-map.md
+  resource-reward-table.md
+  tuning-loop.md
+  level-curve.md
+  combat-parameter-table.md
+  system-numerical-plan.md
 
 templates/production/
   handoff-record.md
@@ -917,3 +929,47 @@ Enemy / Weapon / Skill / Level / Reward / Event
 
 ## Definition Of Done
 ```
+
+## 25. v0.6 design systems templates
+
+v0.6 新增 5 个设计模板，用来把 pitch、core loop 和 mechanic spec 扩展成可交接的系统、战斗、遭遇、调优和试玩假设。
+
+| Template | 用途 | 主要下游 |
+|---|---|---|
+| `system-design.md` | 记录系统目标、状态模型、触发条件、参数和交接点。 | Technical Designer / 技术策划、Gameplay Programmer / 玩法程序、QA |
+| `combat-design.md` | 记录玩家动词、敌人动词、时间窗口、风险回报和反馈需求。 | Combat Designer / 战斗策划、动画、美术、音频 |
+| `encounter-design.md` | 记录遭遇目标、空间或任务布局、节奏、读图和试玩问题。 | Level Designer / 关卡策划、QA、场景美术 |
+| `tuning-plan.md` | 记录参数、范围、玩家侧效果、过高/过低风险和测试方法。 | Technical Designer / 技术策划、QA、制作人 |
+| `playtest-hypothesis.md` | 把设计判断改写成可观察假设、测试步骤和下一步决策。 | QA / 测试、Game Designer / 游戏策划、制作人 |
+
+## 26. v0.9 Economy & Progression / 经济与成长模板
+
+v0.9 增加 4 个设计模板，用于在引擎实现、后端工作、telemetry service 或资产生产之前，把经济系统和成长线讨论变成可 review 的制作记录。
+
+| Template | 用途 | 主要使用者 |
+|---|---|---|
+| `economy-model.md` | 记录资源、产出、消耗、存储、转换、稀缺性、压力和平衡性风险。 | Game Designer / 游戏策划、Technical Designer / 技术策划、制作人 |
+| `progression-map.md` | 记录解锁、节奏点、成本、追赶规则、失败推进规则和防刷边界。 | Game Designer / 游戏策划、Technical Designer / 技术策划、Level Designer / 关卡策划 |
+| `resource-reward-table.md` | 记录关卡奖励、成本、失败补偿、次要目标奖励、缩放规则和验证方法。 | Game Designer / 游戏策划、Level Designer / 关卡策划、QA / 测试 |
+| `tuning-loop.md` | 记录假设、当前值、建议改动、测试场景、观察、决策和下一轮验证。 | Technical Designer / 技术策划、QA / 测试、制作人 |
+
+边界：
+
+- 这些模板不批准商业化后台、支付、商业化设计、真实 telemetry service、引擎实现或资产生产。
+
+## 27. v0.9.1 Numerical Planning / 数值规划模板
+
+v0.9.1 增加 3 个设计模板，用于在实现前让等级、战斗和系统数值可 review。
+
+| Template | 用途 | 主要使用者 |
+|---|---|---|
+| `level-curve.md` | 记录体验目标、锚点、等级曲线、解锁、TTK/EHP/DPR 目标、追赶规则和防刷规则。 | Game Designer / 游戏策划、Technical Designer / 技术策划、制作人 |
+| `combat-parameter-table.md` | 记录公式、角色基准、行动经济、冷却、体力、范围、威胁、反馈和调优假设。 | Combat Designer / 战斗策划、Technical Designer / 技术策划、Gameplay Programmer / 玩法程序、QA / 测试 |
+| `system-numerical-plan.md` | 记录跨系统参数、奖励/成本/节奏连接、依赖检查和 dry-run notes。 | Technical Designer / 技术策划、Game Designer / 游戏策划、制作人、QA / 测试 |
+
+边界：
+
+- 这些模板不批准引擎实现、真实 telemetry、商业化后台、支付、资产生成或 release balance / 发布版本最终平衡。
+- 下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+这些模板不绑定 Godot 或 Unreal，也不代表可以跳过 review gate 直接改实现。

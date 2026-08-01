@@ -79,14 +79,16 @@ P0 当前必须覆盖：
 P1 进入下一批完整 workflow：
 
 - Game Design Deepening。
-- Narrative / Worldbuilding / Quest。
+- Product Entry & `mgw init`。
 - Genre Tracks，首批包含 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
-- Economy / Progression / Telemetry，进入 v0.9 中期设计。
+- Narrative / Worldbuilding / Quest。
+- Economy / Progression / 经济与成长，已在 v0.9 完成中期设计包。
+- Telemetry / Playtest Analytics，进入 v0.10 中期设计。
 - Platform & Store Readiness。
 - Localization。
 - Accessibility。
 
-P2 放入 v1.1+ 或更晚未来规划，不进入首批实现：
+P2 放入 v1.0 之后或更晚未来规划，不进入首批实现：
 
 - Community & Marketing。
 - Monetization。

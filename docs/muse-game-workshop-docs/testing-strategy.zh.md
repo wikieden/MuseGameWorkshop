@@ -81,6 +81,7 @@ flowchart TD
 - 文档阅读顺序包含 Vision。
 - 文档阅读顺序包含 bilingual audience strategy。
 - 文档阅读顺序包含 terminology glossary。
+- 当涉及 Godot 原型资产时，文档阅读顺序包含 Godot Prototype Asset Kit / Godot 原型资产包。
 - 文档阅读顺序包含 v0.1 execution plan。
 - 文档阅读顺序包含 P0 skill skeleton plan。
 - 文档阅读顺序包含 v0.1 manifest。
@@ -117,6 +118,9 @@ tools/checks/check-doc-pairs
 tools/checks/check-startup-prompts
 tools/checks/check-template-metadata
 tools/checks/check-v0.1-manifest
+tools/checks/check-v0.9-economy-progression
+tools/checks/check-v0.9.1-numerical-planning
+tools/checks/check-v0.9.2-design-skills
 ```
 
 统一输出格式：
@@ -131,14 +135,21 @@ FAIL <check-name>: <reason>
 | Check | 通过条件 | 失败条件 |
 |---|---|---|
 | `check-doc-links` | 所有本地 Markdown 链接存在。 | 任意本地链接目标不存在。 |
-| `check-doc-pairs` | 根 README 存在；核心文档集合成对存在：overall project plan、Vision、PRD、technical architecture、Godot/Unreal workflow、skill pack spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、v0.1 manifest、testing strategy、MVP roadmap。 | README 缺失，或任一核心文档缺少对应语言版本。 |
+| `check-doc-pairs` | 根 README 存在；核心文档集合成对存在：overall project plan、Vision、PRD、Product Entry & `mgw init`、User Journey、technical architecture、Godot/Unreal workflow、Godot Prototype Asset Kit、Genre Tracks、Economy & Progression、Numerical Planning、Agent Skill Composition、skill pack spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、game design systems、delivery plan、v0.1 execution plan、v0.1 manifest、testing strategy、MVP roadmap。 | README 缺失，或任一核心文档缺少对应语言版本。 |
 | `check-startup-prompts` | README、文档包索引、roadmap 和 testing strategy 的启动 prompt 包含目标语言、目标用户群体、bilingual audience strategy、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 review gate；CLAUDE.md 不得与 AGENTS.md 或 manifest 冲突。 | prompt 缺少任一必读项、未声明目标语言，或工具规则冲突。 |
-| `check-template-metadata` | 当前模板集合都包含共享 metadata block，包括 v0.1 模板和 v0.3 creative templates。 | 任一模板缺少 Language、Target Audience、Locale、Terminology Source、Owner 或 Review Status。 |
+| `check-template-metadata` | 当前模板集合都包含共享 metadata block，包括 v0.1 模板、v0.3 creative templates、v0.6 design systems templates、v0.9 economy/progression templates 和 v0.9.1 numerical planning templates。 | 任一模板缺少 Language、Target Audience、Locale、Terminology Source、Owner 或 Review Status。 |
 | `check-v0.1-manifest` | manifest 中列出的 skills/templates/checks/dry-run evidence 都存在，且没有 Godot/Unreal 示例代码提前进入 v0.1；禁止模式包括 `*.gd`、`*.tscn`、`*.tres`、`*.uasset`、`*.umap`、`*.uproject`、`*.cpp`、`*.h`、`*.cs`、`*.shader`、`*.import`。 | manifest 清单缺项，或 v0.1 范围出现提前实现的游戏代码。 |
 | `check-v0.2-godot` | Godot Boss Rush prototype 路径、脚本契约、输入映射、核心循环仿真和 Godot headless validation 通过。 | 项目文件缺失、脚本契约缺失、核心循环失败，或 Godot 报告错误。 |
 | `check-v0.3-creative-assets` | v0.3 creative templates、资产 brief/provenance/review/evidence、prototype visual/audio assets、Godot 场景引用和 engine validation 通过。 | 资产缺少 brief/provenance/review、文件格式无效、场景未接入，或 Godot 报告错误。 |
 | `check-v0.4-unreal` | v0.4 Unreal static scaffold、C++ mapping contracts、review gate、blocked playtest evidence 通过；如果 Unreal Editor 可用，则尝试 editor smoke。 | scaffold 缺失、Data Asset/Component/HUD 契约缺失、review gate 未 Approved，或 Unreal editor smoke 失败。 |
 | `check-v0.5-ai-art-dry-run` | v0.5b AI art dry-run 的 art direction、asset list、asset briefs、provenance plan、review criteria 和 Approved review gate 通过；没有生成或导入新资产。 | brief/provenance/review 缺失，review gate 未 Approved，或 dry run 暗示新资产已进入 reviewed / release-candidate 状态。 |
+| `check-v0.5-consolidation` | v0.5 consolidation evidence、review gate、Engine AI Development Adapters、7 份独立研究报告、用户反馈扫描、Godot 对接决策和 v0.5-v0.15 版本重排通过。 | v0.5 证据缺失，研究报告未成对，Godot 对接决策缺失，或 roadmap/delivery/overall plan 仍跳到 v1.1。 |
+| `check-v0.6-game-design-systems` | v0.6 Game Design & Systems 总纲、review gate、evidence、5 个设计模板、Boss Rush / Tactics dry run、v0.7 下一步和禁止范围检查通过。 | v0.6 证据缺失，模板缺少 metadata，dry run 没覆盖系统/战斗/遭遇/调优/试玩假设，或 v0.6 创建了引擎文件/资产。 |
+| `check-v0.7-product-entry` | v0.7 Product Entry & `mgw init`、User Journey、review gate、evidence、README、docs index、roadmap 和禁止范围检查通过。 | v0.7 文档缺失，`mgw init` 被描述成一键生成器，默认安装 MCP，或版本计划未把 Genre Tracks 顺延到 v0.8。 |
+| `check-v0.8-genre-tracks` | v0.8 Genre Tracks / 类型流程分支总纲、7 个类型分支文档、Tactics / 战棋类 dry run、Godot Prototype Asset Kit needs、review gate、evidence、README/docs index/roadmap 更新和禁止范围检查通过。 | 类型分支缺失，Tactics 缺少规则/地图/单位/技能/资产包需求，v0.8 evidence 缺失，或 v0.8 创建了真实资产、引擎文件、MCP 接入或游戏代码。 |
+| `check-v0.9-economy-progression` | v0.9 Economy & Progression / 经济与成长文档、economy model/progression map/resource-reward/tuning-loop templates、Tactics / 战棋类 economy dry run、review gate、evidence、README/docs index/roadmap 更新、v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析下一版本交接和禁止范围检查通过。 | v0.9 文档/模板/evidence 缺失，Tactics 缺少 action points/stamina/cooldowns/rewards/failure compensation/unit growth，v0.10 未被标识为下一版本，或 v0.9 创建了商业化后台、支付、真实 telemetry service、引擎文件或资产。 |
+| `check-v0.9.1-numerical-planning` | v0.9.1 Numerical Planning / 数值规划文档、level curve/combat parameter table/system numerical plan templates、Tactics / 战棋类 numerical dry run、review gate、evidence、README/docs index/roadmap 更新、v0.10 下一主版本交接和禁止范围检查通过。 | v0.9.1 文档/模板/evidence 缺失，Tactics 缺少等级/战斗/系统数值验证，v0.10 未被标识为下一主版本，或 v0.9.1 创建了引擎代码、真实 telemetry、商业化后台、支付、资产或批准发布版本最终平衡。 |
+| `check-v0.9.2-design-skills` | v0.9.2 Specialized Design Skills / 专业策划 Skill 包存在，Agent Skill Composition / Agent 与 Skill 组合设计文档成对，Role Agent / 角色型 Agent 组合和 skill 路由已文档化，现有核心 skills 能路由到新专业 skills，README/docs index/roadmap 更新，v0.10 下一主版本交接和禁止范围检查通过。 | 任一专业 skill 缺失或结构错误，Agent Skill Composition 缺失，Role Agent 组合缺少制作职能，核心 skills 未路由到专业 skills，v0.10 未被标识为下一主版本，或 v0.9.2 创建了引擎代码、真实 telemetry、商业化后台、支付、资产或批准发布版本最终平衡。 |
 
 验收标准：
 
@@ -197,6 +208,11 @@ FAIL <check-name>: <reason>
 - `pitch.md`
 - `core-loop.md`
 - `mechanic-spec.md`
+- `system-design.md`
+- `combat-design.md`
+- `encounter-design.md`
+- `tuning-plan.md`
+- `playtest-hypothesis.md`
 - `engine-mapping.md`
 - `playtest-log.md`
 - `decision-log.md`

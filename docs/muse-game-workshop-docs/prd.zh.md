@@ -108,9 +108,9 @@ v0.6 目标：
 
 v0.7 目标：
 
-- 完成 Narrative Design Pack / 叙事设计包。
-- 支持世界观、剧情动线、角色人物设计、任务设计、对白设计、环境叙事和设定一致性检查。
-- 明确 AI 参与叙事设计时的 canon status、prompt record、reference boundary、spoiler level 和文化/平台风险。
+- 完成 Product Entry & `mgw init` / 产品入口与项目初始化设计。
+- 明确 `mgw init` 是 project workspace / 项目工作台初始化入口，不是一键生成游戏。
+- 定义 user journey、project workspace、`muse.project.yaml`、profiles、tool adapter 和 MCP adapter 安全边界。
 
 v0.8 目标：
 
@@ -120,27 +120,51 @@ v0.8 目标：
 
 v0.9 目标：
 
-- 完成 Economy, Progression & Telemetry Pack / 经济、成长与数据包。
-- 支持资源产出/消耗、奖励结构、成长线、关卡/任务奖励、试玩数据埋点和调优报告。
-- 只做可验证的设计与分析闭环，不做商业化后台或真实用户数据平台。
+- 完成 Economy & Progression Pack / 经济与成长包。
+- 支持资源产出/消耗、奖励结构、成长线、关卡/任务收益和数值调优。
+- 只做可验证的设计与分析闭环，不做商业化后台或真实支付系统。
 
 v0.10 目标：
+
+- 完成 Telemetry & Playtest Analytics Pack / 数据埋点与试玩分析包。
+- 支持试玩数据回接到设计假设。
+- 明确隐私、平台、数据最小化和本地 dry-run 边界。
+
+v0.11 目标：
+
+- 完成 Narrative Design Pack / 叙事设计包。
+- 支持世界观、剧情动线、角色人物设计、任务设计、对白设计、环境叙事和设定一致性检查。
+- 明确 AI 参与叙事设计时的 canon status、prompt record、reference boundary、spoiler level 和文化/平台风险。
+
+v0.12 目标：
+
+- 完成 Creative Production Expansion / 创意资产生产扩展。
+- 在策划、类型、系统、经济、数据和叙事规格稳定后扩展美术、动作、场景、音乐、音效和 UI 资产生产。
+- 研究 creative tool adapters，但不接生产 API。
+
+v0.13 目标：
 
 - 完成 Procedural Content Pack / 程序化内容设计包。
 - 支持基于稳定规则的地图、遭遇、掉落、任务变体和内容质量检查。
 - 程序化内容必须有 seed/evidence record、人工 review gate 和可回退方案。
+
+v0.14 目标：
+
+- 完成 Publishing & Release Readiness / 发布准备包。
+- 支持 release checklist、store/trailer brief、本地化、无障碍、平台披露和 demo readiness。
+- 只判断 demo readiness，不做自动发布或账号系统。
+
+v0.15 目标：
+
+- 进入 LiveOps / 上线后运营与迭代能力。
+- 支持 patch plan、hotfix flow、玩家反馈 triage、更新路线、社区反馈和运营风险记录。
+- 不拖慢 v1.0 之前的 workflow pack 稳定。
 
 v1.0 目标：
 
 - 形成可安装、可复用、可扩展的 AI tool-agnostic game workflow pack。
 - 支持 Godot 与 Unreal 的项目阶段检测、任务拆分、QA、发布检查。
 - 可接入 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools，常见创意生成/编辑 AI tools，以及 Godot/Unreal MCP 或官方编辑器自动化能力。
-
-v1.1+ 目标：
-
-- 进入 LiveOps / 上线后运营与迭代能力。
-- 支持 patch plan、hotfix flow、玩家反馈 triage、更新路线、社区反馈和运营风险记录。
-- 不在首个可试玩 demo 或 v1.0 前置范围中实现。
 
 ## 5. 非目标
 
@@ -219,18 +243,20 @@ P0 必须纳入当前设计：
 P1 纳入 v0.6-v0.8 设计：
 
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
-- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
+- Product Entry & `mgw init`：项目初始化入口、用户流程、project workspace、tool adapter 和 MCP adapter 安全边界。
 - Genre Tracks：类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
+- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。
 
-v0.9-v0.10 中期能力：
+v0.9-v0.13 中期能力：
 
-- Economy / Progression / Telemetry：经济系统、成长线、奖励结构、试玩数据、调优报告和隐私边界。
+- Economy / Progression：经济系统、成长线、奖励结构和调优表。
+- Telemetry / Playtest Analytics：试玩数据、调优报告、事件字段和隐私边界。
 - Procedural Content：规则稳定后的程序化地图、遭遇、掉落和任务变体。
 
-P2 放入 v1.1+ 或更晚未来规划：
+P2 放入 v1.0 之后或更晚未来规划：
 
 - Community & Marketing：devlog、社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
@@ -239,6 +265,31 @@ P2 放入 v1.1+ 或更晚未来规划：
 - Security / Privacy：在线功能、第三方 SDK、数据采集和安全风险。
 
 ## 8. 核心用户旅程
+
+### 8.0 通过 mgw init 初始化游戏工作台
+
+输入：
+
+- 项目名称。
+- 目标语言、目标用户群体和 locale。
+- AI coding tool 选择，例如 Codex、Claude Code、Kiro CLI 或 opencode。
+- 引擎倾向，例如 Godot、Unreal 或暂不选择。
+- 类型倾向，例如 Tactics / 战棋类。
+
+AI 工具辅助工作：
+
+- 读取 Product Entry & `mgw init`。
+- 生成项目工作台计划。
+- 明确 `muse.project.yaml`、rules、templates、checks 和 evidence 目录。
+- 如果启用 MCP，先输出 editor action、回滚方案和 validation plan。
+
+输出：
+
+- project workspace。
+- `muse.project.yaml`。
+- AI tool adapter 规则。
+- review gate。
+- 下一步 workflow。
 
 ### 8.1 从模糊想法到可验证方向
 
@@ -468,15 +519,17 @@ P0/P1 必须支持：
 - 文本 key、字体、UI 溢出、翻译工作流和文化风险。
 - 字幕、对比度、按键重映射、震动开关、难度辅助和文字大小。
 
-### 9.8 策划、叙事、类型分支与中期系统
+### 9.8 产品入口、策划、类型分支与中期系统
 
-v0.6-v0.10 必须按依赖顺序推进：
+v0.6-v0.13 必须按依赖顺序推进：
 
 - v0.6 Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优、试玩假设。
-- v0.7 Narrative Design：世界观、剧情动线、角色人物、任务、对白、环境叙事、设定一致性。
+- v0.7 Product Entry & `mgw init`：项目初始化入口、用户流程、project workspace、tool adapter 和 MCP adapter 边界。
 - v0.8 Genre Tracks：首批类型分支覆盖 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics 是重点验证分支。
-- v0.9 Economy / Progression / Telemetry：经济系统、成长线、奖励结构和试玩数据分析。
-- v0.10 Procedural Content：规则稳定后再做可控随机、内容变体和质量检查。
+- v0.9 Economy / Progression：经济系统、成长线、奖励结构和调优表。
+- v0.10 Telemetry / Playtest Analytics：试玩数据、调优报告、事件字段和隐私边界。
+- v0.11 Narrative Design：世界观、剧情动线、角色人物、任务、对白、环境叙事、设定一致性。
+- v0.13 Procedural Content：规则稳定后再做可控随机、内容变体和质量检查。
 
 ### 9.9 Future Planning
 
@@ -484,7 +537,7 @@ P2 暂不进入首批实现，但需要在 roadmap 保留：
 
 - Community & Marketing。
 - Monetization。
-- LiveOps / Post-launch，进入 v1.1+。
+- LiveOps / Post-launch，进入 v0.15。
 - Modding / UGC。
 - Security / Privacy。
 

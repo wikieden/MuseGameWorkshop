@@ -148,7 +148,7 @@ Examples:
 | Lore Consistency Check | 设定一致性检查 | 世界观一致性检查 | Checks canon status, contradictions, spoilers, cultural risk. |
 | Procedural Content | 程序化内容 | 程序生成内容、PCG | Needs stable rules, reproducible seeds, and human review. |
 | Seed Record | 随机种子记录 | seed 记录 | Reproducibility evidence for procedural content. |
-| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v1.1+ artifact for patches, hotfixes, updates, and feedback triage. |
+| LiveOps Plan | 运营迭代计划 | 上线后运营计划 | v0.15 artifact for patches, hotfixes, updates, and feedback triage. |
 | Postmortem | 复盘报告 | 项目复盘、阶段复盘 | Stage learning artifact. |
 
 ## 5. AI Workflow Terms

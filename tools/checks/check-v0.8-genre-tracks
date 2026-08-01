@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.8-genre-tracks"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/muse-game-workshop-docs/genre-tracks.en.md",
+    "docs/muse-game-workshop-docs/genre-tracks.zh.md",
+    "docs/evidence/v0.8/v0.8-genre-tracks-review-gate.en.md",
+    "docs/evidence/v0.8/v0.8-genre-tracks-review-gate.zh.md",
+    "docs/evidence/v0.8/v0.8-genre-tracks-evidence.en.md",
+    "docs/evidence/v0.8/v0.8-genre-tracks-evidence.zh.md",
+    "docs/evidence/v0.8/tactics-genre-track-dry-run.en.md",
+    "docs/evidence/v0.8/tactics-genre-track-dry-run.zh.md",
+]
+
+genres = [
+    ("action", "Action", "动作"),
+    ("roguelike", "Roguelike", "肉鸽"),
+    ("rpg", "RPG", "角色"),
+    ("puzzle", "Puzzle", "解谜"),
+    ("visual-novel", "Visual Novel", "视觉小说"),
+    ("tactics", "Tactics", "战棋"),
+    ("adventure-avg", "Adventure / AVG", "AVG"),
+]
+
+for slug, _, _ in genres:
+    required.append(f"docs/muse-game-workshop-docs/genre-tracks/{slug}.en.md")
+    required.append(f"docs/muse-game-workshop-docs/genre-tracks/{slug}.zh.md")
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+overview_en = (ROOT / "docs/muse-game-workshop-docs/genre-tracks.en.md").read_text(encoding="utf-8")
+overview_zh = (ROOT / "docs/muse-game-workshop-docs/genre-tracks.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "Genre Tracks",
+    "mgw-init",
+    "prototype-design",
+    "Godot Prototype Asset Kit",
+    "Action",
+    "Roguelike",
+    "RPG",
+    "Puzzle",
+    "Visual Novel",
+    "Tactics",
+    "Adventure / AVG",
+    "No real",
+]:
+    if term not in overview_en:
+        fail(f"English overview missing {term}")
+
+for term in [
+    "Genre Tracks / 类型流程分支",
+    "mgw-init",
+    "prototype-design",
+    "Godot Prototype Asset Kit",
+    "Action / 动作",
+    "Roguelike / 肉鸽",
+    "RPG",
+    "Puzzle / 解谜",
+    "Visual Novel / 视觉小说",
+    "Tactics / 战棋类",
+    "Adventure / AVG",
+    "裸球体",
+]:
+    if term not in overview_zh:
+        fail(f"Chinese overview missing {term}")
+
+required_sections = [
+    "Player Promise",
+    "Core Loop Emphasis",
+    "Required Deliverables",
+    "Prototype Validation",
+    "Asset And UX Needs",
+    "QA And Playtest Checks",
+    "Explicit Exclusions",
+]
+
+for slug, en_name, zh_name in genres:
+    en_text = (ROOT / f"docs/muse-game-workshop-docs/genre-tracks/{slug}.en.md").read_text(encoding="utf-8")
+    zh_text = (ROOT / f"docs/muse-game-workshop-docs/genre-tracks/{slug}.zh.md").read_text(encoding="utf-8")
+    if en_name not in en_text:
+        fail(f"{slug}.en.md missing {en_name}")
+    if zh_name not in zh_text:
+        fail(f"{slug}.zh.md missing {zh_name}")
+    for section in required_sections:
+        if section not in en_text:
+            fail(f"{slug}.en.md missing section {section}")
+    for section in ["Player Promise", "Core Loop Emphasis", "Prototype Validation", "Asset And UX Needs", "QA And Playtest Checks", "Explicit Exclusions"]:
+        if section not in zh_text:
+            fail(f"{slug}.zh.md missing section {section}")
+
+tactics_en = (ROOT / "docs/muse-game-workshop-docs/genre-tracks/tactics.en.md").read_text(encoding="utf-8")
+tactics_zh = (ROOT / "docs/muse-game-workshop-docs/genre-tracks/tactics.zh.md").read_text(encoding="utf-8")
+dry_en = (ROOT / "docs/evidence/v0.8/tactics-genre-track-dry-run.en.md").read_text(encoding="utf-8")
+dry_zh = (ROOT / "docs/evidence/v0.8/tactics-genre-track-dry-run.zh.md").read_text(encoding="utf-8")
+
+for text, label in [(tactics_en, "English Tactics track"), (dry_en, "English Tactics dry run")]:
+    for term in [
+        "Tactics ruleset",
+        "Grid",
+        "Unit",
+        "Ability",
+        "Tactical AI",
+        "Godot Prototype Asset Kit",
+        "Player proxy",
+        "Enemy proxy",
+        "Move range marker",
+        "Attack range marker",
+        "Facing arrow",
+        "Readable Prototype Asset",
+    ]:
+        if term not in text:
+            fail(f"{label} missing {term}")
+
+for text, label in [(tactics_zh, "Chinese Tactics track"), (dry_zh, "Chinese Tactics dry run")]:
+    for term in [
+        "Tactics",
+        "战棋",
+        "Grid",
+        "Unit",
+        "Ability",
+        "战术 AI",
+        "Godot Prototype Asset Kit",
+        "Player proxy",
+        "Enemy proxy",
+        "Move range marker",
+        "Attack range marker",
+        "Facing arrow",
+        "Readable Prototype Asset",
+    ]:
+        if term not in text:
+            fail(f"{label} missing {term}")
+
+for rel in [
+    "docs/evidence/v0.8/v0.8-genre-tracks-review-gate.en.md",
+    "docs/evidence/v0.8/v0.8-genre-tracks-review-gate.zh.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["Review Status: Approved", "v0.8", "Genre Tracks", "Godot Prototype Asset Kit"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+    for boundary in [".glb", ".gltf", "MCP", "Godot", "Unreal", "release-candidate"]:
+        if boundary not in text:
+            fail(f"{rel} missing boundary {boundary}")
+
+evidence_terms = {
+    "docs/evidence/v0.8/v0.8-genre-tracks-evidence.en.md": [
+        "Review Status: Approved",
+        "No real assets",
+        ".glb",
+        ".gltf",
+        "check-v0.8-genre-tracks",
+    ],
+    "docs/evidence/v0.8/v0.8-genre-tracks-evidence.zh.md": [
+        "Review Status: Approved",
+        "没有生成或导入真实资产",
+        ".glb",
+        ".gltf",
+        "check-v0.8-genre-tracks",
+    ],
+}
+
+for rel, terms in evidence_terms.items():
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing evidence term {term}")
+
+for rel in [
+    "README.md",
+    "README.en.md",
+    "README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["v0.8", "Genre Tracks", "Godot Prototype Asset Kit"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+for rel in required:
+    path = ROOT / rel
+    if path.suffix != ".md":
+        fail(f"unexpected non-markdown v0.8 file {rel}")
+
+print(f"PASS {CHECK}")

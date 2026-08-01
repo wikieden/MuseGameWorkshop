@@ -31,6 +31,9 @@ Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制�
 | Producer / 制作人 | 阶段、范围、优先级、review gate | `game-intake`、`vertical-slice-planner`、`postmortem` |
 | Game Designer / 游戏策划 | 玩家体验、核心循环、机制和内容 | `core-loop`、`mechanic-spec`、`content-matrix` |
 | Technical Designer / 技术策划 | 状态机、参数、数据结构和可测试规格 | `mechanic-spec`、`implementation-bridge`、`engine-portability` |
+| System Designer / 系统策划 | 系统、状态、触发器、依赖和数据归属 | `system-design`、`system-numerics`、`engine-portability` |
+| Combat Designer / 战斗策划 | 战斗动词、可读性、时间窗口、敌人、反馈和调参抓手 | `combat-design`、`combat-parameters`、`mechanic-spec` |
+| Numerical Designer / 数值策划 | 等级曲线、战斗参数、经济压力、公式和调优假设 | `numerical-planning`、`level-curve`、`combat-parameters`、`system-numerics` |
 | Gameplay Programmer / 玩法程序 | 通过 review 后的实现计划和验证 | `godot-workflow`、`unreal-workflow`、`implementation-bridge` |
 | Engine Specialist / 引擎专项 | Godot/Unreal 结构、资源、构建和编辑器约束 | `godot-workflow`、`unreal-workflow`、`engine-portability` |
 | Art Director / 美术指导 | 视觉方向、风格一致性、资产审查 | `art-direction`、`asset-review` |
@@ -51,6 +54,18 @@ Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制�
   core-loop/
     SKILL.md
   mechanic-spec/
+    SKILL.md
+  system-design/
+    SKILL.md
+  combat-design/
+    SKILL.md
+  numerical-planning/
+    SKILL.md
+  level-curve/
+    SKILL.md
+  combat-parameters/
+    SKILL.md
+  system-numerics/
     SKILL.md
   content-matrix/
     SKILL.md
@@ -856,7 +871,24 @@ Workflow：
 - 震动开关。
 - 难度辅助。
 
-### 4.27 Future Planning Skills
+### 4.27 v0.9.2 Specialized Design Skills / 专业策划 Skill 包
+
+v0.9.2 落地 6 个 design-first / 设计优先的专业策划 skills。它们只用于提升策划、路由和可 review 交付物，不批准引擎实现、真实 telemetry service / 数据埋点服务、商业化后台、支付、新资产或 release balance / 发布版本最终平衡。
+
+6 个 skills：
+
+- `system-design`：系统状态、触发器、数据归属、依赖、参数和验证检查。
+- `combat-design`：战斗动词、timing windows / 时间窗口、可读性、敌我响应、反馈和 risk/reward / 风险回报。
+- `numerical-planning`：数值意图、anchor points / 锚点、公式、调优假设和专项 skill 路由。
+- `level-curve`：等级曲线、解锁节奏、XP/资源需求、追赶机制和反刷规则。
+- `combat-parameters`：HP、EHP、DPR、TTK、AP、stamina、cooldown、range、accuracy、threat 和难度基准。
+- `system-numerics`：跨系统奖励、成本、来源/消耗、重试成本、失败补偿、经济压力和依赖检查。
+
+见 Agent Skill Composition / Agent 与 Skill 组合设计（`agent-skill-composition.zh.md`），了解如何把这些 skills 组合到游戏行业熟悉的 Role Agent / 角色型 Agent 中。
+
+下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+### 4.28 Future Planning Skills
 
 未来规划暂不进入首批实现，但应保留 skill 方向：
 
@@ -890,6 +922,15 @@ flowchart TD
   O --> F
   B --> P["ux-flow"]
   B --> Q["level-blockout"]
+  C --> R["system-design"]
+  C --> S["combat-design"]
+  R --> T["numerical-planning"]
+  S --> U["combat-parameters"]
+  T --> V["level-curve"]
+  T --> W["system-numerics"]
+  U --> H
+  V --> H
+  W --> H
 ```
 
 ## 6. 版本化实现顺序
@@ -910,6 +951,18 @@ v0.1 首批只落 `v0.1-manifest.zh.md` 中的 14 个 P0 workflow skills：
 - `asset-review`
 - `ux-flow`
 - `level-blockout`
+
+v0.9.2 落地第一批专业策划 skills 和组合规则：
+
+- `system-design`
+- `combat-design`
+- `numerical-planning`
+- `level-curve`
+- `combat-parameters`
+- `system-numerics`
+- `agent-skill-composition.zh.md` / `agent-skill-composition.en.md`
+
+v0.9.2 之后，下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 v0.2 Godot playable prototype 之后再补工程执行增强：
 

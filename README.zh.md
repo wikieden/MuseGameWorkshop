@@ -37,8 +37,15 @@ tools/checks/check-startup-prompts
 | 目标 | 入口 |
 |---|---|
 | 先理解项目 | [vision.zh.md](docs/muse-game-workshop-docs/vision.zh.md)、[prd.zh.md](docs/muse-game-workshop-docs/prd.zh.md) |
+| 理解 `mgw-init` / `mgw init` 产品入口 | [product-entry-and-mgw-init.zh.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md) |
+| 从 0 到 1 创建新游戏 | [zero-to-one-game-creation.zh.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md)：建目录，输入 `mgw-init`，再在 AI coding tool 里继续 |
+| 按用户流程创作游戏 | [user-journey.zh.md](docs/muse-game-workshop-docs/user-journey.zh.md) |
 | 让 AI 工具接手 | 先读 `AGENTS.md`，再用本文的“推荐启动 Prompt” |
 | 从新游戏点子开始 | `templates/design/pitch.md`、`core-loop.md`、`mechanic-spec.md` |
+| 深化策划和系统设计 | [game-design-systems.zh.md](docs/muse-game-workshop-docs/game-design-systems.zh.md)、`templates/design/system-design.md` |
+| 设计经济与成长 | [economy-progression.zh.md](docs/muse-game-workshop-docs/economy-progression.zh.md)、`templates/design/economy-model.md` |
+| 规划等级、战斗和系统数值 | [numerical-planning.zh.md](docs/muse-game-workshop-docs/numerical-planning.zh.md)、`templates/design/level-curve.md` |
+| 组合专业策划 skills | [agent-skill-composition.zh.md](docs/muse-game-workshop-docs/agent-skill-composition.zh.md)、`system-design`、`combat-design`、`numerical-planning` |
 | 做垂直切片计划 | `templates/design/vertical-slice.md`、`templates/design/engine-mapping.md` |
 | 跑 Godot 示例 | `examples/godot-boss-rush/project.godot` |
 | 看 Unreal 映射状态 | `examples/unreal-boss-rush/README.md` |
@@ -60,12 +67,41 @@ Muse Game Workshop 不是 Codex-only。Codex、Claude Code、Kiro CLI、opencode
 ### 推荐启动 Prompt
 
 ```text
-我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.4 Unreal Mapping Slice review gate 已 Approved，静态骨架已落地；v0.5b AI art dry-run evidence 已落地但不代表资产已生成或导入；UE Editor 未安装时不要创建 .uasset 或 .umap。不要导入 final 或 release-candidate 资产。
+我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、Product Entry & mgw init、Zero-to-One Game Creation / 从 0 到 1 创建游戏、User Journey、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、game design systems、Godot Prototype Asset Kit / Godot 原型资产包、Genre Tracks / 类型流程分支、Economy & Progression / 经济与成长、Numerical Planning / 数值规划、Agent Skill Composition / Agent 与 Skill 组合设计、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。`mgw-init` 是问答式初始化入口，`continue mgw-init` 用于在 AI coding tool 中继续初始化会话。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已完成，v0.4 Unreal Mapping Slice 静态骨架仍等待 Unreal Editor 做 PIE/editor validation；v0.9.2 不代表已实现真实 mgw CLI、安装 MCP、创建新引擎工程、商业化后台、支付、真实 telemetry service、生成新资产、导入 final/release-candidate 资产或批准 release balance / 发布版本最终平衡。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 ```
 
 ## 2. 从一个新游戏想法开始
 
-不要一上来就让 AI 写游戏代码。先把游戏的制作记忆落盘：
+不要一上来就让 AI 写游戏代码。完整第一天流程见 [zero-to-one-game-creation.zh.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md)。先用轻量向导入口开始：
+
+```sh
+mkdir my-game
+cd my-game
+mgw-init
+```
+
+然后用 Codex、Claude Code、Kiro CLI、opencode 或其他 AI coding tool 打开目录，并输入：
+
+```text
+continue mgw-init
+```
+
+如果 CLI 还不可用，也可以直接在空目录里打开 AI coding tool 并输入：
+
+```text
+mgw-init
+```
+
+第一步只应该生成最小内容：
+
+```text
+README.md
+muse.project.yaml
+docs/00-game-start.md
+docs/evidence/README.md
+```
+
+用户确认后，再展开制作记忆：
 
 1. 用 `templates/design/pitch.md` 写一句话卖点、受众、平台、风险。
 2. 用 `templates/design/core-loop.md` 写核心循环、玩家动机、失败和奖励。
@@ -90,6 +126,18 @@ docs/evidence/<project-or-version>/
 | 游戏点子 | `templates/design/pitch.md` |
 | 核心循环 | `templates/design/core-loop.md` |
 | 机制规格 | `templates/design/mechanic-spec.md` |
+| 系统策划 | `templates/design/system-design.md` |
+| 战斗策划 | `templates/design/combat-design.md` |
+| 遭遇设计 | `templates/design/encounter-design.md` |
+| 调优计划 | `templates/design/tuning-plan.md` |
+| 经济模型 | `templates/design/economy-model.md` |
+| 成长线地图 | `templates/design/progression-map.md` |
+| 资源与奖励表 | `templates/design/resource-reward-table.md` |
+| 数值调优闭环 | `templates/design/tuning-loop.md` |
+| 等级曲线 | `templates/design/level-curve.md` |
+| 战斗参数表 | `templates/design/combat-parameter-table.md` |
+| 系统数值规划 | `templates/design/system-numerical-plan.md` |
+| 试玩假设 | `templates/design/playtest-hypothesis.md` |
 | 垂直切片 | `templates/design/vertical-slice.md` |
 | 引擎映射 | `templates/design/engine-mapping.md` |
 | 试玩记录 | `templates/design/playtest-log.md` |
@@ -182,6 +230,7 @@ tools/checks/check-startup-prompts
 ```sh
 tools/checks/check-template-metadata
 tools/checks/check-v0.1-manifest
+tools/checks/check-v0.9.2-design-skills
 ```
 
 示例或资产改动建议跑全量：
@@ -196,6 +245,13 @@ tools/checks/check-v0.2-godot
 tools/checks/check-v0.3-creative-assets
 tools/checks/check-v0.4-unreal
 tools/checks/check-v0.5-ai-art-dry-run
+tools/checks/check-v0.5-consolidation
+tools/checks/check-v0.6-game-design-systems
+tools/checks/check-v0.7-product-entry
+tools/checks/check-v0.8-genre-tracks
+tools/checks/check-v0.9-economy-progression
+tools/checks/check-v0.9.1-numerical-planning
+tools/checks/check-v0.9.2-design-skills
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
 
@@ -206,6 +262,10 @@ python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 | 新游戏立项 | `game-intake` skill + `templates/design/pitch.md` |
 | 核心循环设计 | `core-loop` skill + `templates/design/core-loop.md` |
 | 机制规格 | `mechanic-spec` skill + `templates/design/mechanic-spec.md` |
+| 系统策划 | `system-design` skill + `templates/design/system-design.md` |
+| 战斗策划 | `combat-design` skill + `templates/design/combat-design.md` |
+| 数值策划 | `numerical-planning`、`level-curve`、`combat-parameters`、`system-numerics` |
+| Prototype Design Gate / 原型设计门 | 进入 Godot / Unreal / 玩法代码前使用 `prototype-design` skill |
 | 垂直切片计划 | `vertical-slice-planner` skill + `templates/design/vertical-slice.md` |
 | Godot 实现 | `godot-workflow` skill + `examples/godot-boss-rush/` |
 | Unreal 映射 | `unreal-workflow` skill + `examples/unreal-boss-rush/` |
@@ -239,19 +299,29 @@ Muse Game Workshop 的远景是成为独立游戏团队可复用的 AI 制作工
 
 ## 当前状态
 
-当前仓库已完成 v0.3 Creative Production Ready、v0.4 Unreal Mapping Slice 静态骨架，以及 v0.5b AI art dry-run evidence：
+当前仓库已完成 v0.9.2 Specialized Design Skills / 专业策划 Skill 包，作为 v0.9.1 Numerical Planning / 数值规划和 v0.9 Economy & Progression / 经济与成长的补丁：v0.8 Genre Tracks / 类型流程分支、v0.7 Product Entry & mgw init、v0.6 Game Design & Systems / 策划与系统设计和 v0.5 研究收口继续保留，首批 7 个类型流程分支和 Tactics / 战棋类 dry runs 已落地：
 
 - `AGENTS.md`
-- 14 个 P0 workflow skills：`.agents/skills/*/SKILL.md`
-- 27 个模板：`templates/`，其中 22 个来自 v0.1，5 个来自 v0.3 creative templates
-- 9 个检查入口：`tools/checks/`
+- 22 个 workflow skills：14 个 P0 skills、`mgw-init`、`prototype-design` 和 6 个 v0.9.2 专业策划 skills，位于 `.agents/skills/*/SKILL.md`
+- 39 个模板：`templates/`，其中 22 个来自 v0.1，5 个来自 v0.3 creative templates，5 个来自 v0.6 design systems templates，4 个来自 v0.9 economy/progression templates，3 个来自 v0.9.1 numerical planning templates
+- 16 个检查入口：`tools/checks/`
 - Boss Rush / 《反击试炼》无代码 dry-run evidence：`docs/evidence/dry-runs/`
 - Godot Boss Rush prototype：`examples/godot-boss-rush/`
 - v0.3 creative asset evidence：`docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold：`examples/unreal-boss-rush/`
 - v0.5b AI art asset dry-run evidence：`docs/evidence/v0.5/`
+- v0.5 engine AI adapter research：`docs/muse-game-workshop-docs/research/`
+- v0.5 consolidation evidence：`docs/evidence/v0.5/`
+- v0.6 game design systems overview：`docs/muse-game-workshop-docs/game-design-systems.zh.md`
+- v0.6 Boss Rush 与 Tactics design dry-run evidence：`docs/evidence/v0.6/`
+- v0.7 product entry 和 user journey docs：`docs/muse-game-workshop-docs/`
+- v0.8 Genre Tracks / 类型流程分支总纲和 7 个类型分支：`docs/muse-game-workshop-docs/`
+- v0.8 Tactics / 战棋类 dry-run evidence：`docs/evidence/v0.8/`
+- v0.9 Economy & Progression / 经济与成长 docs、templates 和 Tactics / 战棋类 dry-run evidence：`docs/evidence/v0.9/`
+- v0.9.1 Numerical Planning / 数值规划 docs、templates 和 Tactics / 战棋类 dry-run evidence：`docs/evidence/v0.9.1/`
+- v0.9.2 Specialized Design Skills / 专业策划 Skill 包和 Agent Skill Composition / Agent 与 Skill 组合设计 docs：`.agents/skills/` 和 `docs/muse-game-workshop-docs/`
 
-v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。v0.5b 只完成 asset brief、provenance plan 和 review criteria 的 dry run，没有生成或导入正式资产；仍然没有正式或 release-candidate 美术/音频资产。
+v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。v0.9.2 不实现真实 `mgw` CLI、不安装 MCP、不创建新引擎工程、不实现商业化后台、不实现支付、不创建真实 telemetry service、不生成新资产、不导入正式或 release-candidate 美术/音频资产、不批准 release balance / 发布版本最终平衡。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 ## 不要这样用
 
@@ -271,9 +341,18 @@ v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本�
 | Overall Project Plan | [muse-game-workshop-plan.zh.md](docs/muse-game-workshop-plan.zh.md) | [muse-game-workshop-plan.en.md](docs/muse-game-workshop-plan.en.md) |
 | Vision | [vision.zh.md](docs/muse-game-workshop-docs/vision.zh.md) | [vision.en.md](docs/muse-game-workshop-docs/vision.en.md) |
 | PRD | [prd.zh.md](docs/muse-game-workshop-docs/prd.zh.md) | [prd.en.md](docs/muse-game-workshop-docs/prd.en.md) |
+| Product Entry & mgw init | [product-entry-and-mgw-init.zh.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md) | [product-entry-and-mgw-init.en.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.en.md) |
+| Zero-to-One Game Creation | [zero-to-one-game-creation.zh.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md) | [zero-to-one-game-creation.en.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md) |
+| User Journey | [user-journey.zh.md](docs/muse-game-workshop-docs/user-journey.zh.md) | [user-journey.en.md](docs/muse-game-workshop-docs/user-journey.en.md) |
 | Technical Architecture | [technical-architecture.zh.md](docs/muse-game-workshop-docs/technical-architecture.zh.md) | [technical-architecture.en.md](docs/muse-game-workshop-docs/technical-architecture.en.md) |
 | Godot / Unreal Workflow | [godot-unreal-workflow.zh.md](docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md) | [godot-unreal-workflow.en.md](docs/muse-game-workshop-docs/godot-unreal-workflow.en.md) |
 | AI Art Asset Pipeline | [ai-art-asset-pipeline.zh.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.zh.md) | [ai-art-asset-pipeline.en.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.en.md) |
+| Godot Prototype Asset Kit | [godot-prototype-asset-kit.zh.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md) | [godot-prototype-asset-kit.en.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.en.md) |
+| Genre Tracks | [genre-tracks.zh.md](docs/muse-game-workshop-docs/genre-tracks.zh.md) | [genre-tracks.en.md](docs/muse-game-workshop-docs/genre-tracks.en.md) |
+| Economy & Progression | [economy-progression.zh.md](docs/muse-game-workshop-docs/economy-progression.zh.md) | [economy-progression.en.md](docs/muse-game-workshop-docs/economy-progression.en.md) |
+| Numerical Planning | [numerical-planning.zh.md](docs/muse-game-workshop-docs/numerical-planning.zh.md) | [numerical-planning.en.md](docs/muse-game-workshop-docs/numerical-planning.en.md) |
+| Agent Skill Composition | [agent-skill-composition.zh.md](docs/muse-game-workshop-docs/agent-skill-composition.zh.md) | [agent-skill-composition.en.md](docs/muse-game-workshop-docs/agent-skill-composition.en.md) |
+| Game Design & Systems | [game-design-systems.zh.md](docs/muse-game-workshop-docs/game-design-systems.zh.md) | [game-design-systems.en.md](docs/muse-game-workshop-docs/game-design-systems.en.md) |
 | Skill Pack Spec | [skill-pack-spec.zh.md](docs/muse-game-workshop-docs/skill-pack-spec.zh.md) | [skill-pack-spec.en.md](docs/muse-game-workshop-docs/skill-pack-spec.en.md) |
 | Production Language Guide | [production-language-guide.zh.md](docs/muse-game-workshop-docs/production-language-guide.zh.md) | [production-language-guide.en.md](docs/muse-game-workshop-docs/production-language-guide.en.md) |
 | Bilingual Audience Strategy | [bilingual-audience-strategy.zh.md](docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md) | [bilingual-audience-strategy.en.md](docs/muse-game-workshop-docs/bilingual-audience-strategy.en.md) |

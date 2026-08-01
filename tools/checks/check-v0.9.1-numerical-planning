@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.9.1-numerical-planning"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/muse-game-workshop-docs/numerical-planning.en.md",
+    "docs/muse-game-workshop-docs/numerical-planning.zh.md",
+    "templates/design/level-curve.md",
+    "templates/design/combat-parameter-table.md",
+    "templates/design/system-numerical-plan.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-review-gate.en.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-review-gate.zh.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-evidence.en.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-evidence.zh.md",
+    "docs/evidence/v0.9.1/tactics-numerical-planning-dry-run.en.md",
+    "docs/evidence/v0.9.1/tactics-numerical-planning-dry-run.zh.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+en = (ROOT / "docs/muse-game-workshop-docs/numerical-planning.en.md").read_text(encoding="utf-8")
+zh = (ROOT / "docs/muse-game-workshop-docs/numerical-planning.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "Numerical Planning",
+    "Level curve",
+    "Combat parameter table",
+    "System numerical plan",
+    "Anchor point",
+    "TTK",
+    "EHP",
+    "DPR",
+    "Effective HP",
+    "Expected Damage",
+    "Turns To Kill",
+    "Tactics",
+    "v0.10 Telemetry & Playtest Analytics",
+]:
+    if term not in en:
+        fail(f"English numerical planning doc missing {term}")
+
+for term in [
+    "Numerical Planning / 数值规划",
+    "等级曲线",
+    "战斗参数表",
+    "系统数值规划",
+    "锚点",
+    "TTK",
+    "EHP",
+    "DPR",
+    "Effective HP / 有效生命",
+    "Expected Damage / 期望伤害",
+    "Turns To Kill / 击杀回合",
+    "Tactics / 战棋类",
+    "v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析",
+]:
+    if term not in zh:
+        fail(f"Chinese numerical planning doc missing {term}")
+
+template_terms = {
+    "templates/design/level-curve.md": ["Experience Target", "Progression Axes", "Anchor Points", "Level Curve", "Anti-Grind Rules"],
+    "templates/design/combat-parameter-table.md": ["Combat Experience Target", "Formula Notes", "Actor Benchmarks", "Action Economy", "TTK Target"],
+    "templates/design/system-numerical-plan.md": ["System Scope", "Cross-System Parameters", "Reward, Cost, And Pacing Links", "Dependency Checks"],
+}
+
+metadata_fields = [
+    "## Metadata",
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+
+for rel, terms in template_terms.items():
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for field in metadata_fields:
+        if field not in text:
+            fail(f"{rel} missing metadata field {field}")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+dry_en = (ROOT / "docs/evidence/v0.9.1/tactics-numerical-planning-dry-run.en.md").read_text(encoding="utf-8")
+dry_zh = (ROOT / "docs/evidence/v0.9.1/tactics-numerical-planning-dry-run.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "Tactics",
+    "Level 1",
+    "Level 2",
+    "First boss",
+    "Combat Parameter Table",
+    "Action Economy",
+    "System Numerical Plan",
+    "TTK",
+    "EHP",
+    "DPR",
+    "action points",
+    "stamina",
+    "cooldown",
+    "mission reward",
+    "failure compensation",
+    "no-code",
+]:
+    if term not in dry_en:
+        fail(f"English Tactics numerical dry run missing {term}")
+
+for term in [
+    "Tactics / 战棋类",
+    "Level 1 / 1 级",
+    "Level 2 / 2 级",
+    "First boss / 第一个 boss",
+    "Combat Parameter Table / 战斗参数表",
+    "Action Economy / 行动经济",
+    "System Numerical Plan / 系统数值规划",
+    "TTK / 击杀回合",
+    "EHP / 有效生命",
+    "DPR / 每回合伤害",
+    "action points",
+    "stamina",
+    "cooldown",
+    "关卡补给奖励",
+    "失败补偿",
+    "no-code",
+]:
+    if term not in dry_zh:
+        fail(f"Chinese Tactics numerical dry run missing {term}")
+
+for rel in [
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-review-gate.en.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-review-gate.zh.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-evidence.en.md",
+    "docs/evidence/v0.9.1/v0.9.1-numerical-planning-evidence.zh.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["Review Status: Approved", "v0.9.1", "Numerical Planning", "check-v0.9.1-numerical-planning"]:
+        if term not in text:
+            fail(f"{rel} missing evidence term {term}")
+    for boundary in ["telemetry", "commercial", "payment", "asset", "release balance"]:
+        if boundary not in text:
+            fail(f"{rel} missing boundary {boundary}")
+
+for rel in [
+    "README.md",
+    "README.en.md",
+    "README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "docs/muse-game-workshop-docs/templates.en.md",
+    "docs/muse-game-workshop-docs/templates.zh.md",
+    "AGENTS.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["v0.9.1", "Numerical Planning", "v0.10", "Telemetry & Playtest Analytics"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+print(f"PASS {CHECK}")

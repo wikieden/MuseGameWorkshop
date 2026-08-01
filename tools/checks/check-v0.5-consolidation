@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.5-consolidation"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/evidence/v0.5/v0.5-consolidation-review-gate.zh.md",
+    "docs/evidence/v0.5/v0.5-consolidation-review-gate.en.md",
+    "docs/evidence/v0.5/v0.5-consolidation-evidence.zh.md",
+    "docs/evidence/v0.5/v0.5-consolidation-evidence.en.md",
+    "docs/muse-game-workshop-docs/engine-ai-development-adapters.zh.md",
+    "docs/muse-game-workshop-docs/engine-ai-development-adapters.en.md",
+    "docs/muse-game-workshop-docs/research/godot-ai-research.zh.md",
+    "docs/muse-game-workshop-docs/research/godot-ai-research.en.md",
+    "docs/muse-game-workshop-docs/research/ue-mcp-research.zh.md",
+    "docs/muse-game-workshop-docs/research/ue-mcp-research.en.md",
+    "docs/muse-game-workshop-docs/research/godotprompter-research.zh.md",
+    "docs/muse-game-workshop-docs/research/godotprompter-research.en.md",
+    "docs/muse-game-workshop-docs/research/genorca-unreal-mcp-research.zh.md",
+    "docs/muse-game-workshop-docs/research/genorca-unreal-mcp-research.en.md",
+    "docs/muse-game-workshop-docs/research/godotiq-research.zh.md",
+    "docs/muse-game-workshop-docs/research/godotiq-research.en.md",
+    "docs/muse-game-workshop-docs/research/ziva-research.zh.md",
+    "docs/muse-game-workshop-docs/research/ziva-research.en.md",
+    "docs/muse-game-workshop-docs/research/ee0pdt-godot-mcp-research.zh.md",
+    "docs/muse-game-workshop-docs/research/ee0pdt-godot-mcp-research.en.md",
+    "docs/muse-game-workshop-docs/research/engine-ai-user-feedback-scan.zh.md",
+    "docs/muse-game-workshop-docs/research/engine-ai-user-feedback-scan.en.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+gate_zh = (ROOT / "docs/evidence/v0.5/v0.5-consolidation-review-gate.zh.md").read_text(encoding="utf-8")
+gate_en = (ROOT / "docs/evidence/v0.5/v0.5-consolidation-review-gate.en.md").read_text(encoding="utf-8")
+for label, text in [("zh gate", gate_zh), ("en gate", gate_en)]:
+    if "Review Status: Approved" not in text:
+        fail(f"{label} is not approved")
+    for forbidden in ["安装或接入", "Installing or integrating"]:
+        if forbidden in text:
+            break
+    else:
+        fail(f"{label} does not block tool installation/integration")
+
+overview_zh = (ROOT / "docs/muse-game-workshop-docs/engine-ai-development-adapters.zh.md").read_text(encoding="utf-8")
+overview_en = (ROOT / "docs/muse-game-workshop-docs/engine-ai-development-adapters.en.md").read_text(encoding="utf-8")
+for term in ["Godot AI", "GodotIQ", "GodotPrompter", "Godot 对接决策", "Godot AI Adapter Dry Run"]:
+    if term not in overview_zh:
+        fail(f"Chinese overview missing {term}")
+for term in ["Godot AI", "GodotIQ", "GodotPrompter", "Godot Integration Decision", "Godot AI Adapter Dry Run"]:
+    if term not in overview_en:
+        fail(f"English overview missing {term}")
+
+feedback_zh = (ROOT / "docs/muse-game-workshop-docs/research/engine-ai-user-feedback-scan.zh.md").read_text(encoding="utf-8")
+feedback_en = (ROOT / "docs/muse-game-workshop-docs/research/engine-ai-user-feedback-scan.en.md").read_text(encoding="utf-8")
+for name in ["Godot AI", "UE-MCP", "GodotPrompter", "GenOrca", "GodotIQ", "Ziva", "Godot-MCP"]:
+    if name not in feedback_zh:
+        fail(f"Chinese feedback scan missing {name}")
+    if name not in feedback_en:
+        fail(f"English feedback scan missing {name}")
+
+version_docs = [
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+]
+
+for rel in version_docs:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for version in ["v0.5", "v0.6", "v0.7", "v0.8", "v0.9", "v0.10", "v0.11", "v0.12", "v0.13", "v0.14", "v1.0"]:
+        if version not in text:
+            fail(f"{rel} missing {version}")
+    if "v1.1+" in text or "v1.1" in text:
+        fail(f"{rel} still references v1.1")
+
+readme = (ROOT / "README.md").read_text(encoding="utf-8")
+for term in [
+    "v0.5 Roadmap Rebase & Research Consolidation",
+    "tools/checks/check-v0.5-consolidation",
+    "engine-ai-development-adapters.en.md",
+]:
+    if term not in readme:
+        fail(f"README.md missing {term}")
+
+evidence = (ROOT / "docs/evidence/v0.5/v0.5-consolidation-evidence.en.md").read_text(encoding="utf-8")
+for term in ["Install Godot AI", "Generate new assets", "Godot AI", "GodotIQ", "GodotPrompter"]:
+    if term not in evidence:
+        fail(f"v0.5 evidence missing {term}")
+
+print(f"PASS {CHECK}")

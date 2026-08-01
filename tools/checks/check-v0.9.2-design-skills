@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.9.2-design-skills"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/muse-game-workshop-docs/agent-skill-composition.en.md",
+    "docs/muse-game-workshop-docs/agent-skill-composition.zh.md",
+    ".agents/skills/system-design/SKILL.md",
+    ".agents/skills/combat-design/SKILL.md",
+    ".agents/skills/numerical-planning/SKILL.md",
+    ".agents/skills/level-curve/SKILL.md",
+    ".agents/skills/combat-parameters/SKILL.md",
+    ".agents/skills/system-numerics/SKILL.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+skill_sections = [
+    "## Use When",
+    "## Do Not Use When",
+    "## Inputs",
+    "## Outputs",
+    "## Workflow",
+    "## Quality Bar",
+    "## Common Failure Modes",
+    "## Next Skills",
+]
+
+skills = {
+    "system-design": [
+        "System Design",
+        "Technical Designer",
+        "Game Designer",
+        "state",
+        "trigger",
+        "parameter",
+        "system-numerics",
+    ],
+    "combat-design": [
+        "Combat Design",
+        "Combat Designer",
+        "Game Designer",
+        "timing",
+        "feedback",
+        "risk/reward",
+        "combat-parameters",
+    ],
+    "numerical-planning": [
+        "Numerical Planning",
+        "Numerical Designer",
+        "anchor",
+        "formula",
+        "tuning",
+        "level-curve",
+        "combat-parameters",
+        "system-numerics",
+    ],
+    "level-curve": [
+        "Level Curve",
+        "Numerical Designer",
+        "XP",
+        "unlock",
+        "catch-up",
+        "anti-grind",
+        "templates/design/level-curve.md",
+    ],
+    "combat-parameters": [
+        "Combat Parameters",
+        "Combat Designer",
+        "Numerical Designer",
+        "EHP",
+        "DPR",
+        "TTK",
+        "stamina",
+        "cooldown",
+        "templates/design/combat-parameter-table.md",
+    ],
+    "system-numerics": [
+        "System Numerics",
+        "Technical Designer",
+        "Numerical Designer",
+        "sources",
+        "sinks",
+        "failure compensation",
+        "templates/design/system-numerical-plan.md",
+    ],
+}
+
+for slug, terms in skills.items():
+    rel = f".agents/skills/{slug}/SKILL.md"
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    if f"name: {slug}" not in text:
+        fail(f"{rel} missing frontmatter name")
+    if "description:" not in text:
+        fail(f"{rel} missing frontmatter description")
+    for section in skill_sections:
+        if section not in text:
+            fail(f"{rel} missing {section}")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+composition_en = (ROOT / "docs/muse-game-workshop-docs/agent-skill-composition.en.md").read_text(encoding="utf-8")
+composition_zh = (ROOT / "docs/muse-game-workshop-docs/agent-skill-composition.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "v0.9.2",
+    "Specialized Design Skills",
+    "Agent Skill Composition",
+    "Role Agent",
+    "Producer Review Agent",
+    "Game Designer Agent",
+    "Technical Designer Agent",
+    "Combat Designer Agent",
+    "Numerical Designer Agent",
+    "QA / Playtest Agent",
+    "Codex",
+    "Claude Code",
+    "Kiro CLI",
+    "opencode",
+    "v0.10 Telemetry & Playtest Analytics",
+]:
+    if term not in composition_en:
+        fail(f"English Agent Skill Composition missing {term}")
+
+for term in [
+    "v0.9.2",
+    "Specialized Design Skills / 专业策划 Skill 包",
+    "Agent Skill Composition / Agent 与 Skill 组合设计",
+    "Role Agent / 角色型 Agent",
+    "Producer Review Agent / 制作人评审 Agent",
+    "Game Designer Agent / 游戏策划 Agent",
+    "Technical Designer Agent / 技术策划 Agent",
+    "Combat Designer Agent / 战斗策划 Agent",
+    "Numerical Designer Agent / 数值策划 Agent",
+    "QA / Playtest Agent / 测试与试玩 Agent",
+    "Codex",
+    "Claude Code",
+    "Kiro CLI",
+    "opencode",
+    "v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析",
+]:
+    if term not in composition_zh:
+        fail(f"Chinese Agent Skill Composition missing {term}")
+
+route_checks = {
+    ".agents/skills/core-loop/SKILL.md": ["system-design", "numerical-planning"],
+    ".agents/skills/mechanic-spec/SKILL.md": ["system-design", "combat-design", "combat-parameters", "numerical-planning"],
+    ".agents/skills/vertical-slice-planner/SKILL.md": ["system-design", "combat-design", "numerical-planning"],
+    ".agents/skills/playtest-report/SKILL.md": ["numerical-planning", "combat-parameters", "system-numerics", "level-curve"],
+}
+
+for rel, terms in route_checks.items():
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing route to {term}")
+
+for rel in [
+    "README.md",
+    "README.en.md",
+    "README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/skill-pack-spec.en.md",
+    "docs/muse-game-workshop-docs/skill-pack-spec.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "AGENTS.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["v0.9.2", "Specialized Design Skills", "Agent Skill Composition", "v0.10", "Telemetry & Playtest Analytics"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+for rel in [
+    "docs/muse-game-workshop-docs/agent-skill-composition.en.md",
+    "docs/muse-game-workshop-docs/agent-skill-composition.zh.md",
+    "AGENTS.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8").lower()
+    boundary_terms = {
+        "engine implementation": ["engine implementation", "引擎实现"],
+        "telemetry": ["telemetry", "数据埋点"],
+        "commercial": ["commercial", "商业化"],
+        "payment": ["payment", "支付"],
+        "asset": ["asset", "资产"],
+        "release balance": ["release balance", "发布版本最终平衡"],
+    }
+    for label, variants in boundary_terms.items():
+        if not any(term in text for term in variants):
+            fail(f"{rel} missing boundary {label}")
+
+print(f"PASS {CHECK}")

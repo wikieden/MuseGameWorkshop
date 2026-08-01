@@ -60,6 +60,10 @@ description: Use when playtest observations need to become evidence, issue categ
 ## Next Skills
 
 - `mechanic-spec`
+- `numerical-planning`
+- `combat-parameters`
+- `system-numerics`
+- `level-curve`
 - `vertical-slice-planner`
 - `ux-flow`
 - `level-blockout`

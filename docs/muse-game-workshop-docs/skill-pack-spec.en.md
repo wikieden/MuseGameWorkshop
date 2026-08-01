@@ -31,6 +31,9 @@ Every implementation-oriented or project-structure-changing skill must first out
 | Producer | Stage, scope, priority, review gate | `game-intake`, `vertical-slice-planner`, `postmortem` |
 | Game Designer | Player experience, core loops, mechanics, content | `core-loop`, `mechanic-spec`, `content-matrix` |
 | Technical Designer | State machines, parameters, data structures, testable specs | `mechanic-spec`, `implementation-bridge`, `engine-portability` |
+| System Designer | Systems, states, triggers, dependencies, data ownership | `system-design`, `system-numerics`, `engine-portability` |
+| Combat Designer | Combat verbs, readability, timing, enemies, feedback, tuning handles | `combat-design`, `combat-parameters`, `mechanic-spec` |
+| Numerical Designer | Level curves, combat parameters, economy pressure, formulas, tuning hypotheses | `numerical-planning`, `level-curve`, `combat-parameters`, `system-numerics` |
 | Gameplay Programmer | Approved implementation plan and validation | `godot-workflow`, `unreal-workflow`, `implementation-bridge` |
 | Engine Specialist | Godot/Unreal structure, assets, builds, editor constraints | `godot-workflow`, `unreal-workflow`, `engine-portability` |
 | Art Director | Visual direction, style consistency, asset review | `art-direction`, `asset-review` |
@@ -51,6 +54,18 @@ The directory tree below is the full target convention, not the v0.1 scaffold li
   core-loop/
     SKILL.md
   mechanic-spec/
+    SKILL.md
+  system-design/
+    SKILL.md
+  combat-design/
+    SKILL.md
+  numerical-planning/
+    SKILL.md
+  level-curve/
+    SKILL.md
+  combat-parameters/
+    SKILL.md
+  system-numerics/
     SKILL.md
   content-matrix/
     SKILL.md
@@ -856,7 +871,24 @@ Outputs:
 - Vibration toggle.
 - Difficulty assists.
 
-### 4.27 Future Planning Skills
+### 4.27 v0.9.2 Specialized Design Skills
+
+v0.9.2 materializes six design-first specialist skills. They are allowed to improve planning, routing, and reviewable design outputs, but they do not approve engine implementation, real telemetry services, commercial backend, payment, new assets, or release balance approval.
+
+The six skills are:
+
+- `system-design`: system states, triggers, data ownership, dependencies, parameters, and validation checks.
+- `combat-design`: combat verbs, timing windows, readability, enemy/player responses, feedback, and risk/reward.
+- `numerical-planning`: numerical intent, anchor points, formulas, tuning hypotheses, and specialist routing.
+- `level-curve`: growth curve, unlock pacing, XP/resource requirements, catch-up, and anti-grind rules.
+- `combat-parameters`: HP, EHP, DPR, TTK, AP, stamina, cooldowns, range, accuracy, threat, and difficulty benchmarks.
+- `system-numerics`: cross-system rewards, costs, sources/sinks, retry costs, failure compensation, economy pressure, and dependency checks.
+
+See Agent Skill Composition (`agent-skill-composition.en.md`) for the role-agent bundles that aggregate these skills under familiar game-production roles.
+
+The next major version remains v0.10 Telemetry & Playtest Analytics.
+
+### 4.28 Future Planning Skills
 
 Future planning should preserve these directions without including them in the first implementation batch:
 
@@ -890,6 +922,15 @@ flowchart TD
   O --> F
   B --> P["ux-flow"]
   B --> Q["level-blockout"]
+  C --> R["system-design"]
+  C --> S["combat-design"]
+  R --> T["numerical-planning"]
+  S --> U["combat-parameters"]
+  T --> V["level-curve"]
+  T --> W["system-numerics"]
+  U --> H
+  V --> H
+  W --> H
 ```
 
 ## 6. Versioned Implementation Order
@@ -910,6 +951,18 @@ v0.1 only materializes the 14 P0 workflow skills listed in `v0.1-manifest.en.md`
 - `asset-review`
 - `ux-flow`
 - `level-blockout`
+
+v0.9.2 materializes the first specialized design skills and their composition rule:
+
+- `system-design`
+- `combat-design`
+- `numerical-planning`
+- `level-curve`
+- `combat-parameters`
+- `system-numerics`
+- `agent-skill-composition.zh.md` / `agent-skill-composition.en.md`
+
+After v0.9.2, the next major version remains v0.10 Telemetry & Playtest Analytics.
 
 After the v0.2 Godot playable prototype, add engineering-execution extensions:
 

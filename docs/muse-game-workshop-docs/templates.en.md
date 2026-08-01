@@ -1,6 +1,6 @@
 # Document Templates Index
 
-Version: v0.3
+Version: v0.9.1
 
 Language: English
 
@@ -8,7 +8,7 @@ Language: English
 
 This file defines the Muse Game Workshop template system, while `v0.1-manifest.en.md` remains the single source of truth for the v0.1 materialized subset. The goal is not to write long documents. The goal is to create stable records for design, mechanics, implementation, creative assets, playtesting, and release.
 
-The v0.1 template subset in this file is fixed at 22 templates. v0.3 adds `animation-brief`, `music-brief`, `sfx-brief`, `asset-integration`, and `ai-asset-disclosure` for Creative Production Ready asset-pipeline validation without changing the v0.1 manifest boundary.
+The v0.1 template subset in this file is fixed at 22 templates. v0.3 adds `animation-brief`, `music-brief`, `sfx-brief`, `asset-integration`, and `ai-asset-disclosure` for Creative Production Ready asset-pipeline validation without changing the v0.1 manifest boundary. v0.6 adds `system-design`, `combat-design`, `encounter-design`, `tuning-plan`, and `playtest-hypothesis` for Game Design & Systems. v0.9 adds `economy-model`, `progression-map`, `resource-reward-table`, and `tuning-loop` for Economy & Progression. v0.9.1 adds `level-curve`, `combat-parameter-table`, and `system-numerical-plan` for Numerical Planning.
 
 All templates should be:
 
@@ -50,6 +50,18 @@ templates/design/
   balance-report.md
   decision-log.md
   release-checklist.md
+  system-design.md
+  combat-design.md
+  encounter-design.md
+  tuning-plan.md
+  playtest-hypothesis.md
+  economy-model.md
+  progression-map.md
+  resource-reward-table.md
+  tuning-loop.md
+  level-curve.md
+  combat-parameter-table.md
+  system-numerical-plan.md
 
 templates/production/
   handoff-record.md
@@ -917,3 +929,47 @@ Enemy / Weapon / Skill / Level / Reward / Event
 
 ## Definition Of Done
 ```
+
+## 25. v0.6 Design Systems Templates
+
+v0.6 adds five design templates that turn pitch, core loop, and mechanic specs into handoff-ready systems, combat, encounters, tuning, and playtest hypotheses.
+
+| Template | Purpose | Main Downstream Users |
+|---|---|---|
+| `system-design.md` | Records system goal, state model, triggers, parameters, and handoff points. | Technical Designer, Gameplay Programmer, QA |
+| `combat-design.md` | Records player verbs, enemy verbs, timing windows, risk/reward, and feedback needs. | Combat Designer, animation, art, audio |
+| `encounter-design.md` | Records encounter goal, space or mission layout, pacing, readability, and playtest questions. | Level Designer, QA, environment art |
+| `tuning-plan.md` | Records parameters, ranges, player-facing effects, low/high risks, and test method. | Technical Designer, QA, Producer |
+| `playtest-hypothesis.md` | Turns design judgment into observable hypotheses, test steps, and next decisions. | QA, Game Designer, Producer |
+
+## 26. v0.9 Economy & Progression Templates
+
+v0.9 adds four design templates that turn economy and progression discussion into reviewable production records before engine implementation, backend work, telemetry services, or asset production.
+
+| Template | Purpose | Primary Users |
+|---|---|---|
+| `economy-model.md` | Records resources, sources, sinks, storage, conversion, scarcity, pressure, and balance risks. | Game Designer, Technical Designer, Producer |
+| `progression-map.md` | Records unlocks, pacing beats, costs, catch-up rules, fail-forward rules, and anti-grind boundaries. | Game Designer, Technical Designer, Level Designer |
+| `resource-reward-table.md` | Records mission rewards, costs, failure compensation, secondary objective rewards, scaling, and validation method. | Game Designer, Level Designer, QA |
+| `tuning-loop.md` | Records hypothesis, current values, proposed changes, test scenarios, observations, decisions, and next validation. | Technical Designer, QA, Producer |
+
+Boundary:
+
+- These templates do not approve commercial backend, payment, monetization, real telemetry services, engine implementation, or asset production.
+
+## 27. v0.9.1 Numerical Planning Templates
+
+v0.9.1 adds three design templates that make level, combat, and system numbers reviewable before implementation.
+
+| Template | Purpose | Primary Users |
+|---|---|---|
+| `level-curve.md` | Records experience targets, anchor points, level curve, unlocks, TTK/EHP/DPR targets, catch-up rules, and anti-grind rules. | Game Designer, Technical Designer, Producer |
+| `combat-parameter-table.md` | Records formulas, actor benchmarks, action economy, cooldown, stamina, range, threat, feedback, and tuning hypotheses. | Combat Designer, Technical Designer, Gameplay Programmer, QA |
+| `system-numerical-plan.md` | Records cross-system parameters, reward/cost/pacing links, dependency checks, and dry-run notes. | Technical Designer, Game Designer, Producer, QA |
+
+Boundary:
+
+- These templates do not approve engine implementation, real telemetry, commercial backend, payment, asset generation, or release balance.
+- The next major version remains v0.10 Telemetry & Playtest Analytics.
+
+These templates do not bind the workflow to Godot or Unreal, and they do not bypass the review gate for implementation changes.

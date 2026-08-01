@@ -108,9 +108,9 @@ v0.6 goals:
 
 v0.7 goals:
 
-- Complete the Narrative Design Pack.
-- Support worldbuilding, narrative flow, character design, quest design, dialogue design, environmental storytelling, and lore consistency checks.
-- Define canon status, prompt records, reference boundaries, spoiler levels, and cultural/platform risk when AI assists narrative work.
+- Complete Product Entry & `mgw init` design.
+- Define `mgw init` as a project workspace initializer, not a one-click game generator.
+- Define user journey, project workspace, `muse.project.yaml`, profiles, tool adapter rules, and MCP adapter safe boundaries.
 
 v0.8 goals:
 
@@ -120,27 +120,51 @@ v0.8 goals:
 
 v0.9 goals:
 
-- Complete the Economy, Progression & Telemetry Pack.
-- Support sources/sinks, reward structure, progression, level/quest rewards, playtest telemetry, and tuning reports.
-- Keep this to verifiable design and analysis loops, not commercialization backends or real user-data platforms.
+- Complete the Economy & Progression Pack.
+- Support sources/sinks, reward structure, progression, level/quest rewards, and tuning.
+- Keep this to verifiable design and analysis loops, not commercialization backends or real payment systems.
 
 v0.10 goals:
+
+- Complete the Telemetry & Playtest Analytics Pack.
+- Connect playtest data back to design hypotheses.
+- Clarify privacy, platform, data minimization, and local dry-run boundaries.
+
+v0.11 goals:
+
+- Complete the Narrative Design Pack.
+- Support worldbuilding, narrative flow, character design, quest design, dialogue design, environmental storytelling, and lore consistency checks.
+- Define canon status, prompt records, reference boundaries, spoiler levels, and cultural/platform risk when AI assists narrative work.
+
+v0.12 goals:
+
+- Complete Creative Production Expansion.
+- Expand art, animation, environment, music, SFX, and UI asset production after design, genre, systems, economy, data, and narrative specs stabilize.
+- Research creative tool adapters without integrating production APIs.
+
+v0.13 goals:
 
 - Complete the Procedural Content Pack.
 - Support rule-based map, encounter, loot, quest variation, and content-quality checks.
 - Procedural content must include seed/evidence records, human review gates, and rollback plans.
+
+v0.14 goals:
+
+- Complete Publishing & Release Readiness.
+- Support release checklist, store/trailer brief, localization, accessibility, platform disclosure, and demo readiness.
+- Judge demo readiness only; do not add automatic publishing or account systems.
+
+v0.15 goals:
+
+- Enter LiveOps / post-launch iteration capabilities.
+- Support patch plans, hotfix flow, player feedback triage, update roadmaps, community feedback, and operations risk records.
+- Do not slow v1.0 workflow-pack stabilization.
 
 v1.0 goals:
 
 - Become an installable, reusable, extensible AI tool-agnostic game workflow pack.
 - Support project-stage detection, task breakdown, QA, and release checks for Godot and Unreal.
 - Integrate with AI coding tools such as Codex, Claude Code, Kiro CLI, and opencode, common creative generation/editing AI tools, plus Godot/Unreal MCP servers or official editor automation where practical.
-
-v1.1+ goals:
-
-- Enter LiveOps / post-launch iteration capabilities.
-- Support patch plans, hotfix flow, player feedback triage, update roadmaps, community feedback, and operations risk records.
-- Do not implement this before the first playable demo or v1.0 reusable pack scope.
 
 ## 5. Non-goals
 
@@ -219,18 +243,20 @@ P0 must be included in the current design:
 P1 should enter v0.6-v0.8 design:
 
 - Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
-- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
+- Product Entry & `mgw init`: project initialization entry, user journey, project workspace, tool adapter rules, and MCP adapter safe boundaries.
 - Genre Tracks: genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
+- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosures.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, remapping, vibration toggle, difficulty assists, and text size.
 
-v0.9-v0.10 mid-term capabilities:
+v0.9-v0.13 mid-term capabilities:
 
-- Economy / Progression / Telemetry: economy systems, progression, reward structure, playtest data, tuning reports, and privacy boundaries.
+- Economy / Progression: economy systems, progression, reward structure, and tuning tables.
+- Telemetry / Playtest Analytics: playtest data, tuning reports, event fields, and privacy boundaries.
 - Procedural Content: procedural maps, encounters, loot, and quest variations after rules are stable.
 
-P2 belongs in v1.1+ or later future planning:
+P2 belongs after v1.0 or later future planning:
 
 - Community & Marketing: devlogs, community feedback, and update cadence.
 - Monetization: pricing, demo strategy, DLC, and paid-content boundaries.
@@ -239,6 +265,31 @@ P2 belongs in v1.1+ or later future planning:
 - Security / Privacy: online features, third-party SDKs, data collection, and security risk.
 
 ## 8. Core User Journeys
+
+### 8.0 Initialize a game workspace with mgw init
+
+Input:
+
+- Project name.
+- Target language, target audience, and locale.
+- AI coding tool choice, such as Codex, Claude Code, Kiro CLI, or opencode.
+- Engine preference, such as Godot, Unreal, or none yet.
+- Genre preference, such as Tactics.
+
+AI tool-assisted work:
+
+- Read Product Entry & `mgw init`.
+- Generate the project workspace plan.
+- Clarify `muse.project.yaml`, rules, templates, checks, and evidence directories.
+- If MCP is enabled, first output editor actions, rollback plan, and validation plan.
+
+Output:
+
+- Project workspace.
+- `muse.project.yaml`.
+- AI tool adapter rules.
+- Review gate.
+- Next workflow.
 
 ### 8.1 From vague idea to testable direction
 
@@ -468,15 +519,17 @@ P0/P1 must support:
 - Text keys, fonts, UI overflow, translation workflow, and cultural risk.
 - Subtitles, contrast, input remapping, vibration toggle, difficulty assists, and text size.
 
-### 9.8 Game Design, Narrative, Genre Tracks, And Mid-Term Systems
+### 9.8 Product Entry, Game Design, Genre Tracks, And Mid-Term Systems
 
-v0.6-v0.10 must follow dependency order:
+v0.6-v0.13 must follow dependency order:
 
 - v0.6 Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
-- v0.7 Narrative Design: worldbuilding, narrative flow, characters, quests, dialogue, environmental storytelling, and lore consistency.
+- v0.7 Product Entry & `mgw init`: project initialization entry, user journey, project workspace, tool adapter rules, and MCP adapter boundaries.
 - v0.8 Genre Tracks: first tracks cover Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG; Tactics is the priority validation track.
-- v0.9 Economy / Progression / Telemetry: economy systems, progression, reward structure, and playtest analytics.
-- v0.10 Procedural Content: controlled randomness, content variation, and quality checks only after rules are stable.
+- v0.9 Economy / Progression: economy systems, progression, reward structure, and tuning tables.
+- v0.10 Telemetry / Playtest Analytics: playtest data, tuning reports, event fields, and privacy boundaries.
+- v0.11 Narrative Design: worldbuilding, narrative flow, characters, quests, dialogue, environmental storytelling, and lore consistency.
+- v0.13 Procedural Content: controlled randomness, content variation, and quality checks only after rules are stable.
 
 ### 9.9 Future Planning
 
@@ -484,7 +537,7 @@ P2 should stay in roadmap rather than the first implementation batch:
 
 - Community & Marketing.
 - Monetization.
-- LiveOps / Post-launch, entering in v1.1+.
+- LiveOps / Post-launch, entering in v0.15.
 - Modding / UGC.
 - Security / Privacy.
 

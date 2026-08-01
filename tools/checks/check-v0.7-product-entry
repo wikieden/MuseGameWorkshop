@@ -1,0 +1,243 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.7-product-entry"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    ".agents/skills/mgw-init/SKILL.md",
+    ".agents/skills/prototype-design/SKILL.md",
+    "docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md",
+    "docs/muse-game-workshop-docs/product-entry-and-mgw-init.en.md",
+    "docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md",
+    "docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md",
+    "docs/muse-game-workshop-docs/user-journey.zh.md",
+    "docs/muse-game-workshop-docs/user-journey.en.md",
+    "docs/evidence/v0.7/v0.7-product-entry-review-gate.zh.md",
+    "docs/evidence/v0.7/v0.7-product-entry-review-gate.en.md",
+    "docs/evidence/v0.7/v0.7-product-entry-evidence.zh.md",
+    "docs/evidence/v0.7/v0.7-product-entry-evidence.en.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+product_zh = (ROOT / "docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md").read_text(encoding="utf-8")
+product_en = (ROOT / "docs/muse-game-workshop-docs/product-entry-and-mgw-init.en.md").read_text(encoding="utf-8")
+
+for term in [
+    "mgw-init",
+    "mgw init",
+    "continue mgw-init",
+    "AI-assisted Game Production Workspace",
+    "muse.project.yaml",
+    "docs/00-game-start.md",
+    "init_state",
+    "Codex",
+    "Claude Code",
+    "Kiro CLI",
+    "opencode",
+    "--mcp none",
+    "Godot",
+    "Unreal",
+    "Review Status: Approved",
+]:
+    if term not in product_zh:
+        fail(f"Chinese product entry missing {term}")
+    if term not in product_en:
+        fail(f"English product entry missing {term}")
+
+for term in ["不是一键生成游戏", "不默认安装 MCP", "不实现真实 CLI", "不创建新的 Godot/Unreal 工程"]:
+    if term not in product_zh:
+        fail(f"Chinese product entry missing boundary {term}")
+
+for term in [
+    "not a one-click game generator",
+    "does not install MCP",
+    "does not implement a real CLI",
+    "does not create new Godot/Unreal projects",
+]:
+    if term not in product_en:
+        fail(f"English product entry missing boundary {term}")
+
+journey_zh = (ROOT / "docs/muse-game-workshop-docs/user-journey.zh.md").read_text(encoding="utf-8")
+journey_en = (ROOT / "docs/muse-game-workshop-docs/user-journey.en.md").read_text(encoding="utf-8")
+for term in ["获取 Muse", "mgw-init", "continue mgw-init", "docs/00-game-start.md", "制作循环", "mgw init", "概念", "预制作", "原型验证", "垂直切片", "试玩", "创意资产生产", "发布准备"]:
+    if term not in journey_zh:
+        fail(f"Chinese user journey missing {term}")
+for term in ["Get Muse", "mgw-init", "continue mgw-init", "docs/00-game-start.md", "Production Loops", "mgw init", "Concept", "Pre-production", "Prototype", "Vertical Slice", "Playtest", "Creative Production", "Release Readiness"]:
+    if term not in journey_en:
+        fail(f"English user journey missing {term}")
+
+zero_zh = (ROOT / "docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md").read_text(encoding="utf-8")
+zero_en = (ROOT / "docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md").read_text(encoding="utf-8")
+for term in ["mgw-init", "continue mgw-init", "docs/00-game-start.md", "muse.project.yaml", "init_state", "制作循环", "Prototype Design Gate", "prototype-design", "Review Status: Approved"]:
+    if term not in zero_zh:
+        fail(f"Chinese zero-to-one doc missing {term}")
+for term in ["mgw-init", "continue mgw-init", "docs/00-game-start.md", "muse.project.yaml", "init_state", "Production Loops", "Prototype Design Gate", "prototype-design", "Review Status: Approved"]:
+    if term not in zero_en:
+        fail(f"English zero-to-one doc missing {term}")
+
+for term in ["Prototype Visual Quality Floor", "Readable Prototype Asset", "mannequin-style robot proxy", "AI 生成的 3D demo assets"]:
+    if term not in zero_zh:
+        fail(f"Chinese zero-to-one doc missing prototype visual floor term {term}")
+for term in ["Prototype Visual Quality Floor", "Readable prototype assets", "mannequin-style robot proxy", "AI-generated 3D demo assets"]:
+    if term not in zero_en:
+        fail(f"English zero-to-one doc missing prototype visual floor term {term}")
+
+mgw_skill = (ROOT / ".agents/skills/mgw-init/SKILL.md").read_text(encoding="utf-8")
+for term in [
+    "name: mgw-init",
+    "continue mgw-init",
+    "README.md",
+    "muse.project.yaml",
+    "docs/00-game-start.md",
+    "docs/evidence/README.md",
+    "No Godot / Unreal project is created by default",
+    "No MCP server is installed by default",
+]:
+    if term not in mgw_skill:
+        fail(f"mgw-init skill missing {term}")
+
+prototype_skill = (ROOT / ".agents/skills/prototype-design/SKILL.md").read_text(encoding="utf-8")
+for term in [
+    "name: prototype-design",
+    "Prototype Design Gate",
+    "Prototype Goal",
+    "Playable Promise",
+    "Core Mechanic Readiness",
+    "Moment-to-Moment Flow",
+    "Content Scope",
+    "Placeholder Policy",
+    "Prototype Visual Quality Floor",
+    "Structural Placeholder",
+    "Readable Prototype Asset",
+    "Reviewed Demo Asset",
+    "naked spheres, capsules, or cubes",
+    "mannequin-style readable robot proxy",
+    "AI-generated 3D assets",
+    "Engine Mapping",
+    "Validation Plan",
+    "Cut List",
+    "No code, engine project, MCP automation, or asset import starts before review approval",
+]:
+    if term not in prototype_skill:
+        fail(f"prototype-design skill missing {term}")
+
+for rel, terms in [
+    (".agents/skills/art-direction/SKILL.md", ["Prototype visual quality floor", "mannequin-style robot proxies", "naked spheres, capsules, or cubes"]),
+    (".agents/skills/asset-brief/SKILL.md", ["readable prototype asset", "AI-generated 3D assets", "naked sphere, capsule, or cube"]),
+    (".agents/skills/creative-asset-pipeline/SKILL.md", ["Common 3D prototype asset kit plan", "readable prototype asset", "Mannequin-style robot proxies"]),
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing prototype visual asset term {term}")
+
+global_skill = Path.home() / ".codex/skills/mgw-init/SKILL.md"
+if not global_skill.exists():
+    fail("global Codex mgw-init skill is not installed at ~/.codex/skills/mgw-init/SKILL.md")
+global_prototype_skill = Path.home() / ".codex/skills/prototype-design/SKILL.md"
+if not global_prototype_skill.exists():
+    fail("global Codex prototype-design skill is not installed at ~/.codex/skills/prototype-design/SKILL.md")
+global_prototype_text = global_prototype_skill.read_text(encoding="utf-8")
+for term in ["Prototype Visual Quality Floor", "Readable Prototype Asset", "Reviewed Demo Asset"]:
+    if term not in global_prototype_text:
+        fail(f"global Codex prototype-design skill missing {term}")
+
+for rel, label in [
+    ("docs/muse-game-workshop-docs/user-journey.zh.md", "Chinese user journey"),
+    ("docs/muse-game-workshop-docs/user-journey.en.md", "English user journey"),
+    ("README.zh.md", "Chinese README"),
+    ("README.en.md", "English README"),
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["prototype-design", "Prototype Design Gate"]:
+        if term not in text:
+            fail(f"{label} missing {term}")
+
+for rel, label, terms in [
+    ("docs/muse-game-workshop-docs/user-journey.zh.md", "Chinese user journey", ["Prototype Visual Quality Floor", "Readable Prototype Asset", "裸球体", "AI-generated 3D prototype mesh"]),
+    ("docs/muse-game-workshop-docs/user-journey.en.md", "English user journey", ["Prototype Visual Quality Floor", "readable prototype assets", "naked spheres", "AI-generated 3D prototype mesh"]),
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in terms:
+        if term not in text:
+            fail(f"{label} missing prototype visual floor term {term}")
+
+for rel in [
+    "docs/evidence/v0.7/v0.7-product-entry-review-gate.zh.md",
+    "docs/evidence/v0.7/v0.7-product-entry-review-gate.en.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    if "Review Status: Approved" not in text:
+        fail(f"{rel} is not approved")
+    for term in ["不安装 MCP", "does not install MCP", "不写真实 `mgw` CLI", "real `mgw` CLI"]:
+        if term in text:
+            break
+    else:
+        fail(f"{rel} missing no-MCP/no-real-CLI boundary")
+
+version_docs = [
+    "README.md",
+    "README.zh.md",
+    "README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+]
+
+for rel in version_docs:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["v0.7", "mgw init", "v0.8", "Genre Tracks"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+for rel in [
+    "README.md",
+    "README.zh.md",
+    "README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for target in [
+        "product-entry-and-mgw-init",
+        "zero-to-one-game-creation",
+        "user-journey",
+        "check-v0.7-product-entry",
+    ]:
+        if target not in text:
+            fail(f"{rel} missing {target}")
+
+agents_text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+for target in [
+    "product-entry-and-mgw-init",
+    "zero-to-one-game-creation",
+    "user-journey",
+]:
+    if target not in agents_text:
+        fail(f"AGENTS.md missing source-of-truth document {target}")
+
+for path in (ROOT / "docs/evidence/v0.7").glob("**/*"):
+    if path.is_file() and path.suffix.lower() not in {".md"}:
+        fail(f"v0.7 evidence contains non-document artifact {path.relative_to(ROOT)}")
+    if path.suffix.lower() in {".gd", ".tscn", ".tres", ".cs", ".cpp", ".h", ".uasset", ".umap", ".uproject", ".png", ".jpg", ".jpeg", ".webp", ".wav", ".mp3", ".ogg", ".glb", ".gltf", ".fbx"}:
+        fail(f"v0.7 contains forbidden engine or asset file {path.relative_to(ROOT)}")
+
+print(f"PASS {CHECK}")

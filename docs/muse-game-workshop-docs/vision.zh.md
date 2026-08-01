@@ -195,12 +195,16 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 | v0.4 | Unreal Mapping Slice / Unreal 映射切片 | 同一机制是否能映射到 3D 动作表现？ | Unreal PIE test map 可玩，Data Asset、UMG、动画占位和检查入口存在。 |
 | v0.5 | Publishing Readiness / 发布准备 | Demo 是否能判断公开试玩条件？ | release checklist、store/trailer brief、localization、accessibility、AI disclosure 完整。 |
 | v0.6 | Game Design Deepening Pack / 策划流程细化包 | 核心玩法、系统、战斗、关卡、数值和试玩假设是否能形成可交接规格？ | system design、combat design、encounter design、tuning plan 和 playtest hypothesis 能交给程序、QA 和创意职能。 |
-| v0.7 | Narrative Design Pack / 叙事设计包 | 世界观、剧情动线、角色、任务和对白是否能服务玩法与关卡？ | world bible、narrative flow、character profile、quest brief、dialogue brief 和 lore consistency check 可审查。 |
+| v0.7 | Product Entry & mgw init / 产品入口与项目初始化 | 用户如何用 Muse 创建自己的游戏项目？ | `mgw init`、user journey、project workspace、tool adapter 和 MCP adapter 边界可审查。 |
 | v0.8 | Genre Tracks / 类型流程分支 | 通用流程是否能适配不同类型游戏？ | 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics 作为重点验证分支。 |
-| v0.9 | Economy, Progression & Telemetry / 经济、成长与数据 | 奖励、成长、资源循环和试玩数据是否能闭环调优？ | economy model、progression map、reward table、telemetry plan 和 playtest analytics report 成立。 |
-| v0.10 | Procedural Content Pack / 程序化内容设计包 | 稳定规则能否生成可控内容变体？ | procedural rules、content validation、seed/evidence record 和人工 review gate 完整。 |
+| v0.9 | Economy & Progression / 经济与成长 | 奖励、成长和资源循环是否能闭环调优？ | economy model、progression map、resource/reward table 和 tuning loop 成立。 |
+| v0.10 | Telemetry & Playtest Analytics / 数据埋点与试玩分析 | 试玩数据是否能回到设计假设？ | telemetry plan、playtest analytics report 和 tuning decision log 成立。 |
+| v0.11 | Narrative Design Pack / 叙事设计包 | 世界观、剧情动线、角色、任务和对白是否能服务玩法与关卡？ | world bible、narrative flow、character profile、quest brief、dialogue brief 和 lore consistency check 可审查。 |
+| v0.12 | Creative Production Expansion / 创意资产生产扩展 | 多类资产能否复用 brief、provenance、review 和 engine validation？ | 美术、动作、场景、音乐、音效和 UI 资产都有可审查流程。 |
+| v0.13 | Procedural Content Pack / 程序化内容设计包 | 稳定规则能否生成可控内容变体？ | procedural rules、content validation、seed/evidence record 和人工 review gate 完整。 |
+| v0.14 | Publishing & Release Readiness / 发布准备 | Demo 是否能判断公开试玩条件？ | release checklist、store/trailer brief、localization、accessibility、AI disclosure 完整。 |
+| v0.15 | LiveOps & Post-launch / 上线后运营与迭代 | 已发布项目如何持续更新和响应玩家反馈？ | patch plan、hotfix flow、feedback triage、update roadmap 和运营风险记录可用。 |
 | v1.0 | Reusable Production Pack / 可复用制作包 | 其他项目是否能拿来启动？ | 新项目能快速完成 intake、core loop、mechanic spec，并推进到可试玩切片。 |
-| v1.1+ | LiveOps & Post-launch / 上线后运营与迭代 | 已发布项目如何持续更新和响应玩家反馈？ | patch plan、hotfix flow、feedback triage、update roadmap 和运营风险记录可用。 |
 
 ## 10. P0 / P1 / P2 Scope
 
@@ -216,7 +220,9 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
 - Narrative & Worldbuilding：世界观、剧情动线、角色、任务、对白和文本一致性。
 - Genre Tracks：类型流程分支，首批包含 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类和 Adventure / AVG 冒险。
-- Economy / Progression / Telemetry：经济系统、成长线和试玩数据分析，进入 v0.9。
+- Product Entry & `mgw init`：项目初始化入口、用户流程、project workspace、tool adapter 和 MCP adapter 边界，进入 v0.7。
+- Economy / Progression：经济系统和成长线，已在 v0.9 完成基础设计。
+- Telemetry / Playtest Analytics：试玩数据分析和调优决策，进入 v0.10。
 - Platform & Store Readiness：商店页、trailer brief、截图、平台差异、基础认证检查。
 - Localization：文本外置、术语表、翻译风险、字体和布局。
 - Bilingual Audience Strategy：中文和英文用户入口、术语风格、模板元数据和双语测试。
@@ -231,7 +237,7 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 - Procedural Content advanced tooling。
 - Security & Privacy。
 
-P2 不应拖慢首个可试玩 demo。Analytics / Telemetry、经济系统和成长系统的基础能力从 v0.9 开始；复杂商业化、LiveOps、UGC 和安全隐私能力保留到 v1.1+ 或更晚。
+P2 不应拖慢首个可试玩 demo。经济系统和成长系统的基础能力已由 v0.9 覆盖，Analytics / Telemetry 从 v0.10 开始；复杂商业化、UGC 和安全隐私能力保留到 v1.0 之后或更晚。
 
 ## 11. Non-Negotiables
 

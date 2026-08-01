@@ -195,12 +195,16 @@ Vision must guide version tradeoffs. The current version horizon is:
 | v0.4 | Unreal Mapping Slice | Can the same mechanic map into 3D action presentation? | Unreal PIE test map is playable, with Data Asset, UMG, animation placeholder, and check entry points. |
 | v0.5 | Publishing Readiness | Can the demo be judged for public playtest readiness? | Release checklist, store/trailer brief, localization, accessibility, and AI disclosure are complete. |
 | v0.6 | Game Design Deepening Pack | Can core gameplay, systems, combat, levels, tuning, and playtest hypotheses become handoff-ready specs? | System design, combat design, encounter design, tuning plan, and playtest hypotheses can hand off to programmers, QA, and creative disciplines. |
-| v0.7 | Narrative Design Pack | Can worldbuilding, narrative flow, characters, quests, and dialogue serve gameplay and level design? | World bible, narrative flow, character profile, quest brief, dialogue brief, and lore consistency check are reviewable. |
+| v0.7 | Product Entry & mgw init | How does a user create their own game project with Muse? | `mgw init`, user journey, project workspace, tool adapter rules, and MCP adapter boundaries are reviewable. |
 | v0.8 | Genre Tracks | Can the shared workflow adapt to different game genres? | First tracks support Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG; Tactics is a priority validation track. |
-| v0.9 | Economy, Progression & Telemetry | Can rewards, progression, resource loops, and playtest data support tuning? | Economy model, progression map, reward table, telemetry plan, and playtest analytics report work together. |
-| v0.10 | Procedural Content Pack | Can stable rules generate controlled content variations? | Procedural rules, content validation, seed/evidence records, and human review gates are complete. |
+| v0.9 | Economy & Progression | Can rewards, progression, and resource loops support tuning? | Economy model, progression map, resource/reward table, and tuning loop work together. |
+| v0.10 | Telemetry & Playtest Analytics | Can playtest data return to design hypotheses? | Telemetry plan, playtest analytics report, and tuning decision log work together. |
+| v0.11 | Narrative Design Pack | Can worldbuilding, narrative flow, characters, quests, and dialogue serve gameplay and level design? | World bible, narrative flow, character profile, quest brief, dialogue brief, and lore consistency check are reviewable. |
+| v0.12 | Creative Production Expansion | Can multiple asset classes reuse brief, provenance, review, and engine validation? | Art, animation, environment, music, SFX, and UI assets have reviewable flows. |
+| v0.13 | Procedural Content Pack | Can stable rules generate controlled content variations? | Procedural rules, content validation, seed/evidence records, and human review gates are complete. |
+| v0.14 | Publishing & Release Readiness | Can the demo be judged for public playtest readiness? | Release checklist, store/trailer brief, localization, accessibility, and AI disclosure are complete. |
+| v0.15 | LiveOps & Post-launch | How does a released project keep updating and responding to player feedback? | Patch plan, hotfix flow, feedback triage, update roadmap, and operations risk records are usable. |
 | v1.0 | Reusable Production Pack | Can another project start from this pack? | A new project can complete intake, core loop, and mechanic spec quickly, then move toward a playable slice. |
-| v1.1+ | LiveOps & Post-launch | How does a released project keep updating and responding to player feedback? | Patch plan, hotfix flow, feedback triage, update roadmap, and operations risk records are usable. |
 
 ## 10. P0 / P1 / P2 Scope
 
@@ -216,7 +220,9 @@ Vision must guide version tradeoffs. The current version horizon is:
 - Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
 - Narrative & Worldbuilding: world, narrative flow, characters, quests, dialogue, and text consistency.
 - Genre Tracks: genre-specific workflow branches, first covering Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
-- Economy / Progression / Telemetry: economy systems, progression, and playtest analytics, entering in v0.9.
+- Product Entry & `mgw init`: project initialization entry, user journey, project workspace, tool adapter rules, and MCP adapter boundaries, entering in v0.7.
+- Economy / Progression: economy systems and progression, completed in v0.9.
+- Telemetry / Playtest Analytics: playtest analytics and tuning decisions, entering in v0.10.
 - Platform & Store Readiness: store page, trailer brief, screenshots, platform differences, and basic certification checks.
 - Localization: externalized text, glossary, translation risks, fonts, and layout.
 - Bilingual Audience Strategy: Chinese and English entry points, terminology style, template metadata, and bilingual tests.
@@ -231,7 +237,7 @@ Vision must guide version tradeoffs. The current version horizon is:
 - Advanced procedural content tooling.
 - Security & Privacy.
 
-P2 should not slow down the first playable demo. Basic analytics/telemetry, economy, and progression begin in v0.9; complex commercialization, LiveOps, UGC, and security/privacy capabilities stay in v1.1+ or later.
+P2 should not slow down the first playable demo. Basic economy and progression are covered by v0.9, and analytics/telemetry begins in v0.10; complex commercialization, UGC, and security/privacy capabilities stay after v1.0 or later.
 
 ## 11. Non-Negotiables
 

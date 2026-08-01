@@ -37,8 +37,15 @@ The GitHub repository is currently private. Cloning requires repository access.
 | Goal | Start here |
 |---|---|
 | Understand the project | [vision.en.md](docs/muse-game-workshop-docs/vision.en.md), [prd.en.md](docs/muse-game-workshop-docs/prd.en.md) |
+| Understand the `mgw-init` / `mgw init` entry | [product-entry-and-mgw-init.en.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.en.md) |
+| Create a new game from zero | [zero-to-one-game-creation.en.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md): create a folder, type `mgw-init`, then continue in an AI coding tool |
+| Follow the game-creation journey | [user-journey.en.md](docs/muse-game-workshop-docs/user-journey.en.md) |
 | Let an AI tool work in the repo | Read `AGENTS.md`, then use the startup prompt below |
 | Start from a game idea | `templates/design/pitch.md`, `core-loop.md`, `mechanic-spec.md` |
+| Deepen game design and systems | [game-design-systems.en.md](docs/muse-game-workshop-docs/game-design-systems.en.md), `templates/design/system-design.md` |
+| Design economy and progression | [economy-progression.en.md](docs/muse-game-workshop-docs/economy-progression.en.md), `templates/design/economy-model.md` |
+| Plan level, combat, and system numbers | [numerical-planning.en.md](docs/muse-game-workshop-docs/numerical-planning.en.md), `templates/design/level-curve.md` |
+| Compose specialized design skills | [agent-skill-composition.en.md](docs/muse-game-workshop-docs/agent-skill-composition.en.md), `system-design`, `combat-design`, `numerical-planning` |
 | Plan a vertical slice | `templates/design/vertical-slice.md`, `templates/design/engine-mapping.md` |
 | Run the Godot example | `examples/godot-boss-rush/project.godot` |
 | Inspect Unreal mapping | `examples/unreal-boss-rush/README.md` |
@@ -60,12 +67,41 @@ Recommended workflow:
 ### Recommended Startup Prompt
 
 ```text
-We are using Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, technical architecture, workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. All implementation tasks and structural changes must first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then wait for review gate approval before editing. The v0.4 Unreal Mapping Slice review gate is Approved and the static scaffold has landed; v0.5b AI art dry-run evidence has landed but does not mean assets were generated or imported; if Unreal Editor is unavailable, do not create .uasset or .umap files. Do not import final or release-candidate assets.
+We are using Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, Product Entry & mgw init, Zero-to-One Game Creation, User Journey, technical architecture, workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, game design systems, Godot Prototype Asset Kit, Genre Tracks, Economy & Progression, Numerical Planning, Agent Skill Composition, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. `mgw-init` is the guided initialization entry; `continue mgw-init` resumes initialization inside an AI coding tool. All implementation tasks and structural changes must first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then wait for review gate approval before editing. v0.9.2 Specialized Design Skills is complete; the v0.4 Unreal Mapping Slice static scaffold still waits for Unreal Editor PIE/editor validation. v0.9.2 does not mean the real mgw CLI is implemented, MCP is installed, new engine projects are created, commercial backend is implemented, payment is implemented, real telemetry services are created, new assets are generated, final/release-candidate assets are imported, or release balance is approved. The next version is v0.10 Telemetry & Playtest Analytics.
 ```
 
 ## 2. Start From A New Game Idea
 
-Do not start by asking AI to write game code. Write the production memory first:
+Do not start by asking AI to write game code. For the full day-one flow, see [zero-to-one-game-creation.en.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md). Start with a light guided entry:
+
+```sh
+mkdir my-game
+cd my-game
+mgw-init
+```
+
+Then open the folder in Codex, Claude Code, Kiro CLI, opencode, or another AI coding tool and say:
+
+```text
+continue mgw-init
+```
+
+If the CLI is not available yet, open the empty folder in the AI coding tool and type:
+
+```text
+mgw-init
+```
+
+The first output should be minimal:
+
+```text
+README.md
+muse.project.yaml
+docs/00-game-start.md
+docs/evidence/README.md
+```
+
+After the user confirms, expand the production memory:
 
 1. Use `templates/design/pitch.md` for one-line promise, audience, platform, and risk.
 2. Use `templates/design/core-loop.md` for the core loop, player motivation, failure, and reward.
@@ -90,6 +126,18 @@ Common templates:
 | Game idea | `templates/design/pitch.md` |
 | Core loop | `templates/design/core-loop.md` |
 | Mechanic spec | `templates/design/mechanic-spec.md` |
+| System design | `templates/design/system-design.md` |
+| Combat design | `templates/design/combat-design.md` |
+| Encounter design | `templates/design/encounter-design.md` |
+| Tuning plan | `templates/design/tuning-plan.md` |
+| Economy model | `templates/design/economy-model.md` |
+| Progression map | `templates/design/progression-map.md` |
+| Resource and reward table | `templates/design/resource-reward-table.md` |
+| Tuning loop | `templates/design/tuning-loop.md` |
+| Level curve | `templates/design/level-curve.md` |
+| Combat parameter table | `templates/design/combat-parameter-table.md` |
+| System numerical plan | `templates/design/system-numerical-plan.md` |
+| Playtest hypothesis | `templates/design/playtest-hypothesis.md` |
 | Vertical slice | `templates/design/vertical-slice.md` |
 | Engine mapping | `templates/design/engine-mapping.md` |
 | Playtest record | `templates/design/playtest-log.md` |
@@ -182,6 +230,7 @@ For template or skill changes, also run:
 ```sh
 tools/checks/check-template-metadata
 tools/checks/check-v0.1-manifest
+tools/checks/check-v0.9.2-design-skills
 ```
 
 For example or asset changes, run the full set:
@@ -196,6 +245,13 @@ tools/checks/check-v0.2-godot
 tools/checks/check-v0.3-creative-assets
 tools/checks/check-v0.4-unreal
 tools/checks/check-v0.5-ai-art-dry-run
+tools/checks/check-v0.5-consolidation
+tools/checks/check-v0.6-game-design-systems
+tools/checks/check-v0.7-product-entry
+tools/checks/check-v0.8-genre-tracks
+tools/checks/check-v0.9-economy-progression
+tools/checks/check-v0.9.1-numerical-planning
+tools/checks/check-v0.9.2-design-skills
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
 
@@ -206,6 +262,10 @@ python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 | New game intake | `game-intake` skill + `templates/design/pitch.md` |
 | Core loop design | `core-loop` skill + `templates/design/core-loop.md` |
 | Mechanic spec | `mechanic-spec` skill + `templates/design/mechanic-spec.md` |
+| System design | `system-design` skill + `templates/design/system-design.md` |
+| Combat design | `combat-design` skill + `templates/design/combat-design.md` |
+| Numerical design | `numerical-planning`, `level-curve`, `combat-parameters`, `system-numerics` |
+| Prototype Design Gate | `prototype-design` skill before Godot / Unreal / gameplay code |
 | Vertical slice planning | `vertical-slice-planner` skill + `templates/design/vertical-slice.md` |
 | Godot implementation | `godot-workflow` skill + `examples/godot-boss-rush/` |
 | Unreal mapping | `unreal-workflow` skill + `examples/unreal-boss-rush/` |
@@ -239,19 +299,29 @@ Detailed vision:
 
 ## Current Status
 
-The repository has completed v0.3 Creative Production Ready, v0.4 Unreal Mapping Slice static scaffold, and v0.5b AI art dry-run evidence:
+The repository has completed v0.9.2 Specialized Design Skills as an addendum to v0.9.1 Numerical Planning and v0.9 Economy & Progression: v0.8 Genre Tracks, v0.7 Product Entry & mgw init, the v0.6 Game Design & Systems package, and the v0.5 research consolidation remain in place, and the first seven genre workflow branches plus Tactics dry runs have landed:
 
 - `AGENTS.md`
-- 14 P0 workflow skills: `.agents/skills/*/SKILL.md`
-- 27 templates under `templates/`: 22 from v0.1 plus 5 v0.3 creative templates
-- 9 check entry points under `tools/checks/`
+- 22 workflow skills: 14 P0 skills, `mgw-init`, `prototype-design`, and 6 v0.9.2 specialized design skills under `.agents/skills/*/SKILL.md`
+- 39 templates under `templates/`: 22 from v0.1, 5 v0.3 creative templates, 5 v0.6 design systems templates, 4 v0.9 economy/progression templates, and 3 v0.9.1 numerical planning templates
+- 16 check entry points under `tools/checks/`
 - Boss Rush / Counter Trial no-code dry-run evidence under `docs/evidence/dry-runs/`
 - Godot Boss Rush prototype under `examples/godot-boss-rush/`
 - v0.3 creative asset evidence under `docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold under `examples/unreal-boss-rush/`
 - v0.5b AI art asset dry-run evidence under `docs/evidence/v0.5/`
+- v0.5 engine AI adapter research under `docs/muse-game-workshop-docs/research/`
+- v0.5 consolidation evidence under `docs/evidence/v0.5/`
+- v0.6 game design systems overview under `docs/muse-game-workshop-docs/game-design-systems.en.md`
+- v0.6 Boss Rush and Tactics design dry-run evidence under `docs/evidence/v0.6/`
+- v0.7 product entry and user journey docs under `docs/muse-game-workshop-docs/`
+- v0.8 Genre Tracks overview and seven genre branches under `docs/muse-game-workshop-docs/`
+- v0.8 Tactics dry-run evidence under `docs/evidence/v0.8/`
+- v0.9 Economy & Progression docs, templates, and Tactics dry-run evidence under `docs/evidence/v0.9/`
+- v0.9.1 Numerical Planning docs, templates, and Tactics dry-run evidence under `docs/evidence/v0.9.1/`
+- v0.9.2 Specialized Design Skills and Agent Skill Composition docs under `.agents/skills/` and `docs/muse-game-workshop-docs/`
 
-v0.4 Unreal Mapping Slice has an approved review gate and a static scaffold, but Unreal Editor was not found locally. PIE validation and binary `.uasset` / `.umap` creation are still blocked. v0.5b only dry-runs asset briefs, provenance planning, and review criteria; it does not generate or import production assets. No final or release-candidate art/audio assets have been imported.
+v0.4 Unreal Mapping Slice has an approved review gate and a static scaffold, but Unreal Editor was not found locally. PIE validation and binary `.uasset` / `.umap` creation are still blocked. v0.9.2 does not implement the real `mgw` CLI, install MCP, create new engine projects, implement commercial backend, implement payment, create real telemetry services, generate new assets, import final/release-candidate art/audio assets, or approve release balance. The next version is v0.10 Telemetry & Playtest Analytics.
 
 ## What Not To Do
 
@@ -271,9 +341,18 @@ v0.4 Unreal Mapping Slice has an approved review gate and a static scaffold, but
 | Overall Project Plan | [muse-game-workshop-plan.zh.md](docs/muse-game-workshop-plan.zh.md) | [muse-game-workshop-plan.en.md](docs/muse-game-workshop-plan.en.md) |
 | Vision | [vision.zh.md](docs/muse-game-workshop-docs/vision.zh.md) | [vision.en.md](docs/muse-game-workshop-docs/vision.en.md) |
 | PRD | [prd.zh.md](docs/muse-game-workshop-docs/prd.zh.md) | [prd.en.md](docs/muse-game-workshop-docs/prd.en.md) |
+| Product Entry & mgw init | [product-entry-and-mgw-init.zh.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md) | [product-entry-and-mgw-init.en.md](docs/muse-game-workshop-docs/product-entry-and-mgw-init.en.md) |
+| Zero-to-One Game Creation | [zero-to-one-game-creation.zh.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md) | [zero-to-one-game-creation.en.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md) |
+| User Journey | [user-journey.zh.md](docs/muse-game-workshop-docs/user-journey.zh.md) | [user-journey.en.md](docs/muse-game-workshop-docs/user-journey.en.md) |
 | Technical Architecture | [technical-architecture.zh.md](docs/muse-game-workshop-docs/technical-architecture.zh.md) | [technical-architecture.en.md](docs/muse-game-workshop-docs/technical-architecture.en.md) |
 | Godot / Unreal Workflow | [godot-unreal-workflow.zh.md](docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md) | [godot-unreal-workflow.en.md](docs/muse-game-workshop-docs/godot-unreal-workflow.en.md) |
 | AI Art Asset Pipeline | [ai-art-asset-pipeline.zh.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.zh.md) | [ai-art-asset-pipeline.en.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.en.md) |
+| Godot Prototype Asset Kit | [godot-prototype-asset-kit.zh.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md) | [godot-prototype-asset-kit.en.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.en.md) |
+| Genre Tracks | [genre-tracks.zh.md](docs/muse-game-workshop-docs/genre-tracks.zh.md) | [genre-tracks.en.md](docs/muse-game-workshop-docs/genre-tracks.en.md) |
+| Economy & Progression | [economy-progression.zh.md](docs/muse-game-workshop-docs/economy-progression.zh.md) | [economy-progression.en.md](docs/muse-game-workshop-docs/economy-progression.en.md) |
+| Numerical Planning | [numerical-planning.zh.md](docs/muse-game-workshop-docs/numerical-planning.zh.md) | [numerical-planning.en.md](docs/muse-game-workshop-docs/numerical-planning.en.md) |
+| Agent Skill Composition | [agent-skill-composition.zh.md](docs/muse-game-workshop-docs/agent-skill-composition.zh.md) | [agent-skill-composition.en.md](docs/muse-game-workshop-docs/agent-skill-composition.en.md) |
+| Game Design & Systems | [game-design-systems.zh.md](docs/muse-game-workshop-docs/game-design-systems.zh.md) | [game-design-systems.en.md](docs/muse-game-workshop-docs/game-design-systems.en.md) |
 | Skill Pack Spec | [skill-pack-spec.zh.md](docs/muse-game-workshop-docs/skill-pack-spec.zh.md) | [skill-pack-spec.en.md](docs/muse-game-workshop-docs/skill-pack-spec.en.md) |
 | Production Language Guide | [production-language-guide.zh.md](docs/muse-game-workshop-docs/production-language-guide.zh.md) | [production-language-guide.en.md](docs/muse-game-workshop-docs/production-language-guide.en.md) |
 | Bilingual Audience Strategy | [bilingual-audience-strategy.zh.md](docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md) | [bilingual-audience-strategy.en.md](docs/muse-game-workshop-docs/bilingual-audience-strategy.en.md) |

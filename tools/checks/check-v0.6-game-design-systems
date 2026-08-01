@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.6-game-design-systems"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/muse-game-workshop-docs/game-design-systems.zh.md",
+    "docs/muse-game-workshop-docs/game-design-systems.en.md",
+    "docs/evidence/v0.6/v0.6-game-design-systems-review-gate.zh.md",
+    "docs/evidence/v0.6/v0.6-game-design-systems-review-gate.en.md",
+    "docs/evidence/v0.6/v0.6-game-design-systems-evidence.zh.md",
+    "docs/evidence/v0.6/v0.6-game-design-systems-evidence.en.md",
+    "docs/evidence/v0.6/boss-rush-action-design-dry-run.zh.md",
+    "docs/evidence/v0.6/boss-rush-action-design-dry-run.en.md",
+    "docs/evidence/v0.6/tactics-design-dry-run.zh.md",
+    "docs/evidence/v0.6/tactics-design-dry-run.en.md",
+    "templates/design/system-design.md",
+    "templates/design/combat-design.md",
+    "templates/design/encounter-design.md",
+    "templates/design/tuning-plan.md",
+    "templates/design/playtest-hypothesis.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+gate_zh = (ROOT / "docs/evidence/v0.6/v0.6-game-design-systems-review-gate.zh.md").read_text(encoding="utf-8")
+gate_en = (ROOT / "docs/evidence/v0.6/v0.6-game-design-systems-review-gate.en.md").read_text(encoding="utf-8")
+for label, text in [("zh gate", gate_zh), ("en gate", gate_en)]:
+    if "Review Status: Approved" not in text:
+        fail(f"{label} is not approved")
+    for term in ["新 Godot", "new Godot", "MCP", "生成或导入", "Generating or importing"]:
+        if term in text:
+            break
+    else:
+        fail(f"{label} does not state v0.6 boundaries")
+
+overview_zh = (ROOT / "docs/muse-game-workshop-docs/game-design-systems.zh.md").read_text(encoding="utf-8")
+overview_en = (ROOT / "docs/muse-game-workshop-docs/game-design-systems.en.md").read_text(encoding="utf-8")
+for term in [
+    "设计支柱",
+    "System Design Brief",
+    "Combat Design Brief",
+    "Encounter Design Brief",
+    "Tuning Plan",
+    "Playtest Hypothesis",
+    "Boss Rush",
+    "Tactics",
+    "v0.7",
+]:
+    if term not in overview_zh:
+        fail(f"Chinese overview missing {term}")
+for term in [
+    "Game Pillars",
+    "System Design Brief",
+    "Combat Design Brief",
+    "Encounter Design Brief",
+    "Tuning Plan",
+    "Playtest Hypothesis",
+    "Boss Rush",
+    "Tactics",
+    "v0.7",
+]:
+    if term not in overview_en:
+        fail(f"English overview missing {term}")
+
+template_fields = [
+    "## Metadata",
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+    "## Review Gate",
+]
+
+for rel in [
+    "templates/design/system-design.md",
+    "templates/design/combat-design.md",
+    "templates/design/encounter-design.md",
+    "templates/design/tuning-plan.md",
+    "templates/design/playtest-hypothesis.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for field in template_fields:
+        if field not in text:
+            fail(f"{rel} missing {field}")
+
+boss_zh = (ROOT / "docs/evidence/v0.6/boss-rush-action-design-dry-run.zh.md").read_text(encoding="utf-8")
+boss_en = (ROOT / "docs/evidence/v0.6/boss-rush-action-design-dry-run.en.md").read_text(encoding="utf-8")
+for term in ["设计支柱", "System Design Brief", "Combat Design Brief", "Encounter Design Brief", "Tuning Plan", "Playtest Hypotheses"]:
+    if term not in boss_zh:
+        fail(f"Boss Rush Chinese dry run missing {term}")
+for term in ["Game Pillars", "System Design Brief", "Combat Design Brief", "Encounter Design Brief", "Tuning Plan", "Playtest Hypotheses"]:
+    if term not in boss_en:
+        fail(f"Boss Rush English dry run missing {term}")
+
+tactics_zh = (ROOT / "docs/evidence/v0.6/tactics-design-dry-run.zh.md").read_text(encoding="utf-8")
+tactics_en = (ROOT / "docs/evidence/v0.6/tactics-design-dry-run.en.md").read_text(encoding="utf-8")
+for term in ["战棋类", "格子", "Unit Matrix", "技能", "任务目标", "敌方 AI", "Playtest Hypotheses"]:
+    if term not in tactics_zh:
+        fail(f"Tactics Chinese dry run missing {term}")
+for term in ["Tactics", "grid", "Unit Matrix", "abilities", "Mission", "enemy AI", "Playtest Hypotheses"]:
+    if term not in tactics_en:
+        fail(f"Tactics English dry run missing {term}")
+
+version_docs = [
+    "README.md",
+    "README.zh.md",
+    "README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+]
+
+for rel in version_docs:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    if "v0.6" not in text:
+        fail(f"{rel} missing v0.6")
+    if "v0.7" not in text:
+        fail(f"{rel} missing v0.7 next step")
+
+readme = (ROOT / "README.md").read_text(encoding="utf-8")
+for term in [
+    "v0.6 Game Design & Systems",
+    "game-design-systems.en.md",
+    "tools/checks/check-v0.6-game-design-systems",
+]:
+    if term not in readme:
+        fail(f"README.md missing {term}")
+
+for path in (ROOT / "docs/evidence/v0.6").glob("*"):
+    if path.suffix.lower() not in {".md"}:
+        fail(f"v0.6 evidence contains non-document artifact {path.relative_to(ROOT)}")
+
+for path in (ROOT / "docs/evidence/v0.6").glob("**/*"):
+    if path.suffix.lower() in {".gd", ".tscn", ".tres", ".cs", ".cpp", ".h", ".uasset", ".umap", ".uproject", ".png", ".jpg", ".jpeg", ".webp", ".wav", ".mp3", ".ogg", ".glb", ".gltf", ".fbx"}:
+        fail(f"v0.6 contains forbidden engine or asset file {path.relative_to(ROOT)}")
+
+print(f"PASS {CHECK}")

@@ -8,6 +8,7 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 ## Use When
 
 - A prototype needs a 7-14 day playable slice plan.
+- A prototype design gate has been approved and needs to become a small playable slice.
 - A team needs to separate must-have, should-have, and cuttable work.
 - A dry run needs an implementation plan without writing code.
 
@@ -22,6 +23,7 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 - Game intake.
 - Core loop.
 - Mechanic spec.
+- Prototype design gate, if available.
 - Engine preference.
 - Team/time constraints.
 
@@ -36,16 +38,18 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 
 ## Workflow
 
-1. Restate the smallest playable promise.
-2. Split work by design, engineering, art, audio, UX, level, QA, and release.
-3. Mark what is required, optional, and explicitly cut.
-4. Define acceptance tests and playtest questions.
-5. Identify engine and asset dependencies.
-6. Require review approval before any structure, code, or asset work.
+1. Confirm the prototype design gate is strong enough: prototype goal, playable promise, mechanic readiness, content scope, placeholder policy, engine mapping, validation plan, and cut list.
+2. Restate the smallest playable promise.
+3. Split work by design, engineering, art, audio, UX, level, QA, and release.
+4. Mark what is required, optional, and explicitly cut.
+5. Define acceptance tests and playtest questions.
+6. Identify engine and asset dependencies.
+7. Require review approval before any structure, code, or asset work.
 
 ## Quality Bar
 
 - The plan can be reviewed by a Producer in one pass.
+- The prototype design gate is explicit and not hidden inside a task list.
 - The cut list is explicit.
 - The slice proves gameplay, not content volume.
 - The plan can move to Godot or Unreal without rewriting the design.
@@ -59,6 +63,9 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 
 ## Next Skills
 
+- `system-design`
+- `combat-design`
+- `numerical-planning`
 - `engine-portability`
 - `creative-asset-pipeline`
 - `ux-flow`

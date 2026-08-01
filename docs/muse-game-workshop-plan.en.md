@@ -106,25 +106,30 @@ P0 must be included in the current design:
 - UX/UI & Onboarding: menus, settings, tutorial flow, onboarding, readability, feedback hierarchy, and basic accessibility switches.
 - Level Design: blockout, encounter design, sightline guidance, pacing, navigation, difficulty curve, and level review.
 
-P1 should enter v0.6-v0.8 design:
+P1 should enter design progressively across v0.6-v0.11:
 
 - Game Design Deepening: design pillars, system design, combat design, level encounters, tuning, and playtest hypotheses.
-- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
+- Product Entry & `mgw init`: project initialization entry, user journey, project workspace, tool adapter rules, and MCP adapter safe boundaries.
 - Genre Tracks: genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG; Tactics is the priority validation track.
+- Economy / Progression: economy systems, progression, reward structure, and tuning tables.
+- Numerical Planning: level curves, combat parameters, system numbers, and anchor-based tuning.
+- Telemetry / Playtest Analytics: playtest data, tuning reports, event fields, and privacy boundaries.
+- Narrative / Worldbuilding / Quest: worldbuilding, narrative flow, character design, dialogue, quest structure, text style, and narrative consistency.
 - Platform & Store Readiness: Steam/itch demo, capsule art, screenshots, trailer brief, build branches, controller support, crash logs, and platform disclosure.
 - Localization: text keys, fonts, UI overflow, translation workflow, cultural risk, and localization regression.
 - Accessibility: subtitles, color/contrast, input remapping, vibration toggle, difficulty assists, and text size.
 
-Mid-term capabilities enter v0.9-v0.10:
+Mid-term capabilities enter v0.12-v0.15:
 
-- Economy / Progression / Telemetry: economy systems, progression, reward structure, playtest data, tuning reports, and privacy boundaries.
+- Creative Production Expansion: art, animation, environment, music, SFX, and UI asset production after design, systems, genre, economy, data, and narrative stabilize.
 - Procedural Content: procedural maps, encounters, loot, and quest variations after rules are stable.
+- Publishing & Release Readiness: store pages, trailer briefs, localization, accessibility, platform disclosure, and demo readiness.
+- LiveOps / Post-launch: patches, hotfixes, update roadmap, and player feedback triage.
 
-P2 stays in v1.1+ or later future planning:
+P2 stays after v1.0 or later future planning:
 
 - Community & Marketing: devlog, Discord/community feedback, version update cadence.
 - Monetization: pricing, demo strategy, DLC, paid content boundaries.
-- LiveOps / Post-launch: patches, hotfixes, update roadmap, player feedback triage.
 - Modding / UGC: editors, user content, moderation, and copyright boundaries.
 - Security / Privacy: online features, third-party SDKs, data collection, and security risk.
 
@@ -869,23 +874,32 @@ When uncertain:
 
 ## 13. MVP Scope
 
-Here, MVP means the full validation chain from the v0.1 workflow pack to the v1.0 reusable production pack. v0.6-v0.10 add game design deepening, narrative design, genre tracks, economy/progression/telemetry, and procedural content; v0.1 materialization still uses `docs/muse-game-workshop-docs/v0.1-manifest.en.md` as the single source of truth.
+Here, MVP means the full validation chain from the v0.1 workflow pack to the v1.0 reusable production pack. v0.5 has completed roadmap and research consolidation; v0.6 has completed the game design and systems package; v0.7 has completed Product Entry & `mgw init` design; v0.8-v0.15 continue with genre tracks, economy and progression, telemetry and playtest analytics, narrative design, creative production expansion, procedural content, publishing readiness, and post-launch operations. v0.1 materialization still uses `docs/muse-game-workshop-docs/v0.1-manifest.en.md` as the single source of truth.
 
 The MVP chain includes only:
 
 - `AGENTS.md`
 - 14 v0.1 P0 workflow skill `SKILL.md` files.
-- 22 v0.1 templates covering design, production, creative, UX, and localization readiness.
+- 39 templates covering v0.1 design/production/creative/UX/localization readiness, v0.3 creative production, v0.6 design systems, v0.9 economy/progression, and v0.9.1 numerical planning.
+- 22 workflow skills: 14 P0 skills, `mgw-init`, `prototype-design`, and 6 v0.9.2 specialized design skills.
 - One shared sample-game plan used as the common test fixture for dry runs, the Godot example, and the Unreal mapping example.
 - One Boss Rush no-code dry run.
 - One Godot 2D/lightweight 3D example in v0.2.
 - One Unreal third-person gameplay mapping example in v0.4.
 - One Godot/Unreal dual-engine mapping template.
-- One v0.6 game design deepening pack covering systems, combat, encounters, tuning, and playtest hypotheses.
-- One v0.7 narrative design pack covering worldbuilding, narrative flow, characters, quests, dialogue, and lore consistency.
-- One v0.8 genre track pack with Tactics as a first priority track.
-- One v0.9 economy, progression, and telemetry pack.
-- One v0.10 procedural content design pack.
+- One v0.5 roadmap rebase and research consolidation pack covering AI art dry runs, engine AI adapter research, user feedback, and the Godot integration decision.
+- One completed v0.6 game design and systems pack covering systems, combat, encounters, tuning, and playtest hypotheses, with Boss Rush / Action and Tactics design dry runs.
+- One completed v0.7 product entry and project initialization design pack defining `mgw init`, user journey, project workspace, tool adapter rules, and MCP adapter boundaries.
+- One completed v0.8 genre track pack with Tactics as a first priority track and a Godot Prototype Asset Kit plan for readable proxy assets.
+- One completed v0.9 economy and progression pack with economy model, progression map, resource/reward table, tuning loop, and Tactics dry-run evidence.
+- One completed v0.9.1 numerical planning addendum with level curve, combat parameter table, system numerical plan, and Tactics numerical dry-run evidence.
+- One completed v0.9.2 Specialized Design Skills addendum with system design, combat design, numerical planning, level curve, combat parameters, system numerics, Agent Skill Composition, and `check-v0.9.2-design-skills`.
+- One v0.10 telemetry and playtest analytics pack.
+- One v0.11 narrative design pack covering worldbuilding, narrative flow, characters, quests, dialogue, and lore consistency.
+- One v0.12 creative production expansion pack.
+- One v0.13 procedural content design pack.
+- One v0.14 publishing readiness pack.
+- One v0.15 LiveOps and post-launch pack.
 - One full walkthrough from pitch to playtest.
 
 Out of scope:
@@ -1147,7 +1161,7 @@ docs/evidence/dry-runs/  # v0.1d: Boss Rush no-code dry-run evidence
 
 Step 3: run the no-code dry run using the Boss Rush / Counter Trial sample game plan from section 15.
 
-Complete the v0.1 workflow pack and no-code dry run first, then enter the v0.2 minimal Godot prototype. Unreal remains the v0.4 mapping slice for the same mechanic and should not compete with the v0.1 workflow pack.
+v0.9.2 Specialized Design Skills is now complete as an addendum to v0.9.1 Numerical Planning and v0.9 Economy & Progression. The next step should be v0.10 Telemetry & Playtest Analytics: first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then define the telemetry event plan, playtest analytics report, tuning decision log, privacy boundaries, review gate, evidence, and checks. v0.10 must stay local and design-first until a separate review approves real user-data services.
 
 ## 17. Reference Projects And Tools
 

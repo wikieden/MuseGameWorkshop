@@ -236,14 +236,20 @@ Muse Game Workshop versions do not progress by adding more features for their ow
 | v0.2 | Mechanic specs cannot enter an engine | Godot playable loop | Launchable, playable, parameterized, with playtest report |
 | v0.3 | Creative assets cannot safely enter the project | Creative asset pipeline, provenance, asset review | One visual asset and one audio asset complete engine validation |
 | v0.4 | 2D/lightweight gameplay cannot map to 3D action presentation | Unreal mapping slice | PIE test map is playable, Data Asset and presentation mapping work |
-| v0.5 | Demo readiness for external release is unclear | Publishing readiness | Demo release readiness report is complete |
-| v0.6 | Design specs are too shallow for downstream handoff | Game design deepening pack | System, combat, encounter, tuning, and playtest hypotheses can hand off |
-| v0.7 | World, characters, and quests drift away from gameplay | Narrative design pack | Narrative deliverables serve gameplay, level design, art, audio, and localization |
-| v0.8 | One shared flow distorts different genres | Genre tracks | Seven first genre tracks reuse the core workflow; Tactics passes a dry run |
-| v0.9 | Tuning lacks economy, progression, and playtest data loops | Economy, progression, telemetry | Data fields and tuning reports feed design decisions |
-| v0.10 | Procedural content adds risk if introduced too early | Procedural content pack | Generated content is reproducible, reviewable, and reversible |
+| v0.5 | v0.5b, research, and roadmap state are scattered | Roadmap rebase & research consolidation | Research pack, user feedback, Godot integration decision, and version rebase all have evidence |
+| v0.6 | Design specs are too shallow for downstream handoff | Game design & systems pack | System, combat, encounter, tuning, and playtest hypotheses can hand off |
+| v0.7 | Users do not know how to create their own game project with Muse | Product entry & `mgw init` | Project initialization entry, user journey, adapter rules, and safe boundaries are clear |
+| v0.8 | One shared flow distorts different genres and Godot prototypes lack readable proxy assets | Genre tracks + Godot Prototype Asset Kit plan | Seven first genre tracks reuse the core workflow; Tactics passes a dry run; Godot proxy asset needs are defined |
+| v0.9 | Economy and progression lack a system loop | Economy & progression | Economy model, progression map, resource/reward table, and tuning loop feed system design and tuning |
+| v0.9.1 | Level, combat, and system numbers are discussed but not reviewable | Numerical planning | Level curve, combat parameter table, and system numerical plan connect to tuning before implementation |
+| v0.9.2 | Specialized design work is too broad for one generic design flow | Specialized design skills | System, combat, numerical, level curve, combat parameter, and system numeric skills compose under production roles |
+| v0.10 | Playtest data cannot feed tuning decisions | Telemetry & playtest analytics | Data fields and tuning reports feed design decisions |
+| v0.11 | World, characters, and quests drift away from gameplay | Narrative design pack | Narrative deliverables serve gameplay, level design, art, audio, and localization |
+| v0.12 | Creative asset flow is proven but not expanded | Creative production expansion | Multiple asset classes pass brief, provenance, review, and engine validation |
+| v0.13 | Procedural content adds risk if introduced too early | Procedural content pack | Generated content is reproducible, reviewable, and reversible |
+| v0.14 | Demo readiness for external release is unclear | Publishing & release readiness | Demo release readiness report is complete |
+| v0.15 | Released projects need sustained updates | LiveOps & post-launch | Patch, hotfix, feedback triage, and update roadmap are executable |
 | v1.0 | The pack only works for this project and is not reusable | Reusable production pack | A new project can quickly complete intake, spec, and playable slice |
-| v1.1+ | Released projects need sustained updates | LiveOps & post-launch | Patch, hotfix, feedback triage, and update roadmap are executable |
 
 ### v0.0: Documentation Foundation
 
@@ -360,21 +366,28 @@ Release bar:
 - Data Asset parameters can be validated.
 - Unreal automation or semi-automated checks exist.
 
-### v0.5: Publishing Readiness
+### v0.5: Roadmap Rebase & Research Consolidation
+
+Status: complete. This version consolidates the v0.5b AI art dry run, engine AI adapter research, user feedback scan, Godot integration decision, and version-plan rebase into one verifiable release.
 
 Goal:
 
-- Complete P1 release, localization, accessibility, and store readiness.
-- Establish demo release checklist.
-- Complete AI usage disclosure and platform checklist.
+- Confirm that v0.5b validates the AI art asset workflow without entering formal asset production.
+- Establish the Engine AI Development Adapters research pack and user feedback evidence.
+- Make the Godot direction explicit: Godot AI first, GodotIQ as the project-understanding reserve, and GodotPrompter as an internal skill-design reference.
+- Continue versioning after v0.10 with v0.11, v0.12, v0.13, v0.14, and v0.15; reserve v1.0 for the reusable production pack.
 
 Release bar:
 
-- The team can judge whether the demo can be released publicly.
-- Blocking release issues are visible.
-- A demo package readiness report can be produced.
+- The research pack and user feedback scan exist in Chinese and English.
+- v0.5 consolidation evidence exists.
+- The v0.5 check entry point passes.
+- Roadmap, delivery plan, overall plan, and README agree on v0.5-v1.0.
+- No MCP is installed, no new asset is generated, and no engine asset is imported.
 
-### v0.6: Game Design Deepening Pack
+### v0.6: Game Design & Systems Pack
+
+Status: complete. v0.6 turns the design and systems handoff chain into an overview, templates, Boss Rush / Action dry run, Tactics dry run, completion evidence, and check entry point.
 
 Goal:
 
@@ -387,8 +400,118 @@ Release bar:
 - At least one action gameplay flow and one tactics gameplay flow complete design dry runs.
 - Downstream roles do not need to guess design intent, parameter meaning, or testing method.
 - Design changes are recorded in the decision log.
+- `check-v0.6-game-design-systems` passes.
+- No new engine files are created, no MCP is installed, and no assets are generated or imported.
 
-### v0.7: Narrative Design Pack
+### v0.7: Product Entry & mgw init
+
+Status: design landed. v0.7 defines `mgw init` as the entry for creating a game production workspace, without implementing a real CLI.
+
+Goals:
+
+- Define the `mgw init` command contract, safe defaults, profiles, and `muse.project.yaml`.
+- Define the initialized project structure, tool adapter rules, and MCP adapter rules.
+- Define the user flow from getting Muse, initializing a project, and choosing an AI tool through concept, pre-production, prototype, vertical slice, playtesting, assets, and release readiness.
+
+Release bar:
+
+- `product-entry-and-mgw-init.zh.md` / `.en.md` exist.
+- `user-journey.zh.md` / `.en.md` exist.
+- v0.7 review gate and evidence exist.
+- `check-v0.7-product-entry` passes.
+- README, docs index, roadmap, testing strategy, and startup prompts point to the new entry.
+- No real CLI is implemented, no MCP is installed, no new engine project is created, and no asset is generated or imported.
+
+### v0.8: Genre Tracks
+
+Status: complete. v0.8 adds the first genre branches, a Tactics dry run, Godot Prototype Asset Kit planning, review/evidence records, and `check-v0.8-genre-tracks`.
+
+Goal:
+
+- Add genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
+- Prioritize Tactics rules, grid maps, unit matrices, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
+- Define the Godot Prototype Asset Kit plan for readable player/enemy/NPC proxies, tactical markers, and AI-generated 3D asset validation.
+
+Release bar:
+
+- Genre tracks reuse review gates, evidence, handoffs, and provenance.
+- Each genre track explains its distinct design priorities, testing methods, and asset needs.
+- Tactics completes a dry run from rules to mission validation plan.
+- The Godot prototype asset strategy is documented, but no real asset generation or import is approved by v0.8 unless separately reviewed.
+- `check-v0.8-genre-tracks` passes.
+
+### v0.9: Economy & Progression
+
+Status: complete. v0.9 adds the Economy & Progression docs, four templates, Tactics no-code dry-run evidence, review/evidence records, and `check-v0.9-economy-progression`.
+
+Goal:
+
+- Add economy and progression after the playable loop and content matrix are stable.
+- Support resource sources/sinks, rewards, progression, level/quest payouts, and tuning.
+- Keep commercial backend, payment, paid-content design, real telemetry services, engine files, and assets out of scope.
+
+Release bar:
+
+- Economy model, progression map, resource/reward table, and tuning loop can reference each other.
+- Resource sources and sinks form a closed loop.
+- Progression explains player goals, pacing, and rewards.
+- Tuning decisions have evidence records.
+- Tactics dry run covers action points, stamina, cooldowns, mission rewards, secondary objective rewards, failure compensation, unit level, and skill unlocks.
+- `check-v0.9-economy-progression` passes.
+- v0.9.1 Numerical Planning is the next addendum; v0.10 Telemetry & Playtest Analytics remains the next major version.
+
+### v0.9.1: Numerical Planning
+
+Status: complete. v0.9.1 adds Numerical Planning docs, three templates, Tactics no-code numerical dry-run evidence, review/evidence records, and `check-v0.9.1-numerical-planning`.
+
+Goal:
+
+- Make level, combat, and system numbers reviewable before implementation.
+- Connect level curve, combat parameter table, system numerical plan, economy, progression, rewards, and tuning loop.
+- Keep engine implementation, real telemetry, commercial backend, payment, asset generation, and release balance approval out of scope.
+
+Release bar:
+
+- Level curve includes experience targets, anchor points, unlocks, TTK/EHP/DPR targets, and anti-grind rules.
+- Combat parameter table includes formulas, actor benchmarks, action economy, cooldown, stamina, and threat range.
+- System numerical plan links rewards, costs, pacing, progression, combat, economy, and failure compensation.
+- Tactics numerical dry run validates at least one level, combat, and system-number chain.
+- `check-v0.9.1-numerical-planning` passes.
+- v0.9.2 Specialized Design Skills is the next addendum; v0.10 Telemetry & Playtest Analytics remains the next major version.
+
+### v0.9.2: Specialized Design Skills
+
+Status: complete. v0.9.2 adds six specialist design skills, Agent Skill Composition docs, role-agent bundles, updated skill routing, and `check-v0.9.2-design-skills`.
+
+Goal:
+
+- Split system design, combat design, numerical planning, level curve, combat parameter, and system numeric work into dedicated skills.
+- Make role-agent bundles understandable to game developers while keeping skills tool-agnostic.
+- Keep engine implementation, real telemetry, commercial backend, payment, asset generation, and release balance approval out of scope.
+
+Release bar:
+
+- Six specialist skills exist under `.agents/skills/`.
+- Agent Skill Composition docs exist in Chinese and English.
+- Existing core skills route to the new specialist skills.
+- `check-v0.9.2-design-skills` passes.
+- v0.10 Telemetry & Playtest Analytics remains the next major version.
+
+### v0.10: Telemetry & Playtest Analytics
+
+Goal:
+
+- Add telemetry and playtest analytics after economy and progression specs stabilize.
+- Connect playtest data back to design hypotheses.
+- Clarify privacy, platform, data minimization, and local dry-run boundaries.
+
+Release bar:
+
+- Telemetry event plan, playtest analytics report, and tuning decision log can reference each other.
+- Data collection has privacy and platform boundaries.
+- Every key data point maps to a design question.
+
+### v0.11: Narrative Design Pack
 
 Goal:
 
@@ -401,33 +524,21 @@ Release bar:
 - Characters and quests can explain their gameplay role.
 - Text, dialogue, and environmental storytelling carry spoiler level, localization risk, and cultural/platform risk records.
 
-### v0.8: Genre Tracks
+### v0.12: Creative Production Expansion
 
 Goal:
 
-- Add genre workflow branches, first supporting Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
-- Prioritize Tactics rules, grid maps, unit matrices, ability specs, terrain rules, mission objectives, tactical AI, and tactics playtest checks.
+- Expand art, animation, environment, music, SFX, and UI production after design, genre, systems, economy, data, and narrative specs stabilize.
+- Reuse the brief, provenance, review, and engine validation flow proven in v0.3 / v0.5b.
+- Research creative AI tool adapters without integrating production APIs.
 
 Release bar:
 
-- Genre tracks reuse review gates, evidence, handoffs, and provenance.
-- Each genre track explains its distinct design priorities, testing methods, and asset needs.
-- Tactics completes a dry run from rules to mission validation plan.
+- Every asset class has brief, provenance, review, and engine validation requirements.
+- Assets cannot bypass human art, technical art, audio, or QA review.
+- Creative tool adapter notes do not bind Muse to one commercial tool.
 
-### v0.9: Economy, Progression & Telemetry
-
-Goal:
-
-- Add economy, progression, and telemetry after the playable loop and content matrix are stable.
-- Support tuning reports that connect playtest data back to design hypotheses.
-
-Release bar:
-
-- Economy model, progression map, telemetry event plan, and playtest analytics report can reference each other.
-- Data collection has privacy and platform boundaries.
-- Tuning decisions have evidence records.
-
-### v0.10: Procedural Content Pack
+### v0.13: Procedural Content Pack
 
 Goal:
 
@@ -439,6 +550,33 @@ Release bar:
 - Generated content is reproducible.
 - Generated content has rejection rules and human review gates.
 - Procedural rules do not break difficulty, rewards, narrative, or asset constraints.
+
+### v0.14: Publishing & Release Readiness
+
+Goal:
+
+- Complete release, localization, accessibility, and store readiness.
+- Establish demo release checklist.
+- Complete AI usage disclosure and platform checklist.
+
+Release bar:
+
+- The team can judge whether the demo can be released publicly.
+- Blocking release issues are visible.
+- A demo package readiness report can be produced.
+
+### v0.15: LiveOps & Post-launch
+
+Goal:
+
+- Enter post-launch operations, patches, hotfixes, update roadmaps, and player feedback triage.
+- Keep community, marketing, monetization, UGC, and security/privacy as post-release capabilities rather than early-demo blockers.
+
+Entry criteria:
+
+- v0.14 release readiness has basic evidence.
+- At least one demo or small release has entered public playtest/release.
+- Telemetry, release readiness, and feedback triage already have basic evidence.
 
 ### v1.0: Reusable Production Pack
 
@@ -455,24 +593,12 @@ Release bar:
 - A playable slice can be reached in seven days.
 - AI-assisted assets, code, tests, and release decisions all have evidence records.
 
-### v1.1+: LiveOps & Post-launch
-
-Goal:
-
-- Enter post-launch operations, patches, hotfixes, update roadmaps, and player feedback triage.
-- Keep community, marketing, monetization, UGC, and security/privacy as post-release capabilities rather than early-demo blockers.
-
-Entry criteria:
-
-- v1.0 is stable.
-- At least one demo or small release has entered public playtest/release.
-- Telemetry, release readiness, and feedback triage already have basic evidence.
-
 ## 6. Versioning Rules
 
 Before v1.0:
 
 - `v0.x` means a capability batch.
+- After `v0.10`, continue with `v0.11`, `v0.12`, `v0.13`, `v0.14`, and `v0.15`; do not jump directly to `v1.0`.
 - `v0.x.y` means documentation fixes, template fixes, skill bugfixes, or example fixes.
 - Backward compatibility is not guaranteed, but breaking changes must be recorded in the changelog.
 

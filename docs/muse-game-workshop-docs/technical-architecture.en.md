@@ -22,7 +22,8 @@ The architecture does not assume any AI coding tool should control everything di
 ```mermaid
 flowchart TD
   A["Production Design Layer\nConcept, Pre-production, Specs"] --> B["Workflow Core\nStages, Disciplines, Templates, Gates"]
-  B --> L["Bilingual Audience Layer\nzh-CN, en-US, Locale, Terminology"]
+  B --> I["Project Initialization Layer\nmgw init, Profiles, muse.project.yaml"]
+  I --> L["Bilingual Audience Layer\nzh-CN, en-US, Locale, Terminology"]
   L --> T["Coding Tool Adapter Layer\nCodex, Claude Code, Kiro CLI, opencode"]
   L --> CT["Creative Tool Adapter Layer\nImage, Audio, Video, 3D, Animation, Localization AI"]
   CT --> CP["Creative Asset Pipeline\nBrief, Generation, Human Review, Provenance"]
@@ -62,12 +63,26 @@ Defines the game production workflow itself, rather than tool-specific behavior:
 - Task decomposition rules.
 - Bilingual audience strategy.
 - Target language, target audience, locale, and terminology source.
+- `mgw init` project initialization contract.
 
 This is the core product layer.
 
 The workflow core must pass language, target audience, and locale to downstream coding tool adapters and creative tool adapters so AI tools do not guess output language or terminology style.
 
-### 2.3 Coding Tool Adapter Layer
+### 2.3 Project Initialization Layer
+
+Applies the workflow core to the user's own game project:
+
+- `mgw init` command contract.
+- Initialization profiles.
+- `muse.project.yaml`.
+- Project README, rules, templates, checks, and evidence directories.
+- Optional Godot/Unreal workspace notes.
+- Safe default policy of `--mcp none`.
+
+This layer initializes a production workspace only. It does not write game code, install MCP, or generate/import assets by default.
+
+### 2.4 Coding Tool Adapter Layer
 
 Translates the workflow core into rules and prompts that different AI coding tools can execute reliably:
 
@@ -78,7 +93,7 @@ Translates the workflow core into rules and prompts that different AI coding too
 
 This layer must remain replaceable. Changing tools should not change the production stages, mechanic specs, or review gates.
 
-### 2.4 Creative Tool Adapter Layer
+### 2.5 Creative Tool Adapter Layer
 
 Translates creative asset briefs into executable, reviewable, and traceable inputs and outputs for different AI creative tools:
 
@@ -91,7 +106,7 @@ Translates creative asset briefs into executable, reviewable, and traceable inpu
 
 This layer does not approve assets for use. All generated content must pass art direction, asset review, license/provenance records, and in-engine validation.
 
-### 2.5 Creative Asset Pipeline Layer
+### 2.6 Creative Asset Pipeline Layer
 
 Owns the creative asset path from need to production use:
 
@@ -102,7 +117,7 @@ Owns the creative asset path from need to production use:
 - Integration: naming, format, size, compression, directory, import settings, performance budget.
 - Validation: screenshots, animation previews, audio triggers, mix checks, in-engine tests.
 
-### 2.6 Engine Mapping Layer
+### 2.7 Engine Mapping Layer
 
 Maps engine-neutral specs to concrete engine concepts:
 
@@ -111,7 +126,7 @@ Maps engine-neutral specs to concrete engine concepts:
 
 This layer must prevent engine implementation details from polluting design documents.
 
-### 2.7 Execution Layer
+### 2.8 Execution Layer
 
 Performs actual work:
 
@@ -126,7 +141,7 @@ Performs actual work:
 - Optional Godot/Unreal MCP integration.
 - Builds, exports, packaging, and performance checks.
 
-### 2.8 Evidence Layer
+### 2.9 Evidence Layer
 
 Records outcomes:
 

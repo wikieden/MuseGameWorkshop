@@ -12,20 +12,28 @@ Read the docs before making structural changes:
 2. `docs/muse-game-workshop-plan.zh.md` or `docs/muse-game-workshop-plan.en.md`
 3. `docs/muse-game-workshop-docs/vision.zh.md` or `.en.md`
 4. `docs/muse-game-workshop-docs/prd.zh.md` or `.en.md`
-5. `docs/muse-game-workshop-docs/technical-architecture.zh.md` or `.en.md`
-6. `docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md` or `.en.md`
-7. `docs/muse-game-workshop-docs/skill-pack-spec.zh.md` or `.en.md`
-8. `docs/muse-game-workshop-docs/production-language-guide.zh.md` or `.en.md`
-9. `docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md` or `.en.md`
-10. `docs/muse-game-workshop-docs/terminology-glossary.zh.md` or `.en.md`
-11. `docs/muse-game-workshop-docs/handoff-contracts.zh.md` or `.en.md`
-12. `docs/muse-game-workshop-docs/templates.zh.md` or `.en.md`
-13. `docs/muse-game-workshop-docs/delivery-plan.zh.md` or `.en.md`
-14. `docs/muse-game-workshop-docs/v0.1-execution-plan.zh.md` or `.en.md`
-15. `docs/muse-game-workshop-docs/p0-skill-skeleton-plan.zh.md` or `.en.md`
-16. `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` or `.en.md`
-17. `docs/muse-game-workshop-docs/testing-strategy.zh.md` or `.en.md`
-18. `docs/muse-game-workshop-docs/mvp-roadmap.zh.md` or `.en.md`
+5. `docs/muse-game-workshop-docs/product-entry-and-mgw-init.zh.md` or `.en.md`
+6. `docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md` or `.en.md`
+7. `docs/muse-game-workshop-docs/user-journey.zh.md` or `.en.md`
+8. `docs/muse-game-workshop-docs/technical-architecture.zh.md` or `.en.md`
+9. `docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md` or `.en.md`
+10. `docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md` or `.en.md`
+11. `docs/muse-game-workshop-docs/genre-tracks.zh.md` or `.en.md`
+12. `docs/muse-game-workshop-docs/economy-progression.zh.md` or `.en.md`
+13. `docs/muse-game-workshop-docs/numerical-planning.zh.md` or `.en.md`
+14. `docs/muse-game-workshop-docs/agent-skill-composition.zh.md` or `.en.md`
+15. `docs/muse-game-workshop-docs/skill-pack-spec.zh.md` or `.en.md`
+16. `docs/muse-game-workshop-docs/production-language-guide.zh.md` or `.en.md`
+17. `docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md` or `.en.md`
+18. `docs/muse-game-workshop-docs/terminology-glossary.zh.md` or `.en.md`
+19. `docs/muse-game-workshop-docs/handoff-contracts.zh.md` or `.en.md`
+20. `docs/muse-game-workshop-docs/templates.zh.md` or `.en.md`
+21. `docs/muse-game-workshop-docs/delivery-plan.zh.md` or `.en.md`
+22. `docs/muse-game-workshop-docs/v0.1-execution-plan.zh.md` or `.en.md`
+23. `docs/muse-game-workshop-docs/p0-skill-skeleton-plan.zh.md` or `.en.md`
+24. `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` or `.en.md`
+25. `docs/muse-game-workshop-docs/testing-strategy.zh.md` or `.en.md`
+26. `docs/muse-game-workshop-docs/mvp-roadmap.zh.md` or `.en.md`
 
 If a document conflicts with `v0.1-manifest.*.md` during v0.1 delivery, follow the manifest for concrete file, skill, template, check, and dry-run scope.
 
@@ -72,6 +80,23 @@ Not allowed in v0.1:
 - Final art, animation, music, or sound assets.
 - Store pages, trailers, or release builds.
 - P1/P2 feature implementation unless the docs are explicitly revised and approved.
+
+## 3.1 Current Version Boundary
+
+v0.9 Economy & Progression, v0.9.1 Numerical Planning, and v0.9.2 Specialized Design Skills are complete as design-first addenda. Together they add economy/progression docs, numerical planning docs, specialized design skills, Agent Skill Composition docs, templates, no-code Tactics dry-run evidence, and `check-v0.9-economy-progression` / `check-v0.9.1-numerical-planning` / `check-v0.9.2-design-skills`.
+
+The next planned version is v0.10 Telemetry & Playtest Analytics.
+
+v0.9 / v0.9.1 / v0.9.2 completion does not approve:
+
+- Commercial backend.
+- Payment.
+- Monetization or paid-content design.
+- Real telemetry services.
+- LiveOps execution.
+- Godot or Unreal engine implementation.
+- New assets, final art, release-candidate art, music, or sound.
+- Release balance approval.
 
 ## 4. Tool-Agnostic AI Workflow
 

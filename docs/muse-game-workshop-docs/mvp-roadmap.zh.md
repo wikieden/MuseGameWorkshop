@@ -6,7 +6,7 @@
 
 ## 1. Roadmap Purpose
 
-本路线图定义 Muse Game Workshop 从文档包走向可复用 workflow pack、Godot 可玩闭环、创意资产生产闭环、Unreal 映射切片和发布准备的版本顺序。
+本路线图定义 Muse Game Workshop 从文档包走向可复用 workflow pack、Godot 可玩闭环、创意资产生产闭环、Unreal 映射切片、研究收口、策划系统扩展、类型分支、数据闭环、叙事、资产扩展、发布准备和上线后运营的版本顺序。
 
 它不是功能愿望清单，而是取舍工具。每个版本都必须回答：
 
@@ -46,6 +46,15 @@ MVP 成功定义：
 - `.agents/skills/`、`templates/`、`tools/checks/` 和 Boss Rush dry-run evidence 已按 v0.1 manifest 创建。
 - Godot Boss Rush Prototype 已在 `examples/godot-boss-rush/` 创建并通过 v0.2 检查。
 - v0.3 prototype visual/audio assets、provenance、asset review 和 engine validation evidence 已落地。
+- v0.5b AI art dry run evidence 已落地，且未导入 final 或 release-candidate 资产。
+- Engine AI Development Adapters 研究包已落地，包含 Godot AI、UE-MCP、GodotPrompter、GenOrca Unreal MCP、GodotIQ、Ziva、ee0pdt/Godot-MCP 和用户反馈扫描。
+- Godot 方向对接决策已明确：Godot AI 第一对接，GodotIQ 第二层预留，GodotPrompter 作为内部 skill 设计参考。
+- v0.6 Game Design & Systems / 策划与系统设计已落地，包含 system、combat、encounter、tuning 和 playtest hypothesis templates 以及 dry runs。
+- v0.7 Product Entry & `mgw init` / 产品入口与项目初始化已作为问答式初始化设计落地，但未实现真实 CLI。
+- v0.8 Genre Tracks / 类型流程分支已落地，包含首批 7 个类型分支、Tactics / 战棋类 dry-run evidence 和 Godot Prototype Asset Kit / Godot 原型资产包计划。
+- v0.9 Economy & Progression / 经济与成长已落地，包含经济成长文档、4 个模板、Tactics / 战棋类经济 dry-run evidence 和 `check-v0.9-economy-progression`。
+- v0.9.1 Numerical Planning / 数值规划已落地，包含等级曲线、战斗参数表、系统数值规划模板、Tactics / 战棋类数值 dry-run evidence 和 `check-v0.9.1-numerical-planning`。
+- v0.9.2 Specialized Design Skills / 专业策划 Skill 包已落地，包含 6 个专业策划 skills、Agent Skill Composition / Agent 与 Skill 组合设计文档、Role Agent / 角色型 Agent 组合、更新后的 skill 路由和 `check-v0.9.2-design-skills`。
 - Unreal 游戏代码尚未创建。
 
 v0.4 review gate 已 Approved，Unreal static mapping scaffold 已落地。下一步不是扩展完整 3D 游戏，而是在 Unreal Editor 可用后生成 PIE test map、Data Asset、UMG 和动画占位，并补 editor validation evidence。
@@ -75,14 +84,20 @@ Muse Game Workshop 使用三层 roadmap：
 | v0.2 | Godot 可玩闭环 | Godot Boss Rush Prototype | 本地启动、核心机制试玩、测试/检查、playtest report | Unreal 示例、发布自动化 |
 | v0.3 | 创意资产生产就绪 | P0 creative pipeline、资产 brief/review/provenance、UX/level gate | 已完成：视觉和音频 prototype assets 各跑通一次 engine validation | 大规模资产生产、商业 API 深度接入 |
 | v0.4 | Unreal 映射切片 | Unreal Third-person Combat Slice | 进行中：静态 C++/配置骨架已通过检查，PIE/editor validation 待 Unreal Editor | 完整 3D 游戏 |
-| v0.5 | 发布准备 | release checklist、store/trailer brief、localization、accessibility、AI disclosure | demo release readiness report | 自动发布、账号系统、LiveOps |
-| v0.6 | 策划流程细化 | game design deepening pack、system/combat/encounter/tuning specs | Boss Rush + Tactics 设计 dry run | 引擎新功能、复杂经济系统 |
-| v0.7 | 叙事设计包 | world bible、narrative flow、character/quest/dialogue briefs | lore consistency check + narrative handoff review | 大规模剧情内容量产 |
-| v0.8 | 类型流程分支 | Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险 tracks | Tactics / 战棋类 track dry run | 覆盖所有游戏类型 |
-| v0.9 | 经济、成长与数据 | economy model、progression map、telemetry plan、playtest analytics | 数据字段和调优报告能回到设计决策 | 商业化后台、真实用户数据平台 |
-| v0.10 | 程序化内容 | procedural rules、seed/evidence record、content validation | 生成内容可复现、可 review、可回退 | 无限内容生成、无人工审核 |
+| v0.5 | 路线重排与研究收口 | v0.5b AI art dry run、engine AI adapter research、user feedback scan、Godot 对接决策、版本计划重排 | v0.5 consolidation evidence + 静态检查 | 安装/接入 MCP、生成新资产、发布准备实现 |
+| v0.6 | 策划与系统设计 | game design deepening pack、system/combat/encounter/tuning specs | 已完成：Boss Rush + Tactics 设计 dry run 和 v0.6 检查 | 引擎新功能、复杂经济系统 |
+| v0.7 | 产品入口与项目初始化 | Product Entry & `mgw init`、user journey、project workspace contract、adapter rules | `check-v0.7-product-entry` + review/evidence | 真实 CLI、MCP 安装、引擎工程、资产生成 |
+| v0.8 | 类型流程分支 | Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险 tracks；Godot Prototype Asset Kit / Godot 原型资产包计划 | Tactics / 战棋类 track dry run + prototype asset kit validation plan | 覆盖所有游戏类型、生成或导入真实资产文件 |
+| v0.9 | 经济与成长 | economy model、progression map、resource/reward tables、tuning loop | 已完成：Tactics / 战棋类 economy/progression dry run 和 `check-v0.9-economy-progression` | 商业化后台、真实支付、付费内容设计、真实 telemetry service |
+| v0.9.1 | 数值规划补丁 | level curve、combat parameter table、system numerical plan | 已完成：Tactics / 战棋类 numerical dry run 和 `check-v0.9.1-numerical-planning` | 引擎实现、发布版本最终平衡批准、完整电子表格工具 |
+| v0.9.2 | 专业策划 Skill 包 | system design、combat design、numerical planning、level curve、combat parameters、system numerics、Agent Skill Composition | 已完成：6 个专业策划 skills 和 `check-v0.9.2-design-skills` | 引擎实现、真实 telemetry、商业化后台、支付、资产、发布版本最终平衡批准 |
+| v0.10 | 数据埋点与试玩分析 | telemetry plan、playtest analytics、tuning decision log | 数据字段和调优报告能回到设计决策 | 真实用户数据平台、隐私重型实现 |
+| v0.11 | 叙事设计包 | world bible、narrative flow、character/quest/dialogue briefs | lore consistency check + narrative handoff review | 大规模剧情内容量产 |
+| v0.12 | 创意资产生产扩展 | art/animation/environment/music/SFX/UI asset expansion、tool adapter notes | 资产 brief/provenance/review/engine validation 可复用 | 商业工具深度 API、final/release-candidate 资产量产 |
+| v0.13 | 程序化内容 | procedural rules、seed/evidence record、content validation | 生成内容可复现、可 review、可回退 | 无限内容生成、无人工审核 |
+| v0.14 | 发布准备 | release checklist、store/trailer brief、localization、accessibility、AI disclosure | demo release readiness report | 自动发布、账号系统、LiveOps |
+| v0.15 | 上线后运营与迭代 | patch plan、hotfix flow、feedback triage、update roadmap | 已发布项目能持续更新且风险可追踪 | 拖慢 v1.0 前的 workflow pack 稳定 |
 | v1.0 | 可复用制作包 | 稳定 docs、skills、templates、examples、checks | 新项目可快速 intake、spec、prototype | 重型平台化 |
-| v1.1+ | 上线后运营与迭代 | patch plan、hotfix flow、feedback triage、update roadmap | 已发布项目能持续更新且风险可追踪 | 拖慢 v1.0 前的 demo 制作 |
 
 ## 6. v0.0: Documentation Foundation
 
@@ -271,33 +286,36 @@ v0.1 只有同时满足以下条件才算完成：
 - Blueprint/C++ 分工清楚。
 - 同一机制能从 Godot/GDD 规格映射到 Unreal 表现。
 
-## 11. v0.5: Publishing Readiness
+## 11. v0.5: Roadmap Rebase & Research Consolidation
 
 目标：
 
-- 补齐 P1 发布、本地化、无障碍、store readiness。
-- 建立 demo release checklist。
-- 完成 AI usage disclosure 和 platform checklist。
+- 收口 v0.5b AI art dry run，确认该工作只验证美术资产流程，不进入正式资产生产。
+- 将 Godot / Unreal AI editor control、MCP、项目理解层、用户反馈扫描和 Godot 对接决策纳入研究证据。
+- 将版本计划从 `v0.10 -> v1.0` 跳号调整为 `v0.10 -> v0.11 -> v0.12 -> v0.13 -> v0.14 -> v1.0`。
+- 明确后续先推进策划、系统、类型、经济、成长和数据，创意资产扩展、发布准备和 LiveOps 后移。
 
 交付形态：
 
-- store page brief。
-- trailer brief。
-- screenshot checklist。
-- localization readiness。
-- accessibility checklist。
-- platform checklist。
-- AI usage disclosure。
-- demo package readiness report。
+- v0.5 AI art dry run evidence。
+- Engine AI Development Adapters 总纲。
+- 7 份独立项目调研报告。
+- 1 份用户反馈扫描。
+- Godot 对接决策：Godot AI、GodotIQ、GodotPrompter 三层策略。
+- v0.5 consolidation evidence。
+- v0.5 检查入口。
 
 发布标准：
 
-- 能判断 demo 是否具备公开试玩条件。
-- 能列出发布前必须修复的问题。
-- 能说明 AI 辅助内容的使用方式和披露状态。
-- 能输出一份对外 demo 包准备报告。
+- v0.5 不生成新资产、不导入引擎、不接商业 API、不安装 MCP。
+- v0.5 研究包有中英文入口和本地链接检查。
+- Godot 对接方向明确，但仍需要后续 dry run 评审。
+- 版本计划在 roadmap、delivery plan、overall plan 和 README 中一致。
+- `check-v0.5-consolidation` 通过。
 
-## 12. v0.6: Game Design Deepening Pack
+## 12. v0.6: Game Design & Systems Pack
+
+状态：已完成。v0.6 已新增 Game Design & Systems 总纲、5 个设计模板、Boss Rush 动作玩法 dry run、Tactics / 战棋类 dry run、review gate、completion evidence 和检查入口。
 
 目标：
 
@@ -314,6 +332,8 @@ v0.1 只有同时满足以下条件才算完成：
 - tuning plan。
 - playtest hypothesis。
 - design review gate。
+- v0.6 completion evidence。
+- `check-v0.6-game-design-systems`。
 
 发布标准：
 
@@ -321,8 +341,181 @@ v0.1 只有同时满足以下条件才算完成：
 - 可调参数不会散落在实现里。
 - 试玩反馈能回到明确的设计假设。
 - Tactics / 战棋类至少完成一轮规则、格子、单位、技能和任务目标 dry run。
+- v0.6 不创建新引擎文件、不安装 MCP、不生成或导入资产。
 
-## 13. v0.7: Narrative Design Pack
+## 13. v0.7: Product Entry & mgw init
+
+状态：已完成设计落盘。v0.7 定义 `mgw init` 作为项目工作台初始化入口，但不实现真实 CLI。
+
+目标：
+
+- 将 Muse 的用户入口从“阅读 workflow pack 仓库”升级为“初始化自己的游戏制作工作台”。
+- 定义 `mgw init` 命令契约、默认安全行为、profiles、`muse.project.yaml`、项目结构和用户流程。
+- 定义 Codex、Claude Code、Kiro CLI、opencode 和 generic AI tools 的 adapter 边界。
+- 定义 Godot/Unreal MCP 与 editor automation 的可选启用规则。
+
+交付形态：
+
+- `product-entry-and-mgw-init.zh.md` / `.en.md`。
+- `user-journey.zh.md` / `.en.md`。
+- v0.7 review gate 和 evidence。
+- `check-v0.7-product-entry`。
+
+发布标准：
+
+- README、docs index、roadmap、delivery plan 和 testing strategy 都指向新产品入口。
+- `mgw init` 被定义为 workspace initializer，不是一键生成游戏。
+- 默认 `--mcp none`，不安装 MCP、不创建引擎工程、不生成资产。
+- v0.7 计划明确交接到 v0.8 Genre Tracks / 类型流程分支；v0.9 Economy & Progression / 经济与成长、v0.9.1 Numerical Planning / 数值规划和 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已完成，下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+## 14. v0.8: Genre Tracks
+
+状态：已完成。v0.8 已新增 Genre Tracks / 类型流程分支、首批 7 个类型分支文档、Tactics / 战棋类 dry run、Godot Prototype Asset Kit / Godot 原型资产包计划、review/evidence 记录和 `check-v0.8-genre-tracks`。
+
+目标：
+
+- 在通用主流程之上建立类型流程分支。
+- 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
+- 将 Tactics / 战棋类作为重点类型分支，优先验证规则、地图、单位、技能、任务和 AI 的交付链。
+- 将 Godot Prototype Asset Kit / Godot 原型资产包计划作为 Godot 原型默认可读代理资产策略。
+- 真实资产生成、导入和资产包分发必须留到单独 asset review gate 之后。
+
+Tactics / 战棋类交付形态：
+
+- tactics ruleset。
+- grid map spec。
+- unit matrix。
+- ability spec。
+- terrain rules。
+- mission brief。
+- encounter table。
+- tactical AI brief。
+- Godot prototype asset needs：player proxy、enemy proxy、NPC proxy、terrain/tile markers、move/attack ranges、selection/facing markers、simple VFX markers。
+- tactics balance report。
+- tactics playtest checklist。
+
+发布标准：
+
+- 类型分支能复用 review gate、handoff、evidence 和 provenance。
+- 类型分支能说明哪些策划重点、测试方式和资产需求不同。
+- Tactics / 战棋类能从规则和任务 brief 推进到地图/单位/技能验证计划。
+- Godot 资产规划使用 `godot-prototype-asset-kit.*.md`；可试玩单位代理不能使用裸球体、裸胶囊或裸方块。
+- 外部 CC0 候选资产和 AI 生成 3D 资产必须先有 brief、provenance、review、license notes 和 Godot validation，才能导入。
+- `check-v0.8-genre-tracks` 通过。
+
+## 15. v0.9: Economy & Progression
+
+状态：已完成。v0.9 已新增 Economy & Progression / 经济与成长、4 个设计模板、Tactics / 战棋类 no-code dry run、review/evidence 记录和 `check-v0.9-economy-progression`。
+
+目标：
+
+- 在有可试玩循环和内容矩阵后补经济系统和成长线。
+- 支持资源产出/消耗、奖励、成长、关卡/任务收益和数值调优。
+- 让数值调整有证据来源，而不是只靠主观感觉。
+- 将商业化后台、支付、商业化设计、真实 telemetry service、引擎实现和资产生产排除在本版本之外。
+
+交付形态：
+
+- economy model。
+- progression map。
+- resource/reward table。
+- tuning loop。
+- economy/progression review gate。
+- Tactics / 战棋类 economy/progression dry run。
+- v0.9 completion evidence。
+- v0.9 static check。
+
+发布标准：
+
+- 资源产出与消耗能闭环。
+- 成长线能解释玩家目标、节奏和奖励。
+- 调参报告能说明观察、假设、改动和下一轮验证。
+- Tactics / 战棋类 dry run 覆盖 action points / 行动点、stamina / 体力、cooldowns / 冷却、mission rewards / 关卡奖励、secondary objective rewards / 次要目标奖励、failure compensation / 失败补偿、unit level / 单位等级和 skill unlocks / 技能解锁。
+- 不创建商业化后台、支付、付费内容设计、真实 telemetry service、引擎文件或新资产。
+- `check-v0.9-economy-progression` 通过。
+- 下一补丁为 v0.9.1 Numerical Planning / 数值规划，下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+### 15.1 v0.9.1: Numerical Planning
+
+状态：已完成。v0.9.1 已新增 Numerical Planning / 数值规划、3 个设计模板、Tactics / 战棋类 no-code numerical dry run、review/evidence 记录和 `check-v0.9.1-numerical-planning`。
+
+目标：
+
+- 将等级、战斗和系统数值变成可 review 的制作记录。
+- 增加 level curve / 等级曲线、combat parameter table / 战斗参数表和 system numerical plan / 系统数值规划模板。
+- 连接 TTK / 击杀回合、EHP / 有效生命、DPR / 每回合伤害、行动经济、奖励、成本和成长节奏。
+- 将引擎实现、真实 telemetry、商业化后台、支付、资产生产和 release balance / 发布版本最终平衡批准排除在本版本之外。
+
+交付形态：
+
+- Numerical Planning / 数值规划文档。
+- Level curve / 等级曲线模板。
+- Combat parameter table / 战斗参数表模板。
+- System numerical plan / 系统数值规划模板。
+- Tactics / 战棋类 numerical dry run。
+- v0.9.1 review gate 和 evidence。
+- v0.9.1 static check。
+
+发布标准：
+
+- 先有锚点，再补完整曲线。
+- 战斗参数包含 TTK、EHP、DPR、行动经济、cooldown / 冷却、stamina / 体力和 threat range / 威胁范围。
+- 系统数值能连接奖励、成本、成长、战斗和失败补偿。
+- 不批准发布版本最终平衡数值。
+- `check-v0.9.1-numerical-planning` 通过。
+- 下一补丁为 v0.9.2 Specialized Design Skills / 专业策划 Skill 包，下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+### 15.2 v0.9.2: Specialized Design Skills / 专业策划 Skill 包
+
+状态：已完成。v0.9.2 已新增 6 个专业策划 skills、Agent Skill Composition / Agent 与 Skill 组合设计文档、Role Agent / 角色型 Agent 组合、更新后的 skill 路由和 `check-v0.9.2-design-skills`。
+
+目标：
+
+- 把系统策划、战斗策划、等级曲线、战斗参数和系统数值工作拆成专门 skills。
+- 让用户用熟悉的制作职能沟通，同时让 AI tools 执行可组合 skills。
+- 在引擎实现、真实 telemetry service、商业化后台、支付、资产生成或 release balance / 发布版本最终平衡批准之前保持可 review。
+
+交付形态：
+
+- `system-design` skill。
+- `combat-design` skill。
+- `numerical-planning` skill。
+- `level-curve` skill。
+- `combat-parameters` skill。
+- `system-numerics` skill。
+- Agent Skill Composition / Agent 与 Skill 组合设计文档。
+- v0.9.2 static check。
+
+发布标准：
+
+- 6 个专业策划 skills 使用统一 `SKILL.md` 结构。
+- Agent Skill Composition 定义 Producer / 制作人、Game Designer / 游戏策划、Technical Designer / 技术策划、Combat Designer / 战斗策划、Numerical Designer / 数值策划、QA / Playtest / 测试与试玩的 Role Agent / 角色型 Agent 组合。
+- 现有核心 skills 通过 `Next Skills` 路由到新专业 skills。
+- 不创建引擎实现、真实 telemetry、商业化后台、支付、资产生成或 release balance / 发布版本最终平衡批准。
+- `check-v0.9.2-design-skills` 通过。
+- 下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+## 16. v0.10: Telemetry & Playtest Analytics
+
+目标：
+
+- 在经济与成长规格稳定后补数据埋点和试玩分析。
+- 支持试玩数据回接到设计假设。
+- 明确隐私、平台、数据最小化和本地 dry-run 边界。
+
+交付形态：
+
+- telemetry event plan。
+- playtest analytics report。
+- tuning decision log。
+
+发布标准：
+
+- 每个关键数据点都能对应设计问题。
+- 数据采集有隐私和平台边界。
+- 调参报告能说明观察、假设、改动和下一轮验证。
+
+## 17. v0.11: Narrative Design Pack
 
 目标：
 
@@ -348,58 +541,32 @@ v0.1 只有同时满足以下条件才算完成：
 - 任务与关卡目标能互相解释。
 - 对白、文本和环境叙事有本地化与剧透风险标记。
 
-## 14. v0.8: Genre Tracks
+## 18. v0.12: Creative Production Expansion
 
 目标：
 
-- 在通用主流程之上建立类型流程分支。
-- 首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险。
-- 将 Tactics / 战棋类作为重点类型分支，优先验证规则、地图、单位、技能、任务和 AI 的交付链。
-
-Tactics / 战棋类交付形态：
-
-- tactics ruleset。
-- grid map spec。
-- unit matrix。
-- ability spec。
-- terrain rules。
-- mission brief。
-- encounter table。
-- tactical AI brief。
-- tactics balance report。
-- tactics playtest checklist。
-
-发布标准：
-
-- 类型分支能复用 review gate、handoff、evidence 和 provenance。
-- 类型分支能说明哪些策划重点、测试方式和资产需求不同。
-- Tactics / 战棋类能从规则和任务 brief 推进到地图/单位/技能验证计划。
-
-## 15. v0.9: Economy, Progression & Telemetry
-
-目标：
-
-- 在有可试玩循环和内容矩阵后补经济系统、成长线和数据埋点。
-- 支持资源产出/消耗、奖励、成长、关卡/任务收益和试玩数据分析。
-- 让数值调整有证据来源，而不是只靠主观感觉。
+- 在策划、类型、系统、经济、数据和叙事规格更稳定后，再扩展美术、动作、场景、音乐、音效和 UI 资产生产。
+- 将 v0.3 / v0.5b 中验证过的 brief、provenance、review 和 engine validation 扩展到更多资产类型。
+- 研究创意 AI 工具适配，但不急着接生产 API。
 
 交付形态：
 
-- economy model。
-- resource flow table。
-- progression map。
-- reward table。
-- telemetry event plan。
-- playtest analytics report。
-- tuning decision log。
+- art production plan。
+- animation brief。
+- environment asset brief。
+- music brief。
+- SFX brief。
+- UI asset brief。
+- creative tool adapter notes。
+- expanded provenance and review evidence。
 
 发布标准：
 
-- 每个关键数据点都能对应设计问题。
-- 数据采集有隐私和平台边界。
-- 调参报告能说明观察、假设、改动和下一轮验证。
+- 每类资产都从 brief 开始，不从开放式生成开始。
+- 资产进入示例项目前必须有 provenance、review 和 engine validation。
+- Creative AI tools 只作为 adapter candidate，不能绕过人类美术/音频 review。
 
-## 16. v0.10: Procedural Content Pack
+## 19. v0.13: Procedural Content Pack
 
 目标：
 
@@ -422,23 +589,33 @@ Tactics / 战棋类交付形态：
 - 生成结果能被人类 review。
 - 难度、奖励、叙事和资产约束不会被随机性破坏。
 
-## 17. v1.0: Reusable Production Pack
+## 20. v0.14: Publishing & Release Readiness
 
 目标：
 
-- workflow pack 可被其他 Godot/Unreal 项目复用。
-- README、docs、skills、templates、examples、checks 完整稳定。
-- 至少一个 Godot 示例和一个 Unreal 映射示例通过验收。
+- 补齐发布、本地化、无障碍、store readiness。
+- 建立 demo release checklist。
+- 完成 AI usage disclosure 和 platform checklist。
+
+交付形态：
+
+- store page brief。
+- trailer brief。
+- screenshot checklist。
+- localization readiness。
+- accessibility checklist。
+- platform checklist。
+- AI usage disclosure。
+- demo package readiness report。
 
 发布标准：
 
-- 新项目可以在 30 分钟内完成 intake 和 core loop。
-- 1 天内完成第一个 mechanic spec。
-- 7 天内能推进到可试玩小切片。
-- AI 辅助资产、代码、测试和发布决策都有证据记录。
-- 中文和英文入口都自然、清楚、可执行。
+- 能判断 demo 是否具备公开试玩条件。
+- 能列出发布前必须修复的问题。
+- 能说明 AI 辅助内容的使用方式和披露状态。
+- 能输出一份对外 demo 包准备报告。
 
-## 18. v1.1+: LiveOps & Post-launch
+## 21. v0.15: LiveOps & Post-launch
 
 目标：
 
@@ -456,27 +633,43 @@ Tactics / 战棋类交付形态：
 
 进入条件：
 
-- v1.0 reusable production pack 已稳定。
+- v0.14 release readiness 已具备基础证据。
 - 至少一个 demo 或小版本进入公开试玩/发布阶段。
 - telemetry、release readiness 和 feedback triage 已有基础证据。
 
-## 19. Future Planning: P2
+## 22. v1.0: Reusable Production Pack
+
+目标：
+
+- workflow pack 可被其他 Godot/Unreal 项目复用。
+- README、docs、skills、templates、examples、checks 完整稳定。
+- 至少一个 Godot 示例和一个 Unreal 映射示例通过验收。
+
+发布标准：
+
+- 新项目可以在 30 分钟内完成 intake 和 core loop。
+- 1 天内完成第一个 mechanic spec。
+- 7 天内能推进到可试玩小切片。
+- AI 辅助资产、代码、测试和发布决策都有证据记录。
+- 中文和英文入口都自然、清楚、可执行。
+
+## 23. Future Planning: P2
 
 P2 暂不进入首批实现，只保留研究和路线方向：
 
 - Community & Marketing：devlog、社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
-- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage，进入 v1.1+。
+- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage，进入 v0.15。
 - Modding / UGC：编辑器、用户内容、审核和版权边界。
 - Security / Privacy：在线功能、第三方 SDK、数据采集和安全风险。
 
 进入条件：
 
-- v0.6-v0.10 的设计、叙事、类型、经济/成长/数据和程序化内容路线已经证明必要。
+- v0.6-v0.15 的策划、系统、产品入口、类型、经济、成长、数据、叙事、创意资产、程序化内容、发布和运营路线已经证明必要。
 - 项目确实进入发布、增长、运营或玩家社区阶段。
 - 有明确隐私、合规和维护责任。
 
-## 14. Milestones
+## 24. Milestones
 
 | Milestone | 中文名称 | 对应版本 | 完成信号 |
 |---|---|---|---|
@@ -485,24 +678,30 @@ P2 暂不进入首批实现，只保留研究和路线方向：
 | M2 | Godot 闭环 | v0.2 | Boss Rush Godot prototype 可试玩。 |
 | M3 | Creative Production Ready | v0.3 | 资产 brief/provenance/review/engine validation 跑通。 |
 | M4 | Unreal 映射 | v0.4 | 同一机制能映射到 Unreal 3D 动作切片。 |
-| M5 | Publishing Readiness Ready | v0.5 | demo release readiness 可判断。 |
-| M6 | 策划流程细化 | v0.6 | 系统、战斗、遭遇、调优和试玩假设可交接。 |
-| M7 | 叙事设计就绪 | v0.7 | 世界观、角色、任务、对白和设定一致性可 review。 |
+| M5 | v0.5 收口完成 | v0.5 | 研究包、用户反馈、Godot 对接决策和版本重排都有证据。 |
+| M6 | 策划与系统设计 | v0.6 | 系统、战斗、遭遇、调优和试玩假设可交接。 |
+| M7 | 产品入口就绪 | v0.7 | `mgw init`、用户流程、adapter rules 和安全边界已定义。 |
 | M8 | 类型流程分支 | v0.8 | 首批 7 类类型分支完成 dry run，其中包含 Tactics / 战棋类和 Adventure / AVG 冒险。 |
-| M9 | 经济成长数据闭环 | v0.9 | 经济、成长和 telemetry 能回到调优决策。 |
-| M10 | 程序化内容就绪 | v0.10 | 生成内容可复现、可 review、可回退。 |
-| M11 | Reusable Production Pack | v1.0 | 其他项目可以复用完整工作流。 |
-| M12 | LiveOps Ready | v1.1+ | 已发布项目能持续更新并处理玩家反馈。 |
+| M9 | 经济成长闭环 | v0.9 | 经济和成长线通过 Tactics / 战棋类 dry run 回到系统设计与调优决策。 |
+| M9.1 | 数值规划就绪 | v0.9.1 | 等级、战斗和系统数值能在实现前被 review。 |
+| M9.2 | 专业策划 Skill 包就绪 | v0.9.2 | 系统、战斗、数值、等级曲线、战斗参数和系统数值 skills 能按制作职能组合。 |
+| M10 | 数据试玩闭环 | v0.10 | telemetry 和 playtest analytics 能回到调优决策。 |
+| M11 | 叙事设计就绪 | v0.11 | 世界观、角色、任务、对白和设定一致性可 review。 |
+| M12 | 创意资产扩展就绪 | v0.12 | 多类资产能通过 brief/provenance/review/engine validation。 |
+| M13 | 程序化内容就绪 | v0.13 | 生成内容可复现、可 review、可回退。 |
+| M14 | 发布准备就绪 | v0.14 | demo release readiness 可判断。 |
+| M15 | LiveOps Ready | v0.15 | 已发布项目能持续更新并处理玩家反馈。 |
+| M16 | Reusable Production Pack | v1.0 | 其他项目可以复用完整工作流。 |
 
-## 15. Recommended First Project Initialization Prompt
+## 25. Recommended First Project Initialization Prompt
 
 新建项目后，在选定的 AI coding tool 中输入第一条项目初始化 prompt：
 
 ```text
-我们要创建 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。先输出 repo 骨架、AGENTS.md、workflow skills 目录、模板文件和测试检查的设计摘要与执行计划，等待 review 通过后再动手。先不要实现游戏代码。
+我们要创建一个使用 Muse Game Workshop 的游戏项目。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、Product Entry & mgw init、User Journey、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。先输出 `mgw init` 项目工作台的设计摘要与执行计划，包括 project workspace、muse.project.yaml、tool adapter、review gate 和 validation plan。等待 review 通过后再动手。先不要实现游戏代码、不要安装 MCP。
 ```
 
-## 16. Risk Control
+## 26. Risk Control
 
 风险：
 

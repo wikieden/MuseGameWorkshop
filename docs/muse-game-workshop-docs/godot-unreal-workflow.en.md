@@ -79,14 +79,16 @@ P0 must be covered now:
 P1 enters the next complete workflow batch:
 
 - Game Design Deepening.
-- Narrative / Worldbuilding / Quest.
+- Product Entry & `mgw init`.
 - Genre Tracks, first including Action, Roguelike, RPG, Puzzle, Visual Novel, Tactics, and Adventure / AVG.
-- Economy / Progression / Telemetry, entering mid-term design in v0.9.
+- Narrative / Worldbuilding / Quest.
+- Economy / Progression, completed as a mid-term design pack in v0.9.
+- Telemetry / Playtest Analytics, entering mid-term design in v0.10.
 - Platform & Store Readiness.
 - Localization.
 - Accessibility.
 
-P2 stays in v1.1+ or later future planning rather than the first implementation batch:
+P2 stays after v1.0 or later future planning rather than the first implementation batch:
 
 - Community & Marketing.
 - Monetization.

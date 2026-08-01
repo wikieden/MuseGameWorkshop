@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.9-economy-progression"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+required = [
+    "docs/muse-game-workshop-docs/economy-progression.en.md",
+    "docs/muse-game-workshop-docs/economy-progression.zh.md",
+    "templates/design/economy-model.md",
+    "templates/design/progression-map.md",
+    "templates/design/resource-reward-table.md",
+    "templates/design/tuning-loop.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-review-gate.en.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-review-gate.zh.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-evidence.en.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-evidence.zh.md",
+    "docs/evidence/v0.9/tactics-economy-progression-dry-run.en.md",
+    "docs/evidence/v0.9/tactics-economy-progression-dry-run.zh.md",
+]
+
+for rel in required:
+    if not (ROOT / rel).exists():
+        fail(f"missing {rel}")
+
+en = (ROOT / "docs/muse-game-workshop-docs/economy-progression.en.md").read_text(encoding="utf-8")
+zh = (ROOT / "docs/muse-game-workshop-docs/economy-progression.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "Economy & Progression",
+    "Economy system",
+    "Progression",
+    "Reward structure",
+    "Tuning loop",
+    "Economy model",
+    "Progression map",
+    "Resource And Reward Table",
+    "Tactics",
+    "action points",
+    "stamina",
+    "cooldowns",
+    "mission rewards",
+    "secondary objective rewards",
+    "failure compensation",
+    "Commercial backend",
+    "payment",
+    "telemetry",
+    "v0.10 Telemetry & Playtest Analytics",
+]:
+    if term not in en:
+        fail(f"English economy/progression doc missing {term}")
+
+for term in [
+    "Economy & Progression / 经济与成长",
+    "经济系统",
+    "成长线",
+    "奖励结构",
+    "数值调优闭环",
+    "Economy Model / 经济模型",
+    "Progression Map / 成长线地图",
+    "Resource And Reward Table / 资源与奖励表",
+    "Tactics / 战棋类",
+    "Action points / 行动点",
+    "Stamina / 体力",
+    "Cooldowns / 技能冷却",
+    "Mission rewards / 关卡奖励",
+    "Secondary objective rewards / 次要目标奖励",
+    "Failure compensation / 失败补偿",
+    "商业化后台",
+    "支付",
+    "telemetry",
+    "v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析",
+]:
+    if term not in zh:
+        fail(f"Chinese economy/progression doc missing {term}")
+
+template_terms = {
+    "templates/design/economy-model.md": ["Resource List", "Sources", "Sinks", "Conversion Rules", "Scarcity And Pressure"],
+    "templates/design/progression-map.md": ["Progression Axes", "Unlock Map", "Pacing Beats", "Catch-Up And Fail-Forward", "Anti-Grind Boundaries"],
+    "templates/design/resource-reward-table.md": ["Reward Table", "Failure Compensation", "Secondary Objective Reward", "Cost Table", "Failure And Retry Rules"],
+    "templates/design/tuning-loop.md": ["Design Hypothesis", "Current Values", "Proposed Change", "Test Scenario", "Decision"],
+}
+
+metadata_fields = [
+    "## Metadata",
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+
+for rel, terms in template_terms.items():
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for field in metadata_fields:
+        if field not in text:
+            fail(f"{rel} missing metadata field {field}")
+    for term in terms:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+dry_en = (ROOT / "docs/evidence/v0.9/tactics-economy-progression-dry-run.en.md").read_text(encoding="utf-8")
+dry_zh = (ROOT / "docs/evidence/v0.9/tactics-economy-progression-dry-run.zh.md").read_text(encoding="utf-8")
+
+for term in [
+    "Tactics",
+    "Economy Model",
+    "Progression Map",
+    "Resource And Reward Table",
+    "Tuning Loop",
+    "Action points",
+    "Stamina",
+    "Cooldowns",
+    "Mission rewards",
+    "Secondary objective rewards",
+    "Failure compensation",
+    "Unit level",
+    "Skill unlocks",
+    "no-code",
+]:
+    if term not in dry_en:
+        fail(f"English Tactics dry run missing {term}")
+
+for term in [
+    "Tactics / 战棋类",
+    "Economy Model / 经济模型",
+    "Progression Map / 成长线地图",
+    "Resource And Reward Table / 资源与奖励表",
+    "Tuning Loop / 数值调优闭环",
+    "Action points / 行动点",
+    "Stamina / 体力",
+    "Cooldowns / 冷却",
+    "Mission rewards",
+    "Secondary objective rewards",
+    "Failure compensation",
+    "Unit level",
+    "Skill unlocks",
+    "no-code",
+]:
+    if term not in dry_zh:
+        fail(f"Chinese Tactics dry run missing {term}")
+
+for rel in [
+    "docs/evidence/v0.9/v0.9-economy-progression-review-gate.en.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-review-gate.zh.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-evidence.en.md",
+    "docs/evidence/v0.9/v0.9-economy-progression-evidence.zh.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["Review Status: Approved", "v0.9", "Economy", "Progression", "check-v0.9-economy-progression"]:
+        if term not in text:
+            fail(f"{rel} missing evidence term {term}")
+    for boundary in ["commercial", "payment", "telemetry", "Godot", "Unreal"]:
+        if boundary not in text:
+            fail(f"{rel} missing boundary {boundary}")
+
+for rel in [
+    "README.md",
+    "README.en.md",
+    "README.zh.md",
+    "docs/muse-game-workshop-docs/README.en.md",
+    "docs/muse-game-workshop-docs/README.zh.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md",
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md",
+    "docs/muse-game-workshop-docs/delivery-plan.en.md",
+    "docs/muse-game-workshop-docs/delivery-plan.zh.md",
+    "docs/muse-game-workshop-plan.en.md",
+    "docs/muse-game-workshop-plan.zh.md",
+    "docs/muse-game-workshop-docs/testing-strategy.en.md",
+    "docs/muse-game-workshop-docs/testing-strategy.zh.md",
+    "AGENTS.md",
+]:
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    for term in ["v0.9", "Economy & Progression", "v0.10", "Telemetry & Playtest Analytics"]:
+        if term not in text:
+            fail(f"{rel} missing {term}")
+
+for rel in required:
+    path = ROOT / rel
+    if path.suffix != ".md" and path.name != "check-v0.9-economy-progression":
+        fail(f"unexpected non-markdown v0.9 file {rel}")
+
+print(f"PASS {CHECK}")

@@ -106,25 +106,30 @@ P0 必须纳入当前设计：
 - UX/UI 与 Onboarding：菜单、设置、教程、新手引导、可读性、反馈层级和基础无障碍开关。
 - Level Design：blockout、遭遇设计、视线引导、节奏、导航、难度曲线和关卡 review。
 
-P1 应纳入 v0.6-v0.8 设计：
+P1 应按 v0.6-v0.11 逐步纳入设计：
 
 - Game Design Deepening：设计支柱、系统策划、战斗策划、关卡遭遇、数值调优和试玩假设。
-- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
+- Product Entry & `mgw init`：项目初始化入口、用户流程、project workspace、tool adapter 和 MCP adapter 安全边界。
 - Genre Tracks：类型流程分支，首批支持 Action / 动作、Roguelike / 肉鸽、RPG、Puzzle / 解谜、Visual Novel / 视觉小说、Tactics / 战棋类、Adventure / AVG 冒险；Tactics / 战棋类作为重点验证分支。
+- Economy / Progression：经济系统、成长线、奖励结构和调优表。
+- Numerical Planning / 数值规划：等级曲线、战斗参数、系统数值和基于锚点的调优。
+- Telemetry / Playtest Analytics：试玩数据、调优报告、事件字段和隐私边界。
+- Narrative / Worldbuilding / Quest：世界观、剧情动线、角色人物、对白、任务结构、文本风格和叙事一致性。
 - Platform & Store Readiness：Steam/itch demo、capsule、截图、trailer brief、build branches、手柄支持、崩溃日志和平台披露。
 - Localization：文本 key、字体、UI 溢出、翻译工作流、文化风险和本地化回归。
 - Accessibility：字幕、色盲/对比度、按键重映射、震动开关、难度辅助、文字大小。
 
-中期能力纳入 v0.9-v0.10：
+中期能力纳入 v0.12-v0.15：
 
-- Economy / Progression / Telemetry：经济系统、成长线、奖励结构、试玩数据、调优报告和隐私边界。
+- Creative Production Expansion：在设计、系统、类型、经济、数据和叙事稳定后扩展美术、动作、场景、音乐、音效和 UI 资产生产。
 - Procedural Content：规则稳定后的程序化地图、遭遇、掉落和任务变体。
+- Publishing & Release Readiness：store page、trailer brief、本地化、无障碍、平台披露和 demo readiness。
+- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
 
-P2 放入 v1.1+ 或更晚未来规划：
+P2 放入 v1.0 之后或更晚未来规划：
 
 - Community & Marketing：devlog、Discord/社区反馈、版本更新节奏。
 - Monetization：定价、demo 策略、DLC、付费内容边界。
-- LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
 - Modding / UGC：编辑器、用户内容、审核和版权边界。
 - Security / Privacy：在线功能、第三方 SDK、数据采集和安全风险。
 
@@ -869,23 +874,32 @@ Muse Game Workshop 第一阶段采用轻量原则：
 
 ## 13. MVP 范围
 
-这里的 MVP 指从 v0.1 workflow pack 到 v1.0 reusable production pack 的完整验证链路。v0.6-v0.10 分别补齐策划流程、叙事设计、类型流程分支、经济/成长/数据和程序化内容；v0.1 的实际创建范围仍以 `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` 为唯一真源。
+这里的 MVP 指从 v0.1 workflow pack 到 v1.0 reusable production pack 的完整验证链路。v0.5 已完成路线重排和研究收口；v0.6 已完成策划与系统设计包；v0.7 已完成 Product Entry & `mgw init` / 产品入口与项目初始化设计；v0.8-v0.15 继续补齐类型分支、经济与成长、数据埋点与试玩分析、叙事设计、创意资产生产扩展、程序化内容、发布准备和上线后运营；v0.1 的实际创建范围仍以 `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` 为唯一真源。
 
 MVP 链路只做这些：
 
 - `AGENTS.md`
 - 14 个 v0.1 P0 workflow skills 的 `SKILL.md`。
-- 22 个 v0.1 templates，覆盖 design、production、creative、UX 和 localization readiness。
+- 39 个 templates，覆盖 v0.1 design/production/creative/UX/localization readiness、v0.3 creative production、v0.6 design systems、v0.9 economy/progression 和 v0.9.1 numerical planning。
+- 22 个 workflow skills：14 个 P0 skills、`mgw-init`、`prototype-design` 和 6 个 v0.9.2 专业策划 skills。
 - 一个统一样板游戏计划，作为 dry run、Godot 示例和 Unreal 映射示例的共同测试夹具。
 - 一个 Boss Rush 无代码 dry run。
 - 一个 Godot 2D/轻量 3D 示例，进入 v0.2。
 - 一个 Unreal 第三人称玩法映射示例，进入 v0.4。
 - 一个 Godot/Unreal 双引擎映射模板。
-- 一个 v0.6 策划流程细化包，覆盖系统、战斗、遭遇、调优和试玩假设。
-- 一个 v0.7 叙事设计包，覆盖世界观、剧情动线、角色、任务、对白和设定一致性。
-- 一个 v0.8 类型流程分支包，首批重点支持 Tactics / 战棋类。
-- 一个 v0.9 经济、成长与数据包。
-- 一个 v0.10 程序化内容设计包。
+- 一个 v0.5 路线重排与研究收口包，覆盖 AI art dry run、engine AI adapter research、用户反馈和 Godot 对接决策。
+- 一个已完成的 v0.6 策划与系统设计包，覆盖系统、战斗、遭遇、调优和试玩假设，并包含 Boss Rush / 动作玩法与 Tactics / 战棋类 design dry run。
+- 一个已完成的 v0.7 产品入口与项目初始化设计包，定义 `mgw init`、user journey、project workspace、tool adapter 和 MCP adapter 边界。
+- 一个已完成的 v0.8 类型流程分支包，首批重点支持 Tactics / 战棋类，并包含 Godot Prototype Asset Kit / Godot 原型资产包计划，用于定义可读代理资产。
+- 一个已完成的 v0.9 经济与成长包，覆盖 economy model、progression map、resource/reward table、tuning loop 和 Tactics / 战棋类 dry-run evidence。
+- 一个已完成的 v0.9.1 数值规划补丁，覆盖 level curve、combat parameter table、system numerical plan 和 Tactics / 战棋类 numerical dry-run evidence。
+- 一个已完成的 v0.9.2 Specialized Design Skills / 专业策划 Skill 包补丁，覆盖 system design、combat design、numerical planning、level curve、combat parameters、system numerics、Agent Skill Composition / Agent 与 Skill 组合设计和 `check-v0.9.2-design-skills`。
+- 一个 v0.10 数据埋点与试玩分析包。
+- 一个 v0.11 叙事设计包，覆盖世界观、剧情动线、角色、任务、对白和设定一致性。
+- 一个 v0.12 创意资产生产扩展包。
+- 一个 v0.13 程序化内容设计包。
+- 一个 v0.14 发布准备包。
+- 一个 v0.15 上线后运营包。
 - 一个完整从 pitch 到 playtest 的 walkthrough。
 
 不做：
@@ -1149,7 +1163,7 @@ docs/evidence/dry-runs/  # v0.1d: Boss Rush no-code dry run evidence
 
 第 3 步：用第 15 节的 Boss Rush / 《反击试炼》样板游戏计划跑通无代码 dry run。
 
-先完成 v0.1 workflow pack 和无代码 dry run，再进入 v0.2 Godot 最小原型；Unreal 作为 v0.4 的同一机制映射切片，不抢 v0.1 workflow pack 的优先级。
+当前 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已作为 v0.9.1 Numerical Planning / 数值规划和 v0.9 Economy & Progression / 经济与成长补丁完成。下一步应进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析，先做设计摘要、执行计划、影响范围、文件范围、review 决策和验证计划，再定义 telemetry event plan、playtest analytics report、tuning decision log、privacy boundaries、review gate、evidence 和 checks。v0.10 在单独 review 批准真实用户数据服务之前，必须保持本地化和 design-first。
 
 ## 17. 可参考的同类项目和工具
 

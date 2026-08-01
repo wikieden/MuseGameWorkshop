@@ -33,8 +33,9 @@ if not skill_root.exists():
     fail("missing .agents/skills")
 
 actual_skill_dirs = sorted(p.name for p in skill_root.iterdir() if p.is_dir())
-if actual_skill_dirs != sorted(skills):
-    fail(f"skill dirs mismatch: {actual_skill_dirs}")
+missing_skill_dirs = sorted(set(skills) - set(actual_skill_dirs))
+if missing_skill_dirs:
+    fail(f"missing v0.1 skill dirs: {missing_skill_dirs}")
 
 required_skill_terms = [
     "name:",

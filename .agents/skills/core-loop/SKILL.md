@@ -59,5 +59,7 @@ description: Use when a game direction needs to become a clear repeatable play l
 ## Next Skills
 
 - `mechanic-spec`
+- `system-design`
+- `numerical-planning`
 - `vertical-slice-planner`
 - `playtest-report`

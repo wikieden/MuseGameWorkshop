@@ -22,7 +22,8 @@
 ```mermaid
 flowchart TD
   A["Production Design Layer\nConcept, Pre-production, Specs"] --> B["Workflow Core\nStages, Disciplines, Templates, Gates"]
-  B --> L["Bilingual Audience Layer\nzh-CN, en-US, Locale, Terminology"]
+  B --> I["Project Initialization Layer\nmgw init, Profiles, muse.project.yaml"]
+  I --> L["Bilingual Audience Layer\nzh-CN, en-US, Locale, Terminology"]
   L --> T["Coding Tool Adapter Layer\nCodex, Claude Code, Kiro CLI, opencode"]
   L --> CT["Creative Tool Adapter Layer\nImage, Audio, Video, 3D, Animation, Localization AI"]
   CT --> CP["Creative Asset Pipeline\nBrief, Generation, Human Review, Provenance"]
@@ -62,12 +63,26 @@ flowchart TD
 - 任务拆分规则。
 - 双语用户策略。
 - 目标语言、目标用户群体、locale 和术语来源。
+- `mgw init` 项目初始化契约。
 
 这是本项目的核心产品层。
 
 workflow core 必须把 language、target audience 和 locale 传递给后续 coding tool adapter 与 creative tool adapter，避免 AI tool 自行猜测输出语言或术语风格。
 
-### 2.3 Coding Tool Adapter Layer
+### 2.3 Project Initialization Layer
+
+负责把 workflow core 应用到用户自己的游戏项目：
+
+- `mgw init` 命令契约。
+- 初始化 profiles。
+- `muse.project.yaml`。
+- 项目 README、rules、templates、checks 和 evidence 目录。
+- 可选 Godot/Unreal 工作区说明。
+- 默认 `--mcp none` 的安全策略。
+
+这一层只初始化 production workspace / 制作工作台，不默认写游戏代码、不安装 MCP、不生成或导入资产。
+
+### 2.4 Coding Tool Adapter Layer
 
 负责把 workflow core 转成不同 AI coding tools 能稳定执行的规则和提示：
 
@@ -78,7 +93,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 
 这一层必须保持可替换：换工具不应该改变游戏制作阶段、机制规格和 review gate。
 
-### 2.4 Creative Tool Adapter Layer
+### 2.5 Creative Tool Adapter Layer
 
 负责把创意资产 brief 转成不同 AI 创意工具可执行、可审查、可追溯的输入和输出要求：
 
@@ -91,7 +106,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 
 这一层不直接批准资产进入项目。所有生成内容必须经过 art direction、asset review、license/provenance 记录和引擎内验证。
 
-### 2.5 Creative Asset Pipeline Layer
+### 2.6 Creative Asset Pipeline Layer
 
 负责创意资产从需求到落地的制作链路：
 
@@ -102,7 +117,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 - Integration：命名、格式、尺寸、压缩、目录、导入设置、性能预算。
 - Validation：截图、动效预览、音频触发、混音、引擎内测试。
 
-### 2.6 Engine Mapping Layer
+### 2.7 Engine Mapping Layer
 
 负责把引擎无关规格映射到具体引擎：
 
@@ -111,7 +126,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 
 这一层必须避免把引擎实现细节污染回策划文档。
 
-### 2.7 Execution Layer
+### 2.8 Execution Layer
 
 负责实际执行：
 
@@ -126,7 +141,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 - Godot/Unreal MCP 可选接入。
 - 构建、导出、打包、性能检查。
 
-### 2.8 Evidence Layer
+### 2.9 Evidence Layer
 
 负责记录结果：
 

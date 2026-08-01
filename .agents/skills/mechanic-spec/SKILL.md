@@ -10,6 +10,7 @@ description: Use when a core mechanic needs inputs, states, parameters, feedback
 - A core loop needs one mechanic specified for implementation planning.
 - A designer needs an engine-neutral spec.
 - A programmer needs testable behavior before coding.
+- A prototype design gate needs the core mechanic readiness portion filled in.
 
 ## Do Not Use When
 
@@ -33,6 +34,7 @@ description: Use when a core mechanic needs inputs, states, parameters, feedback
 - Feedback events.
 - Edge cases and failure behavior.
 - Test and acceptance criteria.
+- Prototype design risks and readiness gaps.
 
 ## Workflow
 
@@ -42,13 +44,15 @@ description: Use when a core mechanic needs inputs, states, parameters, feedback
 4. Define visual, audio, UI, haptic, and camera feedback needs.
 5. Identify failure cases, exploits, and accessibility risks.
 6. Produce implementation-neutral tests.
-7. Recommend `engine-portability`, `godot-workflow`, or `unreal-workflow`.
+7. Identify whether the mechanic is ready for a prototype design gate.
+8. Recommend `prototype-design` before `engine-portability`, `godot-workflow`, or `unreal-workflow` when implementation is next.
 
 ## Quality Bar
 
 - A Gameplay Programmer can implement a minimal version from the spec.
 - Tunable values are not buried in prose.
 - Tests prove the mechanic's intended feel and boundaries.
+- Prototype implementation does not start until the mechanic can feed a prototype goal, playable promise, content scope, placeholder policy, and validation plan.
 - Any code or project-file change must wait for review approval after a design summary and execution plan.
 
 ## Common Failure Modes
@@ -60,7 +64,12 @@ description: Use when a core mechanic needs inputs, states, parameters, feedback
 
 ## Next Skills
 
+- `system-design`
+- `combat-design`
+- `combat-parameters`
+- `numerical-planning`
 - `engine-portability`
+- `prototype-design`
 - `vertical-slice-planner`
 - `godot-workflow`
 - `unreal-workflow`
