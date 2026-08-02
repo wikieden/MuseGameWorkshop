@@ -55,6 +55,8 @@ MVP 成功定义：
 - v0.9 Economy & Progression / 经济与成长已落地，包含经济成长文档、4 个模板、Tactics / 战棋类经济 dry-run evidence 和 `check-v0.9-economy-progression`。
 - v0.9.1 Numerical Planning / 数值规划已落地，包含等级曲线、战斗参数表、系统数值规划模板、Tactics / 战棋类数值 dry-run evidence 和 `check-v0.9.1-numerical-planning`。
 - v0.9.2 Specialized Design Skills / 专业策划 Skill 包已落地，包含 6 个专业策划 skills、Agent Skill Composition / Agent 与 Skill 组合设计文档、Role Agent / 角色型 Agent 组合、更新后的 skill 路由和 `check-v0.9.2-design-skills`。
+- v0.9.3 Multi-target Production Foundation + Three.js Web Runtime 已落地，包含生产目标契约、Three.js skill、浏览器样板、自动测试和 evidence。
+- v0.9.4 Unity Workflow 已落地，包含 Unity skill、工程映射、测试/构建契约和静态 evidence；真实 Editor 验证等待本机安装 Unity。
 - Unreal 游戏代码尚未创建。
 
 v0.4 review gate 已 Approved，Unreal static mapping scaffold 已落地。下一步不是扩展完整 3D 游戏，而是在 Unreal Editor 可用后生成 PIE test map、Data Asset、UMG 和动画占位，并补 editor validation evidence。
@@ -91,6 +93,8 @@ Muse Game Workshop 使用三层 roadmap：
 | v0.9 | 经济与成长 | economy model、progression map、resource/reward tables、tuning loop | 已完成：Tactics / 战棋类 economy/progression dry run 和 `check-v0.9-economy-progression` | 商业化后台、真实支付、付费内容设计、真实 telemetry service |
 | v0.9.1 | 数值规划补丁 | level curve、combat parameter table、system numerical plan | 已完成：Tactics / 战棋类 numerical dry run 和 `check-v0.9.1-numerical-planning` | 引擎实现、发布版本最终平衡批准、完整电子表格工具 |
 | v0.9.2 | 专业策划 Skill 包 | system design、combat design、numerical planning、level curve、combat parameters、system numerics、Agent Skill Composition | 已完成：6 个专业策划 skills 和 `check-v0.9.2-design-skills` | 引擎实现、真实 telemetry、商业化后台、支付、资产、发布版本最终平衡批准 |
+| v0.9.3 | 多生产目标基础与 Three.js Web Runtime | Production Target Contract、Three.js skill、Boss Rush Web 样板、browser QA | unit/build/Playwright、截图、性能与 `check-v0.9.3-threejs-runtime` | WebGPU-only 无回退发布、线上服务、外部版权资产 |
+| v0.9.4 | Unity 工作流 | Unity skill、工程映射、EditMode/PlayMode/build 契约与 evidence | 静态检查；安装 Unity 时执行 editor tests/build smoke | 声称未执行的 Editor/PlayMode/player build 已通过 |
 | v0.10 | 数据埋点与试玩分析 | telemetry plan、playtest analytics、tuning decision log | 数据字段和调优报告能回到设计决策 | 真实用户数据平台、隐私重型实现 |
 | v0.11 | 叙事设计包 | world bible、narrative flow、character/quest/dialogue briefs | lore consistency check + narrative handoff review | 大规模剧情内容量产 |
 | v0.12 | 创意资产生产扩展 | art/animation/environment/music/SFX/UI asset expansion、tool adapter notes | 资产 brief/provenance/review/engine validation 可复用 | 商业工具深度 API、final/release-candidate 资产量产 |
@@ -366,7 +370,7 @@ v0.1 只有同时满足以下条件才算完成：
 - README、docs index、roadmap、delivery plan 和 testing strategy 都指向新产品入口。
 - `mgw init` 被定义为 workspace initializer，不是一键生成游戏。
 - 默认 `--mcp none`，不安装 MCP、不创建引擎工程、不生成资产。
-- v0.7 计划明确交接到 v0.8 Genre Tracks / 类型流程分支；v0.9 Economy & Progression / 经济与成长、v0.9.1 Numerical Planning / 数值规划和 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已完成，下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+- v0.7 计划明确交接到 v0.8 Genre Tracks / 类型流程分支；v0.9 到 v0.9.4 已完成，下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 ## 14. v0.8: Genre Tracks
 
@@ -494,6 +498,41 @@ Tactics / 战棋类交付形态：
 - 不创建引擎实现、真实 telemetry、商业化后台、支付、资产生成或 release balance / 发布版本最终平衡批准。
 - `check-v0.9.2-design-skills` 通过。
 - 下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+### 15.3 v0.9.3: Multi-target Production Foundation + Three.js Web Runtime
+
+状态：已完成。交付包含 Production Target Contract / 生产目标契约、`threejs-workflow`、production-target mapping、browser playtest checklist、`examples/threejs-boss-rush/`、WebGPU 生产方向与 WebGL 2 fallback、paired evidence 和 `check-v0.9.3-threejs-runtime`。
+
+发布标准：simulation 与 renderer/UI 分离；unit/build/browser smoke 通过；桌面和移动 viewport 有截图；资产和依赖来源可审查。
+
+### 15.4 v0.9.4: Unity Workflow
+
+状态：workflow 与静态验证已完成。Unity Editor 未安装时，EditMode、PlayMode 和 player build evidence 必须保持待补。
+
+交付包含 `unity-workflow`、Unity 6 Scene/Prefab/Component/ScriptableObject/asmdef/Input System 映射、EditMode/PlayMode/batchmode/player-build 契约、paired evidence 和 `check-v0.9.4-unity`。
+
+发布标准：静态契约完整；检测到 Unity Editor 时必须执行 smoke；文档不能替代编辑器证据；下一主版本仍为 v0.10。
+
+### 15.5 Creative AI Production Pilot / 创意 AI 生产试点（非版本化并行轨）
+
+状态：研究、设计契约、专业 skill、模板和 Grey Tide 试点计划已落地；真实工具安装、资产生成、引擎导入和游戏代码修改尚未批准。
+
+目标：
+
+- 在不改变 v0.10、v0.11、v0.12 顺序的前提下，为 v0.12 提供真实 AI 3D 生产证据。
+- 用 Grey Tide 的港口货箱、机甲模块和港口机械设施验证硬表面程序化 Three.js 管线。
+- 把工具选择放在 Art Direction、Asset Brief、来源准入、成本上限和多视角评审之后。
+- 将 `img2threejs` 定位为 adapter candidate，而不是核心依赖或通用 3D 后端。
+
+当前交付：
+
+- `ai-3d-asset-production` 双语契约。
+- `img2threejs` 双语独立研究报告。
+- `ai-3d-asset-production` 专业 skill。
+- procedural 3D delivery、multi-view review 和 creative AI cost record 模板。
+- Grey Tide 三资产试点计划和 `check-creative-ai-pilot`。
+
+边界：本轨当前只批准 planning artifacts / 计划交付物。执行试点前必须单独批准输入来源、安装方式、成本上限、文件影响和验证计划。
 
 ## 16. v0.10: Telemetry & Playtest Analytics
 

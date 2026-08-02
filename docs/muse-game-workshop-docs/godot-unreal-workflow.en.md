@@ -1,4 +1,4 @@
-# Godot + Unreal Game Workflow Manual
+# Multi-target Game Workflow Guide
 
 Version: v0.1
 
@@ -6,7 +6,7 @@ Language: English
 
 ## 1. Workflow Goal
 
-This manual defines how Muse Game Workshop is used in Godot and Unreal projects. The goal is to move from an idea through design, mechanic specification, engine mapping, vertical slice planning, implementation, playtesting, tuning, and release checks in a repeatable production loop.
+This guide defines how Muse Game Workshop is used in Three.js WebGPU, Unity, Godot, and Unreal projects. The `godot-unreal-workflow` filename remains for link compatibility.
 
 Core idea:
 
@@ -38,8 +38,8 @@ flowchart TD
 | Producer | Stage detection, scope control, review gates | `game-intake`, `vertical-slice-planner`, `postmortem` |
 | Game Designer | Core loops, mechanics, content pacing | `core-loop`, `mechanic-spec`, `content-matrix` |
 | Technical Designer | State machines, parameters, data structures, test points | `mechanic-spec`, `implementation-bridge`, `engine-portability` |
-| Gameplay Programmer | Approved gameplay implementation and validation | `godot-workflow`, `unreal-workflow` |
-| Engine Specialist | Godot/Unreal structure, assets, builds, editor constraints | `godot-workflow`, `unreal-workflow`, `engine-portability` |
+| Gameplay Programmer | Approved gameplay implementation and validation | `threejs-workflow`, `unity-workflow`, `godot-workflow`, `unreal-workflow` |
+| Runtime / Engine Specialist | Structure, assets, builds, and platform constraints across all four targets | `engine-portability` and four target workflow skills |
 | QA | Test cases, playtest feedback, regression validation | `playtest-report`, `release-checklist` |
 | Release Manager | Builds, versions, release checklist, disclosures | `release-checklist` |
 
@@ -184,10 +184,20 @@ Done when:
 Skills:
 
 - `engine-portability`
+- `threejs-workflow`
+- `unity-workflow`
 - `godot-workflow`
 - `unreal-workflow`
 
-### 6.1 Godot Mapping
+### 6.1 Three.js Web Mapping
+
+Focus on simulation/renderer/DOM UI separation, WebGPU/WebGL 2 fallback, browser input, Playwright, performance budgets, and static deployment.
+
+### 6.2 Unity Mapping
+
+Focus on Scene/Prefab/Component/ScriptableObject/asmdef, Input System, EditMode/PlayMode, and player builds.
+
+### 6.3 Godot Mapping
 
 Focus:
 
@@ -219,7 +229,7 @@ Godot Mapping
   - test_dodge_counter_state.gd
 ```
 
-### 6.2 Unreal Mapping
+### 6.4 Unreal Mapping
 
 Focus:
 

@@ -1,8 +1,8 @@
 # Muse Game Workshop
 
-> AI tool-agnostic game-production workflow pack for indie Godot / Unreal projects.
+> AI tool-agnostic game-production workflow pack for Three.js WebGPU, Unity, Unreal Engine, and Godot projects.
 
-Muse Game Workshop is not a game engine and not a one-click game generator. It is a reusable workflow pack for AI-assisted indie game production: project rules, workflow skills, document templates, review gates, evidence records, provenance rules, dry runs, checks, and Godot / Unreal example conventions.
+Muse Game Workshop is not a game engine and not a one-click game generator. It is a reusable workflow pack for AI-assisted indie game production: project rules, workflow skills, document templates, review gates, evidence records, provenance rules, dry runs, checks, and production-target adapters for Three.js WebGPU, Unity, Unreal Engine, and Godot.
 
 ## Language
 
@@ -37,6 +37,10 @@ The repository is currently private. Access requires permission from the reposit
 | Compose specialized design skills | [Agent Skill Composition](docs/muse-game-workshop-docs/agent-skill-composition.en.md), `.agents/skills/system-design/`, `.agents/skills/combat-design/` |
 | Use an AI coding tool | Read `AGENTS.md`, then use the startup prompt in the language README |
 | Study engine AI adapters | [Engine AI Development Adapters](docs/muse-game-workshop-docs/engine-ai-development-adapters.en.md) |
+| Choose a final production target | [Production Target Contract](docs/muse-game-workshop-docs/production-target-contract.en.md) |
+| Build a Three.js Web game | [Three.js Web Runtime](docs/muse-game-workshop-docs/threejs-web-runtime.en.md), `.agents/skills/threejs-workflow/` |
+| Plan a Unity project | [Unity Workflow](docs/muse-game-workshop-docs/unity-workflow.en.md), `.agents/skills/unity-workflow/` |
+| Run the Three.js example | `cd examples/threejs-boss-rush && npm ci && npm test && npm run build` |
 | Run the Godot example | `examples/godot-boss-rush/project.godot` |
 | Inspect Unreal mapping | `examples/unreal-boss-rush/README.md` |
 | Validate the repo | Run the checks listed below |
@@ -53,7 +57,7 @@ Startup prompts must declare target language, target audience, and locale. They 
 
 ## Short Vision
 
-Muse Game Workshop aims to become a reusable production workflow pack for small game teams using Godot, Unreal, AI coding tools, and creative AI tools. It should help teams move from an idea to a playable, reviewable, and release-aware demo while keeping human creative direction, asset approval, and production judgment in control.
+Muse Game Workshop aims to become a reusable production workflow pack for small game teams shipping through Three.js WebGPU, Unity, Unreal Engine, or Godot while using AI coding tools and creative AI tools. It should help teams move from an idea to a playable, reviewable, and release-aware game while keeping human creative direction, asset approval, and production judgment in control.
 
 Detailed vision:
 
@@ -62,29 +66,32 @@ Detailed vision:
 
 ## Current Status
 
-v0.9.2 Specialized Design Skills is complete as an addendum to v0.9.1 Numerical Planning and v0.9 Economy & Progression. It builds on v0.8 Genre Tracks, v0.7 Product Entry & mgw init, v0.6 Game Design & Systems, and the earlier v0.5 Roadmap Rebase & Research Consolidation. The repository now defines seven first genre workflow branches, a Tactics dry run connected to the Godot Prototype Asset Kit plan, a no-code Tactics economy/progression dry run, a no-code Tactics numerical planning dry run, and a specialized design skill composition layer. The roadmap continues through v0.15 before v1.0:
+v0.9.4 Unity Workflow is complete on top of v0.9.3 Multi-target Production Foundation and Three.js Web Runtime. The repository now defines a shared Production Target Contract for Three.js WebGPU, Unity, Unreal Engine, and Godot; a tested Three.js Boss Rush reference; and Unity workflow, mapping, and validation contracts. The next planned version is v0.10 Telemetry & Playtest Analytics:
 
 - `AGENTS.md`
-- 22 workflow skills under `.agents/skills/`: 14 P0 skills, `mgw-init`, `prototype-design`, and 6 v0.9.2 specialized design skills
-- 39 templates under `templates/`
-- 16 check entry points under `tools/checks/`
+- 25 workflow skills under `.agents/skills/`, including `threejs-workflow`, `unity-workflow`, and `ai-3d-asset-production`
+- 44 templates under `templates/`
+- 19 check entry points under `tools/checks/`
 - Boss Rush / Counter Trial no-code dry-run evidence under `docs/evidence/dry-runs/`
 - Godot Boss Rush prototype under `examples/godot-boss-rush/`
 - v0.3 creative asset evidence under `docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold under `examples/unreal-boss-rush/`
 - v0.5b AI art asset dry-run evidence under `docs/evidence/v0.5/`
 - v0.5 engine AI adapter research under `docs/muse-game-workshop-docs/research/`
-- v0.5 consolidation evidence under `docs/evidence/v0.5/`
-- v0.6 game design systems overview under `docs/muse-game-workshop-docs/game-design-systems.en.md`
+- v0.5 Roadmap Rebase & Research Consolidation evidence under `docs/evidence/v0.5/`
+- v0.6 Game Design & Systems overview under `docs/muse-game-workshop-docs/game-design-systems.en.md`
 - v0.6 Boss Rush and Tactics design dry-run evidence under `docs/evidence/v0.6/`
 - v0.7 product entry and user journey docs under `docs/muse-game-workshop-docs/`
 - v0.7 product-entry review and evidence under `docs/evidence/v0.7/`
 - v0.8 genre tracks and Tactics dry-run evidence under `docs/evidence/v0.8/`
 - v0.9 economy/progression docs, templates, and Tactics dry-run evidence under `docs/evidence/v0.9/`
 - v0.9.1 numerical planning docs, templates, and Tactics dry-run evidence under `docs/evidence/v0.9.1/`
-- v0.9.2 specialized design skills and Agent Skill Composition docs under `.agents/skills/` and `docs/muse-game-workshop-docs/`
+- v0.9.2 Specialized Design Skills and Agent Skill Composition docs under `.agents/skills/` and `docs/muse-game-workshop-docs/`
+- v0.9.3 production-target contract, Three.js workflow, browser validation evidence, and playable browser example
+- v0.9.4 Unity workflow, static validation contract, and evidence; editor validation remains conditional on a local Unity installation
+- Creative AI Production Pilot research, AI 3D production contract, Grey Tide planning evidence, and a tool-agnostic specialist skill; no tool installation or asset generation is approved
 
-Unreal Editor was not found locally during v0.4 work, so PIE validation and binary `.uasset` / `.umap` creation remain blocked. v0.9.2 does not implement the real `mgw` CLI, install MCP tools, create new engine projects, implement commercial backend, implement payment, create real telemetry services, generate new assets, import final/release-candidate art/audio assets, or approve release balance. The next planned version is v0.10 Telemetry & Playtest Analytics.
+Unreal Editor was not found locally during v0.4 work, and Unity Editor was not found during v0.9.4 work, so their editor/player validation remains pending. Three.js targets WebGPU for production with a required WebGL 2 fallback until the project browser matrix approves otherwise. v0.9.4 does not implement the real `mgw` CLI, install MCP tools, implement commercial backend or payment, create real telemetry services, generate final assets, or approve release balance. The next planned version is v0.10 Telemetry & Playtest Analytics.
 
 ## Main Documentation
 
@@ -98,12 +105,16 @@ Unreal Editor was not found locally during v0.4 work, so PIE validation and bina
 | Zero-to-One Game Creation | [zero-to-one-game-creation.zh.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.zh.md) | [zero-to-one-game-creation.en.md](docs/muse-game-workshop-docs/zero-to-one-game-creation.en.md) |
 | User Journey | [user-journey.zh.md](docs/muse-game-workshop-docs/user-journey.zh.md) | [user-journey.en.md](docs/muse-game-workshop-docs/user-journey.en.md) |
 | AI Art Asset Pipeline | [ai-art-asset-pipeline.zh.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.zh.md) | [ai-art-asset-pipeline.en.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.en.md) |
+| AI 3D Asset Production Contract | [ai-3d-asset-production.zh.md](docs/muse-game-workshop-docs/ai-3d-asset-production.zh.md) | [ai-3d-asset-production.en.md](docs/muse-game-workshop-docs/ai-3d-asset-production.en.md) |
 | Engine AI Development Adapters | [engine-ai-development-adapters.zh.md](docs/muse-game-workshop-docs/engine-ai-development-adapters.zh.md) | [engine-ai-development-adapters.en.md](docs/muse-game-workshop-docs/engine-ai-development-adapters.en.md) |
 | Godot Prototype Asset Kit | [godot-prototype-asset-kit.zh.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md) | [godot-prototype-asset-kit.en.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.en.md) |
 | Genre Tracks | [genre-tracks.zh.md](docs/muse-game-workshop-docs/genre-tracks.zh.md) | [genre-tracks.en.md](docs/muse-game-workshop-docs/genre-tracks.en.md) |
 | Economy & Progression | [economy-progression.zh.md](docs/muse-game-workshop-docs/economy-progression.zh.md) | [economy-progression.en.md](docs/muse-game-workshop-docs/economy-progression.en.md) |
 | Numerical Planning | [numerical-planning.zh.md](docs/muse-game-workshop-docs/numerical-planning.zh.md) | [numerical-planning.en.md](docs/muse-game-workshop-docs/numerical-planning.en.md) |
 | Agent Skill Composition | [agent-skill-composition.zh.md](docs/muse-game-workshop-docs/agent-skill-composition.zh.md) | [agent-skill-composition.en.md](docs/muse-game-workshop-docs/agent-skill-composition.en.md) |
+| Production Target Contract | [production-target-contract.zh.md](docs/muse-game-workshop-docs/production-target-contract.zh.md) | [production-target-contract.en.md](docs/muse-game-workshop-docs/production-target-contract.en.md) |
+| Three.js Web Runtime | [threejs-web-runtime.zh.md](docs/muse-game-workshop-docs/threejs-web-runtime.zh.md) | [threejs-web-runtime.en.md](docs/muse-game-workshop-docs/threejs-web-runtime.en.md) |
+| Unity Workflow | [unity-workflow.zh.md](docs/muse-game-workshop-docs/unity-workflow.zh.md) | [unity-workflow.en.md](docs/muse-game-workshop-docs/unity-workflow.en.md) |
 | Game Design & Systems | [game-design-systems.zh.md](docs/muse-game-workshop-docs/game-design-systems.zh.md) | [game-design-systems.en.md](docs/muse-game-workshop-docs/game-design-systems.en.md) |
 | Delivery Plan | [delivery-plan.zh.md](docs/muse-game-workshop-docs/delivery-plan.zh.md) | [delivery-plan.en.md](docs/muse-game-workshop-docs/delivery-plan.en.md) |
 | Versioned MVP Roadmap | [mvp-roadmap.zh.md](docs/muse-game-workshop-docs/mvp-roadmap.zh.md) | [mvp-roadmap.en.md](docs/muse-game-workshop-docs/mvp-roadmap.en.md) |
@@ -127,6 +138,10 @@ tools/checks/check-v0.8-genre-tracks
 tools/checks/check-v0.9-economy-progression
 tools/checks/check-v0.9.1-numerical-planning
 tools/checks/check-v0.9.2-design-skills
+tools/checks/check-v0.9.3-threejs-runtime
+tools/checks/check-v0.9.4-unity
+tools/checks/check-creative-ai-pilot
+cd examples/threejs-boss-rush && npm ci && npm test && npm run build
 python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 ```
 
@@ -140,12 +155,14 @@ python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 | System design | `system-design` skill + `templates/design/system-design.md` |
 | Combat design | `combat-design` skill + `templates/design/combat-design.md` |
 | Numerical design | `numerical-planning`, `level-curve`, `combat-parameters`, `system-numerics` |
-| Prototype Design Gate | `prototype-design` skill before Godot / Unreal / gameplay code |
+| Prototype Design Gate | `prototype-design` skill before Three.js / Unity / Godot / Unreal gameplay code |
 | Economy and progression | `templates/design/economy-model.md`, `templates/design/progression-map.md`, `templates/design/resource-reward-table.md`, `templates/design/tuning-loop.md` |
 | Numerical planning | `templates/design/level-curve.md`, `templates/design/combat-parameter-table.md`, `templates/design/system-numerical-plan.md` |
 | Vertical slice planning | `vertical-slice-planner` skill + `templates/design/vertical-slice.md` |
 | Godot implementation | `godot-workflow` skill + `examples/godot-boss-rush/` |
 | Unreal mapping | `unreal-workflow` skill + `examples/unreal-boss-rush/` |
-| Art/audio assets | `creative-asset-pipeline`, `asset-brief`, `asset-review` |
+| Three.js Web production | `threejs-workflow` skill + `examples/threejs-boss-rush/` |
+| Unity production mapping | `unity-workflow` skill + `templates/design/production-target-mapping.md` |
+| Art/audio assets | `creative-asset-pipeline`, `asset-brief`, `ai-3d-asset-production`, `asset-review` |
 | Playtest records | `playtest-report` skill + `templates/design/playtest-log.md` |
 | Release readiness | `templates/design/release-checklist.md`, `templates/publishing/localization-readiness.md` |

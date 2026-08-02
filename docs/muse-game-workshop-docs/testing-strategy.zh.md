@@ -16,7 +16,7 @@ Muse Game Workshop 的测试目标不是只验证代码能运行，而是验证�
 4. AI tool adapter 行为。
 5. creative asset pipeline。
 6. 双语用户群体、本地化和术语一致性。
-7. Godot/Unreal 示例和发布准备。
+7. Three.js Web、Unity、Unreal、Godot 示例或目标验证，以及发布准备。
 
 ## 2. 测试原则
 
@@ -121,6 +121,9 @@ tools/checks/check-v0.1-manifest
 tools/checks/check-v0.9-economy-progression
 tools/checks/check-v0.9.1-numerical-planning
 tools/checks/check-v0.9.2-design-skills
+tools/checks/check-v0.9.3-threejs-runtime
+tools/checks/check-v0.9.4-unity
+tools/checks/check-creative-ai-pilot
 ```
 
 统一输出格式：
@@ -135,9 +138,9 @@ FAIL <check-name>: <reason>
 | Check | 通过条件 | 失败条件 |
 |---|---|---|
 | `check-doc-links` | 所有本地 Markdown 链接存在。 | 任意本地链接目标不存在。 |
-| `check-doc-pairs` | 根 README 存在；核心文档集合成对存在：overall project plan、Vision、PRD、Product Entry & `mgw init`、User Journey、technical architecture、Godot/Unreal workflow、Godot Prototype Asset Kit、Genre Tracks、Economy & Progression、Numerical Planning、Agent Skill Composition、skill pack spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、game design systems、delivery plan、v0.1 execution plan、v0.1 manifest、testing strategy、MVP roadmap。 | README 缺失，或任一核心文档缺少对应语言版本。 |
+| `check-doc-pairs` | 根 README 存在；核心文档集合成对存在，包括 overall plan、Vision、PRD、product entry、user journey、technical architecture、Production Target Contract、Three.js Web Runtime、Unity Workflow、多目标 workflow、skill/template/handoff specs、testing strategy 和 roadmap。 | README 缺失，或任一核心文档缺少对应语言版本。 |
 | `check-startup-prompts` | README、文档包索引、roadmap 和 testing strategy 的启动 prompt 包含目标语言、目标用户群体、bilingual audience strategy、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 review gate；CLAUDE.md 不得与 AGENTS.md 或 manifest 冲突。 | prompt 缺少任一必读项、未声明目标语言，或工具规则冲突。 |
-| `check-template-metadata` | 当前模板集合都包含共享 metadata block，包括 v0.1 模板、v0.3 creative templates、v0.6 design systems templates、v0.9 economy/progression templates 和 v0.9.1 numerical planning templates。 | 任一模板缺少 Language、Target Audience、Locale、Terminology Source、Owner 或 Review Status。 |
+| `check-template-metadata` | 当前模板集合都包含共享 metadata block，包括 v0.1 模板、v0.3 creative templates、v0.6 design systems templates、v0.9 economy/progression templates、v0.9.1 numerical planning templates、v0.9.3 production-target templates 和 Creative AI Production Pilot templates。 | 任一模板缺少 Language、Target Audience、Locale、Terminology Source、Owner 或 Review Status。 |
 | `check-v0.1-manifest` | manifest 中列出的 skills/templates/checks/dry-run evidence 都存在，且没有 Godot/Unreal 示例代码提前进入 v0.1；禁止模式包括 `*.gd`、`*.tscn`、`*.tres`、`*.uasset`、`*.umap`、`*.uproject`、`*.cpp`、`*.h`、`*.cs`、`*.shader`、`*.import`。 | manifest 清单缺项，或 v0.1 范围出现提前实现的游戏代码。 |
 | `check-v0.2-godot` | Godot Boss Rush prototype 路径、脚本契约、输入映射、核心循环仿真和 Godot headless validation 通过。 | 项目文件缺失、脚本契约缺失、核心循环失败，或 Godot 报告错误。 |
 | `check-v0.3-creative-assets` | v0.3 creative templates、资产 brief/provenance/review/evidence、prototype visual/audio assets、Godot 场景引用和 engine validation 通过。 | 资产缺少 brief/provenance/review、文件格式无效、场景未接入，或 Godot 报告错误。 |
@@ -150,6 +153,9 @@ FAIL <check-name>: <reason>
 | `check-v0.9-economy-progression` | v0.9 Economy & Progression / 经济与成长文档、economy model/progression map/resource-reward/tuning-loop templates、Tactics / 战棋类 economy dry run、review gate、evidence、README/docs index/roadmap 更新、v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析下一版本交接和禁止范围检查通过。 | v0.9 文档/模板/evidence 缺失，Tactics 缺少 action points/stamina/cooldowns/rewards/failure compensation/unit growth，v0.10 未被标识为下一版本，或 v0.9 创建了商业化后台、支付、真实 telemetry service、引擎文件或资产。 |
 | `check-v0.9.1-numerical-planning` | v0.9.1 Numerical Planning / 数值规划文档、level curve/combat parameter table/system numerical plan templates、Tactics / 战棋类 numerical dry run、review gate、evidence、README/docs index/roadmap 更新、v0.10 下一主版本交接和禁止范围检查通过。 | v0.9.1 文档/模板/evidence 缺失，Tactics 缺少等级/战斗/系统数值验证，v0.10 未被标识为下一主版本，或 v0.9.1 创建了引擎代码、真实 telemetry、商业化后台、支付、资产或批准发布版本最终平衡。 |
 | `check-v0.9.2-design-skills` | v0.9.2 Specialized Design Skills / 专业策划 Skill 包存在，Agent Skill Composition / Agent 与 Skill 组合设计文档成对，Role Agent / 角色型 Agent 组合和 skill 路由已文档化，现有核心 skills 能路由到新专业 skills，README/docs index/roadmap 更新，v0.10 下一主版本交接和禁止范围检查通过。 | 任一专业 skill 缺失或结构错误，Agent Skill Composition 缺失，Role Agent 组合缺少制作职能，核心 skills 未路由到专业 skills，v0.10 未被标识为下一主版本，或 v0.9.2 创建了引擎代码、真实 telemetry、商业化后台、支付、资产或批准发布版本最终平衡。 |
+| `check-v0.9.3-threejs-runtime` | 生产目标契约、Three.js 双语文档/skill/templates/evidence 和浏览器样板存在；依赖已安装时 unit/build/browser tests 通过。 | 关键契约缺失，样板构建失败，Canvas 空白、输入循环失败或浏览器报错。 |
+| `check-v0.9.4-unity` | Unity 双语文档、skill、mapping/evidence 存在；检测到 Unity Editor 时执行 editor smoke。 | 静态契约缺失，或检测到 Unity 后 editor smoke 失败；不得把未执行的 Editor/PlayMode/player build 写成通过。 |
+| `check-creative-ai-pilot` | AI 3D 双语契约、`img2threejs` 双语研究、专业 skill、三张模板和 Grey Tide planning-only 试点计划存在；索引/数量一致，且未安装工具或生成资产。 | 配对文档、skill、模板、试点边界或索引缺失，出现 `img2threejs` vendor 安装，或 evidence 中出现生成/二进制资产。 |
 
 验收标准：
 
@@ -238,8 +244,11 @@ FAIL <check-name>: <reason>
 
 - Codex。
 - Claude Code。
+- Kimi Code。
 - Kiro CLI。
 - opencode。
+- RoboCode。
+- CliHub。
 
 统一测试 prompt：
 
@@ -516,3 +525,16 @@ docs/evidence/
 - 涉及发布时有 release checklist。
 - 已知风险写入 release notes。
 - review gate 结论明确。
+
+## 17. Three.js Browser Runtime Tests / Three.js 浏览器运行时测试
+
+- Vitest 验证确定性 simulation、状态转换和数值边界。
+- Vite production build 必须通过。
+- Playwright 验证真实浏览器启动、输入、胜负/重开、console/page errors、非空 Canvas，以及桌面和移动 viewport 截图。
+- 视觉基线固定浏览器和环境；性能 evidence 记录 FPS、frame time、draw calls、triangles、initial payload 和 fallback backend。
+
+## 18. Unity Conditional Tests / Unity 条件测试
+
+- 静态检查验证 Unity 6 版本记录、Scene/Prefab/Component/ScriptableObject/asmdef/Input System 映射和 EditMode/PlayMode/build 命令计划。
+- 检测到 Unity Editor 时，用 batchmode 执行 EditMode、PlayMode 和最小 player-build smoke，并保存 XML/log evidence。
+- 未检测到 Unity Editor 时必须明确记录 pending/blocked editor validation，不得伪造 PASS。

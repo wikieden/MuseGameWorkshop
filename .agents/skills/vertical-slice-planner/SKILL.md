@@ -24,7 +24,7 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 - Core loop.
 - Mechanic spec.
 - Prototype design gate, if available.
-- Engine preference.
+- First Playable Target and Final Production Target.
 - Team/time constraints.
 
 ## Outputs
@@ -52,7 +52,7 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 - The prototype design gate is explicit and not hidden inside a task list.
 - The cut list is explicit.
 - The slice proves gameplay, not content volume.
-- The plan can move to Godot or Unreal without rewriting the design.
+- The plan can move to Three.js Web, Unity, Unreal, or Godot without rewriting the engine-neutral design.
 
 ## Common Failure Modes
 
@@ -67,6 +67,10 @@ description: Use when an approved mechanic or loop needs a small reviewable slic
 - `combat-design`
 - `numerical-planning`
 - `engine-portability`
+- `threejs-workflow`
+- `unity-workflow`
+- `godot-workflow`
+- `unreal-workflow`
 - `creative-asset-pipeline`
 - `ux-flow`
 - `level-blockout`

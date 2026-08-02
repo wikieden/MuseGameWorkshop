@@ -48,7 +48,7 @@ The first stage prioritizes:
 
 - Solo indie developers.
 - Small 2-5 person game teams.
-- Creative developers using AI coding tools for Godot or Unreal projects.
+- Creative developers using AI coding tools for Three.js Web, Unity, Godot, or Unreal projects.
 - Teams bringing image, audio, video, 3D, animation, UI, localization, or voice AI tools into asset production.
 - Chinese indie developers and Chinese game-industry practitioners.
 - English-speaking indie developers and small teams.
@@ -75,7 +75,7 @@ For a small team, it should feel like a shared production language: producers, d
 
 For AI coding tools, it should provide clear project rules: read the docs first, produce a design summary and execution plan first, wait for review approval, then implement. Every implementation should trace back to gameplay goals, engine constraints, asset provenance, and test evidence.
 
-For creative AI tools, it should provide an asset workflow that can actually ship: define art direction and asset briefs first, generate and select candidates, record source and license metadata, perform human review, then import and validate assets in Godot or Unreal.
+For creative AI tools, it should provide an asset workflow that can actually ship: define art direction and asset briefs first, generate and select candidates, record source and license metadata, perform human review, then import and validate assets in the selected runtime or engine.
 
 ## 7. Core Principles
 
@@ -139,10 +139,12 @@ Project memory should live in documents and reviewable records.
 
 ### 7.6 Engine-Aware, Engine-Neutral
 
-Godot and Unreal are the primary target engines, but early design and mechanic specifications should stay engine-neutral when possible.
+Three.js WebGPU, Unity, Godot, and Unreal are formal production targets, while early design and mechanic specifications stay target-neutral when possible.
 
 The workflow should define gameplay intent first, then map it to engine concepts:
 
+- Three.js WebGPU: browser runtime, WebGL 2 fallback, DOM UI, static deployment, browser QA.
+- Unity: Scenes, Prefabs, Components, ScriptableObjects, Input System, EditMode/PlayMode, player builds.
 - Godot: scenes, nodes, signals, resources, input maps, animation, test scenes.
 - Unreal: Actors, Components, Blueprints, C++, Data Assets, UMG, Animation Blueprints, test maps.
 
@@ -193,6 +195,8 @@ Vision must guide version tradeoffs. The current version horizon is:
 | v0.2 | Godot Playable Loop | Can mechanic specs become a Godot prototype? | Boss Rush Godot example is playable, with parameters, tests, and playtest report. |
 | v0.3 | Creative Production Ready | Can AI-assisted assets move from brief to engine validation? | At least one visual asset and one audio asset complete brief, provenance, review, and engine validation. |
 | v0.4 | Unreal Mapping Slice | Can the same mechanic map into 3D action presentation? | Unreal PIE test map is playable, with Data Asset, UMG, animation placeholder, and check entry points. |
+| v0.9.3 | Multi-target Production Foundation + Three.js Web Runtime | Can Web become a formal production target? | Production contract, Three.js skill, browser reference, and automated validation work together. |
+| v0.9.4 | Unity Workflow | Can Unity follow the same delivery and evidence contract? | Unity skill, mapping, EditMode/PlayMode/build plan, and conditional validation work together. |
 | v0.5 | Publishing Readiness | Can the demo be judged for public playtest readiness? | Release checklist, store/trailer brief, localization, accessibility, and AI disclosure are complete. |
 | v0.6 | Game Design Deepening Pack | Can core gameplay, systems, combat, levels, tuning, and playtest hypotheses become handoff-ready specs? | System design, combat design, encounter design, tuning plan, and playtest hypotheses can hand off to programmers, QA, and creative disciplines. |
 | v0.7 | Product Entry & mgw init | How does a user create their own game project with Muse? | `mgw init`, user journey, project workspace, tool adapter rules, and MCP adapter boundaries are reviewable. |
@@ -243,7 +247,7 @@ P2 should not slow down the first playable demo. Basic economy and progression a
 
 - Produce a design summary and execution plan first; implement only after review approval.
 - During v0.1 delivery, `v0.1-manifest.zh.md` / `.en.md` is the single source of truth for created scope.
-- Do not write Godot or Unreal game code early.
+- Do not write game code for any production target before its review gate.
 - Do not bypass asset briefs, provenance, license checks, or human review.
 - Do not treat Chinese and English users as machine-translated copies of the same copy.
 - Do not replace game-industry production disciplines with novel agent titles.
@@ -269,7 +273,7 @@ If Muse Game Workshop succeeds, an indie team should be able to:
 - Move from a vague idea to a playable prototype instead of staying in chat-based ideation.
 - Let AI coding tools and creative AI tools collaborate through game-industry language.
 - Bring AI-assisted art, animation, environment, music, and sound assets into a reviewable production pipeline.
-- Reuse design, mechanics, QA, and release workflows across Godot and Unreal.
+- Reuse design, mechanics, QA, and release workflows across Three.js WebGPU, Unity, Godot, and Unreal.
 - Give Chinese users production docs that feel natural to Chinese game teams, and give English users natural English production docs.
 - Ensure every AI-assisted change has a plan, a review, evidence, and a retrospective trail.
 - Decide faster whether a game is worth continuing.

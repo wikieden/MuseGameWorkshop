@@ -61,7 +61,7 @@ Ask at most five questions before proposing files:
 2. Target language and audience?
 3. Genre or reference games?
 4. Target platform?
-5. Engine preference: Godot, Unreal, or undecided?
+5. First playable target and final production target: Three.js Web, Unity, Unreal, Godot, or undecided?
 
 If the user already gave enough information, do not ask again. State assumptions instead.
 
@@ -109,11 +109,12 @@ project:
   locale: zh-CN
   stage: concept
   genre: undecided
-  engine: undecided
+  first_playable: undecided
+  production_target: undecided
   target_platforms: []
 
 muse:
-  workflow_version: v0.7
+  workflow_version: v0.9.4
   init_state: game-start-created
   init_entry: ai-editor
   next_action: continue-mgw-init
@@ -171,7 +172,7 @@ After the minimal workspace exists, ask which loop to enter next:
 - QA / Playtest Loop: playtest checklist, bug reports, tuning notes.
 - Release Loop: demo readiness, localization, AI asset disclosure.
 
-If the user asks to enter Godot, Unreal, gameplay coding, editor automation, or prototype implementation, run `prototype-design` first. `mgw-init` stays light; `prototype-design` raises the quality bar before engine work.
+If the user asks to enter Three.js, Unity, Godot, Unreal, gameplay coding, editor automation, or prototype implementation, run `prototype-design` first. `mgw-init` stays light; `prototype-design` raises the quality bar before production-target work.
 
 For each loop:
 
@@ -186,8 +187,8 @@ ask questions
 
 - The user can start from a single game idea without understanding the full Muse document tree.
 - The first output is small enough to review in one sitting.
-- `muse.project.yaml` records language, audience, stage, genre, engine, init state, next action, and review gate.
-- No Godot / Unreal project is created by default.
+- `muse.project.yaml` records language, audience, stage, genre, first playable target, production target, init state, next action, and review gate.
+- No Godot / Unreal project is created by default. The same boundary applies to Unity project scaffolds and Three.js runtime packages.
 - No MCP server is installed by default.
 - No assets are generated or imported by default.
 - The next action is clear.
@@ -209,6 +210,8 @@ ask questions
 - `mechanic-spec`
 - `prototype-design`
 - `engine-portability`
+- `threejs-workflow`
+- `unity-workflow`
 - `art-direction`
 - `asset-brief`
 - `playtest-report`

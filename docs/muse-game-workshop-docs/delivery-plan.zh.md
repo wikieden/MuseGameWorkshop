@@ -243,6 +243,8 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 | v0.9 | 经济和成长缺少系统闭环 | economy & progression | economy model、progression map、resource/reward table 和 tuning loop 能回到系统设计与调优 |
 | v0.9.1 | 等级、战斗和系统数值停留在讨论层，难以 review | numerical planning | level curve、combat parameter table 和 system numerical plan 在实现前连接到调优 |
 | v0.9.2 | 专业策划工作太宽，不能继续全靠单一通用策划流程 | specialized design skills / 专业策划 skills | 系统、战斗、数值、等级曲线、战斗参数和系统数值 skills 能按制作职能组合 |
+| v0.9.3 | 浏览器 3D 仍被当成临时展示，缺少生产契约 | multi-target foundation + Three.js Web Runtime | 四目标契约成立，Three.js 样板通过 unit/build/browser QA |
+| v0.9.4 | Unity 尚无可执行工作流和证据边界 | Unity Workflow | Unity mapping、EditMode/PlayMode/build 计划和条件检查成立 |
 | v0.10 | 试玩数据无法闭环调优 | telemetry & playtest analytics | 数据字段和调优报告能回到设计决策 |
 | v0.11 | 世界观、角色和任务与玩法脱节 | narrative design pack | 叙事交付物能服务玩法、关卡、美术、音频和本地化 |
 | v0.12 | 创意资产流程已验证但未扩展 | creative production expansion | 多类资产能通过 brief、provenance、review 和 engine validation |
@@ -497,6 +499,14 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 - `check-v0.9.2-design-skills` 通过。
 - v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析仍然是下一主版本。
 
+### v0.9.3: Multi-target Production Foundation + Three.js Web Runtime
+
+状态：已完成。生产目标契约、`threejs-workflow`、映射/浏览器测试模板、Boss Rush Web 样板、paired evidence 和 `check-v0.9.3-threejs-runtime` 已落地。Three.js 以 WebGPU 为生产方向并保留 WebGL 2 fallback。
+
+### v0.9.4: Unity Workflow
+
+状态：workflow 与静态验证已完成。`unity-workflow`、Unity 6 映射、EditMode/PlayMode/batchmode/player-build 契约、paired evidence 和 `check-v0.9.4-unity` 已落地。没有 Unity Editor 时不得声称 editor/player 验证通过。
+
 ### v0.10: Telemetry & Playtest Analytics
 
 目标：
@@ -530,6 +540,7 @@ Muse Game Workshop 的版本不是按“功能越多越好”推进，而是按�
 
 - 在策划、类型、系统、经济、数据和叙事规格稳定后扩展美术、动作、场景、音乐、音效和 UI 资产生产。
 - 复用 v0.3 / v0.5b 验证过的 brief、provenance、review 和 engine validation 流程。
+- 吸收非版本化 Creative AI Production Pilot 的 AI 3D 契约、`img2threejs` 研究、成本记录和 Grey Tide 试点证据；试点不得替代 v0.12 的全品类生产评审。
 - 研究创意 AI 工具适配，但不接生产 API。
 
 发布标准：

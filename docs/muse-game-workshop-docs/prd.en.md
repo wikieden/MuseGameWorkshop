@@ -6,24 +6,24 @@ Language: English
 
 ## 1. Product Overview
 
-Muse Game Workshop is an AI-assisted production workflow system for indie game development with Godot and Unreal Engine. It is not a game engine and not a one-click game generator. Its purpose is to structure the full path from concept, pre-production, prototyping, vertical slice planning, production, playtesting, QA, polish, and release preparation into tool-neutral workflow skills, templates, project rules, checklists, examples, and AI tool adapters.
+Muse Game Workshop is an AI-assisted production workflow system for indie game development with Three.js WebGPU, Unity, Unreal Engine, and Godot. It is not a game engine or one-click generator. It turns concept, pre-production, prototype, vertical slice, production, playtest, QA, polish, and release preparation into tool-neutral skills, templates, rules, checks, examples, and adapters.
 
-The long-term goal is to become an AI production layer for Godot and Unreal projects:
+The long-term goal is to become an AI production layer shared across four production targets:
 
 - Top layer: concept, GDD, mechanic specs, content matrices, balance, playtest feedback, release decisions.
 - Middle layer: workflow core, production stages, production disciplines, templates, workflow rules, review gates, and project-stage detection.
-- Adapter layer: prompts, rule files, briefs, commands, and review conventions for AI coding tools such as Codex, Claude Code, Kiro CLI, and opencode, plus image, audio, video, 3D, animation, and localization AI tools.
-- Bottom layer: Godot/Unreal adapters, creative asset pipelines, editor automation, tests, builds, asset import, and validation.
+- Adapter layer: rules and review conventions for Codex, Claude Code, Kimi Code, Kiro CLI, opencode, RoboCode, CliHub, and creative AI tools.
+- Bottom layer: Three.js Web, Unity, Godot, and Unreal adapters; creative asset pipelines; browser/editor automation; tests; builds; asset import; and validation.
 
 One-line positioning:
 
-> An AI tool-agnostic game design, content production, engineering, validation, and release workflow system for Godot and Unreal.
+> An AI tool-agnostic game design, content production, engineering, validation, and release workflow system for Three.js WebGPU, Unity, Unreal Engine, and Godot.
 
 ### 1.1 Vision
 
 Muse Game Workshop should elevate AI from "a tool that can write code or generate assets" into a trusted AI-assisted game production operating model for indie developers and small teams. It uses familiar game-industry production stages, disciplines, and quality gates to organize work. It uses AI to extend design, engineering, art, animation, environment, music, sound, QA, and release capabilities while using review gates, evidence records, and asset provenance to keep human creative control intact.
 
-It helps teams continuously answer three production questions: what game are we actually making; what is the next smallest verifiable output; and can every AI-assisted design, code, asset, test, and release decision be explained, traced, and approved by a human. It does not replace producers, designers, artists, programmers, audio specialists, QA, or release judgment. It helps those disciplines work with AI in a clearer, faster, and more reviewable way. A team should be able to move from a vague idea to playable specs, implementation plans, creative asset briefs, AI-generated asset records, Godot/Unreal integration plans, and a release-ready demo checklist.
+It helps teams continuously answer three production questions: what game are we actually making; what is the next smallest verifiable output; and can every AI-assisted design, code, asset, test, and release decision be explained, traced, and approved by a human. It does not replace producers, designers, artists, programmers, audio specialists, QA, or release judgment. It helps those disciplines work with AI in a clearer, faster, and more reviewable way. A team should be able to move from a vague idea to playable specs, implementation plans, creative asset briefs, AI-generated asset records, four-target production mappings, and a release-ready demo checklist.
 
 ## 2. Background and Problem
 
@@ -49,6 +49,8 @@ Initial target users:
 - Small 2-5 person game teams.
 - Developers using Godot for 2D or lightweight 3D games.
 - Developers using Unreal for 3D action, exploration, shooter, or high-fidelity prototypes.
+- Developers using Three.js WebGPU for browser-first games and shareable playtests.
+- Developers using Unity for C#-based cross-platform 2D/3D production.
 - AI-assisted developers who want to move beyond vibe coding into maintainable production workflows.
 - Creators with design ideas who need engineering structure, documentation, and validation discipline.
 - Chinese indie developers and Chinese game-industry users who need terminology and production docs that feel natural to Chinese teams.
@@ -124,6 +126,18 @@ v0.9 goals:
 - Support sources/sinks, reward structure, progression, level/quest rewards, and tuning.
 - Keep this to verifiable design and analysis loops, not commercialization backends or real payment systems.
 
+v0.9.3 goals:
+
+- Establish the Production Target Contract.
+- Treat Three.js WebGPU as a formal Web production target with a WebGL 2 fallback.
+- Deliver the Three.js workflow, browser tests, and playable Boss Rush reference.
+
+v0.9.4 goals:
+
+- Establish the Unity workflow, project mapping, and test/build contract.
+- Support EditMode, PlayMode, batchmode, and player-build evidence.
+- Distinguish static completion from pending editor validation when Unity Editor is unavailable.
+
 v0.10 goals:
 
 - Complete the Telemetry & Playtest Analytics Pack.
@@ -163,8 +177,8 @@ v0.15 goals:
 v1.0 goals:
 
 - Become an installable, reusable, extensible AI tool-agnostic game workflow pack.
-- Support project-stage detection, task breakdown, QA, and release checks for Godot and Unreal.
-- Integrate with AI coding tools such as Codex, Claude Code, Kiro CLI, and opencode, common creative generation/editing AI tools, plus Godot/Unreal MCP servers or official editor automation where practical.
+- Support project-stage detection, task breakdown, QA, and release checks for Three.js WebGPU, Unity, Unreal Engine, and Godot.
+- Integrate with AI coding tools such as Codex, Claude Code, Kimi Code, Kiro CLI, opencode, RoboCode, and CliHub, common creative generation/editing AI tools, plus runtime/editor automation where practical.
 
 ## 5. Non-goals
 
@@ -218,8 +232,8 @@ See `production-language-guide.zh.md` / `production-language-guide.en.md` for na
 | Producer | Scope, milestones, risk, and review gates | `game-intake`, `vertical-slice-planner`, `postmortem` |
 | Game Designer | Player experience, rules, mechanics, and content pacing | `core-loop`, `mechanic-spec`, `content-matrix` |
 | Technical Designer | Turn design into state machines, parameters, data structures, and test points | `mechanic-spec`, `implementation-bridge`, `engine-portability` |
-| Gameplay Programmer | Implement input, states, interactions, feedback, and validation after review approval | `implementation-bridge`, `godot-workflow`, `unreal-workflow` |
-| Engine Specialist | Handle Godot/Unreal scenes, assets, Blueprints, scripts, and build constraints | `godot-workflow`, `unreal-workflow`, `engine-portability` |
+| Gameplay Programmer | Implement input, states, interactions, feedback, and validation after review approval | `implementation-bridge`, `threejs-workflow`, `unity-workflow`, `godot-workflow`, `unreal-workflow` |
+| Production Target Specialist | Handle browser modules/builds, Unity scenes/C#, Unreal Blueprints/C++, or Godot scenes/scripts and their build constraints | `threejs-workflow`, `unity-workflow`, `godot-workflow`, `unreal-workflow`, `engine-portability` |
 | Art Director | Visual direction, style consistency, and asset review standards | `art-direction`, `asset-review` |
 | Concept Artist | Character, creature, weapon, prop, and UI concept exploration | `asset-brief`, `asset-review` |
 | Environment Artist | Blockout, mood, lighting, terrain, and environment assets | `level-blockout`, `asset-brief` |
@@ -323,7 +337,7 @@ Input:
 AI tool-assisted work:
 
 - Use `mechanic-spec` to define state machine, input, timing windows, parameters, feedback, and edge cases.
-- Use `engine-portability` to generate Godot and Unreal implementation differences.
+- Use `engine-portability` to generate implementation differences for the approved production target.
 
 Output:
 
@@ -460,7 +474,15 @@ P0/P1 extension directions include:
 - `localization-readiness`
 - `accessibility-check`
 
-### 9.3 Godot Support
+### 9.3 Three.js Web Runtime Support
+
+The MVP must support TypeScript/Vite structure, simulation/renderer/DOM UI separation, WebGPU production direction, WebGL 2 fallback, Playwright browser validation, performance budgets, and static deployment.
+
+### 9.4 Unity Support
+
+The MVP must support Unity 6 version records, Scene/Prefab/Component/ScriptableObject boundaries, Assembly Definitions, Input System, EditMode/PlayMode tests, batchmode, and player-build validation.
+
+### 9.5 Godot Support
 
 MVP must support:
 
@@ -472,7 +494,7 @@ MVP must support:
 - Headless export and script check guidance.
 - GdUnit4 or GUT test recommendations.
 
-### 9.4 Unreal Support
+### 9.6 Unreal Support
 
 MVP must support:
 
@@ -485,7 +507,7 @@ MVP must support:
 - Automation Test Framework and Functional Testing guidance.
 - Packaging, cooking, and performance budget checks.
 
-### 9.5 QA and Release
+### 9.7 QA and Release
 
 MVP must support:
 
@@ -498,7 +520,7 @@ MVP must support:
 - AI-use disclosure records.
 - itch/Steam demo release checks.
 
-### 9.6 Creative Asset Pipeline
+### 9.8 Creative Asset Pipeline
 
 P0 must support:
 
@@ -507,7 +529,7 @@ P0 must support:
 - AI generation tool, prompt, model/service, and version records.
 - Human review, licensing risk, and platform disclosure status.
 - Asset format, size, naming, compression, import path, and performance budget.
-- Godot/Unreal in-engine validation checkpoints.
+- Three.js/Unity/Godot/Unreal target validation checkpoints.
 
 ### 9.7 UX, Level Design, Narrative, Localization, And Accessibility
 

@@ -6,7 +6,7 @@ Language: English
 
 ## 1. Goal
 
-This document defines the Muse Game Workshop workflow skill catalog. It includes the main full-target skill directions, but v0.1 materialization must use `v0.1-manifest.en.md` as the single source of truth. Each skill should be small, explicit, composable, and reusable across Godot and Unreal game projects.
+This document defines the Muse Game Workshop workflow skill catalog. It includes the main full-target skill directions, but v0.1 materialization must use `v0.1-manifest.en.md` as the single source of truth. Each skill should be small, explicit, composable, and reusable across Three.js WebGPU, Unity, Unreal Engine, and Godot projects where applicable.
 
 A skill is not roleplay and not an external agent title for marketing. It is an executable workflow capability under a production discipline. Game-industry users should first see familiar disciplines such as Producer, Game Designer, Technical Designer, Gameplay Programmer, and QA; internally, those disciplines can map to workflow skills.
 
@@ -34,8 +34,8 @@ Every implementation-oriented or project-structure-changing skill must first out
 | System Designer | Systems, states, triggers, dependencies, data ownership | `system-design`, `system-numerics`, `engine-portability` |
 | Combat Designer | Combat verbs, readability, timing, enemies, feedback, tuning handles | `combat-design`, `combat-parameters`, `mechanic-spec` |
 | Numerical Designer | Level curves, combat parameters, economy pressure, formulas, tuning hypotheses | `numerical-planning`, `level-curve`, `combat-parameters`, `system-numerics` |
-| Gameplay Programmer | Approved implementation plan and validation | `godot-workflow`, `unreal-workflow`, `implementation-bridge` |
-| Engine Specialist | Godot/Unreal structure, assets, builds, editor constraints | `godot-workflow`, `unreal-workflow`, `engine-portability` |
+| Gameplay Programmer | Approved implementation plan and validation | `threejs-workflow`, `unity-workflow`, `godot-workflow`, `unreal-workflow` |
+| Runtime / Engine Specialist | Structure, assets, builds, and platform constraints across all four targets | `threejs-workflow`, `unity-workflow`, `godot-workflow`, `unreal-workflow`, `engine-portability` |
 | Art Director | Visual direction, style consistency, asset review | `art-direction`, `asset-review` |
 | Concept / Environment Artist | Concepts, art assets, environment blockouts | `asset-brief`, `level-blockout`, `asset-review` |
 | Animator / Technical Artist | Animation, VFX, materials, import specs, performance budget | `animation-brief`, `asset-integration` |
@@ -75,6 +75,10 @@ The directory tree below is the full target convention, not the v0.1 scaffold li
     SKILL.md
   engine-portability/
     SKILL.md
+  threejs-workflow/
+    SKILL.md
+  unity-workflow/
+    SKILL.md
   godot-workflow/
     SKILL.md
   unreal-workflow/
@@ -88,6 +92,8 @@ The directory tree below is the full target convention, not the v0.1 scaffold li
   postmortem/
     SKILL.md
   creative-asset-pipeline/
+    SKILL.md
+  ai-3d-asset-production/
     SKILL.md
   art-direction/
     SKILL.md
@@ -340,7 +346,7 @@ Next:
 
 Use for:
 
-- Comparing Godot and Unreal implementation approaches.
+- Comparing Three.js Web, Unity, Unreal, and Godot implementation approaches.
 - Preserving engine-neutral specs.
 
 Outputs:
@@ -489,7 +495,7 @@ Outputs:
 
 Quality bar:
 
-- Separate Godot and Unreal.
+- Separate the selected production-target implementation and validation.
 - Do not mark an unvalidated demo as release-ready.
 
 Next:
@@ -556,9 +562,41 @@ Next Skills:
 
 - `art-direction`
 - `asset-brief`
+- `ai-3d-asset-production`
 - `asset-review`
 - `ux-flow`
 - `level-blockout`
+
+### 4.14.1 ai-3d-asset-production
+
+Use for:
+
+- Managing AI-assisted 3D assets from reference admission, tool selection, quality contract, staged production, multi-view review, and cost control through runtime validation.
+
+Outputs:
+
+- Tool route and fallback route.
+- Quality contract and cost ceiling.
+- Procedural 3D or mesh delivery record.
+- Multi-view asset review.
+- Provenance, human-edit, and cost evidence.
+- Runtime validation and asset-state decision.
+
+Quality Bar:
+
+- Does not bind Muse to `img2threejs`, Blender, a mesh-native AI tool, or a commercial service.
+- Global similarity cannot override critical-part, gameplay-readability, or runtime-interface failures.
+- An asset cannot be called engine-ready without validation in the named target runtime.
+- A pilot that crosses cost, quality, or rights boundaries must stop, switch tools, or fall back.
+
+Next Skills:
+
+- `asset-review`
+- `threejs-workflow`
+- `unity-workflow`
+- `godot-workflow`
+- `unreal-workflow`
+- `playtest-report`
 
 ### 4.15 art-direction
 
@@ -656,7 +694,7 @@ Outputs:
 - Animation list.
 - Duration, rhythm, keyframes, and loop requirements.
 - Gameplay feedback goals.
-- Godot/Unreal integration requirements.
+- Production-target integration requirements.
 
 ### 4.18 music-brief
 
@@ -733,7 +771,7 @@ Next Skills:
 
 Use for:
 
-- Integrating reviewed assets into Godot/Unreal and establishing validation points.
+- Integrating reviewed assets into the selected production target and establishing validation points.
 
 Outputs:
 
@@ -886,7 +924,7 @@ The six skills are:
 
 See Agent Skill Composition (`agent-skill-composition.en.md`) for the role-agent bundles that aggregate these skills under familiar game-production roles.
 
-The next major version remains v0.10 Telemetry & Playtest Analytics.
+v0.9.3 adds `threejs-workflow`, v0.9.4 adds `unity-workflow`, and v0.10 Telemetry & Playtest Analytics remains next.
 
 ### 4.28 Future Planning Skills
 
@@ -907,10 +945,14 @@ flowchart TD
   B --> C["mechanic-spec"]
   C --> D["content-matrix"]
   C --> E["engine-portability"]
+  E --> X["threejs-workflow"]
+  E --> Y["unity-workflow"]
   E --> F["godot-workflow"]
   E --> G["unreal-workflow"]
   F --> H["playtest-report"]
   G --> H
+  X --> H
+  Y --> H
   H --> I["balance-check"]
   I --> C
   H --> J["postmortem"]
@@ -962,7 +1004,7 @@ v0.9.2 materializes the first specialized design skills and their composition ru
 - `system-numerics`
 - `agent-skill-composition.zh.md` / `agent-skill-composition.en.md`
 
-After v0.9.2, the next major version remains v0.10 Telemetry & Playtest Analytics.
+v0.9.3 adds `threejs-workflow`, and v0.9.4 adds `unity-workflow`. Both share the Production Target Contract and route through `engine-portability`. v0.10 Telemetry & Playtest Analytics remains next.
 
 After the v0.2 Godot playable prototype, add engineering-execution extensions:
 

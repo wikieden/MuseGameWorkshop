@@ -67,5 +67,6 @@ description: Use when art, animation, VFX, music, sound, UI, or other creative A
 
 - `art-direction`
 - `asset-brief`
+- `ai-3d-asset-production`
 - `asset-review`
 - `ux-flow`

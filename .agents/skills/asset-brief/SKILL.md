@@ -65,6 +65,7 @@ description: Use when a specific creative asset needs purpose, constraints, AI t
 
 ## Next Skills
 
+- `ai-3d-asset-production`
 - `asset-review`
 - `creative-asset-pipeline`
 - `godot-workflow`

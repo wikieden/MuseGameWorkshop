@@ -1,6 +1,6 @@
 # Muse Game Workshop
 
-> 面向独立游戏的 AI tool-agnostic 制作工作流包，让 AI 参与 Godot / Unreal 游戏开发时仍然可计划、可审查、可追踪、可验证、可发布。
+> 面向独立游戏的 AI tool-agnostic 制作工作流包，支持 Three.js WebGPU、Unity、Unreal Engine 和 Godot 生产交付。
 
 English version: [README.en.md](README.en.md)
 
@@ -17,7 +17,7 @@ Muse Game Workshop 不是游戏引擎，也不是一键生成游戏工具。它�
 
 - Solo 独立游戏开发者。
 - 2-5 人小型游戏团队。
-- 想用 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools 做 Godot / Unreal 项目的人。
+- 想用 Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode 或 CliHub 制作 Three.js、Unity、Unreal 或 Godot 游戏的人。
 - 想把图像、音频、视频、3D、动作、UI、本地化等 creative AI tools 纳入可审查资产流程的人。
 
 ## 快速开始
@@ -67,7 +67,7 @@ Muse Game Workshop 不是 Codex-only。Codex、Claude Code、Kiro CLI、opencode
 ### 推荐启动 Prompt
 
 ```text
-我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、Product Entry & mgw init、Zero-to-One Game Creation / 从 0 到 1 创建游戏、User Journey、technical architecture、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、game design systems、Godot Prototype Asset Kit / Godot 原型资产包、Genre Tracks / 类型流程分支、Economy & Progression / 经济与成长、Numerical Planning / 数值规划、Agent Skill Composition / Agent 与 Skill 组合设计、delivery plan、v0.1 execution plan、P0 skill skeleton plan、v0.1 manifest、testing strategy 和 roadmap。`mgw-init` 是问答式初始化入口，`continue mgw-init` 用于在 AI coding tool 中继续初始化会话。所有实现任务和结构性改动必须先输出设计摘要、执行计划、影响范围、文件范围、需要 review 的决策和验证计划，等待 review gate 通过后再动手。当前 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已完成，v0.4 Unreal Mapping Slice 静态骨架仍等待 Unreal Editor 做 PIE/editor validation；v0.9.2 不代表已实现真实 mgw CLI、安装 MCP、创建新引擎工程、商业化后台、支付、真实 telemetry service、生成新资产、导入 final/release-candidate 资产或批准 release balance / 发布版本最终平衡。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+我们要使用 Muse Game Workshop。目标语言：中文；目标用户群体：中国独立游戏开发者和小型游戏团队；地区语境：zh-CN。请先读取 README、overall project plan、Vision、PRD、Product Entry & mgw init、Zero-to-One Game Creation / 从 0 到 1 创建游戏、User Journey、technical architecture、Production Target Contract / 生产目标契约、Three.js Web Runtime / Three.js 网页运行时、Unity Workflow / Unity 工作流、workflow、skill spec、production language guide、bilingual audience strategy、terminology glossary、handoff contracts、templates、game design systems、Genre Tracks / 类型流程分支、Economy & Progression / 经济与成长、Numerical Planning / 数值规划、Agent Skill Composition / Agent 与 Skill 组合设计、delivery plan、testing strategy 和 roadmap。`mgw-init` 是问答式初始化入口，`continue mgw-init` 用于继续初始化会话。所有实现与结构改动必须先经过设计摘要、执行计划和 review gate。当前已完成 v0.9.3 Multi-target Production Foundation / 多生产目标基础与 Three.js Web Runtime，以及 v0.9.4 Unity Workflow / Unity 工作流；下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 ```
 
 ## 2. 从一个新游戏想法开始
@@ -109,7 +109,7 @@ docs/evidence/README.md
 4. 用 `templates/design/vertical-slice.md` 定义最小垂直切片。
 5. 用 `templates/design/engine-mapping.md` 把 engine-neutral 机制映射到 Godot 或 Unreal。
 6. 用 `templates/production/review-gate.md` 记录 review 结论。
-7. review gate 通过后，再进入 Godot / Unreal 实现。
+7. review gate 通过后，再进入 Three.js、Unity、Godot 或 Unreal 实现。
 
 建议把新项目证据放到：
 
@@ -231,6 +231,9 @@ tools/checks/check-startup-prompts
 tools/checks/check-template-metadata
 tools/checks/check-v0.1-manifest
 tools/checks/check-v0.9.2-design-skills
+tools/checks/check-v0.9.3-threejs-runtime
+tools/checks/check-v0.9.4-unity
+tools/checks/check-creative-ai-pilot
 ```
 
 示例或资产改动建议跑全量：
@@ -265,12 +268,13 @@ python3 examples/godot-boss-rush/tests/simulate_core_loop.py
 | 系统策划 | `system-design` skill + `templates/design/system-design.md` |
 | 战斗策划 | `combat-design` skill + `templates/design/combat-design.md` |
 | 数值策划 | `numerical-planning`、`level-curve`、`combat-parameters`、`system-numerics` |
-| Prototype Design Gate / 原型设计门 | 进入 Godot / Unreal / 玩法代码前使用 `prototype-design` skill |
+| Prototype Design Gate / 原型设计门 | 进入 Three.js / Unity / Godot / Unreal 玩法代码前使用 `prototype-design` skill |
 | 垂直切片计划 | `vertical-slice-planner` skill + `templates/design/vertical-slice.md` |
 | Godot 实现 | `godot-workflow` skill + `examples/godot-boss-rush/` |
 | Unreal 映射 | `unreal-workflow` skill + `examples/unreal-boss-rush/` |
 | 美术/音频资产 | `creative-asset-pipeline`、`asset-brief`、`asset-review` |
 | 试玩记录 | `playtest-report` skill + `templates/design/playtest-log.md` |
+| AI 3D 资产生产 | `ai-3d-asset-production` skill + `templates/creative/procedural-3d-delivery.md` |
 | 发布准备 | `templates/design/release-checklist.md`、`templates/publishing/localization-readiness.md` |
 
 ## 项目远景
@@ -299,20 +303,20 @@ Muse Game Workshop 的远景是成为独立游戏团队可复用的 AI 制作工
 
 ## 当前状态
 
-当前仓库已完成 v0.9.2 Specialized Design Skills / 专业策划 Skill 包，作为 v0.9.1 Numerical Planning / 数值规划和 v0.9 Economy & Progression / 经济与成长的补丁：v0.8 Genre Tracks / 类型流程分支、v0.7 Product Entry & mgw init、v0.6 Game Design & Systems / 策划与系统设计和 v0.5 研究收口继续保留，首批 7 个类型流程分支和 Tactics / 战棋类 dry runs 已落地：
+当前仓库已完成 v0.9.3 Multi-target Production Foundation / 多生产目标基础与 Three.js Web Runtime，以及 v0.9.4 Unity Workflow / Unity 工作流：
 
 - `AGENTS.md`
-- 22 个 workflow skills：14 个 P0 skills、`mgw-init`、`prototype-design` 和 6 个 v0.9.2 专业策划 skills，位于 `.agents/skills/*/SKILL.md`
-- 39 个模板：`templates/`，其中 22 个来自 v0.1，5 个来自 v0.3 creative templates，5 个来自 v0.6 design systems templates，4 个来自 v0.9 economy/progression templates，3 个来自 v0.9.1 numerical planning templates
-- 16 个检查入口：`tools/checks/`
+- 25 个 workflow skills，包含 `threejs-workflow`、`unity-workflow` 和 `ai-3d-asset-production`
+- 44 个模板：`templates/`，其中 22 个来自 v0.1，5 个来自 v0.3 creative templates，5 个来自 v0.6 design systems templates，4 个来自 v0.9 economy/progression templates，3 个来自 v0.9.1 numerical planning templates，2 个来自 v0.9.3 production-target templates，3 个来自 Creative AI Production Pilot
+- 19 个检查入口：`tools/checks/`
 - Boss Rush / 《反击试炼》无代码 dry-run evidence：`docs/evidence/dry-runs/`
 - Godot Boss Rush prototype：`examples/godot-boss-rush/`
 - v0.3 creative asset evidence：`docs/evidence/v0.3/`
 - v0.4 Unreal static mapping scaffold：`examples/unreal-boss-rush/`
 - v0.5b AI art asset dry-run evidence：`docs/evidence/v0.5/`
 - v0.5 engine AI adapter research：`docs/muse-game-workshop-docs/research/`
-- v0.5 consolidation evidence：`docs/evidence/v0.5/`
-- v0.6 game design systems overview：`docs/muse-game-workshop-docs/game-design-systems.zh.md`
+- v0.5 Roadmap Rebase & Research Consolidation / 路线重排与研究收口证据：`docs/evidence/v0.5/`
+- v0.6 Game Design & Systems / 策划与系统设计总纲：`docs/muse-game-workshop-docs/game-design-systems.zh.md`
 - v0.6 Boss Rush 与 Tactics design dry-run evidence：`docs/evidence/v0.6/`
 - v0.7 product entry 和 user journey docs：`docs/muse-game-workshop-docs/`
 - v0.8 Genre Tracks / 类型流程分支总纲和 7 个类型分支：`docs/muse-game-workshop-docs/`
@@ -320,8 +324,11 @@ Muse Game Workshop 的远景是成为独立游戏团队可复用的 AI 制作工
 - v0.9 Economy & Progression / 经济与成长 docs、templates 和 Tactics / 战棋类 dry-run evidence：`docs/evidence/v0.9/`
 - v0.9.1 Numerical Planning / 数值规划 docs、templates 和 Tactics / 战棋类 dry-run evidence：`docs/evidence/v0.9.1/`
 - v0.9.2 Specialized Design Skills / 专业策划 Skill 包和 Agent Skill Composition / Agent 与 Skill 组合设计 docs：`.agents/skills/` 和 `docs/muse-game-workshop-docs/`
+- v0.9.3 生产目标契约、Three.js workflow、浏览器验证 evidence 和 Three.js Boss Rush 可玩样板
+- v0.9.4 Unity workflow、静态映射验证和 evidence；真实 Editor/PlayMode 验证取决于本机 Unity Editor
+- Creative AI Production Pilot / 创意 AI 生产试点研究、AI 3D 生产契约、Grey Tide 计划证据和工具无关专业 skill；当前不批准安装工具或生成资产
 
-v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本机未找到 Unreal Editor，因此 PIE 验证和二进制 `.uasset` / `.umap` 创建仍被阻塞。v0.9.2 不实现真实 `mgw` CLI、不安装 MCP、不创建新引擎工程、不实现商业化后台、不实现支付、不创建真实 telemetry service、不生成新资产、不导入正式或 release-candidate 美术/音频资产、不批准 release balance / 发布版本最终平衡。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+本机未找到 Unreal Editor 或 Unity Editor，因此对应编辑器、PIE/PlayMode 和 player build 验证仍待补充。Three.js 生产方向使用 WebGPU，并保留 WebGL 2 fallback。v0.9.4 不实现真实 `mgw` CLI、商业化后台、支付或真实 telemetry service，也不批准 release balance / 发布版本最终平衡。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 ## 不要这样用
 
@@ -346,7 +353,11 @@ v0.4 Unreal Mapping Slice 已有 Approved review gate 和静态骨架，但本�
 | User Journey | [user-journey.zh.md](docs/muse-game-workshop-docs/user-journey.zh.md) | [user-journey.en.md](docs/muse-game-workshop-docs/user-journey.en.md) |
 | Technical Architecture | [technical-architecture.zh.md](docs/muse-game-workshop-docs/technical-architecture.zh.md) | [technical-architecture.en.md](docs/muse-game-workshop-docs/technical-architecture.en.md) |
 | Godot / Unreal Workflow | [godot-unreal-workflow.zh.md](docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md) | [godot-unreal-workflow.en.md](docs/muse-game-workshop-docs/godot-unreal-workflow.en.md) |
+| Production Target Contract / 生产目标契约 | [production-target-contract.zh.md](docs/muse-game-workshop-docs/production-target-contract.zh.md) | [production-target-contract.en.md](docs/muse-game-workshop-docs/production-target-contract.en.md) |
+| Three.js Web Runtime / Three.js 网页运行时 | [threejs-web-runtime.zh.md](docs/muse-game-workshop-docs/threejs-web-runtime.zh.md) | [threejs-web-runtime.en.md](docs/muse-game-workshop-docs/threejs-web-runtime.en.md) |
+| Unity Workflow / Unity 工作流 | [unity-workflow.zh.md](docs/muse-game-workshop-docs/unity-workflow.zh.md) | [unity-workflow.en.md](docs/muse-game-workshop-docs/unity-workflow.en.md) |
 | AI Art Asset Pipeline | [ai-art-asset-pipeline.zh.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.zh.md) | [ai-art-asset-pipeline.en.md](docs/muse-game-workshop-docs/ai-art-asset-pipeline.en.md) |
+| AI 3D Asset Production Contract / AI 3D 资产生产契约 | [ai-3d-asset-production.zh.md](docs/muse-game-workshop-docs/ai-3d-asset-production.zh.md) | [ai-3d-asset-production.en.md](docs/muse-game-workshop-docs/ai-3d-asset-production.en.md) |
 | Godot Prototype Asset Kit | [godot-prototype-asset-kit.zh.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md) | [godot-prototype-asset-kit.en.md](docs/muse-game-workshop-docs/godot-prototype-asset-kit.en.md) |
 | Genre Tracks | [genre-tracks.zh.md](docs/muse-game-workshop-docs/genre-tracks.zh.md) | [genre-tracks.en.md](docs/muse-game-workshop-docs/genre-tracks.en.md) |
 | Economy & Progression | [economy-progression.zh.md](docs/muse-game-workshop-docs/economy-progression.zh.md) | [economy-progression.en.md](docs/muse-game-workshop-docs/economy-progression.en.md) |

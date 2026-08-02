@@ -19,7 +19,7 @@ def is_external(link: str) -> bool:
 missing = []
 for path in sorted(ROOT.glob("**/*.md")):
     rel = path.relative_to(ROOT)
-    if rel.parts[0] in {".omc", ".omx"}:
+    if any(part in {".omc", ".omx", "node_modules", "dist", "test-results", "playwright-report"} for part in rel.parts):
         continue
     text = path.read_text(encoding="utf-8")
     for match in re.finditer(r"\[[^\]]+\]\(([^)]+)\)", text):

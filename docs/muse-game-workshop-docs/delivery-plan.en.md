@@ -243,6 +243,8 @@ Muse Game Workshop versions do not progress by adding more features for their ow
 | v0.9 | Economy and progression lack a system loop | Economy & progression | Economy model, progression map, resource/reward table, and tuning loop feed system design and tuning |
 | v0.9.1 | Level, combat, and system numbers are discussed but not reviewable | Numerical planning | Level curve, combat parameter table, and system numerical plan connect to tuning before implementation |
 | v0.9.2 | Specialized design work is too broad for one generic design flow | Specialized design skills | System, combat, numerical, level curve, combat parameter, and system numeric skills compose under production roles |
+| v0.9.3 | Browser 3D is still treated as a temporary demo without a production contract | Multi-target foundation + Three.js Web Runtime | Four-target contract works and the Three.js reference passes unit/build/browser QA |
+| v0.9.4 | Unity lacks an executable workflow and evidence boundary | Unity Workflow | Unity mapping, EditMode/PlayMode/build plan, and conditional checks work |
 | v0.10 | Playtest data cannot feed tuning decisions | Telemetry & playtest analytics | Data fields and tuning reports feed design decisions |
 | v0.11 | World, characters, and quests drift away from gameplay | Narrative design pack | Narrative deliverables serve gameplay, level design, art, audio, and localization |
 | v0.12 | Creative asset flow is proven but not expanded | Creative production expansion | Multiple asset classes pass brief, provenance, review, and engine validation |
@@ -497,6 +499,14 @@ Release bar:
 - `check-v0.9.2-design-skills` passes.
 - v0.10 Telemetry & Playtest Analytics remains the next major version.
 
+### v0.9.3: Multi-target Production Foundation + Three.js Web Runtime
+
+Status: complete. The production-target contract, `threejs-workflow`, mapping/browser-test templates, Boss Rush Web reference, paired evidence, and `check-v0.9.3-threejs-runtime` have landed. Three.js targets WebGPU for production and retains a WebGL 2 fallback.
+
+### v0.9.4: Unity Workflow
+
+Status: workflow and static validation complete. `unity-workflow`, Unity 6 mapping, EditMode/PlayMode/batchmode/player-build contract, paired evidence, and `check-v0.9.4-unity` have landed. Without Unity Editor, editor/player validation must not be reported as passed.
+
 ### v0.10: Telemetry & Playtest Analytics
 
 Goal:
@@ -530,6 +540,7 @@ Goal:
 
 - Expand art, animation, environment, music, SFX, and UI production after design, genre, systems, economy, data, and narrative specs stabilize.
 - Reuse the brief, provenance, review, and engine validation flow proven in v0.3 / v0.5b.
+- Absorb the non-versioned Creative AI Production Pilot's AI 3D contract, `img2threejs` research, cost records, and Grey Tide evidence; the pilot does not replace v0.12 multi-discipline production review.
 - Research creative AI tool adapters without integrating production APIs.
 
 Release bar:

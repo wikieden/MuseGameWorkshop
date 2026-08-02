@@ -48,7 +48,7 @@ AI 已经能快速生成原型代码、概念图、音效方向、关卡想法�
 
 - Solo 独立游戏开发者。
 - 2-5 人小型游戏团队。
-- 想用 AI coding tools 做 Godot 或 Unreal 项目的创意开发者。
+- 想用 AI coding tools 做 Three.js Web、Unity、Godot 或 Unreal 项目的创意开发者。
 - 需要把图像、音频、视频、3D、动作、UI、本地化等 creative AI tools 纳入资产流程的团队。
 - 中文独立游戏开发者和中文游戏行业从业者。
 - English-speaking indie developers and small teams。
@@ -75,7 +75,7 @@ AI 已经能快速生成原型代码、概念图、音效方向、关卡想法�
 
 对 AI coding tools 来说，它应该提供清晰的项目规则：先读取文档，先输出设计摘要和执行计划，等待 review 通过后再动手；所有实现都必须回到玩法目标、引擎约束、资产来源和测试证据。
 
-对 creative AI tools 来说，它应该提供可落地的资产工作流：先有 art direction 和 asset brief，再生成和筛选，再记录来源和授权，再做人工 review，最后才进入 Godot/Unreal 的导入和验证流程。
+对 creative AI tools 来说，它应该提供可落地的资产工作流：先有 art direction 和 asset brief，再生成和筛选，再记录来源和授权，再做人工 review，最后才进入目标运行时或引擎的导入和验证流程。
 
 ## 7. Core Principles
 
@@ -139,10 +139,12 @@ Muse Game Workshop 不绑定单一 AI coding tool。Codex、Claude Code、Kiro C
 
 ### 7.6 Engine-Aware, Engine-Neutral
 
-Godot 和 Unreal 是首要目标引擎，但早期策划和机制规格必须尽量保持 engine-neutral。
+Three.js WebGPU、Unity、Godot 和 Unreal 是正式生产目标，但早期策划和机制规格必须尽量保持 target-neutral。
 
 工作流应该先定义玩法意图，再映射到具体引擎：
 
+- Three.js WebGPU：browser runtime、WebGL 2 fallback、DOM UI、static deployment、browser QA。
+- Unity：Scene、Prefab、Component、ScriptableObject、Input System、EditMode/PlayMode、player build。
 - Godot：scene、node、signal、resource、input map、animation、test scene。
 - Unreal：Actor、Component、Blueprint、C++、Data Asset、UMG、Animation Blueprint、test map。
 
@@ -193,6 +195,8 @@ Vision 必须指导版本取舍。当前版本地平线如下：
 | v0.2 | Godot Playable Loop / Godot 可玩闭环 | 从机制规格到 Godot prototype 是否能跑通？ | Boss Rush Godot 示例可玩，有参数、测试和试玩报告。 |
 | v0.3 | Creative Production Ready / 创意资产生产就绪 | AI 辅助资产是否能从 brief 进入 engine validation？ | 至少视觉和音频资产各完成一次 brief、provenance、review、engine validation。 |
 | v0.4 | Unreal Mapping Slice / Unreal 映射切片 | 同一机制是否能映射到 3D 动作表现？ | Unreal PIE test map 可玩，Data Asset、UMG、动画占位和检查入口存在。 |
+| v0.9.3 | Multi-target Production Foundation + Three.js Web Runtime / 多生产目标基础与 Three.js 网页运行时 | Web 能否成为正式生产目标？ | 生产目标契约、Three.js skill、浏览器样板和自动验证成立。 |
+| v0.9.4 | Unity Workflow / Unity 工作流 | Unity 能否遵守同一交付与证据契约？ | Unity skill、映射、EditMode/PlayMode/build 计划和条件验证成立。 |
 | v0.5 | Publishing Readiness / 发布准备 | Demo 是否能判断公开试玩条件？ | release checklist、store/trailer brief、localization、accessibility、AI disclosure 完整。 |
 | v0.6 | Game Design Deepening Pack / 策划流程细化包 | 核心玩法、系统、战斗、关卡、数值和试玩假设是否能形成可交接规格？ | system design、combat design、encounter design、tuning plan 和 playtest hypothesis 能交给程序、QA 和创意职能。 |
 | v0.7 | Product Entry & mgw init / 产品入口与项目初始化 | 用户如何用 Muse 创建自己的游戏项目？ | `mgw init`、user journey、project workspace、tool adapter 和 MCP adapter 边界可审查。 |
@@ -243,7 +247,7 @@ P2 不应拖慢首个可试玩 demo。经济系统和成长系统的基础能力
 
 - 先做设计摘要与执行计划，review 通过后再动手。
 - v0.1 实际创建范围以 `v0.1-manifest.zh.md` / `.en.md` 为唯一真源。
-- 不提前写 Godot/Unreal 游戏代码。
+- 不在 review gate 前写任何生产目标的游戏代码。
 - 不绕过资产 brief、provenance、license 和人工 review。
 - 不把中文用户和英文用户当成同一份文案的机器翻译版本。
 - 不用新奇 agent 叫法替代游戏行业已经理解的制作职能。
@@ -269,7 +273,7 @@ Muse Game Workshop 不是：
 - 从模糊点子进入可试玩 prototype，而不是停留在聊天灵感里。
 - 用游戏行业熟悉的语言让 AI coding tools 和 creative AI tools 协作。
 - 把美术、动作、场景、音乐、音效等 AI 辅助资产纳入可审查 production pipeline。
-- 在 Godot 和 Unreal 之间复用策划、机制、QA 和发布工作流。
+- 在 Three.js WebGPU、Unity、Godot 和 Unreal 之间复用策划、机制、QA 和发布工作流。
 - 让中文用户读到中国游戏界自然的制作文档，让英文用户读到自然英文的 production docs。
 - 让每一轮 AI 辅助改动都有计划、有 review、有证据、有复盘。
 - 更快判断一个游戏是否值得继续做。

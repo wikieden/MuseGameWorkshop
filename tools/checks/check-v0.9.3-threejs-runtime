@@ -1,0 +1,316 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import json
+import shutil
+import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+PROJECT = ROOT / "examples" / "threejs-boss-rush"
+CHECK = "check-v0.9.3-threejs-runtime"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+def require_tokens(rel: str, tokens: list[str]) -> str:
+    path = ROOT / rel
+    if not path.is_file():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+    return text
+
+
+def run_required(command: list[str], label: str, timeout: int = 180) -> None:
+    try:
+        result = subprocess.run(
+            command,
+            cwd=str(PROJECT),
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired:
+        fail(f"{label} timed out after {timeout} seconds")
+    if result.returncode != 0:
+        detail = (result.stderr.strip() or result.stdout.strip() or f"exit {result.returncode}")[-1200:]
+        fail(f"{label} failed: {detail}")
+    print(f"INFO {CHECK}: {label} passed")
+
+
+document_contracts = {
+    "docs/muse-game-workshop-docs/production-target-contract.en.md": [
+        "v0.9.3",
+        "Production Target Contract",
+        "First Playable Target",
+        "Final Production Target",
+        "Three.js WebGPU",
+        "Unity",
+        "Unreal",
+        "Godot",
+    ],
+    "docs/muse-game-workshop-docs/production-target-contract.zh.md": [
+        "v0.9.3",
+        "Production Target Contract",
+        "First Playable Target",
+        "Final Production Target",
+        "Three.js WebGPU",
+        "Unity",
+        "Unreal",
+        "Godot",
+    ],
+    "docs/muse-game-workshop-docs/threejs-web-runtime.en.md": [
+        "v0.9.3",
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "WebGPU",
+        "WebGL2",
+        "Simulation",
+        "Browser Gate",
+    ],
+    "docs/muse-game-workshop-docs/threejs-web-runtime.zh.md": [
+        "v0.9.3",
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "WebGPU",
+        "WebGL2",
+        "模拟",
+        "Browser Gate",
+    ],
+}
+
+for rel, tokens in document_contracts.items():
+    require_tokens(rel, tokens)
+
+skill_sections = [
+    "## Use When",
+    "## Do Not Use When",
+    "## Inputs",
+    "## Outputs",
+    "## Workflow",
+    "## Quality Bar",
+    "## Common Failure Modes",
+    "## Next Skills",
+]
+require_tokens(
+    ".agents/skills/threejs-workflow/SKILL.md",
+    [
+        "name: threejs-workflow",
+        "description:",
+        *skill_sections,
+        "deterministic simulation",
+        "WebGPU",
+        "WebGL 2 fallback",
+        "unit tests",
+        "production build",
+        "browser automation",
+    ],
+)
+
+metadata_fields = [
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+require_tokens(
+    "templates/design/production-target-mapping.md",
+    [
+        *metadata_fields,
+        "# Production Target Mapping",
+        "## Engine-Neutral Contract",
+        "## Responsibility Mapping",
+        "## Capability And Fallback Matrix",
+        "## Validation Matrix",
+        "## Review Gate",
+    ],
+)
+require_tokens(
+    "templates/production/browser-playtest-checklist.md",
+    [
+        *metadata_fields,
+        "# Browser Playtest Checklist",
+        "## Build And Environment",
+        "## Rendering And Fallback",
+        "WebGPU",
+        "WebGL 2",
+        "## Gameplay And Input",
+        "## Performance And Stability",
+        "## Acceptance Decision",
+    ],
+)
+
+evidence_contracts = {
+    "docs/evidence/v0.9.3/v0.9.3-threejs-runtime-evidence.en.md": [
+        "Version: v0.9.3",
+        "Language: English",
+        "Review Status: Approved",
+        "WebGPU",
+        "WebGL 2",
+        "check-v0.9.3-threejs-runtime",
+    ],
+    "docs/evidence/v0.9.3/v0.9.3-threejs-runtime-evidence.zh.md": [
+        "Version: v0.9.3",
+        "Language: Chinese",
+        "Review Status: Approved",
+        "WebGPU",
+        "WebGL 2",
+        "check-v0.9.3-threejs-runtime",
+    ],
+    "docs/evidence/v0.9.3/v0.9.3-threejs-runtime-review-gate.en.md": [
+        "Version: v0.9.3",
+        "Review Status: Approved",
+        "我们现完成到0.9.4",
+        "broken",
+        "unavailable",
+    ],
+    "docs/evidence/v0.9.3/v0.9.3-threejs-runtime-review-gate.zh.md": [
+        "Version: v0.9.3",
+        "Review Status: Approved",
+        "我们现完成到0.9.4",
+        "损坏",
+        "unavailable",
+    ],
+    "docs/evidence/v0.9.3/threejs-runtime-validation.en.md": [
+        "Version: v0.9.3",
+        "Unit tests",
+        "Production build",
+        "Browser automation",
+        "Manual browser playtest",
+        "node_modules",
+    ],
+    "docs/evidence/v0.9.3/threejs-runtime-validation.zh.md": [
+        "Version: v0.9.3",
+        "Unit tests",
+        "Production build",
+        "Browser automation",
+        "Manual browser playtest",
+        "node_modules",
+    ],
+}
+
+for rel, tokens in evidence_contracts.items():
+    require_tokens(rel, tokens)
+
+required_project_files = [
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "tsconfig.json",
+    "src/main.ts",
+    "src/simulation.ts",
+    "src/tuning.ts",
+    "src/input.ts",
+    "src/ui.ts",
+    "src/world.ts",
+    "src/style.css",
+    "tests/simulation.test.ts",
+]
+for rel in required_project_files:
+    if not (PROJECT / rel).is_file():
+        fail(f"missing examples/threejs-boss-rush/{rel}")
+
+try:
+    package = json.loads((PROJECT / "package.json").read_text(encoding="utf-8"))
+except json.JSONDecodeError as exc:
+    fail(f"examples/threejs-boss-rush/package.json is invalid JSON: {exc}")
+
+scripts = package.get("scripts", {})
+for script in ["test", "build", "test:e2e"]:
+    if not isinstance(scripts.get(script), str) or not scripts[script].strip():
+        fail(f"package.json missing script {script}")
+
+dependencies = package.get("dependencies", {})
+dev_dependencies = package.get("devDependencies", {})
+for dependency, owner in [
+    ("three", dependencies),
+    ("typescript", dev_dependencies),
+    ("vite", dev_dependencies),
+    ("vitest", dev_dependencies),
+    ("@playwright/test", dev_dependencies),
+]:
+    if dependency not in owner:
+        fail(f"package.json missing dependency {dependency}")
+
+require_tokens(
+    "examples/threejs-boss-rush/src/simulation.ts",
+    ["CombatSimulation", "fixedStep", "parry", "counter", "restart"],
+)
+require_tokens(
+    "examples/threejs-boss-rush/src/tuning.ts",
+    ["COMBAT_TUNING", "maxStamina", "counterWindow", "counterDamage"],
+)
+require_tokens(
+    "examples/threejs-boss-rush/src/main.ts",
+    ["CombatSimulation", "requestAnimationFrame", "fixedStep", "__counterTrial"],
+)
+require_tokens(
+    "examples/threejs-boss-rush/src/world.ts",
+    ["THREE.WebGLRenderer", "renderer.render", "resize"],
+)
+require_tokens(
+    "examples/threejs-boss-rush/tests/simulation.test.ts",
+    ["CombatSimulation", "parry", "counter window", "victory", "defeat"],
+)
+
+browser_tests = [
+    path
+    for path in PROJECT.rglob("*.ts")
+    if path.name != "simulation.test.ts"
+    and ("test" in path.parts or "e2e" in path.parts)
+    and "page.goto" in path.read_text(encoding="utf-8")
+]
+if not browser_tests:
+    fail("missing Playwright browser test with page.goto")
+
+node_modules = PROJECT / "node_modules"
+if not node_modules.is_dir():
+    print(f"INFO {CHECK}: runtime tests skipped; dependencies are not installed")
+else:
+    npm = shutil.which("npm")
+    node = shutil.which("node")
+    if not npm or not node:
+        fail("node_modules exists but npm or node is unavailable")
+
+    run_required([npm, "test"], "npm unit tests")
+    run_required([npm, "run", "build"], "npm production build")
+
+    browser_probe = subprocess.run(
+        [
+            node,
+            "--input-type=module",
+            "-e",
+            (
+                "import { chromium } from '@playwright/test';"
+                "import { existsSync } from 'node:fs';"
+                "process.exit(existsSync(chromium.executablePath()) ? 0 : 2);"
+            ),
+        ],
+        cwd=str(PROJECT),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if browser_probe.returncode == 0:
+        run_required([npm, "run", "test:e2e"], "Playwright browser tests", timeout=240)
+    elif browser_probe.returncode == 2:
+        print(f"INFO {CHECK}: browser tests skipped; configured Playwright browser is unavailable")
+    else:
+        detail = (browser_probe.stderr.strip() or browser_probe.stdout.strip() or "browser probe failed")[-800:]
+        fail(f"installed Playwright dependency is broken: {detail}")
+
+print(f"PASS {CHECK}")

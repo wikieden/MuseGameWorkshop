@@ -1,6 +1,6 @@
 # Muse Game Workshop 交付物与交接契约
 
-版本：v0.1
+版本：v0.9.4
 
 语言：中文
 
@@ -43,7 +43,7 @@
 | Structured Table | 记录参数、内容矩阵、任务拆分 | 参数表、content matrix、bug list |
 | Diagram | 表达状态机、流程和依赖 | mermaid state diagram、flowchart |
 | Task Package | 给 AI coding tool 或开发者的执行包 | design summary、execution plan、acceptance criteria |
-| Engine Asset | Godot/Unreal 中的可验证资产 | test scene、PIE map、Data Asset、Resource |
+| Runtime Asset / 运行时资产 | 已选生产目标中的可验证内容 | Three.js module 或 browser build、Unity scene/prefab/ScriptableObject、Unreal test map/Data Asset、Godot test scene/Resource |
 | Creative Asset | 美术、动作、音乐、音效、UI、视频 | png、wav、fbx、blend、sprite sheet |
 | Provenance Record | 记录 AI 资产来源和授权 | tool、prompt、reference、license、human edits |
 | Evidence Record | 记录验证结果 | screenshot、build log、test output、playtest notes |
@@ -77,6 +77,19 @@
 | Level Designer | Gameplay Programmer / QA | Level blockout、encounter table、navigation notes | Blockout + diagram + table | 路线、遭遇、节奏和验证方式清楚。 |
 | QA | Producer / Game Designer | Bug list、playtest report、regression risk | Evidence record + report | 问题可复现、可分级、能转成下一轮任务。 |
 | Release Manager | Team / Platform | Release checklist、store/trailer/localization/accessibility status | Release package | demo 是否可发布有明确结论。 |
+
+## 5.1 Production Target Handoff / 生产目标交接
+
+共享交接从已批准的 `production-target-mapping.md` 开始。各生产目标随后交付自己的运行时形态和证据，同时保持引擎无关设计意图不变。
+
+| Production Target / 生产目标 | 主要交付形态 | 最低验证证据 | 发布交接 |
+|---|---|---|---|
+| Three.js WebGPU | TypeScript modules、Vite production build、浏览器可访问包 | 单元测试、production build 日志、Playwright 截图、renderer/fallback 记录、browser playtest checklist | 托管构建或静态包、浏览器矩阵、性能预算、已知降级风险 |
+| Unity | 包含 scenes、prefabs、assemblies、ScriptableObjects、Input/UI 配置的 Unity 工程改动 | EditMode/PlayMode 结果、编辑器截图/日志、Player build smoke | Player build、准确 Unity 版本、平台设置、package manifest、已知平台风险 |
+| Unreal Engine | Blueprint/C++/Data Asset/UMG 改动和 test map | Automation/Functional Test 结果、PIE 或 commandlet 证据、packaged-build smoke | packaged build、准确引擎/插件版本、目标设置、已知平台风险 |
+| Godot | Scene/Script/Resource/UI 改动和 test scene | CLI 或测试框架结果、scene-run 证据、export smoke | exported build、准确 Godot 版本、export preset、已知平台风险 |
+
+First Playable Target / 首个可玩目标和 Final Production Target / 最终生产目标可以不同。交接记录必须说明首个可玩版本验证了什么、哪些内容可移植、哪些内容需要重做，以及哪些目标内验证仍被阻塞。
 
 ## 6. AI Workflow 交接
 

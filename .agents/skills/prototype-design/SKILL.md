@@ -1,6 +1,6 @@
 ---
 name: prototype-design
-description: Use before entering Godot, Unreal, gameplay coding, or engine automation when a game idea needs a higher-quality prototype design gate with prototype goal, playable promise, scope, readable prototype visuals, engine mapping, validation plan, and cut list.
+description: Use before entering Three.js Web, Unity, Unreal, Godot, gameplay coding, or editor automation when a game idea needs a higher-quality prototype design gate with prototype goal, playable promise, scope, readable prototype visuals, production-target mapping, validation plan, and cut list.
 ---
 
 # Prototype Design
@@ -8,7 +8,7 @@ description: Use before entering Godot, Unreal, gameplay coding, or engine autom
 ## Use When
 
 - The user wants to start a prototype after `mgw-init`, Game Start, game intake, core loop, or mechanic spec.
-- The user asks to enter Godot, Unreal, gameplay coding, editor automation, or implementation.
+- The user asks to enter Three.js Web, Unity, Unreal, Godot, gameplay coding, editor automation, or implementation.
 - A prototype plan feels too shallow to hand to a Gameplay Programmer, Technical Designer, QA, or Art Director.
 - A team needs a clear quality gate before creating engine files, code, assets, or test scenes.
 - A playable prototype needs better visual readability than naked spheres, capsules, or cubes.
@@ -26,7 +26,7 @@ description: Use before entering Godot, Unreal, gameplay coding, or engine autom
 - Core loop draft.
 - Mechanic spec or selected high-risk mechanic.
 - Target genre and platform.
-- Engine preference, if known.
+- First Playable Target and Final Production Target, if known.
 - Team size and timebox.
 - Known asset, UI, audio, or accessibility constraints.
 - Prototype art direction, reference constraints, or asset licensing constraints if known.
@@ -56,7 +56,7 @@ description: Use before entering Godot, Unreal, gameplay coding, or engine autom
 6. Define placeholder policy: structural placeholders, readable prototype assets, reviewed demo assets, temp audio, and minimum readability requirements.
 7. Define the Prototype Visual Quality Floor: silhouette, facing, faction, role, state, interactability, scale, and camera readability.
 8. Decide whether the prototype needs a mannequin-style readable robot proxy or a small AI-generated 3D prototype asset kit.
-9. Map the design to engine-neutral tasks and, if selected, Godot / Unreal surfaces.
+9. Map the design to engine-neutral tasks and the selected Three.js Web, Unity, Unreal, or Godot runtime surfaces. Record separately when the First Playable Target differs from the Final Production Target.
 10. Produce a validation plan: manual playtest script, pass criteria, fail criteria, screenshot/log needs, visual readability checks, and follow-up decision.
 11. Create a cut list with must-keep, can-cut, and do-not-start items.
 12. Stop at the review gate until the user marks `Review Status: Approved`.
@@ -72,7 +72,7 @@ Before implementation, the prototype design must answer:
 - **Content Scope**: What is the smallest amount of content needed?
 - **Placeholder Policy**: Which objects can stay structural placeholders, which need readable prototype assets, and which need reviewed demo assets?
 - **Prototype Visual Quality Floor**: Can players and reviewers identify character role, faction, facing, state, interactable objects, and important feedback from gameplay camera distance?
-- **Engine Mapping**: Which scenes/scripts/resources or actors/components/data assets are expected?
+- **Engine Mapping / Production Target Mapping**: Which TypeScript modules/browser surfaces, Unity scenes/prefabs/ScriptableObjects, Unreal actors/components/Data Assets, or Godot scenes/scripts/Resources are expected?
 - **Validation Plan**: How will the team know the prototype succeeded or failed?
 - **Cut List**: What gets cut first if time runs short?
 
@@ -116,6 +116,8 @@ Before implementation, the prototype design must answer:
 ## Next Skills
 
 - `engine-portability`
+- `threejs-workflow`
+- `unity-workflow`
 - `godot-workflow`
 - `unreal-workflow`
 - `vertical-slice-planner`

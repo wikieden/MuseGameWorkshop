@@ -78,7 +78,7 @@ AI 工具应该进入 Muse 初始化向导，而不是直接写游戏代码。�
 1. 你想做什么游戏？
 2. 面向什么平台？
 3. 游戏类型是什么？
-4. 想先用什么引擎？Godot / Unreal / 先不选。
+4. 第一个可玩版本与最终生产目标是什么？Three.js Web / Unity / Unreal / Godot / 先不选。
 5. 这次目标是什么？概念草案 / 原型 / 垂直切片 / Demo。
 
 ## 5. 入口 B：用 CLI 初始化
@@ -99,7 +99,8 @@ Language? zh-CN / en-US
 Game idea?
 Genre?
 Target platform?
-Engine? Godot / Unreal / undecided
+First playable? Three.js Web / Unity / Unreal / Godot / undecided
+Production target? Three.js WebGPU / Unity / Unreal / Godot / undecided
 Current goal? concept / prototype / vertical-slice / demo
 AI tool? Codex / Claude Code / Kiro CLI / opencode / generic
 ```
@@ -176,7 +177,8 @@ project:
   locale: zh-CN
   stage: concept
   genre: tactics
-  engine: godot
+  first_playable: threejs-web
+  production_target: godot
   target_platforms:
     - PC
 
@@ -240,7 +242,7 @@ AI 应回答类似：
 
 ```text
 我已读取 muse.project.yaml 和 docs/00-game-start.md。
-当前项目是 Godot 方向的 Tactics / 战棋类原型，目标是先验证核心玩法。
+当前项目先用 Three.js Web 验证 Tactics / 战棋类原型，最终生产目标是 Godot。
 
 接下来我会分三步继续：
 1. 策划基础：pitch、core loop、核心机制。
@@ -250,7 +252,7 @@ AI 应回答类似：
 先确认一个问题：这个原型最想验证的是战棋策略深度、反击爽感，还是时间线系统？
 ```
 
-AI 不应该在这一步直接创建 Godot 工程、写玩法代码、安装 MCP 或生成资产。
+AI 不应该在这一步直接创建 Three.js、Unity、Godot 或 Unreal 工程、写玩法代码、安装 MCP 或生成资产。
 
 ## 11. 渐进展开规则
 
@@ -285,7 +287,7 @@ game/unreal/
 | Prototype Design Gate | 原型设计门 | 这个原型是否值得进入实现？ | prototype goal、playable promise、mechanic readiness、content scope、placeholder policy、prototype visual quality floor、engine mapping、validation plan、cut list |
 | Narrative Loop | 叙事循环 | 世界观、角色和剧情动线如何支撑玩法？ | world bible、角色 brief、剧情动线、任务/对白 brief |
 | Art Loop | 美术循环 | 游戏应该长什么样？资产如何合法进入项目？ | art direction、资产清单、asset brief、provenance、asset review |
-| Programming Loop | 程序循环 | 机制如何落到 Godot / Unreal？ | engine mapping、技术拆分、原型任务、测试方式 |
+| Programming Loop | 程序循环 | 机制如何落到 Three.js、Unity、Godot 或 Unreal？ | production-target mapping、技术拆分、原型任务、测试方式 |
 | QA / Playtest Loop | 测试试玩循环 | 怎么知道它真的可玩？ | playtest checklist、bug report、调优记录、evidence |
 | Release Loop | 发布循环 | demo 是否能对外？ | demo readiness、商店素材 brief、本地化、AI asset disclosure |
 
@@ -305,12 +307,12 @@ game/unreal/
 - `docs/00-game-start.md` 已经能说明游戏方向。
 - pitch、core loop 和最小 mechanic spec 已从 Game Start 展开。
 - 核心乐趣假设明确。
-- 引擎选择或 engine-neutral 策略明确。
+- first playable / 首次可玩目标、production target / 最终生产目标或 target-neutral 策略明确。
 - Prototype Design Gate / 原型设计门已完成，至少包含 prototype goal、playable promise、core mechanic readiness、moment-to-moment flow、content scope、placeholder policy、prototype visual quality floor、engine mapping、validation plan 和 cut list。
 - review gate 标记为 `Review Status: Approved`。
 - evidence 记录了关键取舍。
 
-如果用户要求进入 Godot、Unreal、玩法代码、编辑器自动化或原型实现，必须先使用 `prototype-design` skill。`mgw-init` 保持轻量，但 `prototype-design` 负责提高原型设计产出质量。
+如果用户要求进入 Three.js、Unity、Godot、Unreal、玩法代码、编辑器自动化或原型实现，必须先使用 `prototype-design` skill。
 
 ## 14. Prototype Visual Quality Floor / 原型视觉质量底线
 
@@ -330,7 +332,7 @@ game/unreal/
 
 - 一键生成完整游戏。
 - 默认安装 MCP。
-- 默认打开 Godot 或 Unreal。
+- 默认打开 Three.js dev server、Godot、Unity 或 Unreal。
 - 默认创建真实引擎工程。
 - 生成或导入 final / release-candidate 资产。
 - 用 AI 资产绕过授权和来源记录。
@@ -342,5 +344,8 @@ game/unreal/
 - 产品入口：`product-entry-and-mgw-init.zh.md`
 - 完整生命周期：`user-journey.zh.md`
 - 策划与系统设计：`game-design-systems.zh.md`
-- Godot / Unreal 映射：`godot-unreal-workflow.zh.md`
+- 生产目标契约：`production-target-contract.zh.md`
+- Three.js：`threejs-web-runtime.zh.md`
+- Unity：`unity-workflow.zh.md`
+- Godot / Unreal：`godot-unreal-workflow.zh.md`
 - 测试策略：`testing-strategy.zh.md`

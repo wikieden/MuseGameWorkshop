@@ -1,6 +1,6 @@
 # Agent Skill Composition
 
-Version: v0.9.2
+Version: v0.9.4
 
 Language: English
 
@@ -21,6 +21,10 @@ Muse Game Workshop should use game-industry roles in user-facing workflow:
 - Numerical Designer.
 - Gameplay Programmer.
 - QA.
+- Web Gameplay Programmer.
+- Unity Developer.
+- Unreal Developer.
+- Godot Developer.
 
 Internally, each role may call several workflow skills:
 
@@ -52,6 +56,8 @@ The skill remains the executable unit. The role agent is the grouping users can 
 | Combat Designer Agent | Combat verbs, readability, timing, enemies, and tuning handles | `combat-design`, `combat-parameters`, `mechanic-spec`, `playtest-report` | Combat Designer |
 | Numerical Designer Agent | Growth, combat numbers, economy pressure, and tuning hypotheses | `numerical-planning`, `level-curve`, `combat-parameters`, `system-numerics` | Numerical Designer |
 | QA / Playtest Agent | Evidence, issue categories, hypotheses, and retest tasks | `playtest-report`, `mechanic-spec`, `numerical-planning`, `ux-flow`, `level-blockout` | QA / Producer |
+| Creative Production Agent | Turn art direction and asset briefs into controlled production, provenance, cost, multi-view review, and runtime validation | `creative-asset-pipeline`, `art-direction`, `asset-brief`, `ai-3d-asset-production`, `asset-review` | Art Director / Technical Artist / Producer |
+| Production Target Agent | Map approved design to one runtime and its test/build evidence | `engine-portability` plus exactly one of `threejs-workflow`, `unity-workflow`, `unreal-workflow`, or `godot-workflow` | Technical Lead / Target Developer / QA |
 
 ## 5. Handoff Flow
 
@@ -62,8 +68,9 @@ flowchart LR
   B --> D["Technical Designer Agent\nstate, data, validation"]
   C --> E["Numerical Designer Agent\ncombat and progression numbers"]
   D --> E
-  E --> F["QA / Playtest Agent\nevidence and hypotheses"]
-  F --> A
+  E --> F["Production Target Agent\nruntime mapping and build evidence"]
+  F --> G["QA / Playtest Agent\nevidence and hypotheses"]
+  G --> A
 ```
 
 ## 6. Deliverable Contract
@@ -85,7 +92,7 @@ The same composition must work in different AI coding tools:
 
 - Codex: use `.agents/skills/*/SKILL.md` and `AGENTS.md`.
 - Claude Code: load the same skill files as project skills or Claude-style skills.
-- Kiro CLI and opencode: read the shared project rules and call the same skill outputs.
+- Kiro CLI, Kimi Code, opencode, RoboCode, and CliHub: read or distribute the shared project rules and call the same skill outputs.
 - Future adapters: may add tool-specific commands, but must map back to these shared skills and deliverables.
 
 Tool adapters may automate routing, but they must not skip production-stage clarification, review gate, evidence, or validation.
@@ -104,5 +111,7 @@ It does not approve:
 - New asset generation or import.
 - Final or release-candidate art/audio.
 - Release balance approval.
+
+v0.9.3 and v0.9.4 add production-target routing without changing the v0.9.2 specialist-design boundary. A target agent may automate implementation only after the design and execution review gate is Approved, and it must return target-specific test, build, and visual evidence.
 
 The next planned version remains v0.10 Telemetry & Playtest Analytics.

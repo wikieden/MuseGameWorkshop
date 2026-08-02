@@ -17,23 +17,27 @@ Read the docs before making structural changes:
 7. `docs/muse-game-workshop-docs/user-journey.zh.md` or `.en.md`
 8. `docs/muse-game-workshop-docs/technical-architecture.zh.md` or `.en.md`
 9. `docs/muse-game-workshop-docs/godot-unreal-workflow.zh.md` or `.en.md`
-10. `docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md` or `.en.md`
-11. `docs/muse-game-workshop-docs/genre-tracks.zh.md` or `.en.md`
-12. `docs/muse-game-workshop-docs/economy-progression.zh.md` or `.en.md`
-13. `docs/muse-game-workshop-docs/numerical-planning.zh.md` or `.en.md`
-14. `docs/muse-game-workshop-docs/agent-skill-composition.zh.md` or `.en.md`
-15. `docs/muse-game-workshop-docs/skill-pack-spec.zh.md` or `.en.md`
-16. `docs/muse-game-workshop-docs/production-language-guide.zh.md` or `.en.md`
-17. `docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md` or `.en.md`
-18. `docs/muse-game-workshop-docs/terminology-glossary.zh.md` or `.en.md`
-19. `docs/muse-game-workshop-docs/handoff-contracts.zh.md` or `.en.md`
-20. `docs/muse-game-workshop-docs/templates.zh.md` or `.en.md`
-21. `docs/muse-game-workshop-docs/delivery-plan.zh.md` or `.en.md`
-22. `docs/muse-game-workshop-docs/v0.1-execution-plan.zh.md` or `.en.md`
-23. `docs/muse-game-workshop-docs/p0-skill-skeleton-plan.zh.md` or `.en.md`
-24. `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` or `.en.md`
-25. `docs/muse-game-workshop-docs/testing-strategy.zh.md` or `.en.md`
-26. `docs/muse-game-workshop-docs/mvp-roadmap.zh.md` or `.en.md`
+10. `docs/muse-game-workshop-docs/production-target-contract.zh.md` or `.en.md`
+11. `docs/muse-game-workshop-docs/threejs-web-runtime.zh.md` or `.en.md`
+12. `docs/muse-game-workshop-docs/unity-workflow.zh.md` or `.en.md`
+13. `docs/muse-game-workshop-docs/ai-3d-asset-production.zh.md` or `.en.md`
+14. `docs/muse-game-workshop-docs/godot-prototype-asset-kit.zh.md` or `.en.md`
+15. `docs/muse-game-workshop-docs/genre-tracks.zh.md` or `.en.md`
+16. `docs/muse-game-workshop-docs/economy-progression.zh.md` or `.en.md`
+17. `docs/muse-game-workshop-docs/numerical-planning.zh.md` or `.en.md`
+18. `docs/muse-game-workshop-docs/agent-skill-composition.zh.md` or `.en.md`
+19. `docs/muse-game-workshop-docs/skill-pack-spec.zh.md` or `.en.md`
+20. `docs/muse-game-workshop-docs/production-language-guide.zh.md` or `.en.md`
+21. `docs/muse-game-workshop-docs/bilingual-audience-strategy.zh.md` or `.en.md`
+22. `docs/muse-game-workshop-docs/terminology-glossary.zh.md` or `.en.md`
+23. `docs/muse-game-workshop-docs/handoff-contracts.zh.md` or `.en.md`
+24. `docs/muse-game-workshop-docs/templates.zh.md` or `.en.md`
+25. `docs/muse-game-workshop-docs/delivery-plan.zh.md` or `.en.md`
+26. `docs/muse-game-workshop-docs/v0.1-execution-plan.zh.md` or `.en.md`
+27. `docs/muse-game-workshop-docs/p0-skill-skeleton-plan.zh.md` or `.en.md`
+28. `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` or `.en.md`
+29. `docs/muse-game-workshop-docs/testing-strategy.zh.md` or `.en.md`
+30. `docs/muse-game-workshop-docs/mvp-roadmap.zh.md` or `.en.md`
 
 If a document conflicts with `v0.1-manifest.*.md` during v0.1 delivery, follow the manifest for concrete file, skill, template, check, and dry-run scope.
 
@@ -83,20 +87,23 @@ Not allowed in v0.1:
 
 ## 3.1 Current Version Boundary
 
-v0.9 Economy & Progression, v0.9.1 Numerical Planning, and v0.9.2 Specialized Design Skills are complete as design-first addenda. Together they add economy/progression docs, numerical planning docs, specialized design skills, Agent Skill Composition docs, templates, no-code Tactics dry-run evidence, and `check-v0.9-economy-progression` / `check-v0.9.1-numerical-planning` / `check-v0.9.2-design-skills`.
+v0.9 Economy & Progression, v0.9.1 Numerical Planning, and v0.9.2 Specialized Design Skills with Agent Skill Composition remain completed foundations. v0.9.3 Multi-target Production Foundation and Three.js Web Runtime, plus v0.9.4 Unity Workflow, are the current delivery boundary. They add a shared production-target contract, Three.js and Unity workflow skills, target-mapping and browser-playtest templates, a Three.js Boss Rush reference, static checks, and paired evidence. The supported final production targets are Three.js WebGPU, Unity, Unreal Engine, and Godot.
 
-The next planned version is v0.10 Telemetry & Playtest Analytics.
+The next planned version is v0.10 Telemetry & Playtest Analytics. The Creative AI Production Pilot is a parallel, non-versioned research track that prepares evidence for v0.12 without changing the v0.10-v0.12 order.
 
-v0.9 / v0.9.1 / v0.9.2 completion does not approve:
+v0.9.3 / v0.9.4 completion does not approve engine implementation beyond the reviewed examples and static scaffolds, or any of the following:
 
 - Commercial backend.
 - Payment.
 - Monetization or paid-content design.
 - Real telemetry services.
 - LiveOps execution.
-- Godot or Unreal engine implementation.
+- New Godot, Unreal, or Unity gameplay implementation outside the approved examples and scaffolds.
 - New assets, final art, release-candidate art, music, or sound.
+- Installing or invoking `img2threejs`, uploading project references, generating pilot assets, or changing Grey Tide code without a separately approved execution plan.
 - Release balance approval.
+
+Three.js uses WebGPU as the production direction and must retain a WebGL 2 fallback until the project-specific browser matrix proves WebGPU-only delivery acceptable. Unity editor, PlayMode, and player-build claims require real Unity Editor evidence; static files and documentation are not substitutes.
 
 ## 4. Tool-Agnostic AI Workflow
 
@@ -106,8 +113,11 @@ The same workflow should be usable by:
 
 - Codex.
 - Claude Code.
+- Kimi Code.
 - Kiro CLI.
 - opencode.
+- RoboCode.
+- CliHub.
 - Other AI coding tools that can read project rules, docs, and task plans.
 
 Tool-specific commands, agents, hooks, rules, or config belong in adapter documentation. They must map back to the shared workflow core, review gate, templates, and evidence records.
@@ -193,6 +203,10 @@ Prefer design docs and mechanic specs before code changes.
 Keep mechanics data-driven. Do not hardcode tunable gameplay values in hot code paths.
 
 Preserve boundaries between gameplay, UI, assets, editor tools, tests, and release scripts.
+
+For Three.js, separate deterministic simulation, renderer, input, DOM UI, data, assets, browser tests, and packaging concerns.
+
+For Unity, separate runtime assemblies, editor assemblies, ScriptableObject data, scenes/prefabs, UI, EditMode tests, PlayMode tests, and builds.
 
 For Godot, separate Scene, Script, Resource, UI, test scene, and export concerns.
 

@@ -6,24 +6,24 @@
 
 ## 1. 产品概述
 
-Muse Game Workshop 是一套面向 Godot 和 Unreal Engine 独立游戏开发的 AI 辅助制作工作流系统。它不是游戏引擎，也不是一键生成游戏的平台，而是帮助开发者把游戏从概念、预制作、原型验证、垂直切片、正式制作、试玩迭代、QA、打磨到发布准备的全过程结构化，并沉淀为工具无关的 workflow skills、模板、规则、检查清单、示例项目和 AI tool 适配层。
+Muse Game Workshop 是一套面向 Three.js WebGPU、Unity、Unreal Engine 和 Godot 独立游戏开发的 AI 辅助制作工作流系统。它不是游戏引擎，也不是一键生成游戏平台，而是把概念、预制作、原型、垂直切片、正式制作、试玩、QA、打磨和发布准备沉淀为工具无关的 workflow skills、模板、规则、检查、示例和适配层。
 
-本项目的最终目标是成为 Godot 与 Unreal 项目的 AI 制作层：
+本项目的最终目标是成为四类生产目标共享的 AI 制作层：
 
 - 上层：创意、GDD、机制规格、内容矩阵、数值、试玩反馈、发布决策。
 - 中层：workflow core、制作阶段、制作职能、模板、工作流规则、review gate、项目阶段检测。
-- 适配层：Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools，以及图像、音频、视频、3D、动作和本地化 AI tools 的 brief、规则、命令和审查约定。
-- 下层：Godot/Unreal 引擎适配、创意资产管线、编辑器自动化、测试、构建、资产导入与验证。
+- 适配层：Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode、CliHub 等 AI coding tools，以及 creative AI tools 的规则和审查约定。
+- 下层：Three.js Web、Unity、Godot、Unreal 适配、创意资产管线、编辑器/浏览器自动化、测试、构建、资产导入与验证。
 
 一句话定位：
 
-> 面向 Godot 和 Unreal 的 AI tool-agnostic 游戏策划、内容制作、工程实现、验证与发布工作流系统。
+> 面向 Three.js WebGPU、Unity、Unreal Engine 和 Godot 的 AI tool-agnostic 游戏策划、内容制作、工程实现、验证与发布工作流系统。
 
 ### 1.1 Vision
 
 Muse Game Workshop 的愿景是把 AI 从“会写代码、会生成素材的工具”，提升为独立开发者和小团队可以信任的 AI-assisted game production operating model。它用游戏行业已有的制作阶段、制作职能和质量门组织工作，用 AI 扩展策划、工程、美术、动作、场景、音乐、音效、QA 和发布能力，同时用 review gate、证据记录和资产来源追踪保持人类创意控制。
 
-它要帮助团队持续回答三个制作问题：我们到底在做什么游戏；下一步最小可验证产出是什么；每一次 AI 参与的设计、代码、资产、测试和发布决策，是否有依据、可追踪、能被人类批准。它不替代制作人、策划、美术、程序、音频、QA 或发行判断，而是让这些职能在 AI 辅助下更清晰、更快、更可复盘。一个团队应该能从模糊创意出发，逐步形成玩法规格、工程计划、创意资产 brief、AI 生成资产记录、Godot/Unreal 接入方案和可发布 demo 清单。
+它要帮助团队持续回答三个制作问题：我们到底在做什么游戏；下一步最小可验证产出是什么；每一次 AI 参与的设计、代码、资产、测试和发布决策，是否有依据、可追踪、能被人类批准。它不替代制作人、策划、美术、程序、音频、QA 或发行判断，而是让这些职能在 AI 辅助下更清晰、更快、更可复盘。一个团队应该能从模糊创意出发，逐步形成玩法规格、工程计划、创意资产 brief、AI 生成资产记录、四生产目标落地映射和可发布 demo 清单。
 
 ## 2. 背景与问题
 
@@ -49,6 +49,8 @@ AI coding tools 和 creative AI tools 已经能帮助独立开发者快速生成
 - 2-5 人小型游戏团队。
 - 使用 Godot 做 2D 或轻量 3D 游戏的开发者。
 - 使用 Unreal 做 3D 动作、探索、射击或高表现原型的开发者。
+- 使用 Three.js WebGPU 做浏览器优先游戏和可分享试玩版本的开发者。
+- 使用 Unity 做 C# 跨平台 2D/3D 制作的开发者。
 - 想从 vibe coding 进入可维护制作流程的 AI 辅助开发者。
 - 有创意和策划能力，但需要工程推进、文档化和验证流程的人。
 - 中文独立游戏开发者和中国游戏行业用户，需要中国游戏界能理解的术语和制作文档。
@@ -124,6 +126,18 @@ v0.9 目标：
 - 支持资源产出/消耗、奖励结构、成长线、关卡/任务收益和数值调优。
 - 只做可验证的设计与分析闭环，不做商业化后台或真实支付系统。
 
+v0.9.3 目标：
+
+- 建立 Production Target Contract / 生产目标契约。
+- 将 Three.js WebGPU 作为正式 Web 生产目标，并提供 WebGL 2 fallback。
+- 落地 Three.js workflow、浏览器测试和 Boss Rush 可玩样板。
+
+v0.9.4 目标：
+
+- 建立 Unity workflow、项目映射和测试/构建契约。
+- 支持 EditMode、PlayMode、batchmode 和 player build evidence。
+- Unity Editor 不可用时明确区分静态完成与编辑器验证待办。
+
 v0.10 目标：
 
 - 完成 Telemetry & Playtest Analytics Pack / 数据埋点与试玩分析包。
@@ -163,8 +177,8 @@ v0.15 目标：
 v1.0 目标：
 
 - 形成可安装、可复用、可扩展的 AI tool-agnostic game workflow pack。
-- 支持 Godot 与 Unreal 的项目阶段检测、任务拆分、QA、发布检查。
-- 可接入 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools，常见创意生成/编辑 AI tools，以及 Godot/Unreal MCP 或官方编辑器自动化能力。
+- 支持 Three.js WebGPU、Unity、Unreal Engine 和 Godot 的项目阶段检测、任务拆分、QA、发布检查。
+- 可接入 Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode、CliHub 等 AI coding tools，常见创意生成/编辑 AI tools，以及适用的运行时/编辑器自动化能力。
 
 ## 5. 非目标
 
@@ -218,8 +232,8 @@ Muse Game Workshop 对外使用游戏行业语言，而不是独立定义一套�
 | Producer / 制作人 | 控范围、里程碑、风险和 review gate | `game-intake`、`vertical-slice-planner`、`postmortem` |
 | Game Designer / 游戏策划 | 定义玩家体验、规则、机制和内容节奏 | `core-loop`、`mechanic-spec`、`content-matrix` |
 | Technical Designer / 技术策划 | 把设计转成状态机、参数、数据结构和测试点 | `mechanic-spec`、`implementation-bridge`、`engine-portability` |
-| Gameplay Programmer / 玩法程序 | 在 review 通过后实现输入、状态、交互、反馈和验证 | `implementation-bridge`、`godot-workflow`、`unreal-workflow` |
-| Engine Specialist / 引擎专项 | 处理 Godot/Unreal 场景、资源、蓝图、构建约束 | `godot-workflow`、`unreal-workflow`、`engine-portability` |
+| Gameplay Programmer / 玩法程序 | 在 review 通过后实现输入、状态、交互、反馈和验证 | `implementation-bridge`、`threejs-workflow`、`unity-workflow`、`godot-workflow`、`unreal-workflow` |
+| Production Target Specialist / 生产目标专项 | 处理 browser modules/builds、Unity scenes/C#、Unreal Blueprints/C++ 或 Godot scenes/scripts 及其构建约束 | `threejs-workflow`、`unity-workflow`、`godot-workflow`、`unreal-workflow`、`engine-portability` |
 | Art Director / 美术指导 | 定义视觉方向、风格一致性和资产审查标准 | `art-direction`、`asset-review` |
 | Concept Artist / 概念美术 | 角色、怪物、武器、道具、UI 概念探索 | `asset-brief`、`asset-review` |
 | Environment Artist / 场景美术 | blockout、场景氛围、灯光、地形和场景资产 | `level-blockout`、`asset-brief` |
@@ -323,7 +337,7 @@ AI 工具辅助工作：
 AI 工具辅助工作：
 
 - 使用 `mechanic-spec` 拆状态机、输入、判定窗口、参数、反馈、边界情况。
-- 使用 `engine-portability` 生成 Godot/Unreal 映射差异。
+- 使用 `engine-portability` 生成已批准生产目标的实现差异。
 
 输出：
 
@@ -460,7 +474,15 @@ P0/P1 扩展方向包括：
 - `localization-readiness`
 - `accessibility-check`
 
-### 9.3 Godot 支持
+### 9.3 Three.js Web Runtime 支持
+
+MVP 必须支持 TypeScript/Vite 工程、simulation/renderer/DOM UI 分层、WebGPU 生产方向、WebGL 2 fallback、Playwright 浏览器验证、性能预算和静态部署。
+
+### 9.4 Unity 支持
+
+MVP 必须支持 Unity 6 项目版本记录、Scene/Prefab/Component/ScriptableObject 边界、Assembly Definition、Input System、EditMode/PlayMode 测试、batchmode 和 player build 验证。
+
+### 9.5 Godot 支持
 
 MVP 必须支持：
 
@@ -472,7 +494,7 @@ MVP 必须支持：
 - headless export 与脚本检查建议。
 - GdUnit4 或 GUT 测试建议。
 
-### 9.4 Unreal 支持
+### 9.6 Unreal 支持
 
 MVP 必须支持：
 
@@ -485,7 +507,7 @@ MVP 必须支持：
 - Automation Test Framework 和 Functional Testing 建议。
 - 打包、cook、性能预算检查。
 
-### 9.5 QA 与发布
+### 9.7 QA 与发布
 
 MVP 必须支持：
 
@@ -498,7 +520,7 @@ MVP 必须支持：
 - AI 使用披露记录。
 - itch/Steam demo 发布检查。
 
-### 9.6 Creative Asset Pipeline
+### 9.8 Creative Asset Pipeline
 
 P0 必须支持：
 
@@ -507,7 +529,7 @@ P0 必须支持：
 - AI 生成工具、prompt、模型/服务和版本记录。
 - 人工审查、授权风险和平台披露状态。
 - 资产格式、尺寸、命名、压缩、导入路径和性能预算。
-- Godot/Unreal 引擎内验证检查点。
+- Three.js/Unity/Godot/Unreal 目标内验证检查点。
 
 ### 9.7 UX、关卡、叙事、本地化与无障碍
 

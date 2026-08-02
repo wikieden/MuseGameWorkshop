@@ -24,6 +24,15 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 - `Asset Provenance / 资产来源与授权记录`
 - `Review Gate / 评审节点`
 
+v0.9.4 新增目标术语：
+
+- `Production Target / 生产目标`：最终负责运行、构建和发布游戏的技术目标。
+- `First Playable Target / 首次可玩目标`：最先承载可玩验证的运行时或引擎，可以不同于最终生产目标。
+- `Web Runtime / 网页运行时`：浏览器中的游戏运行与交付环境；Three.js 属于这一类，不称为完整编辑器型游戏引擎。
+- `Production Target Mapping / 生产目标映射`：把目标无关规格映射到 Three.js、Unity、Godot 或 Unreal。
+- `Fallback Renderer / 回退渲染器`：主图形后端不可用时启用的兼容渲染路径。
+- `EditMode Test / 编辑模式测试`、`PlayMode Test / 运行模式测试`：Unity 中分别验证编辑器侧逻辑和运行时行为的测试。
+
 ## 2. 制作阶段术语
 
 | English Term | 推荐中文叫法 | 常见别名 / 说明 | 使用建议 |
@@ -183,7 +192,7 @@ Muse Game Workshop 的所有核心英文术语都必须给出中国游戏行业�
 
 | English Term | 推荐中文叫法 | 常见别名 / 说明 | 使用建议 |
 |---|---|---|---|
-| Engine Mapping | 引擎映射 | 引擎落地映射 | 从引擎无关规格到 Godot/Unreal。 |
+| Engine Mapping | 引擎映射 | 引擎落地映射 | 从引擎无关规格到 Three.js Web、Unity、Unreal 或 Godot 实现。 |
 | Engine-neutral Spec | 引擎无关规格 | 通用玩法规格 | 不提前绑定具体引擎。 |
 | Scene | 场景 | Godot 场景、Unity/Unreal 场景 | 根据引擎语境说明。 |
 | Node | 节点 | Godot 节点 | Godot 专用术语。 |

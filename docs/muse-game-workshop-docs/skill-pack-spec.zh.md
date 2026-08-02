@@ -6,7 +6,7 @@
 
 ## 1. 目标
 
-本文件定义 Muse Game Workshop 的 workflow skill catalog。它包含最终全集中的主要 skill 方向，但 v0.1 实际落地范围必须以 `v0.1-manifest.zh.md` 为唯一真源。每个 skill 都应该足够小、足够明确、可组合，并且能在 Godot/Unreal 游戏项目中重复使用。
+本文件定义 Muse Game Workshop 的 workflow skill catalog。它包含最终全集中的主要 skill 方向，但 v0.1 实际落地范围必须以 `v0.1-manifest.zh.md` 为唯一真源。每个 skill 都应该足够小、足够明确、可组合，并且能按主题复用于 Three.js WebGPU、Unity、Unreal Engine 和 Godot 项目。
 
 Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制作职能下的可执行工作流能力。游戏行业用户应该先看到 Producer、Game Designer、Technical Designer、Gameplay Programmer、QA 等熟悉职能，再在内部把这些职能映射到 workflow skills。
 
@@ -34,8 +34,8 @@ Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制�
 | System Designer / 系统策划 | 系统、状态、触发器、依赖和数据归属 | `system-design`、`system-numerics`、`engine-portability` |
 | Combat Designer / 战斗策划 | 战斗动词、可读性、时间窗口、敌人、反馈和调参抓手 | `combat-design`、`combat-parameters`、`mechanic-spec` |
 | Numerical Designer / 数值策划 | 等级曲线、战斗参数、经济压力、公式和调优假设 | `numerical-planning`、`level-curve`、`combat-parameters`、`system-numerics` |
-| Gameplay Programmer / 玩法程序 | 通过 review 后的实现计划和验证 | `godot-workflow`、`unreal-workflow`、`implementation-bridge` |
-| Engine Specialist / 引擎专项 | Godot/Unreal 结构、资源、构建和编辑器约束 | `godot-workflow`、`unreal-workflow`、`engine-portability` |
+| Gameplay Programmer / 玩法程序 | 通过 review 后的实现计划和验证 | `threejs-workflow`、`unity-workflow`、`godot-workflow`、`unreal-workflow` |
+| Runtime / Engine Specialist / 运行时与引擎专项 | 四生产目标的结构、资源、构建和平台约束 | `threejs-workflow`、`unity-workflow`、`godot-workflow`、`unreal-workflow`、`engine-portability` |
 | Art Director / 美术指导 | 视觉方向、风格一致性、资产审查 | `art-direction`、`asset-review` |
 | Concept / Environment Artist | 概念、美术资产、场景 blockout | `asset-brief`、`level-blockout`、`asset-review` |
 | Animator / Technical Artist | 动作、VFX、材质、导入规格和性能预算 | `animation-brief`、`asset-integration` |
@@ -75,6 +75,10 @@ Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制�
     SKILL.md
   engine-portability/
     SKILL.md
+  threejs-workflow/
+    SKILL.md
+  unity-workflow/
+    SKILL.md
   godot-workflow/
     SKILL.md
   unreal-workflow/
@@ -88,6 +92,8 @@ Skill 不是角色扮演，也不是对外推广时的 agent 头衔；它是制�
   postmortem/
     SKILL.md
   creative-asset-pipeline/
+    SKILL.md
+  ai-3d-asset-production/
     SKILL.md
   art-direction/
     SKILL.md
@@ -340,7 +346,7 @@ description: One sentence describing exactly when this skill should trigger.
 
 用途：
 
-- 比较 Godot 和 Unreal 的实现方式。
+- 比较 Three.js Web、Unity、Unreal 和 Godot 的实现方式。
 - 维护 engine-neutral spec。
 
 输出：
@@ -489,7 +495,7 @@ description: One sentence describing exactly when this skill should trigger.
 
 质量标准：
 
-- 区分 Godot 和 Unreal。
+- 区分已选生产目标的实现和验证。
 - 不把未验证 demo 当 release-ready。
 
 下一步：
@@ -556,9 +562,41 @@ Workflow：
 
 - `art-direction`
 - `asset-brief`
+- `ai-3d-asset-production`
 - `asset-review`
 - `ux-flow`
 - `level-blockout`
+
+### 4.14.1 ai-3d-asset-production
+
+用途：
+
+- 管理 AI 辅助 3D 资产从参考准入、工具选择、质量契约、分阶段生产、多视角评审、成本控制到运行时验证的专业流程。
+
+输出：
+
+- 工具路线和回退路线。
+- 质量契约与成本上限。
+- 程序化 3D 或 mesh 交付记录。
+- 多视角资产评审。
+- provenance、human edit 和 cost evidence。
+- 运行时验证和 asset state decision。
+
+质量标准：
+
+- 不绑定 `img2threejs`、Blender、mesh-native AI 或任何商业工具。
+- 全局相似度不能覆盖关键部件、玩法可读性或运行时接口失败。
+- 未经目标运行时验证不得宣称 engine-ready。
+- 试点超出成本、质量或授权边界时必须停止、换工具或回退。
+
+下一步：
+
+- `asset-review`
+- `threejs-workflow`
+- `unity-workflow`
+- `godot-workflow`
+- `unreal-workflow`
+- `playtest-report`
 
 ### 4.15 art-direction
 
@@ -656,7 +694,7 @@ Workflow：
 - 动作列表。
 - 时长、节奏、关键帧和循环要求。
 - 机制反馈目标。
-- Godot/Unreal 接入要求。
+- 生产目标接入要求。
 
 ### 4.18 music-brief
 
@@ -733,7 +771,7 @@ Workflow：
 
 用途：
 
-- 把通过 review 的资产接入 Godot/Unreal 并建立验证点。
+- 把通过 review 的资产接入已选生产目标并建立验证点。
 
 输出：
 
@@ -886,7 +924,7 @@ v0.9.2 落地 6 个 design-first / 设计优先的专业策划 skills。它们�
 
 见 Agent Skill Composition / Agent 与 Skill 组合设计（`agent-skill-composition.zh.md`），了解如何把这些 skills 组合到游戏行业熟悉的 Role Agent / 角色型 Agent 中。
 
-下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+v0.9.3 已落地 `threejs-workflow`，v0.9.4 已落地 `unity-workflow`；下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 ### 4.28 Future Planning Skills
 
@@ -907,10 +945,14 @@ flowchart TD
   B --> C["mechanic-spec"]
   C --> D["content-matrix"]
   C --> E["engine-portability"]
+  E --> X["threejs-workflow"]
+  E --> Y["unity-workflow"]
   E --> F["godot-workflow"]
   E --> G["unreal-workflow"]
   F --> H["playtest-report"]
   G --> H
+  X --> H
+  Y --> H
   H --> I["balance-check"]
   I --> C
   H --> J["postmortem"]
@@ -962,7 +1004,7 @@ v0.9.2 落地第一批专业策划 skills 和组合规则：
 - `system-numerics`
 - `agent-skill-composition.zh.md` / `agent-skill-composition.en.md`
 
-v0.9.2 之后，下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+v0.9.3 落地 `threejs-workflow`，v0.9.4 落地 `unity-workflow`。两者共享 Production Target Contract / 生产目标契约和 `engine-portability` 路由。下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 v0.2 Godot playable prototype 之后再补工程执行增强：
 

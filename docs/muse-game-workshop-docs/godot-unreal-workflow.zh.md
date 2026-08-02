@@ -1,4 +1,4 @@
-# Godot + Unreal 游戏工作流手册
+# 多生产目标游戏工作流手册
 
 版本：v0.1
 
@@ -6,7 +6,7 @@
 
 ## 1. 工作流目标
 
-本手册定义 Muse Game Workshop 在 Godot 和 Unreal 项目中的实际使用方式。目标是让开发者从一个想法开始，经过策划、机制规格、引擎映射、垂直切片、实现、试玩、调优和发布检查，形成一个可重复的制作闭环。
+本手册定义 Muse Game Workshop 在 Three.js WebGPU、Unity、Godot 和 Unreal 项目中的实际使用方式。文件名保留 `godot-unreal-workflow` 以兼容已有链接。
 
 核心思想：
 
@@ -38,8 +38,8 @@ flowchart TD
 | Producer / 制作人 | 阶段判断、范围控制、review gate | `game-intake`、`vertical-slice-planner`、`postmortem` |
 | Game Designer / 游戏策划 | 核心循环、机制、内容节奏 | `core-loop`、`mechanic-spec`、`content-matrix` |
 | Technical Designer / 技术策划 | 状态机、参数、数据结构、测试点 | `mechanic-spec`、`implementation-bridge`、`engine-portability` |
-| Gameplay Programmer / 玩法程序 | review 通过后的机制实现和验证 | `godot-workflow`、`unreal-workflow` |
-| Engine Specialist / 引擎专项 | Godot/Unreal 结构、资源、构建、编辑器约束 | `godot-workflow`、`unreal-workflow`、`engine-portability` |
+| Gameplay Programmer / 玩法程序 | review 通过后的机制实现和验证 | `threejs-workflow`、`unity-workflow`、`godot-workflow`、`unreal-workflow` |
+| Runtime / Engine Specialist / 运行时与引擎专项 | 四目标结构、资源、构建和平台约束 | `engine-portability` 及四个目标 workflow skills |
 | QA / 测试 | 测试用例、试玩反馈、回归验证 | `playtest-report`、`release-checklist` |
 | Release Manager / 发布负责人 | 构建、版本、发布清单和披露 | `release-checklist` |
 
@@ -184,10 +184,20 @@ P2 放入 v1.0 之后或更晚未来规划，不进入首批实现：
 使用 skill：
 
 - `engine-portability`
+- `threejs-workflow`
+- `unity-workflow`
 - `godot-workflow`
 - `unreal-workflow`
 
-### 6.1 Godot 映射
+### 6.1 Three.js Web 映射
+
+关注 simulation/renderer/DOM UI 分层、WebGPU/WebGL 2 fallback、浏览器输入、Playwright、性能预算和静态部署。
+
+### 6.2 Unity 映射
+
+关注 Scene/Prefab/Component/ScriptableObject/asmdef、Input System、EditMode/PlayMode 和 player build。
+
+### 6.3 Godot 映射
 
 关注：
 
@@ -219,7 +229,7 @@ Godot Mapping
   - test_dodge_counter_state.gd
 ```
 
-### 6.2 Unreal 映射
+### 6.4 Unreal 映射
 
 关注：
 

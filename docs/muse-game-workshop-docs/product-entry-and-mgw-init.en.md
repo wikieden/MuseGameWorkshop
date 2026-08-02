@@ -10,14 +10,14 @@ Muse Game Workshop should move from "read this workflow pack repo" to "initializ
 
 The updated product positioning is:
 
-> Muse Game Workshop is an AI-assisted Game Production Workspace for indie game teams. Users start with `mgw-init` or `mgw init`, initialize their own game project, and then use the guided conversation inside an AI coding tool, tool-neutral workflow skills, templates, review gates, evidence, Godot/Unreal adapters, and creative asset workflows to move production forward.
+> Muse Game Workshop is an AI-assisted Game Production Workspace for indie game teams. Users start with `mgw-init` or `mgw init`, then use guided conversation, tool-neutral workflow skills, templates, review gates, evidence, and production-target adapters for Three.js WebGPU, Unity, Unreal, and Godot.
 
 This does not change the project boundary:
 
 - Muse is not a game engine.
 - Muse is not a one-click game generator.
 - Muse does not replace the producer, designer, artist, programmer, audio, QA, or release judgment.
-- `mgw-init` / `mgw init` does not write Godot/Unreal game code by default.
+- `mgw-init` / `mgw init` does not write game code for any production target by default.
 - `mgw-init` / `mgw init` does not install MCP servers, editor plugins, or commercial creative AI tools by default.
 - Structural changes still require a design summary, execution plan, and review gate.
 
@@ -70,27 +70,33 @@ Suggested commands:
 mgw-init
 mgw-init --lang zh-CN
 mgw-init --tool codex
-mgw-init --engine godot
+mgw-init --first-playable threejs-web
+mgw-init --production-target unity
 mgw-init --genre tactics
 mgw-init --profile docs-only
 mgw init my-game
 mgw init my-game --lang zh-CN
 mgw init my-game --tool codex
 mgw init my-game --tool claude
-mgw init my-game --engine godot
-mgw init my-game --engine unreal
+mgw init my-game --first-playable threejs-web
+mgw init my-game --production-target godot
+mgw init my-game --production-target unreal
+mgw init my-game --production-target unity
+mgw init my-game --production-target threejs-webgpu
 mgw init my-game --genre tactics
 mgw init my-game --profile docs-only
+mgw init my-game --profile threejs-web-production
+mgw init my-game --profile unity-production
 mgw init my-game --profile godot-prototype
 mgw init my-game --profile unreal-mapping
-mgw init my-game --engine godot --mcp godot-ai
-mgw init my-game --engine unreal --mcp ue-mcp
+mgw init my-game --production-target godot --mcp godot-ai
+mgw init my-game --production-target unreal --mcp ue-mcp
 ```
 
 Default behavior:
 
 ```sh
-mgw init my-game --lang en-US --tool generic --engine none --genre none --profile docs-only --mcp none
+mgw init my-game --lang en-US --tool generic --first-playable none --production-target undecided --genre none --profile docs-only --mcp none
 ```
 
 Defaults must be safe:
@@ -133,10 +139,12 @@ templates/
 tools/checks/
 game/godot/
 game/unreal/
+game/unity/
+game/web/
 assets/
 ```
 
-`game/godot/` and `game/unreal/` should not generate real engine projects in the default profile. Engine creation or integration begins only after the user selects an engine profile and passes the review gate.
+`game/godot/`, `game/unreal/`, `game/unity/`, and `game/web/` do not contain real projects in the default profile. Project creation or integration begins only after the user selects a production-target profile and passes the review gate.
 
 ## 6. muse.project.yaml Contract
 
@@ -150,10 +158,12 @@ project:
   locale: zh-CN
   stage: concept
   genre: tactics
-  engine: godot
+  first_playable: threejs-web
+  production_target: unity
+  target_platforms: [web, pc]
 
 muse:
-  workflow_version: v0.7
+  workflow_version: v0.9.4
   init_state: started
   init_entry: cli
   next_action: continue-mgw-init
@@ -171,7 +181,7 @@ tools:
 profiles:
   active:
     - docs-only
-    - godot-prototype
+    - threejs-web-prototype
 ```
 
 This file is project-level production context, not a build system. AI tools should read it before deciding language, stage, engine, and the next workflow skill.
@@ -193,6 +203,9 @@ Recommended profiles:
 | `docs-only` | Create the minimal production workspace | README, `muse.project.yaml`, `docs/00-game-start.md`, evidence README | Engine project, MCP, asset generation, large directory tree |
 | `p0-workflow-pack` | Copy core skills/templates/checks | `.agents/skills/`, templates, checks | Game code, binary assets |
 | `game-design-systems` | Support game design and systems work | System/combat/encounter/tuning/playtest docs | Engine implementation |
+| `threejs-web-prototype` | Prepare the first browser-playable | Three.js mapping, browser tests, and evidence plan | Unapproved release assets and online services |
+| `threejs-web-production` | Prepare a Three.js WebGPU release | WebGPU/WebGL2 fallback, performance, and release plan | Skipping browser matrix or release gate |
+| `unity-production` | Prepare a Unity production workspace | Unity mapping, EditMode/PlayMode/build plan | Unreviewed Unity project or binary assets |
 | `godot-prototype` | Prepare a Godot prototype workspace | Godot plan, checks, empty directory notes | Automatic playable content |
 | `unreal-mapping` | Prepare an Unreal mapping workspace | Unreal mapping docs, PIE/test-map plan | `.uasset` / `.umap` generation |
 | `creative-production` | Prepare the creative asset workflow | Briefs, provenance, review directories | Final asset generation/import |
@@ -223,14 +236,14 @@ Adapters must not change:
 
 ## 9. Editor MCP Adapter Rules
 
-Godot/Unreal MCP and official editor automation are optional capabilities, not the workflow core.
+Godot, Unity, and Unreal MCP or official editor automation are optional capabilities, not the workflow core. Three.js normally uses shell, browser, and Playwright validation without editor MCP.
 
 Default policy:
 
 - `--mcp none`.
 - Do not install MCP servers automatically.
 - Do not modify editor settings automatically.
-- Do not open Godot or Unreal automatically.
+- Do not open Godot, Unity, or Unreal automatically.
 - Do not create binary assets automatically.
 
 Before MCP is enabled, the task must have:

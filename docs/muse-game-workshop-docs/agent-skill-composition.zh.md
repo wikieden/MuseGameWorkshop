@@ -1,6 +1,6 @@
 # Agent Skill Composition / Agent 与 Skill 组合设计
 
-版本：v0.9.2
+版本：v0.9.4
 
 语言：中文
 
@@ -21,6 +21,10 @@ Muse Game Workshop 对外应优先使用游戏行业能理解的职能叫法：
 - Numerical Designer / 数值策划。
 - Gameplay Programmer / 玩法程序。
 - QA / 测试。
+- Web Gameplay Programmer / Web 玩法程序。
+- Unity Developer / Unity 开发。
+- Unreal Developer / Unreal 开发。
+- Godot Developer / Godot 开发。
 
 内部执行时，一个职能可以组合多个 workflow skills：
 
@@ -52,6 +56,8 @@ Skill 是执行单元；Role Agent / 角色型 Agent 是用户更容易理解的
 | Combat Designer Agent / 战斗策划 Agent | 战斗动词、可读性、时间窗口、敌人和调参抓手 | `combat-design`、`combat-parameters`、`mechanic-spec`、`playtest-report` | Combat Designer / 战斗策划 |
 | Numerical Designer Agent / 数值策划 Agent | 成长、战斗数值、经济压力和调优假设 | `numerical-planning`、`level-curve`、`combat-parameters`、`system-numerics` | Numerical Designer / 数值策划 |
 | QA / Playtest Agent / 测试与试玩 Agent | 证据、问题分类、假设和回归任务 | `playtest-report`、`mechanic-spec`、`numerical-planning`、`ux-flow`、`level-blockout` | QA / 测试、Producer / 制作人 |
+| Creative Production Agent / 创意资产制作 Agent | 把美术方向和资产 brief 变成受控生产、来源、成本、多视角评审和运行时验证 | `creative-asset-pipeline`、`art-direction`、`asset-brief`、`ai-3d-asset-production`、`asset-review` | Art Director / 主美、Technical Artist / 技术美术、Producer / 制作人 |
+| Production Target Agent / 生产目标 Agent | 把已批准设计映射到一个运行时及其测试/构建证据 | `engine-portability` 加 `threejs-workflow`、`unity-workflow`、`unreal-workflow`、`godot-workflow` 中恰好一个 | Technical Lead / 技术负责人、目标开发、QA / 测试 |
 
 ## 5. 交付流
 
@@ -62,8 +68,9 @@ flowchart LR
   B --> D["Technical Designer Agent / 技术策划 Agent\n状态、数据、验证"]
   C --> E["Numerical Designer Agent / 数值策划 Agent\n战斗与成长数值"]
   D --> E
-  E --> F["QA / Playtest Agent / 测试与试玩 Agent\n证据与假设"]
-  F --> A
+  E --> F["Production Target Agent / 生产目标 Agent\n运行时映射与构建证据"]
+  F --> G["QA / Playtest Agent / 测试与试玩 Agent\n证据与假设"]
+  G --> A
 ```
 
 ## 6. 交付物契约
@@ -85,7 +92,7 @@ flowchart LR
 
 - Codex：读取 `.agents/skills/*/SKILL.md` 和 `AGENTS.md`。
 - Claude Code：把同一批 skill files 作为 project skills 或 Claude-style skills 加载。
-- Kiro CLI 和 opencode：读取共享项目规则，并按同样的 skill outputs 工作。
+- Kiro CLI、Kimi Code、opencode、RoboCode 和 CliHub：读取或分发共享项目规则，并按同样的 skill outputs 工作。
 - 未来 adapters：可以增加工具特定命令，但必须映射回共享 skills 和交付物。
 
 工具适配器可以自动路由，但不得跳过制作阶段确认、review gate、evidence 或 validation。
@@ -104,5 +111,7 @@ v0.9.2 是 design-first / 设计优先版本，只新增专业策划 skills 和�
 - 新资产生成或导入。
 - final / release-candidate 美术或音频。
 - release balance / 发布版本最终平衡批准。
+
+v0.9.3 和 v0.9.4 在不改变 v0.9.2 专业策划边界的前提下增加生产目标路由。Production Target Agent / 生产目标 Agent 只有在设计和执行 review gate 为 Approved 后才能自动实现，并且必须返回目标专属的测试、构建和视觉证据。
 
 下一计划版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。

@@ -1,6 +1,6 @@
 # Muse Game Workshop Deliverables And Handoff Contracts
 
-Version: v0.1
+Version: v0.9.4
 
 Language: English
 
@@ -43,7 +43,7 @@ A handoff is not a chat conclusion. It must be file-backed, reviewable, and usab
 | Structured Table | Records parameters, content matrices, task breakdowns | parameter table, content matrix, bug list |
 | Diagram | Shows states, flows, and dependencies | mermaid state diagram, flowchart |
 | Task Package | Execution package for an AI coding tool or developer | design summary, execution plan, acceptance criteria |
-| Engine Asset | Verifiable asset inside Godot/Unreal | test scene, PIE map, Data Asset, Resource |
+| Runtime Asset | Verifiable content inside the selected production target | Three.js module or browser build, Unity scene/prefab/ScriptableObject, Unreal test map/Data Asset, Godot test scene/Resource |
 | Creative Asset | Art, animation, music, sound, UI, video | png, wav, fbx, blend, sprite sheet |
 | Provenance Record | Tracks AI asset source and license | tool, prompt, reference, license, human edits |
 | Evidence Record | Tracks validation results | screenshot, build log, test output, playtest notes |
@@ -77,6 +77,19 @@ A handoff is not a chat conclusion. It must be file-backed, reviewable, and usab
 | Level Designer | Gameplay Programmer / QA | Level blockout, encounter table, navigation notes | Blockout + diagram + table | Route, encounter, pacing, and validation method are clear. |
 | QA | Producer / Game Designer | Bug list, playtest report, regression risk | Evidence record + report | Issues are reproducible, prioritized, and convertible into next tasks. |
 | Release Manager | Team / Platform | Release checklist, store/trailer/localization/accessibility status | Release package | Demo release status has an explicit conclusion. |
+
+## 5.1 Production Target Handoffs
+
+The shared handoff starts from an approved `production-target-mapping.md`. Each target then delivers its own runtime form and evidence without changing the engine-neutral design intent.
+
+| Production Target | Main Delivery Form | Minimum Validation Evidence | Release Handoff |
+|---|---|---|---|
+| Three.js WebGPU | TypeScript modules, Vite production build, browser-accessible package | Unit tests, production build log, Playwright screenshots, renderer/fallback record, browser playtest checklist | Hosted build or static package, browser matrix, performance budget, known fallback risks |
+| Unity | Unity project changes with scenes, prefabs, assemblies, ScriptableObjects, Input/UI configuration | EditMode and PlayMode results, editor screenshots/logs, Player build smoke | Player build, exact Unity version, platform settings, package manifest, known platform risks |
+| Unreal Engine | Blueprint/C++/Data Asset/UMG changes plus test map | Automation/Functional Test results, PIE or commandlet evidence, packaged-build smoke | Packaged build, exact engine/plugin versions, target settings, known platform risks |
+| Godot | Scene/Script/Resource/UI changes plus test scene | CLI or framework test result, scene-run evidence, export smoke | Exported build, exact Godot version, export preset, known platform risks |
+
+First Playable Target and Final Production Target may differ. The handoff must record what was learned from the first playable, what is portable, what must be rebuilt, and which target-specific validation is still blocked.
 
 ## 6. AI Workflow Handoffs
 

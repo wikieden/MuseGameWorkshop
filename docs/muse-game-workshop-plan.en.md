@@ -1,6 +1,6 @@
 # Muse Game Workshop Project Plan
 
-Version: v0.1
+Version: v0.9.4
 
 ## 1. Project Positioning
 
@@ -11,8 +11,7 @@ Core goals:
 - Help indie developers move faster from vague ideas to playable prototypes.
 - Turn design language into implementable, testable, tunable engineering specifications.
 - Turn playtest feedback into the next task list instead of leaving it buried in chat history.
-- Use Godot and Unreal Engine as the main target engines while keeping shared design, specification, implementation, testing, and release workflows.
-- Keep Phaser/Three.js available for early web prototypes or small mechanic validation, but not as the main engine path.
+- Treat Three.js WebGPU, Unity, Unreal Engine, and Godot as formal production targets. Three.js uses WebGPU as its production direction with a WebGL 2 fallback; Phaser remains a future 2D Web candidate.
 - Keep human creative direction in control while Codex, Claude Code, Kiro CLI, opencode, and other AI coding tools assist with structure, decomposition, implementation support, testing, and retrospectives. Image, audio, video, 3D, animation, and other creative AI tools enter a reviewable and traceable asset pipeline.
 
 One-sentence positioning:
@@ -23,7 +22,7 @@ One-sentence positioning:
 
 The long-term vision for Muse Game Workshop is to move AI from "a tool that writes code snippets and generates a few asset images" into an AI-assisted game production operating model that indie developers and small teams can trust. It is not a plugin for one AI tool, and it does not flatten game development into prompt-based content generation. It organizes work through production stages, disciplines, and quality gates that game developers already understand.
 
-It should help teams answer three production questions continuously: what game are we making; what is the next smallest verifiable output; and does every AI-assisted design, code, asset, test, or release decision have a basis, a trace, and human approval. In its mature form, a developer can start from a vague idea and gradually produce verifiable mechanic specs, executable engineering plans, reviewable creative asset briefs, traceable AI-generated asset records, Godot/Unreal implementation paths, and a demo release checklist.
+It should help teams answer three production questions continuously: what game are we making; what is the next smallest verifiable output; and does every AI-assisted decision have a basis, trace, and human approval. In its mature form, a developer can produce mechanic specs, engineering plans, asset records, four-target implementation paths, and release checklists.
 
 Muse Game Workshop does not replace producers, designers, artists, programmers, audio specialists, QA, or release judgment. It makes those responsibilities clearer, faster, and easier to review under AI assistance. Its value is not making teams think less; it is helping small teams make better production decisions in shorter cycles, with clearer project memory.
 
@@ -34,8 +33,8 @@ The first phase prioritizes:
 - Solo indie developers.
 - Small 2-5 person game teams.
 - Designers, artists, and creative developers who have ideas but lack stable engineering momentum.
-- Developers who want to use Codex, Claude Code, Kiro CLI, opencode, and other AI coding tools, plus image, audio, video, 3D, animation, and other creative AI tools for Godot or Unreal indie prototypes and production projects.
-- Teams that need shared design, mechanic specs, tuning, QA, and release workflows across Godot and Unreal.
+- Developers who want to use Codex, Claude Code, Kimi Code, Kiro CLI, opencode, RoboCode, CliHub, and other AI coding tools, plus image, audio, video, 3D, animation, and other creative AI tools for indie prototypes and production projects.
+- Teams that need shared design, mechanic specs, tuning, QA, and release workflows across Three.js WebGPU, Unity, Unreal Engine, and Godot.
 - Chinese indie developers and Chinese game-industry users who need terminology that feels natural to Chinese teams.
 - English-speaking indie developers and small teams who need natural English game-production language rather than translated Chinese copy.
 - Teams that want to move AI-assisted development from vibe coding into controlled production workflow.
@@ -85,7 +84,7 @@ Chinese and English audiences are treated separately. Chinese-facing docs priori
 | Game Designer | Player experience, rules, mechanics, and pacing | Pitch, core loop, mechanic spec, content matrix | Asks clarifying questions, structures specs, catches unverifiable statements |
 | Technical Designer | Translates design into state machines, parameters, and implementation specs | State models, parameter tables, data structures, test points | Produces engine-neutral specs and implementation mappings |
 | Gameplay Programmer | Implements input, state, interaction, feedback, and tests | Scripts, components, test scenes, validation commands | Assists coding and minimal validation after review approval |
-| Engine Specialist | Handles Godot/Unreal scenes, assets, Blueprints, and build constraints | Engine mappings, editor checkpoints | Produces engine-specific plans and command suggestions |
+| Runtime / Engine Specialist | Handles Three.js, Unity, Godot, and Unreal project and build constraints | Production-target mappings, browser/editor checkpoints | Produces target-specific plans and command suggestions |
 | Art Director | Defines visual direction, style consistency, and excluded directions | Art bible, style boards, asset acceptance criteria | Creates or organizes briefs, checks style drift and license records |
 | Concept Artist | Explores characters, monsters, weapons, props, and UI concepts | Concept briefs, references, iteration records | Generates directions, variants, and review checklists |
 | Environment Artist | Shapes level mood, blockout, terrain, lighting, and environment assets | Environment briefs, blockouts, asset lists | Breaks down environment requirements and engine import specs |
@@ -122,6 +121,7 @@ P1 should enter design progressively across v0.6-v0.11:
 Mid-term capabilities enter v0.12-v0.15:
 
 - Creative Production Expansion: art, animation, environment, music, SFX, and UI asset production after design, systems, genre, economy, data, and narrative stabilize.
+- Creative AI Production Pilot: validate the AI 3D production contract, tool adaptation, cost, and multi-view review without changing the main-version order; pilot evidence feeds v0.12 and does not approve production assets by itself.
 - Procedural Content: procedural maps, encounters, loot, and quest variations after rules are stable.
 - Publishing & Release Readiness: store pages, trailer briefs, localization, accessibility, platform disclosure, and demo readiness.
 - LiveOps / Post-launch: patches, hotfixes, update roadmap, and player feedback triage.
@@ -291,9 +291,20 @@ Muse-Game-Workshop/
       release-checks/
 ```
 
-## 7. Dual-Engine Goal
+## 7. Multi-target Production Goal
 
-Muse Game Workshop is ultimately designed around Godot and Unreal Engine.
+Muse Game Workshop is designed around four formal production targets. A project selects a First Playable Target and a Final Production Target; these may differ, but portability and rebuild costs must be explicit.
+
+Three.js Web path:
+
+- Best for instant browser access, shareable playtests, web-native distribution, and fast cross-device validation.
+- Use TypeScript and Vite, WebGPU as the production direction, and a tested WebGL 2 fallback.
+- Keep deterministic simulation separate from renderer and DOM UI.
+
+Unity path:
+
+- Best for broad platform delivery, C# teams, established asset/editor workflows, and mid-scale 2D/3D production.
+- Use data-driven ScriptableObjects, assembly boundaries, the Input System, EditMode/PlayMode tests, and Player build checks.
 
 Godot path:
 
@@ -310,8 +321,8 @@ Unreal path:
 Shared layer:
 
 - Creative direction, core loop, mechanic specs, content matrix, playtest report, tuning, and release checklist stay engine-neutral.
-- Every mechanic starts as an engine-neutral spec, then becomes Godot or Unreal implementation tasks through `godot-workflow` or `unreal-workflow`.
-- Assets, input, UI, saves, audio, VFX, and performance budget are implemented separately in each engine adapter layer.
+- Every mechanic starts as an engine-neutral spec, then becomes one target implementation through `threejs-workflow`, `unity-workflow`, `godot-workflow`, or `unreal-workflow`.
+- Assets, input, UI, saves, audio, VFX, performance budgets, tests, and packaging are implemented separately in each production-target adapter.
 
 ## 8. First Workflow Skills
 
@@ -432,7 +443,8 @@ Adapter directions:
 - Godot/C#: useful when stronger typing, toolchain constraints, or team engineering conventions matter.
 - Unreal Blueprint: useful for quickly building 3D gameplay, animation, level interaction, and designer-editable logic.
 - Unreal C++: useful for performance-sensitive systems, low-level systems, and complex Gameplay Framework extensions.
-- Phaser/Three.js: only for early mechanic validation or web demos, not as the target production engine.
+- Three.js WebGPU: a formal Web production target for prototypes, vertical slices, Web demos, and release-gated small Web games.
+- Phaser: a future 2D Web runtime candidate outside v0.9.4 implementation.
 
 ### 8.7 playtest-report
 
@@ -874,26 +886,28 @@ When uncertain:
 
 ## 13. MVP Scope
 
-Here, MVP means the full validation chain from the v0.1 workflow pack to the v1.0 reusable production pack. v0.5 has completed roadmap and research consolidation; v0.6 has completed the game design and systems package; v0.7 has completed Product Entry & `mgw init` design; v0.8-v0.15 continue with genre tracks, economy and progression, telemetry and playtest analytics, narrative design, creative production expansion, procedural content, publishing readiness, and post-launch operations. v0.1 materialization still uses `docs/muse-game-workshop-docs/v0.1-manifest.en.md` as the single source of truth.
+Here, MVP means the full validation chain from v0.1 workflow pack to v1.0 reusable production pack. v0.9.3 adds multi-target production and Three.js Web Runtime; v0.9.4 adds Unity Workflow; v0.10 onward continues analytics, narrative, assets, procedural content, publishing, and operations.
 
 The MVP chain includes only:
 
 - `AGENTS.md`
 - 14 v0.1 P0 workflow skill `SKILL.md` files.
-- 39 templates covering v0.1 design/production/creative/UX/localization readiness, v0.3 creative production, v0.6 design systems, v0.9 economy/progression, and v0.9.1 numerical planning.
-- 22 workflow skills: 14 P0 skills, `mgw-init`, `prototype-design`, and 6 v0.9.2 specialized design skills.
+- 41 templates covering v0.1 design/production/creative/UX/localization readiness, v0.3 creative production, v0.6 design systems, v0.9 economy/progression, v0.9.1 numerical planning, and v0.9.3 production-target mapping/browser validation.
+- 24 workflow skills, including `threejs-workflow` and `unity-workflow`.
 - One shared sample-game plan used as the common test fixture for dry runs, the Godot example, and the Unreal mapping example.
 - One Boss Rush no-code dry run.
 - One Godot 2D/lightweight 3D example in v0.2.
 - One Unreal third-person gameplay mapping example in v0.4.
-- One Godot/Unreal dual-engine mapping template.
+- One Production Target Mapping template spanning Three.js, Unity, Godot, and Unreal.
 - One v0.5 roadmap rebase and research consolidation pack covering AI art dry runs, engine AI adapter research, user feedback, and the Godot integration decision.
 - One completed v0.6 game design and systems pack covering systems, combat, encounters, tuning, and playtest hypotheses, with Boss Rush / Action and Tactics design dry runs.
 - One completed v0.7 product entry and project initialization design pack defining `mgw init`, user journey, project workspace, tool adapter rules, and MCP adapter boundaries.
 - One completed v0.8 genre track pack with Tactics as a first priority track and a Godot Prototype Asset Kit plan for readable proxy assets.
-- One completed v0.9 economy and progression pack with economy model, progression map, resource/reward table, tuning loop, and Tactics dry-run evidence.
+- One completed v0.9 Economy & Progression pack with economy model, progression map, resource/reward table, tuning loop, and Tactics dry-run evidence.
 - One completed v0.9.1 numerical planning addendum with level curve, combat parameter table, system numerical plan, and Tactics numerical dry-run evidence.
 - One completed v0.9.2 Specialized Design Skills addendum with system design, combat design, numerical planning, level curve, combat parameters, system numerics, Agent Skill Composition, and `check-v0.9.2-design-skills`.
+- One completed v0.9.3 Multi-target Production Foundation + Three.js Web Runtime with contract, skill, example, browser QA, evidence, and check.
+- One completed v0.9.4 Unity Workflow with skill, mapping, EditMode/PlayMode/build validation plan, evidence, and check.
 - One v0.10 telemetry and playtest analytics pack.
 - One v0.11 narrative design pack covering worldbuilding, narrative flow, characters, quests, dialogue, and lore consistency.
 - One v0.12 creative production expansion pack.
@@ -907,7 +921,7 @@ Out of scope:
 - Visual UI.
 - Auto installer.
 - Unity support.
-- Mainline Phaser/Three.js example.
+- Unreviewed Phaser examples or WebGPU-only shipping without fallback evidence.
 - Heavy AI role hierarchy.
 - Automated publishing tool.
 
@@ -1161,7 +1175,7 @@ docs/evidence/dry-runs/  # v0.1d: Boss Rush no-code dry-run evidence
 
 Step 3: run the no-code dry run using the Boss Rush / Counter Trial sample game plan from section 15.
 
-v0.9.2 Specialized Design Skills is now complete as an addendum to v0.9.1 Numerical Planning and v0.9 Economy & Progression. The next step should be v0.10 Telemetry & Playtest Analytics: first produce a design summary, execution plan, impact scope, file scope, review decisions, and validation plan, then define the telemetry event plan, playtest analytics report, tuning decision log, privacy boundaries, review gate, evidence, and checks. v0.10 must stay local and design-first until a separate review approves real user-data services.
+v0.9.3 Multi-target Production Foundation + Three.js Web Runtime and v0.9.4 Unity Workflow are complete. The next step is v0.10 Telemetry & Playtest Analytics. Its event contract must map across all four production targets and should first validate locally against the Three.js browser reference; real user-data services still require separate review.
 
 ## 17. Reference Projects And Tools
 

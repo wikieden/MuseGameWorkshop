@@ -78,7 +78,7 @@ The AI tool should enter the Muse initialization guide, not write game code. The
 1. What game do you want to make?
 2. What platform are you targeting?
 3. What genre is it?
-4. Which engine do you want to start with? Godot / Unreal / undecided.
+4. What are the first playable and final production targets? Three.js Web / Unity / Unreal / Godot / undecided.
 5. What is the current goal? concept / prototype / vertical slice / demo.
 
 ## 5. Entry B: Initialize From CLI
@@ -99,7 +99,8 @@ Language? zh-CN / en-US
 Game idea?
 Genre?
 Target platform?
-Engine? Godot / Unreal / undecided
+First playable? Three.js Web / Unity / Unreal / Godot / undecided
+Production target? Three.js WebGPU / Unity / Unreal / Godot / undecided
 Current goal? concept / prototype / vertical-slice / demo
 AI tool? Codex / Claude Code / Kiro CLI / opencode / generic
 ```
@@ -176,7 +177,8 @@ project:
   locale: en-US
   stage: concept
   genre: tactics
-  engine: godot
+  first_playable: threejs-web
+  production_target: godot
   target_platforms:
     - PC
 
@@ -240,7 +242,7 @@ The AI should respond with something like:
 
 ```text
 I have read muse.project.yaml and docs/00-game-start.md.
-This is a Godot-oriented Tactics prototype, and the current goal is to validate core gameplay.
+This Tactics prototype uses Three.js Web for the first playable and targets Godot for final production.
 
 I will continue in three steps:
 1. Design foundation: pitch, core loop, and core mechanic.
@@ -250,7 +252,7 @@ I will continue in three steps:
 First, which part matters most for the prototype: tactics depth, counterattack feel, or the timeline system?
 ```
 
-The AI should not create a Godot project, write gameplay code, install MCP, or generate assets at this step.
+The AI should not create a Three.js, Unity, Godot, or Unreal project, write gameplay code, install MCP, or generate assets at this step.
 
 ## 11. Progressive Expansion Rules
 
@@ -285,7 +287,7 @@ game/unreal/
 | Prototype Design Gate | Decide whether the prototype is ready for implementation | prototype goal, playable promise, mechanic readiness, content scope, placeholder policy, prototype visual quality floor, engine mapping, validation plan, cut list |
 | Narrative Loop | Connect world, characters, and story flow to the game | world bible, character briefs, narrative flow, quest/dialogue briefs |
 | Art Loop | Decide how the game should look and how assets enter safely | art direction, asset list, asset briefs, provenance, asset review |
-| Programming Loop | Map mechanics into Godot / Unreal | engine mapping, technical breakdown, prototype tasks, tests |
+| Programming Loop | Map mechanics into Three.js, Unity, Godot, or Unreal | production-target mapping, technical breakdown, prototype tasks, tests |
 | QA / Playtest Loop | Decide whether the game is playable and understandable | playtest checklist, bug reports, tuning notes, evidence |
 | Release Loop | Decide whether a demo can go public | demo readiness, store asset briefs, localization, AI asset disclosure |
 
@@ -305,12 +307,12 @@ The zero-to-one stage can end and Prototype may begin only when:
 - `docs/00-game-start.md` clearly describes the game direction.
 - Pitch, core loop, and the smallest mechanic spec have been expanded from Game Start.
 - The core fun hypothesis is clear.
-- The engine choice or engine-neutral strategy is clear.
+- The first-playable target, final production target, or target-neutral strategy is clear.
 - The Prototype Design Gate is complete, including prototype goal, playable promise, core mechanic readiness, moment-to-moment flow, content scope, placeholder policy, prototype visual quality floor, engine mapping, validation plan, and cut list.
 - The review gate is marked `Review Status: Approved`.
 - Evidence records the key production decisions.
 
-If the user asks to enter Godot, Unreal, gameplay code, editor automation, or prototype implementation, use the `prototype-design` skill first. `mgw-init` stays light, while `prototype-design` raises the prototype design quality bar.
+If the user asks to enter Three.js, Unity, Godot, Unreal, gameplay code, editor automation, or prototype implementation, use the `prototype-design` skill first.
 
 ## 14. Prototype Visual Quality Floor
 
@@ -330,7 +332,7 @@ Zero-to-one does not include:
 
 - One-click full game generation.
 - Default MCP installation.
-- Opening Godot or Unreal by default.
+- Opening a Three.js dev server, Godot, Unity, or Unreal by default.
 - Creating real engine projects by default.
 - Generating or importing final / release-candidate assets.
 - Using AI assets without license and provenance records.
@@ -342,5 +344,8 @@ Zero-to-one does not include:
 - Product entry: `product-entry-and-mgw-init.en.md`
 - Full lifecycle: `user-journey.en.md`
 - Game design and systems: `game-design-systems.en.md`
-- Godot / Unreal mapping: `godot-unreal-workflow.en.md`
+- Production-target contract: `production-target-contract.en.md`
+- Three.js: `threejs-web-runtime.en.md`
+- Unity: `unity-workflow.en.md`
+- Godot / Unreal: `godot-unreal-workflow.en.md`
 - Testing strategy: `testing-strategy.en.md`

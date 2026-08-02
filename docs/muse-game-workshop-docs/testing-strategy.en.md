@@ -16,7 +16,7 @@ Testing must cover seven object types:
 4. AI tool adapter behavior.
 5. Creative asset pipeline.
 6. Bilingual audiences, localization, and terminology consistency.
-7. Godot/Unreal examples and release readiness.
+7. Three.js Web, Unity, Unreal, and Godot examples or target validation plus release readiness.
 
 ## 2. Testing Principles
 
@@ -121,6 +121,9 @@ tools/checks/check-v0.1-manifest
 tools/checks/check-v0.9-economy-progression
 tools/checks/check-v0.9.1-numerical-planning
 tools/checks/check-v0.9.2-design-skills
+tools/checks/check-v0.9.3-threejs-runtime
+tools/checks/check-v0.9.4-unity
+tools/checks/check-creative-ai-pilot
 ```
 
 Unified output format:
@@ -135,9 +138,9 @@ Check contracts:
 | Check | Pass Condition | Fail Condition |
 |---|---|---|
 | `check-doc-links` | All local Markdown links exist. | Any local link target is missing. |
-| `check-doc-pairs` | The root README exists; the core document set exists in pairs: overall project plan, Vision, PRD, Product Entry & `mgw init`, User Journey, technical architecture, Godot/Unreal workflow, Godot Prototype Asset Kit, Genre Tracks, Economy & Progression, Numerical Planning, Agent Skill Composition, skill pack spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, game design systems, delivery plan, v0.1 execution plan, v0.1 manifest, testing strategy, and MVP roadmap. | README is missing, or any core doc is missing its paired language version. |
+| `check-doc-pairs` | The root README exists; the core document set exists in pairs, including the overall plan, Vision, PRD, product entry, user journey, technical architecture, Production Target Contract, Three.js Web Runtime, Unity Workflow, multi-target workflow, skill/template/handoff specs, testing strategy, and roadmap. | README is missing, or any core doc is missing its paired language version. |
 | `check-startup-prompts` | README, package indexes, roadmap, and testing strategy starting prompts include target language, target audience, bilingual audience strategy, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and review gate; CLAUDE.md must not conflict with AGENTS.md or the manifest. | A prompt misses any required read item, does not declare target language, or tool rules conflict. |
-| `check-template-metadata` | The current template set includes the shared metadata block, including v0.1 templates, v0.3 creative templates, v0.6 design systems templates, v0.9 economy/progression templates, and v0.9.1 numerical planning templates. | Any template is missing Language, Target Audience, Locale, Terminology Source, Owner, or Review Status. |
+| `check-template-metadata` | The current template set includes the shared metadata block, including v0.1 templates, v0.3 creative templates, v0.6 design systems templates, v0.9 economy/progression templates, v0.9.1 numerical planning templates, v0.9.3 production-target templates, and Creative AI Production Pilot templates. | Any template is missing Language, Target Audience, Locale, Terminology Source, Owner, or Review Status. |
 | `check-v0.1-manifest` | Skills/templates/checks/dry-run evidence listed in the manifest exist, and no Godot/Unreal example code enters v0.1 early; forbidden patterns include `*.gd`, `*.tscn`, `*.tres`, `*.uasset`, `*.umap`, `*.uproject`, `*.cpp`, `*.h`, `*.cs`, `*.shader`, and `*.import`. | A manifest item is missing, or v0.1 contains premature game implementation code. |
 | `check-v0.2-godot` | Godot Boss Rush prototype paths, script contracts, input mapping, core-loop simulation, and Godot headless validation pass. | Project files are missing, script contracts are missing, the core loop fails, or Godot reports errors. |
 | `check-v0.3-creative-assets` | v0.3 creative templates, asset briefs/provenance/review/evidence, prototype visual/audio assets, Godot scene wiring, and engine validation pass. | Assets are missing briefs/provenance/review, file formats are invalid, scene wiring is missing, or Godot reports errors. |
@@ -150,6 +153,9 @@ Check contracts:
 | `check-v0.9-economy-progression` | v0.9 Economy & Progression docs, economy model/progression map/resource-reward/tuning-loop templates, Tactics economy dry run, review gate, evidence, README/docs index/roadmap updates, v0.10 Telemetry & Playtest Analytics next-version handoff, and boundary checks pass. | v0.9 docs/templates/evidence are missing, Tactics lacks action points/stamina/cooldowns/rewards/failure compensation/unit growth, v0.10 is not identified as the next version, or v0.9 creates commercial backend, payment, real telemetry service, engine files, or assets. |
 | `check-v0.9.1-numerical-planning` | v0.9.1 Numerical Planning docs, level curve/combat parameter table/system numerical plan templates, Tactics numerical dry run, review gate, evidence, README/docs index/roadmap updates, v0.10 next-version handoff, and boundary checks pass. | v0.9.1 docs/templates/evidence are missing, Tactics lacks level/combat/system-number validation, v0.10 is not identified as the next major version, or v0.9.1 creates engine code, real telemetry, commercial backend, payment, assets, or release balance approval. |
 | `check-v0.9.2-design-skills` | v0.9.2 Specialized Design Skills exist, Agent Skill Composition docs are paired, role-agent bundles and skill routing are documented, existing core skills route to the new specialist skills, README/docs index/roadmap updates exist, v0.10 next-version handoff is preserved, and boundary checks pass. | Any specialist skill is missing or malformed, Agent Skill Composition is missing, role-agent bundles lack production roles, core skills do not route to specialist skills, v0.10 is not identified as the next major version, or v0.9.2 creates engine code, real telemetry, commercial backend, payment, assets, or release balance approval. |
+| `check-v0.9.3-threejs-runtime` | The production-target contract, paired Three.js docs, skill, templates, evidence, and browser reference exist; installed unit/build/browser tests pass. | A core contract is missing, build fails, canvas is blank, input loop fails, or the browser reports errors. |
+| `check-v0.9.4-unity` | Paired Unity docs, skill, mapping, and evidence exist; when Unity Editor is detected, editor smoke runs. | Static contract is missing or detected editor smoke fails; unexecuted Editor/PlayMode/player builds must never be reported as passed. |
+| `check-creative-ai-pilot` | The paired AI 3D contract, paired `img2threejs` research, specialist skill, three templates, and planning-only Grey Tide pilot exist; indexes and counts agree, with no tool installation or generated asset. | A paired doc, skill, template, pilot boundary, or index is missing; an `img2threejs` vendor install exists; or generated/binary assets appear in pilot evidence. |
 
 Acceptance:
 
@@ -238,8 +244,11 @@ Coverage:
 
 - Codex.
 - Claude Code.
+- Kimi Code.
 - Kiro CLI.
 - opencode.
+- RoboCode.
+- CliHub.
 
 Shared test prompt:
 
@@ -516,3 +525,16 @@ A version is complete only when:
 - Release checklist exists when release is involved.
 - Known risks are written to release notes.
 - Review gate decision is explicit.
+
+## 17. Three.js Browser Runtime Tests
+
+- Vitest validates deterministic simulation, state transitions, and numerical boundaries.
+- The Vite production build must pass.
+- Playwright validates real-browser launch, input, win/loss/restart, console/page errors, nonblank canvas, and desktop/mobile screenshots.
+- Visual baselines pin browser and environment; performance evidence records FPS, frame time, draw calls, triangles, initial payload, and fallback backend.
+
+## 18. Unity Conditional Tests
+
+- Static checks validate Unity 6 version records, Scene/Prefab/Component/ScriptableObject/asmdef/Input System mapping, and EditMode/PlayMode/build command plans.
+- When Unity Editor is detected, batchmode runs EditMode, PlayMode, and minimal player-build smoke with XML/log evidence.
+- Without Unity Editor, evidence must explicitly report pending/blocked editor validation and must not fabricate PASS.

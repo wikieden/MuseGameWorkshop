@@ -1,6 +1,6 @@
 # 文档模板索引
 
-版本：v0.9.1
+版本：v0.9.4
 
 语言：中文
 
@@ -8,7 +8,7 @@
 
 本文件定义 Muse Game Workshop 模板体系，并以 `v0.1-manifest.zh.md` 为 v0.1 实际落地唯一真源。模板目标不是写长文档，而是让策划、机制、实现、创意资产、试玩和发布有稳定记录。
 
-本文件中的 v0.1 模板子集固定为 22 个。v0.3 在不改变 v0.1 manifest 边界的前提下，补充 `animation-brief`、`music-brief`、`sfx-brief`、`asset-integration` 和 `ai-asset-disclosure`，用于 Creative Production Ready 的资产管线验证。v0.6 继续补充 `system-design`、`combat-design`、`encounter-design`、`tuning-plan` 和 `playtest-hypothesis`，用于 Game Design & Systems / 策划与系统设计。v0.9 增加 `economy-model`、`progression-map`、`resource-reward-table` 和 `tuning-loop`，用于 Economy & Progression / 经济与成长。v0.9.1 增加 `level-curve`、`combat-parameter-table` 和 `system-numerical-plan`，用于 Numerical Planning / 数值规划。
+本文件中的 v0.1 模板子集固定为 22 个。v0.3 在不改变 v0.1 manifest 边界的前提下，补充 `animation-brief`、`music-brief`、`sfx-brief`、`asset-integration` 和 `ai-asset-disclosure`，用于 Creative Production Ready 的资产管线验证。v0.6 继续补充 `system-design`、`combat-design`、`encounter-design`、`tuning-plan` 和 `playtest-hypothesis`，用于 Game Design & Systems / 策划与系统设计。v0.9 增加 `economy-model`、`progression-map`、`resource-reward-table` 和 `tuning-loop`，用于 Economy & Progression / 经济与成长。v0.9.1 增加 `level-curve`、`combat-parameter-table` 和 `system-numerical-plan`，用于 Numerical Planning / 数值规划。v0.9.3 增加 `production-target-mapping` 和 `browser-playtest-checklist`，用于四种生产目标的落地交接和浏览器验证。当前仓库实际包含 41 个模板。
 
 所有模板都应遵循：
 
@@ -16,7 +16,7 @@
 - 可执行。
 - 可验证。
 - 可以被 AI coding tools 和创意 AI tools 读取和更新。
-- 可以服务 Godot 与 Unreal 双引擎。
+- 可按主题服务 Three.js WebGPU、Unity、Unreal Engine 和 Godot 四种生产目标。
 - 标明目标语言、目标用户群体、地区语境和术语来源。
 
 所有模板必须以最小元数据开头：
@@ -62,12 +62,14 @@ templates/design/
   level-curve.md
   combat-parameter-table.md
   system-numerical-plan.md
+  production-target-mapping.md
 
 templates/production/
   handoff-record.md
   review-gate.md
   acceptance-checklist.md
   milestone-plan.md
+  browser-playtest-checklist.md
 
 templates/creative/
   art-direction.md
@@ -79,6 +81,9 @@ templates/creative/
   asset-review.md
   asset-integration.md
   ai-asset-disclosure.md
+  procedural-3d-delivery.md
+  multi-view-3d-asset-review.md
+  creative-ai-cost-record.md
 
 templates/ux/
   ux-flow.md
@@ -973,3 +978,30 @@ v0.9.1 增加 3 个设计模板，用于在实现前让等级、战斗和系统�
 - 下一主版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
 
 这些模板不绑定 Godot 或 Unreal，也不代表可以跳过 review gate 直接改实现。
+
+## 28. v0.9.3 Multi-target Production / 多目标制作模板
+
+v0.9.3 增加两个面向制作落地的模板，用来明确区分 First Playable Target / 首个可玩目标与 Final Production Target / 最终生产目标。
+
+| Template | 用途 | 主要使用者 |
+|---|---|---|
+| `production-target-mapping.md` | 把引擎无关玩法契约、数据、资产、运行时职责、降级路径、测试、打包和证据映射到一个已批准的生产目标。 | Technical Designer / 技术策划、Gameplay Programmer / 玩法程序、Technical Artist / 技术美术、QA / 测试、Release Manager / 发布负责人 |
+| `browser-playtest-checklist.md` | 验证浏览器加载、WebGPU/WebGL 2 选择、输入、画布适配、UI、无障碍、性能、稳定性和发布证据。 | Web Gameplay Programmer / Web 玩法程序、QA / 测试、制作人、发布负责人 |
+
+边界：
+
+- 填完模板只代表交付记录可 review，不代表编辑器、浏览器矩阵、设备矩阵或发布构建已经真实执行。
+- 生产验证结论必须附带模板要求的命令日志、截图、构建物和 review evidence。
+- 下一计划版本仍然是 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析。
+
+## 29. Creative AI Production Pilot / 创意 AI 生产试点模板
+
+非版本化试点新增三个工具无关模板，用于把 AI 3D 生产从“生成结果”提升为可 review 的制作交付。
+
+| Template | 用途 | 主要使用者 |
+|---|---|---|
+| `procedural-3d-delivery.md` | 记录 Asset ID、参考来源、质量契约、runtime hierarchy、技术预算、分阶段生产和交付决定。 | 3D 美术、技术美术、玩法程序、制作人 |
+| `multi-view-3d-asset-review.md` | 用参考视角、玩法视角和两个 orbit views 检查结构、材质、玩法可读性和运行时接口。 | 主美、技术美术、QA / 测试、游戏策划 |
+| `creative-ai-cost-record.md` | 记录版本、模型、token、服务费用、耗时、人工返工、质量结果和停止/换工具决定。 | 制作人、资产负责人、技术美术 |
+
+边界：模板不批准工具安装、第三方上传、资产生成、Grey Tide 代码修改或发布候选状态。

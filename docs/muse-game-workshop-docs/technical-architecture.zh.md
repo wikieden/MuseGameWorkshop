@@ -6,13 +6,13 @@
 
 ## 1. 架构目标
 
-本架构的目标是建立一套可复用、可扩展、可落地的 AI 游戏制作工作流层，让 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools 能够围绕 Godot 和 Unreal 项目进行策划、拆解、实现辅助、测试、复盘和发布检查。
+本架构的目标是建立一套可复用、可扩展、可落地的 AI 游戏制作工作流层，让 Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode、CliHub 等工具能够围绕 Three.js WebGPU、Unity、Unreal 和 Godot 项目进行策划、实现、测试、复盘和发布检查。
 
 架构核心不是让某个 AI coding tool 直接控制一切，而是让工具在明确制作阶段、制作职能、规则和证据约束下工作：
 
 - 先理解项目阶段。
 - 先生成引擎无关设计规格。
-- 再映射到 Godot 或 Unreal。
+- 再映射到 Three.js WebGPU、Unity、Godot 或 Unreal 生产目标。
 - 再生成设计摘要和可执行计划。
 - 通过 review gate 后再进入执行。
 - 最后通过测试、试玩、截图、日志或人工审查完成验证。
@@ -27,7 +27,7 @@ flowchart TD
   L --> T["Coding Tool Adapter Layer\nCodex, Claude Code, Kiro CLI, opencode"]
   L --> CT["Creative Tool Adapter Layer\nImage, Audio, Video, 3D, Animation, Localization AI"]
   CT --> CP["Creative Asset Pipeline\nBrief, Generation, Human Review, Provenance"]
-  T --> C["Engine Mapping Layer\nGodot Adapter, Unreal Adapter, Portability"]
+  T --> C["Production Target Mapping Layer\nThree.js, Unity, Godot, Unreal"]
   CP --> C
   C --> R["Review Gate\nDesign + Plan + Asset Approval"]
   R --> D["Execution Layer\nScripts, Editor Automation, MCP, Tests"]
@@ -77,7 +77,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 - 初始化 profiles。
 - `muse.project.yaml`。
 - 项目 README、rules、templates、checks 和 evidence 目录。
-- 可选 Godot/Unreal 工作区说明。
+- 可选 Three.js、Unity、Godot、Unreal 工作区说明。
 - 默认 `--mcp none` 的安全策略。
 
 这一层只初始化 production workspace / 制作工作台，不默认写游戏代码、不安装 MCP、不生成或导入资产。
@@ -117,10 +117,12 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 - Integration：命名、格式、尺寸、压缩、目录、导入设置、性能预算。
 - Validation：截图、动效预览、音频触发、混音、引擎内测试。
 
-### 2.7 Engine Mapping Layer
+### 2.7 Production Target Mapping Layer
 
-负责把引擎无关规格映射到具体引擎：
+负责把目标无关规格映射到具体生产目标：
 
+- Three.js WebGPU：simulation、renderer、DOM UI、browser APIs、WebGL 2 fallback、static deployment。
+- Unity：Scene、GameObject、Component、Prefab、ScriptableObject、Assembly Definition、Build Profile。
 - Godot：Scene、Node、Script、Resource、Signal、Autoload、Export。
 - Unreal：Actor、Component、Pawn、Controller、GameMode、Subsystem、Blueprint、C++、Data Asset。
 
@@ -131,6 +133,8 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 负责实际执行：
 
 - AI coding tool file edits。
+- Node/Vite/Vitest/Playwright。
+- Unity Editor、Test Framework 和 batchmode。
 - Godot CLI。
 - Unreal Editor Scripting。
 - 创意资产导入和格式检查。
@@ -138,7 +142,7 @@ workflow core 必须把 language、target audience 和 locale 传递给后续 co
 - 动画、VFX、UI 和场景资产验证。
 - Unreal Automation Tests。
 - Godot GdUnit4/GUT。
-- Godot/Unreal MCP 可选接入。
+- Unity/Godot/Unreal MCP 可选接入。
 - 构建、导出、打包、性能检查。
 
 ### 2.9 Evidence Layer
@@ -439,34 +443,35 @@ Unreal 映射：
 
 Unreal 官方支持 Editor Scripting、Python、Blueprint automation、Remote Control 和 Automation Test Framework。这些是后期接入 AI 编辑器控制的基础。
 
-## 7. Engine Portability
+## 7. Production Target Portability
 
-`engine-portability` 的职责是维护同一机制在 Godot 与 Unreal 之间的共用语言。
+`engine-portability` 保留 slug 兼容性，但职责扩展为维护同一机制在 Three.js WebGPU、Unity、Godot 与 Unreal 之间的共用生产语言。
 
 它输出：
 
 - Engine-neutral spec。
-- Godot mapping。
-- Unreal mapping。
+- Three.js Web mapping。
+- Unity mapping。
+- Godot / Unreal mapping。
 - 风险比较。
-- 引擎选择建议。
+- 首次可玩目标和最终生产目标建议。
 
 示例判断：
 
-| 维度 | Godot | Unreal |
-|---|---|---|
-| 2D 原型速度 | 高 | 中 |
-| 3D 动作表现 | 中 | 高 |
-| 动画系统 | 中 | 高 |
-| 打包复杂度 | 低 | 高 |
-| Solo 可控性 | 高 | 中 |
-| 高规格视觉 | 中 | 高 |
+| 维度 | Three.js Web | Unity | Godot | Unreal |
+|---|---|---|---|---|
+| 浏览器反馈速度 | 高 | 中 | 中 | 低 |
+| 3D 内容生产工具 | 中 | 高 | 中 | 高 |
+| 打包复杂度 | 低 | 中 | 低 | 高 |
+| Solo 可控性 | 高 | 中 | 高 | 中 |
+| 高规格视觉 | 中到高 | 高 | 中到高 | 高 |
 
 ## 8. 未来 MCP 接入策略
 
 第一阶段不强依赖 MCP，但文档结构应适合接入：
 
 - Godot MCP：用于场景编辑、脚本生成、play-mode validation、截图、性能检查。
+- Unity automation：用于 Scene/Prefab、ScriptableObject、EditMode/PlayMode tests 和 player build；MCP 只作为可选 adapter。
 - Unreal MCP：用于 Blueprint 编辑、Actor 操作、Data Asset、UMG、Animation、PIE test、headless build。
 
 接入原则：

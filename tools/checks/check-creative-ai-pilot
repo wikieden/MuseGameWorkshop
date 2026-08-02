@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-creative-ai-pilot"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+def require_tokens(rel: str, tokens: list[str]) -> str:
+    path = ROOT / rel
+    if not path.is_file():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+    return text
+
+
+document_contracts = {
+    "docs/muse-game-workshop-docs/ai-3d-asset-production.zh.md": [
+        "AI 3D Asset Production Contract",
+        "工具适配器契约",
+        "多视角质量门",
+        "成本与停止规则",
+        "不批准",
+    ],
+    "docs/muse-game-workshop-docs/ai-3d-asset-production.en.md": [
+        "AI 3D Asset Production Contract",
+        "Tool Adapter Contract",
+        "Multi-view Quality Gate",
+        "Cost And Stop Rules",
+        "does not approve",
+    ],
+    "docs/muse-game-workshop-docs/research/img2threejs-research.zh.md": [
+        "img2threejs",
+        "acd252c",
+        "56 tests passed",
+        "adapter candidate",
+        "不安装工具",
+    ],
+    "docs/muse-game-workshop-docs/research/img2threejs-research.en.md": [
+        "img2threejs",
+        "acd252c",
+        "56 tests passed",
+        "adapter candidate",
+        "does not install the tool",
+    ],
+}
+
+for rel, tokens in document_contracts.items():
+    require_tokens(rel, tokens)
+
+skill_sections = [
+    "## Use When",
+    "## Do Not Use When",
+    "## Inputs",
+    "## Outputs",
+    "## Workflow",
+    "## Quality Bar",
+    "## Common Failure Modes",
+    "## Next Skills",
+]
+require_tokens(
+    ".agents/skills/ai-3d-asset-production/SKILL.md",
+    [
+        "name: ai-3d-asset-production",
+        "description:",
+        *skill_sections,
+        "Multi-view Gate",
+        "Tool Adapter Rules",
+        "switch-tool",
+        "img2threejs",
+    ],
+)
+
+metadata_fields = [
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+template_contracts = {
+    "templates/creative/procedural-3d-delivery.md": [
+        *metadata_fields,
+        "# Procedural 3D Delivery",
+        "## Reference Manifest",
+        "## Quality Contract",
+        "## Runtime Hierarchy",
+        "## Technical Budget",
+        "## Delivery Decision",
+    ],
+    "templates/creative/multi-view-3d-asset-review.md": [
+        *metadata_fields,
+        "# Multi-view 3D Asset Review",
+        "Reference View",
+        "Gameplay View",
+        "Orbit View A",
+        "Orbit View B",
+        "## Review Decision",
+    ],
+    "templates/creative/creative-ai-cost-record.md": [
+        *metadata_fields,
+        "# Creative AI Cost Record",
+        "Approved Token Ceiling",
+        "Approved Service-cost Ceiling",
+        "Human Time",
+        "## Budget Decision",
+    ],
+}
+
+for rel, tokens in template_contracts.items():
+    require_tokens(rel, tokens)
+
+pilot_contracts = {
+    "docs/evidence/creative-ai-pilot/grey-tide-img2threejs-pilot-plan.zh.md": [
+        "Review Status：Approved for planning",
+        "Pilot Execution Status：Not approved",
+        "Asset Generation：Not run",
+        "GT-PORT-CRATE-01",
+        "GT-MECH-MODULE-01",
+        "GT-PORT-MACHINE-01",
+        "TBD",
+    ],
+    "docs/evidence/creative-ai-pilot/grey-tide-img2threejs-pilot-plan.en.md": [
+        "Review Status: Approved for planning",
+        "Pilot Execution Status: Not approved",
+        "Asset Generation: Not run",
+        "GT-PORT-CRATE-01",
+        "GT-MECH-MODULE-01",
+        "GT-PORT-MACHINE-01",
+        "TBD",
+    ],
+}
+
+for rel, tokens in pilot_contracts.items():
+    require_tokens(rel, tokens)
+
+index_contracts = {
+    "README.md": ["25 workflow skills", "44 templates", "19 check entry points", "check-creative-ai-pilot"],
+    "README.zh.md": ["25 个 workflow skills", "44 个模板", "19 个检查入口", "check-creative-ai-pilot"],
+    "README.en.md": ["25 workflow skills", "44 templates", "19 check entry points", "check-creative-ai-pilot"],
+    "docs/muse-game-workshop-docs/README.zh.md": ["ai-3d-asset-production.zh.md", "img2threejs-research.zh.md"],
+    "docs/muse-game-workshop-docs/README.en.md": ["ai-3d-asset-production.en.md", "img2threejs-research.en.md"],
+    "docs/muse-game-workshop-docs/mvp-roadmap.zh.md": ["Creative AI Production Pilot", "非版本化并行轨", "下一主版本"],
+    "docs/muse-game-workshop-docs/mvp-roadmap.en.md": ["Creative AI Production Pilot", "Non-versioned Track", "next"],
+    "docs/muse-game-workshop-docs/agent-skill-composition.zh.md": ["Creative Production Agent", "ai-3d-asset-production"],
+    "docs/muse-game-workshop-docs/agent-skill-composition.en.md": ["Creative Production Agent", "ai-3d-asset-production"],
+}
+
+for rel, tokens in index_contracts.items():
+    require_tokens(rel, tokens)
+
+skill_count = sum(1 for path in (ROOT / ".agents" / "skills").iterdir() if path.is_dir())
+template_count = sum(1 for path in (ROOT / "templates").rglob("*.md") if path.is_file())
+check_count = sum(1 for path in (ROOT / "tools" / "checks").iterdir() if path.is_file())
+
+if skill_count != 25:
+    fail(f"expected 25 skill directories, found {skill_count}")
+if template_count != 44:
+    fail(f"expected 44 templates, found {template_count}")
+if check_count != 19:
+    fail(f"expected 19 check files, found {check_count}")
+
+for forbidden in [
+    ROOT / ".agents" / "skills" / "img2threejs",
+    ROOT / "vendor" / "img2threejs",
+    ROOT / "tools" / "img2threejs",
+]:
+    if forbidden.exists():
+        fail(f"tool installation is outside the approved scope: {forbidden.relative_to(ROOT)}")
+
+pilot_files = sorted((ROOT / "docs" / "evidence" / "creative-ai-pilot").rglob("*"))
+unexpected = [path for path in pilot_files if path.is_file() and path.suffix.lower() not in {".md"}]
+if unexpected:
+    fail("pilot evidence contains generated or binary files")
+
+print(
+    f"PASS {CHECK}: research, paired contract, specialist skill, three templates, "
+    "planning-only Grey Tide pilot, indexes, counts, and no-install boundary validated"
+)

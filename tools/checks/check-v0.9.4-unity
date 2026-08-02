@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import glob
+import shutil
+import subprocess
+import sys
+import tempfile
+
+ROOT = Path(__file__).resolve().parents[2]
+CHECK = "check-v0.9.4-unity"
+
+
+def fail(reason: str) -> None:
+    print(f"FAIL {CHECK}: {reason}")
+    sys.exit(1)
+
+
+def require_tokens(rel: str, tokens: list[str]) -> str:
+    path = ROOT / rel
+    if not path.is_file():
+        fail(f"missing {rel}")
+    text = path.read_text(encoding="utf-8")
+    for token in tokens:
+        if token not in text:
+            fail(f"{rel} missing {token}")
+    return text
+
+
+def find_unity_editor() -> str | None:
+    for command in ["Unity", "unity-editor", "unity"]:
+        resolved = shutil.which(command)
+        if resolved:
+            return resolved
+
+    patterns = [
+        "/Applications/Unity/Hub/Editor/*/Unity.app/Contents/MacOS/Unity",
+        str(Path.home() / "Applications/Unity/Hub/Editor/*/Unity.app/Contents/MacOS/Unity"),
+        "/opt/unity/editors/*/Editor/Unity",
+        "/opt/Unity/Editor/Unity",
+        "C:/Program Files/Unity/Hub/Editor/*/Editor/Unity.exe",
+    ]
+    candidates: list[str] = []
+    for pattern in patterns:
+        candidates.extend(path for path in glob.glob(pattern) if Path(path).is_file())
+    return sorted(candidates, reverse=True)[0] if candidates else None
+
+
+document_contracts = {
+    "docs/muse-game-workshop-docs/production-target-contract.en.md": [
+        "Production Target Contract",
+        "First Playable Target",
+        "Final Production Target",
+        "Three.js WebGPU",
+        "Unity",
+        "Unreal",
+        "Godot",
+        "v0.9.4",
+    ],
+    "docs/muse-game-workshop-docs/production-target-contract.zh.md": [
+        "Production Target Contract",
+        "First Playable Target",
+        "Final Production Target",
+        "Three.js WebGPU",
+        "Unity",
+        "Unreal",
+        "Godot",
+        "v0.9.4",
+    ],
+    "docs/muse-game-workshop-docs/unity-workflow.en.md": [
+        "v0.9.4",
+        "Unity 6",
+        "Assembly Definitions",
+        "ScriptableObject",
+        "Input System",
+        "EditMode",
+        "PlayMode",
+        "batchmode",
+        "Blocked: Unity Editor unavailable",
+    ],
+    "docs/muse-game-workshop-docs/unity-workflow.zh.md": [
+        "v0.9.4",
+        "Unity 6",
+        "Assembly Definition",
+        "ScriptableObject",
+        "Input System",
+        "EditMode",
+        "PlayMode",
+        "batchmode",
+        "Blocked: Unity Editor unavailable",
+    ],
+}
+
+for rel, tokens in document_contracts.items():
+    require_tokens(rel, tokens)
+
+skill_sections = [
+    "## Use When",
+    "## Do Not Use When",
+    "## Inputs",
+    "## Outputs",
+    "## Workflow",
+    "## Quality Bar",
+    "## Common Failure Modes",
+    "## Next Skills",
+]
+require_tokens(
+    ".agents/skills/unity-workflow/SKILL.md",
+    [
+        "name: unity-workflow",
+        "description:",
+        *skill_sections,
+        "ScriptableObject",
+        "Assembly Definition",
+        "EditMode",
+        "PlayMode",
+        "player build",
+        "Blocked",
+        "Unity Editor",
+    ],
+)
+
+metadata_fields = [
+    "- Language:",
+    "- Target Audience:",
+    "- Locale:",
+    "- Platform Region:",
+    "- Terminology Source:",
+    "- Paired Document:",
+    "- Owner:",
+    "- Review Status:",
+    "- Last Updated:",
+]
+require_tokens(
+    "templates/design/production-target-mapping.md",
+    [
+        *metadata_fields,
+        "# Production Target Mapping",
+        "## Authoritative Design Sources",
+        "## Target Decision",
+        "## Engine-Neutral Contract",
+        "## Responsibility Mapping",
+        "## Project Boundaries",
+        "## Validation Matrix",
+        "## Review Gate",
+    ],
+)
+
+evidence_contracts = {
+    "docs/evidence/v0.9.4/v0.9.4-unity-evidence.en.md": [
+        "Version: v0.9.4",
+        "Language: English",
+        "Review Status: Approved",
+        "Workflow Support Status:",
+        "Unity Editor Validation Status: Blocked - Unity Editor not installed",
+        "check-v0.9.4-unity",
+    ],
+    "docs/evidence/v0.9.4/v0.9.4-unity-evidence.zh.md": [
+        "Version: v0.9.4",
+        "Language: Chinese",
+        "Review Status: Approved",
+        "Workflow Support Status:",
+        "Unity Editor Validation Status: Blocked - Unity Editor not installed",
+        "check-v0.9.4-unity",
+    ],
+    "docs/evidence/v0.9.4/v0.9.4-unity-review-gate.en.md": [
+        "Version: v0.9.4",
+        "Review Status: Approved",
+        "我们现完成到0.9.4",
+        "Blocked",
+        "Static files cannot",
+    ],
+    "docs/evidence/v0.9.4/v0.9.4-unity-review-gate.zh.md": [
+        "Version: v0.9.4",
+        "Review Status: Approved",
+        "我们现完成到0.9.4",
+        "Blocked",
+        "静态文件不能",
+    ],
+    "docs/evidence/v0.9.4/unity-validation-status.en.md": [
+        "Version: v0.9.4",
+        "Workflow Support Status:",
+        "Unity Editor Validation Status: Blocked - Unity Editor not installed",
+        "EditMode tests",
+        "PlayMode",
+        "Player build",
+        "Not allowed while Blocked",
+    ],
+    "docs/evidence/v0.9.4/unity-validation-status.zh.md": [
+        "Version: v0.9.4",
+        "Workflow Support Status:",
+        "Unity Editor Validation Status: Blocked - Unity Editor not installed",
+        "EditMode tests",
+        "PlayMode",
+        "Player build",
+        "保持 Blocked 时不允许声明",
+    ],
+}
+
+for rel, tokens in evidence_contracts.items():
+    require_tokens(rel, tokens)
+
+unity_editor = find_unity_editor()
+if not unity_editor:
+    print(f"INFO {CHECK}: Unity Editor unavailable; editor smoke remains BLOCKED")
+else:
+    print(f"INFO {CHECK}: Unity Editor found at {unity_editor}")
+    with tempfile.TemporaryDirectory(prefix="muse-unity-smoke-") as temp_dir:
+        project = Path(temp_dir) / "UnitySmokeProject"
+        try:
+            smoke = subprocess.run(
+                [
+                    unity_editor,
+                    "-batchmode",
+                    "-nographics",
+                    "-createProject",
+                    str(project),
+                    "-quit",
+                    "-logFile",
+                    "-",
+                ],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=240,
+            )
+        except subprocess.TimeoutExpired:
+            fail("Unity Editor smoke timed out after 240 seconds")
+        if smoke.returncode != 0:
+            detail = (smoke.stderr.strip() or smoke.stdout.strip() or f"exit {smoke.returncode}")[-1600:]
+            fail(f"Unity Editor smoke failed: {detail}")
+        combined = f"{smoke.stdout}\n{smoke.stderr}"
+        blocking_markers = ["compilation failed", "batchmode quit unexpectedly", "fatal error"]
+        for marker in blocking_markers:
+            if marker in combined.lower():
+                fail(f"Unity Editor smoke reported {marker}")
+        print(f"INFO {CHECK}: Unity Editor batchmode create-project smoke passed")
+
+print(f"PASS {CHECK}")

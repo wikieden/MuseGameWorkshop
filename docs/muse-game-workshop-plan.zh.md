@@ -1,6 +1,6 @@
 # Muse Game Workshop 项目方案
 
-版本：v0.1
+版本：v0.9.4
 
 ## 1. 项目定位
 
@@ -11,8 +11,8 @@ Muse Game Workshop 是一套面向独立游戏开发的 AI 辅助制作工作流
 - 让独立开发者更快从模糊点子进入可试玩原型。
 - 把策划语言转成工程可实现、可测试、可调参的规格。
 - 把试玩反馈转成下一轮任务，而不是散落在聊天记录里。
-- 以 Godot 和 Unreal Engine 为最终目标引擎，提供统一的策划、规格、实现、测试和发布工作流。
-- 保留 Phaser/Three.js 作为早期网页原型或小型机制验证手段，但不作为主线引擎。
+- 以 Three.js WebGPU、Unity、Unreal Engine 和 Godot 为正式生产目标，提供统一的策划、规格、实现、测试和发布工作流。
+- Three.js 是正式 Web Production Target / Web 生产目标；WebGPU 是生产方向，WebGL 2 是兼容回退。Phaser 保留为未来 2D Web 候选。
 - 保持人类创意主导，让 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools 辅助结构化、拆解、实现辅助、测试和复盘，同时让图像、音频、视频、3D、动作等 creative AI tools 进入可审查、可追溯的资产制作流程。
 
 一句话定位：
@@ -23,7 +23,7 @@ Muse Game Workshop 是一套面向独立游戏开发的 AI 辅助制作工作流
 
 Muse Game Workshop 的长期愿景，是把 AI 从“会写几段代码、会生成几张素材图的工具”，提升为独立开发者和小团队可以信任的 AI-assisted game production operating model。它不做某个 AI 工具的游戏开发插件，也不把游戏制作压扁成“提示词生成内容”，而是用游戏行业已经理解的制作阶段、制作职能和质量门组织工作。
 
-它要帮助团队持续回答三个制作问题：我们到底在做什么游戏；下一步最小可验证产出是什么；每一次 AI 参与的设计、代码、资产、测试和发布决策，是否有依据、可追踪、能被人类批准。最终形态中，开发者可以从一个模糊想法开始，逐步形成可验证的玩法规格、可执行的工程计划、可审查的创意资产 brief、可追溯的 AI 生成资产记录、可落地的 Godot/Unreal 接入方案，以及可发布的 demo 检查清单。
+它要帮助团队持续回答三个制作问题：我们到底在做什么游戏；下一步最小可验证产出是什么；每一次 AI 参与的设计、代码、资产、测试和发布决策，是否有依据、可追踪、能被人类批准。最终形态中，开发者可以从模糊想法逐步形成玩法规格、工程计划、创意资产 brief、可追溯资产记录、四生产目标接入方案和可发布版本检查清单。
 
 Muse Game Workshop 不替代制作人、策划、美术、程序、音频、QA 或发行判断，而是让这些职能在 AI 辅助下更清晰、更快、更可复盘。它的价值不是让人少思考，而是让小团队在更短周期里做出更好的判断，并留下足够清楚的制作记忆。
 
@@ -34,8 +34,8 @@ Muse Game Workshop 不替代制作人、策划、美术、程序、音频、QA �
 - Solo 独立游戏开发者。
 - 小型 2-5 人游戏团队。
 - 有点子但缺工程推进节奏的策划/美术/创意开发者。
-- 想用 Codex、Claude Code、Kiro CLI、opencode 等 AI coding tools，以及图像、音频、视频、3D、动作等 creative AI tools 做 Godot 或 Unreal 独立游戏原型与正式项目的人。
-- 需要在 Godot 与 Unreal 之间沉淀共用策划、机制规格、数值、QA 和发布流程的人。
+- 想用 Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode、CliHub 等 AI coding tools，以及图像、音频、视频、3D、动作等 creative AI tools 做独立游戏原型与正式项目的人。
+- 需要在 Three.js WebGPU、Unity、Unreal Engine 和 Godot 之间沉淀共用策划、机制规格、数值、QA 和发布流程的人。
 - 中文独立游戏开发者和中国游戏行业用户，需要使用国内团队能理解的制作叫法。
 - English-speaking indie developers and small game teams，需要自然的英文 game-production language，而不是中文文档的直译版本。
 - 想把 AI 辅助开发从 vibe coding 升级成可控制作流程的人。
@@ -85,7 +85,7 @@ Muse Game Workshop 不替代制作人、策划、美术、程序、音频、QA �
 | Game Designer / 游戏策划 | 定义玩家体验、规则、机制和内容节奏 | pitch、core loop、mechanic spec、content matrix | 追问需求、整理规格、发现不可验证描述 |
 | Technical Designer / 技术策划 | 把设计翻译成状态机、参数和实现规格 | 状态机、参数表、数据结构、测试点 | 生成 engine-neutral spec 和实现映射 |
 | Gameplay Programmer / 玩法程序 | 实现输入、状态、交互、反馈和测试 | 脚本、组件、测试场景、验证命令 | review 通过后辅助编码和最小验证 |
-| Engine Specialist / 引擎专项 | 处理 Godot/Unreal 的场景、资源、蓝图、构建约束 | Godot/Unreal 映射、编辑器检查点 | 生成引擎具体计划和命令建议 |
+| Runtime / Engine Specialist / 运行时与引擎专项 | 处理 Three.js、Unity、Godot、Unreal 的项目结构与构建约束 | 生产目标映射、浏览器/编辑器检查点 | 生成目标具体计划和命令建议 |
 | Art Director / 美术指导 | 定义视觉方向、风格一致性和禁用方向 | art bible、风格板、资产验收标准 | 生成/整理 brief，检查风格漂移和授权记录 |
 | Concept Artist / 概念美术 | 角色、怪物、武器、道具、UI 概念探索 | 概念 brief、参考图、迭代记录 | 辅助生成方向、变体和审查清单 |
 | Environment Artist / 场景美术 | 关卡氛围、blockout、地形、灯光和场景资产 | 场景 brief、blockout、资产清单 | 辅助拆解场景需求和引擎导入规格 |
@@ -122,6 +122,7 @@ P1 应按 v0.6-v0.11 逐步纳入设计：
 中期能力纳入 v0.12-v0.15：
 
 - Creative Production Expansion：在设计、系统、类型、经济、数据和叙事稳定后扩展美术、动作、场景、音乐、音效和 UI 资产生产。
+- Creative AI Production Pilot / 创意 AI 生产试点：在不改变主版本顺序的前提下，先验证 AI 3D 生产契约、工具适配、成本和多视角评审；试点结果作为 v0.12 输入，不直接批准正式资产生产。
 - Procedural Content：规则稳定后的程序化地图、遭遇、掉落和任务变体。
 - Publishing & Release Readiness：store page、trailer brief、本地化、无障碍、平台披露和 demo readiness。
 - LiveOps / Post-launch：补丁、热修、更新路线、玩家反馈 triage。
@@ -291,9 +292,20 @@ Muse-Game-Workshop/
       release-checks/
 ```
 
-## 7. 双引擎目标
+## 7. 多生产目标
 
-本项目最终围绕 Godot 和 Unreal Engine 两条主线设计。
+本项目围绕 Three.js WebGPU、Unity、Unreal Engine 和 Godot 四条正式生产目标主线设计。项目需要分别选择 First Playable Target / 首个可玩目标和 Final Production Target / 最终生产目标；两者可以不同，但必须明确可移植内容和重做成本。
+
+Three.js Web 主线：
+
+- 适合即时浏览器访问、可分享试玩、Web 原生发行和快速跨设备验证。
+- 使用 TypeScript + Vite，以 WebGPU 为生产方向，并保留经过验证的 WebGL 2 回退。
+- 确定性 simulation / 模拟层与 renderer / 渲染层、DOM UI 分离。
+
+Unity 主线：
+
+- 适合广泛平台交付、C# 团队、成熟资产/编辑器工作流和中等规模 2D/3D 制作。
+- 使用数据驱动 ScriptableObjects、assembly 边界、Input System、EditMode/PlayMode tests 和 Player build checks。
 
 Godot 主线：
 
@@ -310,8 +322,8 @@ Unreal 主线：
 共用层：
 
 - 创意、核心循环、机制规格、内容矩阵、试玩报告、数值调优、发布清单保持引擎无关。
-- 每个机制先写成 engine-neutral spec，再由 `godot-workflow` 或 `unreal-workflow` 转成引擎实现任务。
-- 资产、输入、UI、存档、音频、VFX、性能预算需要在引擎适配层分别落地。
+- 每个机制先写成 engine-neutral spec，再由 `threejs-workflow`、`unity-workflow`、`godot-workflow` 或 `unreal-workflow` 转成一个目标实现。
+- 资产、输入、UI、存档、音频、VFX、性能预算、测试和打包需要在各生产目标适配层分别落地。
 
 ## 8. 第一版 Workflow Skills 设计
 
@@ -432,7 +444,8 @@ Unreal 主线：
 - Godot/C#：适合需要更强类型约束、工具链或团队工程规范的项目。
 - Unreal Blueprint：适合快速搭建 3D 玩法、动画、关卡交互和设计师可编辑逻辑。
 - Unreal C++：适合性能敏感、底层系统、复杂 Gameplay Framework 扩展。
-- Phaser/Three.js：仅作为早期机制验证或网页展示，不作为最终目标引擎。
+- Three.js WebGPU：正式 Web 生产目标，覆盖原型、垂直切片、Web Demo 和通过发布门的小型 Web 游戏。
+- Phaser：保留为未来 2D Web runtime 候选，不进入 v0.9.4 实现。
 
 ### 8.7 playtest-report
 
@@ -874,26 +887,28 @@ Muse Game Workshop 第一阶段采用轻量原则：
 
 ## 13. MVP 范围
 
-这里的 MVP 指从 v0.1 workflow pack 到 v1.0 reusable production pack 的完整验证链路。v0.5 已完成路线重排和研究收口；v0.6 已完成策划与系统设计包；v0.7 已完成 Product Entry & `mgw init` / 产品入口与项目初始化设计；v0.8-v0.15 继续补齐类型分支、经济与成长、数据埋点与试玩分析、叙事设计、创意资产生产扩展、程序化内容、发布准备和上线后运营；v0.1 的实际创建范围仍以 `docs/muse-game-workshop-docs/v0.1-manifest.zh.md` 为唯一真源。
+这里的 MVP 指从 v0.1 workflow pack 到 v1.0 reusable production pack 的完整验证链路。v0.9.3 已补齐多生产目标基础和 Three.js Web Runtime；v0.9.4 已补齐 Unity Workflow；v0.10 起继续数据、叙事、资产、程序化内容、发布和运营计划。
 
 MVP 链路只做这些：
 
 - `AGENTS.md`
 - 14 个 v0.1 P0 workflow skills 的 `SKILL.md`。
-- 39 个 templates，覆盖 v0.1 design/production/creative/UX/localization readiness、v0.3 creative production、v0.6 design systems、v0.9 economy/progression 和 v0.9.1 numerical planning。
-- 22 个 workflow skills：14 个 P0 skills、`mgw-init`、`prototype-design` 和 6 个 v0.9.2 专业策划 skills。
+- 41 个 templates，覆盖 v0.1 design/production/creative/UX/localization readiness、v0.3 creative production、v0.6 design systems、v0.9 economy/progression、v0.9.1 numerical planning 和 v0.9.3 production-target mapping/browser validation。
+- 24 个 workflow skills，包含 `threejs-workflow` 和 `unity-workflow`。
 - 一个统一样板游戏计划，作为 dry run、Godot 示例和 Unreal 映射示例的共同测试夹具。
 - 一个 Boss Rush 无代码 dry run。
 - 一个 Godot 2D/轻量 3D 示例，进入 v0.2。
 - 一个 Unreal 第三人称玩法映射示例，进入 v0.4。
-- 一个 Godot/Unreal 双引擎映射模板。
+- 一个覆盖 Three.js、Unity、Godot、Unreal 的 Production Target Mapping / 生产目标映射模板。
 - 一个 v0.5 路线重排与研究收口包，覆盖 AI art dry run、engine AI adapter research、用户反馈和 Godot 对接决策。
 - 一个已完成的 v0.6 策划与系统设计包，覆盖系统、战斗、遭遇、调优和试玩假设，并包含 Boss Rush / 动作玩法与 Tactics / 战棋类 design dry run。
 - 一个已完成的 v0.7 产品入口与项目初始化设计包，定义 `mgw init`、user journey、project workspace、tool adapter 和 MCP adapter 边界。
 - 一个已完成的 v0.8 类型流程分支包，首批重点支持 Tactics / 战棋类，并包含 Godot Prototype Asset Kit / Godot 原型资产包计划，用于定义可读代理资产。
-- 一个已完成的 v0.9 经济与成长包，覆盖 economy model、progression map、resource/reward table、tuning loop 和 Tactics / 战棋类 dry-run evidence。
+- 一个已完成的 v0.9 Economy & Progression / 经济与成长包，覆盖 economy model、progression map、resource/reward table、tuning loop 和 Tactics / 战棋类 dry-run evidence。
 - 一个已完成的 v0.9.1 数值规划补丁，覆盖 level curve、combat parameter table、system numerical plan 和 Tactics / 战棋类 numerical dry-run evidence。
 - 一个已完成的 v0.9.2 Specialized Design Skills / 专业策划 Skill 包补丁，覆盖 system design、combat design、numerical planning、level curve、combat parameters、system numerics、Agent Skill Composition / Agent 与 Skill 组合设计和 `check-v0.9.2-design-skills`。
+- 一个已完成的 v0.9.3 Multi-target Production Foundation + Three.js Web Runtime，包含契约、skill、样板、browser QA、evidence 和 check。
+- 一个已完成的 v0.9.4 Unity Workflow，包含 skill、映射、EditMode/PlayMode/build 验证计划、evidence 和 check。
 - 一个 v0.10 数据埋点与试玩分析包。
 - 一个 v0.11 叙事设计包，覆盖世界观、剧情动线、角色、任务、对白和设定一致性。
 - 一个 v0.12 创意资产生产扩展包。
@@ -907,7 +922,7 @@ MVP 链路只做这些：
 - 可视化 UI。
 - 自动安装器。
 - Unity 支持。
-- Phaser/Three.js 主线示例。
+- 未经过 release gate 的 Phaser 示例或 WebGPU-only 无回退发布。
 - 重型 AI 角色层级。
 - 自动发布工具。
 
@@ -1163,7 +1178,7 @@ docs/evidence/dry-runs/  # v0.1d: Boss Rush no-code dry run evidence
 
 第 3 步：用第 15 节的 Boss Rush / 《反击试炼》样板游戏计划跑通无代码 dry run。
 
-当前 v0.9.2 Specialized Design Skills / 专业策划 Skill 包已作为 v0.9.1 Numerical Planning / 数值规划和 v0.9 Economy & Progression / 经济与成长补丁完成。下一步应进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析，先做设计摘要、执行计划、影响范围、文件范围、review 决策和验证计划，再定义 telemetry event plan、playtest analytics report、tuning decision log、privacy boundaries、review gate、evidence 和 checks。v0.10 在单独 review 批准真实用户数据服务之前，必须保持本地化和 design-first。
+当前 v0.9.3 Multi-target Production Foundation + Three.js Web Runtime 与 v0.9.4 Unity Workflow 已完成。下一步进入 v0.10 Telemetry & Playtest Analytics / 数据埋点与试玩分析，事件契约必须能映射到四类生产目标，并优先用 Three.js 浏览器样板做本地验证；真实用户数据服务仍需单独 review。
 
 ## 17. 可参考的同类项目和工具
 

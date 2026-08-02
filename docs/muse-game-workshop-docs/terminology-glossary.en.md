@@ -24,6 +24,15 @@ Examples:
 - `Asset Provenance / 资产来源与授权记录`
 - `Review Gate / 评审节点`
 
+Terms added through v0.9.4:
+
+- `Production Target / 生产目标`: the technology target responsible for running, building, and shipping the game.
+- `First Playable Target / 首次可玩目标`: the first runtime or engine used for playable validation; it may differ from the final production target.
+- `Web Runtime / 网页运行时`: the browser execution and delivery environment. Three.js belongs here rather than being described as a full editor-based game engine.
+- `Production Target Mapping / 生产目标映射`: mapping target-neutral specifications to Three.js, Unity, Godot, or Unreal.
+- `Fallback Renderer / 回退渲染器`: a compatible rendering path used when the primary graphics backend is unavailable.
+- `EditMode Test / 编辑模式测试` and `PlayMode Test / 运行模式测试`: Unity tests for editor-side logic and runtime behavior.
+
 ## 2. Production Stages
 
 | English Term | Recommended Chinese Term | Aliases / Notes | Usage |
@@ -183,7 +192,7 @@ Examples:
 
 | English Term | Recommended Chinese Term | Aliases / Notes | Usage |
 |---|---|---|---|
-| Engine Mapping | 引擎映射 | 引擎落地映射 | From engine-neutral spec to Godot/Unreal. |
+| Engine Mapping | 引擎映射 | 引擎落地映射 | From an engine-neutral spec to Three.js Web, Unity, Unreal, or Godot implementation. |
 | Engine-neutral Spec | 引擎无关规格 | 通用玩法规格 | Avoid binding to one engine too early. |
 | Scene | 场景 | Godot 场景、Unity/Unreal 场景 | Explain per engine context. |
 | Node | 节点 | Godot 节点 | Godot-specific. |

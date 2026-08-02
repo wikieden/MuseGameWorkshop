@@ -80,7 +80,7 @@ continue mgw-init
 `mgw init` 是未来标准 CLI 子命令或等价别名：
 
 ```sh
-mgw init ember-tactics --lang zh-CN --tool codex --engine godot --genre tactics --profile docs-only --mcp none
+mgw init ember-tactics --lang zh-CN --tool codex --first-playable threejs-web --production-target godot --genre tactics --profile docs-only --mcp none
 ```
 
 初始化完成后，用户应得到：
@@ -92,7 +92,7 @@ mgw init ember-tactics --lang zh-CN --tool codex --engine godot --genre tactics 
 - 可选 `AGENTS.md` 或 `CLAUDE.md`。
 - 当前阶段和 `next_action`。
 
-默认不生成完整设计、制作、创意资产目录，不安装 MCP，不创建 Godot / Unreal 工程。
+默认不生成完整设计、制作、创意资产目录，不安装 MCP，不创建 Three.js / Unity / Godot / Unreal 工程。
 
 ## 4. Step 2: 选择 AI 工具
 
@@ -155,7 +155,7 @@ AI 辅助：
 - System design。
 - Combat / encounter / tuning specs。
 - Engine-neutral design。
-- Godot/Unreal mapping。
+- Three.js / Unity / Godot / Unreal production-target mapping。
 
 完成标准：
 
@@ -187,7 +187,7 @@ AI 辅助：
 | Prototype Design Gate | 原型设计门 | prototype goal、playable promise、mechanic readiness、content scope、placeholder policy、prototype visual quality floor、engine mapping、validation plan、cut list |
 | Narrative Loop | 叙事循环 | world bible、角色 brief、剧情动线、任务/对白 brief |
 | Art Loop | 美术循环 | art direction、美术资产清单、asset brief、provenance、asset review |
-| Programming Loop | 程序循环 | engine mapping、技术拆分、Godot/Unreal 原型任务、测试方式 |
+| Programming Loop | 程序循环 | production-target mapping、技术拆分、Three.js/Unity/Godot/Unreal 原型任务、测试方式 |
 | QA / Playtest Loop | 测试试玩循环 | playtest checklist、bug report、调优记录、evidence |
 | Release Loop | 发布循环 | demo readiness、商店素材 brief、本地化、AI asset disclosure |
 
@@ -204,7 +204,7 @@ AI 辅助：
 
 目标：低成本验证核心乐趣。
 
-进入 Godot、Unreal、玩法代码或 editor automation 前，必须先通过 `prototype-design` 的 Prototype Design Gate / 原型设计门。
+进入 Three.js、Unity、Godot、Unreal、玩法代码或 editor automation 前，必须先通过 `prototype-design` 的 Prototype Design Gate / 原型设计门。
 
 原型设计门至少产出：
 
@@ -215,7 +215,7 @@ AI 辅助：
 - Content Scope / 内容范围：最少角色、敌人、关卡、道具、技能和 UI。
 - Placeholder Policy / 占位资源策略：结构占位、可读原型资源、已评审 demo 资产、临时美术、临时音频和可读性底线。
 - Prototype Visual Quality Floor / 原型视觉质量底线：角色、敌人、NPC 和关键交互物具备可读轮廓、朝向、阵营、职责、比例、状态反馈和镜头距离下的可读性。
-- Engine Mapping / 引擎映射：Godot Scene/Script/Resource 或 Unreal Actor/Component/Data Asset 的预期形态。
+- Production Target Mapping / 生产目标映射：Three.js module/data/browser、Unity Scene/Prefab/ScriptableObject、Godot Scene/Script/Resource 或 Unreal Actor/Component/Data Asset 的预期形态。
 - Validation Plan / 验证计划：试玩脚本、通过标准、失败标准和 evidence。
 - Cut List / 可砍列表：时间不够时先砍什么，不能砍什么。
 
@@ -318,8 +318,8 @@ AI 辅助：
 
 - 在自己的游戏仓库中启动，而不是只读 Muse 源仓库。
 - 能通过 `mgw-init` 或 `continue mgw-init` 进入问答式初始化。
-- 让 Codex、Claude Code、Kiro CLI、opencode 等工具读同一套规则。
+- 让 Codex、Claude Code、Kimi Code、Kiro CLI、opencode、RoboCode、CliHub 等工具读同一套规则。
 - 从模糊想法推进到可 review 的机制规格。
-- 在 review gate 后再进入 Godot 或 Unreal。
+- 在 review gate 后再进入 Three.js、Unity、Godot 或 Unreal。
 - 让 AI 生成或辅助资产有来源和人工审查记录。
 - 用 evidence 解释每次重要制作决策。

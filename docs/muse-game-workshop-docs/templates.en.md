@@ -1,6 +1,6 @@
 # Document Templates Index
 
-Version: v0.9.1
+Version: v0.9.4
 
 Language: English
 
@@ -8,7 +8,7 @@ Language: English
 
 This file defines the Muse Game Workshop template system, while `v0.1-manifest.en.md` remains the single source of truth for the v0.1 materialized subset. The goal is not to write long documents. The goal is to create stable records for design, mechanics, implementation, creative assets, playtesting, and release.
 
-The v0.1 template subset in this file is fixed at 22 templates. v0.3 adds `animation-brief`, `music-brief`, `sfx-brief`, `asset-integration`, and `ai-asset-disclosure` for Creative Production Ready asset-pipeline validation without changing the v0.1 manifest boundary. v0.6 adds `system-design`, `combat-design`, `encounter-design`, `tuning-plan`, and `playtest-hypothesis` for Game Design & Systems. v0.9 adds `economy-model`, `progression-map`, `resource-reward-table`, and `tuning-loop` for Economy & Progression. v0.9.1 adds `level-curve`, `combat-parameter-table`, and `system-numerical-plan` for Numerical Planning.
+The v0.1 template subset in this file is fixed at 22 templates. v0.3 adds `animation-brief`, `music-brief`, `sfx-brief`, `asset-integration`, and `ai-asset-disclosure` for Creative Production Ready asset-pipeline validation without changing the v0.1 manifest boundary. v0.6 adds `system-design`, `combat-design`, `encounter-design`, `tuning-plan`, and `playtest-hypothesis` for Game Design & Systems. v0.9 adds `economy-model`, `progression-map`, `resource-reward-table`, and `tuning-loop` for Economy & Progression. v0.9.1 adds `level-curve`, `combat-parameter-table`, and `system-numerical-plan` for Numerical Planning. v0.9.3 adds `production-target-mapping` and `browser-playtest-checklist` for four-target production handoff and browser validation. The materialized repository now contains 41 templates.
 
 All templates should be:
 
@@ -16,7 +16,7 @@ All templates should be:
 - Executable.
 - Verifiable.
 - Easy for AI coding tools and creative AI tools to read and update.
-- Useful for both Godot and Unreal.
+- Useful across Three.js WebGPU, Unity, Unreal Engine, and Godot where the subject applies.
 - Explicit about target language, target audience, locale, and terminology source.
 
 All templates must begin with minimal metadata:
@@ -62,12 +62,14 @@ templates/design/
   level-curve.md
   combat-parameter-table.md
   system-numerical-plan.md
+  production-target-mapping.md
 
 templates/production/
   handoff-record.md
   review-gate.md
   acceptance-checklist.md
   milestone-plan.md
+  browser-playtest-checklist.md
 
 templates/creative/
   art-direction.md
@@ -79,6 +81,9 @@ templates/creative/
   asset-review.md
   asset-integration.md
   ai-asset-disclosure.md
+  procedural-3d-delivery.md
+  multi-view-3d-asset-review.md
+  creative-ai-cost-record.md
 
 templates/ux/
   ux-flow.md
@@ -973,3 +978,30 @@ Boundary:
 - The next major version remains v0.10 Telemetry & Playtest Analytics.
 
 These templates do not bind the workflow to Godot or Unreal, and they do not bypass the review gate for implementation changes.
+
+## 28. v0.9.3 Multi-target Production Templates
+
+v0.9.3 adds two production-facing templates that keep first-playable validation distinct from the final production target.
+
+| Template | Purpose | Primary Users |
+|---|---|---|
+| `production-target-mapping.md` | Maps the engine-neutral gameplay contract, data, assets, runtime responsibilities, fallback behavior, tests, packaging, and evidence to one approved production target. | Technical Designer, Gameplay Programmer, Technical Artist, QA, Release Manager |
+| `browser-playtest-checklist.md` | Validates browser loading, WebGPU/WebGL 2 selection, input, canvas framing, UI, accessibility, performance, stability, and release evidence. | Web Gameplay Programmer, QA, Producer, Release Manager |
+
+Boundary:
+
+- A completed template is a reviewed handoff record, not proof that an editor, browser matrix, device matrix, or release build was executed.
+- Production validation claims require the command logs, screenshots, builds, and review evidence named by the template.
+- The next planned version remains v0.10 Telemetry & Playtest Analytics.
+
+## 29. Creative AI Production Pilot Templates
+
+The non-versioned pilot adds three tool-agnostic templates that turn AI 3D generation into reviewable production delivery.
+
+| Template | Purpose | Primary Users |
+|---|---|---|
+| `procedural-3d-delivery.md` | Records Asset ID, reference rights, quality contract, runtime hierarchy, technical budgets, staged production, and delivery decision. | 3D Artist, Technical Artist, Gameplay Programmer, Producer |
+| `multi-view-3d-asset-review.md` | Reviews structure, materials, gameplay readability, and runtime interfaces from the reference, gameplay, and two orbit views. | Art Director, Technical Artist, QA, Game Designer |
+| `creative-ai-cost-record.md` | Records version, model, tokens, service cost, elapsed time, human rework, quality outcome, and stop/switch decisions. | Producer, Asset Owner, Technical Artist |
+
+Boundary: templates do not approve tool installation, third-party upload, asset generation, Grey Tide code changes, or release-candidate status.

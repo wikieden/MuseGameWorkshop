@@ -6,7 +6,7 @@ Language: English
 
 ## 1. Architecture Goal
 
-The goal of this architecture is to create a reusable, extensible, and practical AI game production workflow layer. AI coding tools such as Codex, Claude Code, Kiro CLI, and opencode should be able to help with design, task decomposition, implementation assistance, testing, retrospectives, and release checks around Godot and Unreal projects.
+The goal is a reusable, extensible AI game-production workflow layer for Three.js WebGPU, Unity, Unreal, and Godot projects, usable by Codex, Claude Code, Kimi Code, Kiro CLI, opencode, RoboCode, CliHub, and similar tools.
 
 The architecture does not assume any AI coding tool should control everything directly. Instead, tools operate under explicit production stages, production disciplines, rules, and evidence requirements:
 
@@ -27,7 +27,7 @@ flowchart TD
   L --> T["Coding Tool Adapter Layer\nCodex, Claude Code, Kiro CLI, opencode"]
   L --> CT["Creative Tool Adapter Layer\nImage, Audio, Video, 3D, Animation, Localization AI"]
   CT --> CP["Creative Asset Pipeline\nBrief, Generation, Human Review, Provenance"]
-  T --> C["Engine Mapping Layer\nGodot Adapter, Unreal Adapter, Portability"]
+  T --> C["Production Target Mapping Layer\nThree.js, Unity, Godot, Unreal"]
   CP --> C
   C --> R["Review Gate\nDesign + Plan + Asset Approval"]
   R --> D["Execution Layer\nScripts, Editor Automation, MCP, Tests"]
@@ -77,7 +77,7 @@ Applies the workflow core to the user's own game project:
 - Initialization profiles.
 - `muse.project.yaml`.
 - Project README, rules, templates, checks, and evidence directories.
-- Optional Godot/Unreal workspace notes.
+- Optional Three.js, Unity, Godot, and Unreal workspace notes.
 - Safe default policy of `--mcp none`.
 
 This layer initializes a production workspace only. It does not write game code, install MCP, or generate/import assets by default.
@@ -117,10 +117,12 @@ Owns the creative asset path from need to production use:
 - Integration: naming, format, size, compression, directory, import settings, performance budget.
 - Validation: screenshots, animation previews, audio triggers, mix checks, in-engine tests.
 
-### 2.7 Engine Mapping Layer
+### 2.7 Production Target Mapping Layer
 
-Maps engine-neutral specs to concrete engine concepts:
+Maps target-neutral specs to concrete production targets:
 
+- Three.js WebGPU: simulation, renderer, DOM UI, browser APIs, WebGL 2 fallback, static deployment.
+- Unity: Scene, GameObject, Component, Prefab, ScriptableObject, Assembly Definition, Build Profile.
 - Godot: Scene, Node, Script, Resource, Signal, Autoload, Export.
 - Unreal: Actor, Component, Pawn, Controller, GameMode, Subsystem, Blueprint, C++, Data Asset.
 
@@ -131,6 +133,8 @@ This layer must prevent engine implementation details from polluting design docu
 Performs actual work:
 
 - AI coding tool file edits.
+- Node/Vite/Vitest/Playwright.
+- Unity Editor, Test Framework, and batchmode.
 - Godot CLI.
 - Unreal Editor Scripting.
 - Creative asset import and format checks.
@@ -138,7 +142,7 @@ Performs actual work:
 - Animation, VFX, UI, and environment asset validation.
 - Unreal Automation Tests.
 - Godot GdUnit4/GUT.
-- Optional Godot/Unreal MCP integration.
+- Optional Unity/Godot/Unreal MCP integration.
 - Builds, exports, packaging, and performance checks.
 
 ### 2.9 Evidence Layer
@@ -439,34 +443,35 @@ Recommended validation levels:
 
 Unreal officially supports Editor Scripting, Python, Blueprint automation, Remote Control, and Automation Test Framework. These are the foundation for later AI editor-control integrations.
 
-## 7. Engine Portability
+## 7. Production Target Portability
 
-`engine-portability` keeps a shared design language between Godot and Unreal.
+`engine-portability` keeps its compatible slug but now maintains shared production language across Three.js WebGPU, Unity, Godot, and Unreal.
 
 It outputs:
 
 - Engine-neutral spec.
-- Godot mapping.
-- Unreal mapping.
+- Three.js Web mapping.
+- Unity mapping.
+- Godot / Unreal mapping.
 - Risk comparison.
-- Engine recommendation.
+- First-playable and final-production target recommendation.
 
 Example comparison:
 
-| Dimension | Godot | Unreal |
-|---|---|---|
-| 2D prototype speed | High | Medium |
-| 3D action presentation | Medium | High |
-| Animation system | Medium | High |
-| Packaging complexity | Low | High |
-| Solo control | High | Medium |
-| High-fidelity visuals | Medium | High |
+| Dimension | Three.js Web | Unity | Godot | Unreal |
+|---|---|---|---|---|
+| Browser feedback speed | High | Medium | Medium | Low |
+| 3D content tooling | Medium | High | Medium | High |
+| Packaging complexity | Low | Medium | Low | High |
+| Solo control | High | Medium | High | Medium |
+| High-fidelity visuals | Medium to high | High | Medium to high | High |
 
 ## 8. Future MCP Integration Strategy
 
 The first phase does not require MCP, but the documentation should be ready for it:
 
 - Godot MCP: scene editing, script generation, play-mode validation, screenshots, performance inspection.
+- Unity automation: Scene/Prefab, ScriptableObject, EditMode/PlayMode tests, and player builds; MCP remains optional.
 - Unreal MCP: Blueprint editing, Actor operations, Data Assets, UMG, Animation, PIE tests, headless builds.
 
 Integration principles:

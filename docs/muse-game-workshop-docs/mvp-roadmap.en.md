@@ -55,6 +55,8 @@ Current state:
 - v0.9 Economy & Progression has landed with economy/progression docs, four templates, Tactics economy dry-run evidence, and `check-v0.9-economy-progression`.
 - v0.9.1 Numerical Planning has landed with level curve, combat parameter table, system numerical plan templates, Tactics numerical dry-run evidence, and `check-v0.9.1-numerical-planning`.
 - v0.9.2 Specialized Design Skills has landed with six specialist design skills, Agent Skill Composition docs, role-agent bundles, updated skill routing, and `check-v0.9.2-design-skills`.
+- v0.9.3 Multi-target Production Foundation + Three.js Web Runtime has landed with the production-target contract, Three.js skill, browser reference, automated tests, and evidence.
+- v0.9.4 Unity Workflow has landed with the Unity skill, project mapping, test/build contract, and static evidence; real editor validation waits for a local Unity installation.
 - Unreal game code has not been created.
 
 The v0.4 review gate is Approved and the Unreal static mapping scaffold has landed. The next step is not to expand into a full 3D game; it is to generate the PIE test map, Data Asset, UMG, and animation placeholders after Unreal Editor is available, then add editor validation evidence.
@@ -91,6 +93,8 @@ When layers conflict:
 | v0.9 | Economy & Progression | Economy model, progression map, resource/reward tables, tuning loop | Complete: Tactics economy/progression dry run and `check-v0.9-economy-progression` | Commercial backend, real payment, paid-content design, real telemetry service |
 | v0.9.1 | Numerical Planning Addendum | Level curve, combat parameter table, system numerical plan | Complete: Tactics numerical dry run and `check-v0.9.1-numerical-planning` | Engine implementation, release balance approval, spreadsheet tooling |
 | v0.9.2 | Specialized Design Skills | System design, combat design, numerical planning, level curve, combat parameters, system numerics, Agent Skill Composition | Complete: six specialist skills and `check-v0.9.2-design-skills` | Engine implementation, real telemetry, commercial backend, payment, assets, release balance approval |
+| v0.9.3 | Multi-target Production Foundation + Three.js Web Runtime | Production Target Contract, Three.js skill, Boss Rush Web reference, browser QA | Unit/build/Playwright, screenshots, performance, `check-v0.9.3-threejs-runtime` | WebGPU-only shipping without fallback, online services, external copyrighted assets |
+| v0.9.4 | Unity Workflow | Unity skill, project mapping, EditMode/PlayMode/build contract and evidence | Static checks; editor tests/build smoke when Unity is installed | Claiming unexecuted Editor/PlayMode/player builds passed |
 | v0.10 | Telemetry & Playtest Analytics | Telemetry plan, playtest analytics, tuning decision log | Data fields and tuning reports feed design decisions | Real user-data platform, heavy privacy implementation |
 | v0.11 | Narrative Design Pack | World bible, narrative flow, character/quest/dialogue briefs | Lore consistency check + narrative handoff review | Large-scale narrative content production |
 | v0.12 | Creative Production Expansion | Art/animation/environment/music/SFX/UI asset expansion, tool adapter notes | Asset brief/provenance/review/engine validation are reusable across asset classes | Deep commercial-tool APIs, final/release-candidate asset production |
@@ -364,7 +368,7 @@ Release bar:
 - README, docs index, roadmap, delivery plan, and testing strategy point to the new product entry.
 - `mgw init` is defined as a workspace initializer, not a one-click game generator.
 - Default `--mcp none`; no MCP installation, engine project creation, or asset generation.
-- The v0.7 plan clearly hands off to v0.8 Genre Tracks; v0.9 Economy & Progression, v0.9.1 Numerical Planning, and v0.9.2 Specialized Design Skills are complete, and v0.10 Telemetry & Playtest Analytics is next.
+- The v0.7 plan clearly hands off to v0.8 Genre Tracks; v0.9 through v0.9.4 are complete, and v0.10 Telemetry & Playtest Analytics is next.
 
 ## 14. v0.8: Genre Tracks
 
@@ -492,6 +496,41 @@ Release bar:
 - No engine implementation, real telemetry, commercial backend, payment, asset generation, or release balance approval is created.
 - `check-v0.9.2-design-skills` passes.
 - The next major version remains v0.10 Telemetry & Playtest Analytics.
+
+### 15.3 v0.9.3: Multi-target Production Foundation + Three.js Web Runtime
+
+Status: complete. Deliverables include the Production Target Contract, `threejs-workflow`, production-target mapping, browser playtest checklist, playable `examples/threejs-boss-rush/`, WebGPU production direction with WebGL 2 fallback, paired evidence, and `check-v0.9.3-threejs-runtime`.
+
+Release bar: simulation is separate from renderer/UI; unit, build, and browser smoke pass; desktop/mobile screenshots exist; assets and dependencies are reviewable.
+
+### 15.4 v0.9.4: Unity Workflow
+
+Status: workflow and static validation complete. When Unity Editor is unavailable, EditMode, PlayMode, and player-build evidence must remain pending.
+
+Deliverables include `unity-workflow`, Unity 6 Scene/Prefab/Component/ScriptableObject/asmdef/Input System mapping, EditMode/PlayMode/batchmode/player-build contract, paired evidence, and `check-v0.9.4-unity`.
+
+Release bar: the static contract is complete; when Unity Editor is detected the smoke must run; documentation cannot substitute for editor evidence; v0.10 remains next.
+
+### 15.5 Creative AI Production Pilot (Parallel, Non-versioned Track)
+
+Status: research, the design contract, specialist skill, templates, and the Grey Tide pilot plan are complete. Tool installation, asset generation, runtime import, and game-code changes are not approved.
+
+Goals:
+
+- Produce real AI 3D production evidence for v0.12 without changing the v0.10, v0.11, and v0.12 order.
+- Use a Grey Tide port crate, mech module, and port machine to validate a hard-surface procedural Three.js route.
+- Place tool selection after art direction, asset brief, source admission, cost ceiling, and multi-view review requirements.
+- Treat `img2threejs` as an adapter candidate rather than a core dependency or general 3D backend.
+
+Current deliverables:
+
+- Paired AI 3D Asset Production Contract.
+- Paired independent `img2threejs` research report.
+- `ai-3d-asset-production` specialist skill.
+- Procedural 3D delivery, multi-view review, and creative AI cost-record templates.
+- Grey Tide three-asset pilot plan and `check-creative-ai-pilot`.
+
+Boundary: this track currently approves planning artifacts only. Pilot execution requires separate approval of input sources, installation, cost ceilings, file impact, and validation.
 
 ## 16. v0.10: Telemetry & Playtest Analytics
 

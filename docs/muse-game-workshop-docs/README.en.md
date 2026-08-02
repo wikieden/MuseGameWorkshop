@@ -1,12 +1,12 @@
 # Muse Game Workshop Documentation Package
 
-Version: v0.9.2
+Version: v0.9.4
 
 Language: English
 
 ## 1. What This Is
 
-This is the documentation package for starting the Muse Game Workshop project. The project goal is to build an AI game production workflow system for Godot and Unreal Engine, so AI coding tools and creative AI tools can reliably assist across game-industry production stages and disciplines: design, mechanic specifications, engine mappings, art/animation/environment/music/SFX assets, task breakdown, playtest retrospectives, tuning, and release checks.
+This is the documentation package for starting the Muse Game Workshop project. The project goal is to build an AI game-production workflow system for Three.js WebGPU, Unity, Unreal Engine, and Godot, so AI coding tools and creative AI tools can reliably assist with design, production-target mapping, assets, implementation, playtests, tuning, and release checks.
 
 It is not a game engine and not a one-click game generator. It is a workflow layer.
 
@@ -20,25 +20,29 @@ It is not a game engine and not a one-click game generator. It is a workflow lay
 6. `user-journey.en.md`
 7. `technical-architecture.en.md`
 8. `godot-unreal-workflow.en.md`
-9. `godot-prototype-asset-kit.en.md`
-10. `genre-tracks.en.md`
-11. `economy-progression.en.md`
-12. `numerical-planning.en.md`
-13. `agent-skill-composition.en.md`
-14. `skill-pack-spec.en.md`
-15. `production-language-guide.en.md`
-16. `bilingual-audience-strategy.en.md`
-17. `terminology-glossary.en.md`
-18. `handoff-contracts.en.md`
-19. `ai-art-asset-pipeline.en.md`
-20. `templates.en.md`
-21. `game-design-systems.en.md`
-22. `delivery-plan.en.md`
-23. `v0.1-execution-plan.en.md`
-24. `p0-skill-skeleton-plan.en.md`
-25. `v0.1-manifest.en.md`
-26. `testing-strategy.en.md`
-27. `mvp-roadmap.en.md`
+9. `production-target-contract.en.md`
+10. `threejs-web-runtime.en.md`
+11. `unity-workflow.en.md`
+12. `godot-prototype-asset-kit.en.md`
+13. `genre-tracks.en.md`
+14. `economy-progression.en.md`
+15. `numerical-planning.en.md`
+16. `agent-skill-composition.en.md`
+17. `skill-pack-spec.en.md`
+18. `production-language-guide.en.md`
+19. `bilingual-audience-strategy.en.md`
+20. `terminology-glossary.en.md`
+21. `handoff-contracts.en.md`
+22. `ai-art-asset-pipeline.en.md`
+23. `ai-3d-asset-production.en.md`
+24. `templates.en.md`
+25. `game-design-systems.en.md`
+26. `delivery-plan.en.md`
+27. `v0.1-execution-plan.en.md`
+28. `p0-skill-skeleton-plan.en.md`
+29. `v0.1-manifest.en.md`
+30. `testing-strategy.en.md`
+31. `mvp-roadmap.en.md`
 
 Chinese versions:
 
@@ -50,25 +54,29 @@ Chinese versions:
 6. `user-journey.zh.md`
 7. `technical-architecture.zh.md`
 8. `godot-unreal-workflow.zh.md`
-9. `godot-prototype-asset-kit.zh.md`
-10. `genre-tracks.zh.md`
-11. `economy-progression.zh.md`
-12. `numerical-planning.zh.md`
-13. `agent-skill-composition.zh.md`
-14. `skill-pack-spec.zh.md`
-15. `production-language-guide.zh.md`
-16. `bilingual-audience-strategy.zh.md`
-17. `terminology-glossary.zh.md`
-18. `handoff-contracts.zh.md`
-19. `ai-art-asset-pipeline.zh.md`
-20. `templates.zh.md`
-21. `game-design-systems.zh.md`
-22. `delivery-plan.zh.md`
-23. `v0.1-execution-plan.zh.md`
-24. `p0-skill-skeleton-plan.zh.md`
-25. `v0.1-manifest.zh.md`
-26. `testing-strategy.zh.md`
-27. `mvp-roadmap.zh.md`
+9. `production-target-contract.zh.md`
+10. `threejs-web-runtime.zh.md`
+11. `unity-workflow.zh.md`
+12. `godot-prototype-asset-kit.zh.md`
+13. `genre-tracks.zh.md`
+14. `economy-progression.zh.md`
+15. `numerical-planning.zh.md`
+16. `agent-skill-composition.zh.md`
+17. `skill-pack-spec.zh.md`
+18. `production-language-guide.zh.md`
+19. `bilingual-audience-strategy.zh.md`
+20. `terminology-glossary.zh.md`
+21. `handoff-contracts.zh.md`
+22. `ai-art-asset-pipeline.zh.md`
+23. `ai-3d-asset-production.zh.md`
+24. `templates.zh.md`
+25. `game-design-systems.zh.md`
+26. `delivery-plan.zh.md`
+27. `v0.1-execution-plan.zh.md`
+28. `p0-skill-skeleton-plan.zh.md`
+29. `v0.1-manifest.zh.md`
+30. `testing-strategy.zh.md`
+31. `mvp-roadmap.zh.md`
 
 ## 3. Document Map
 
@@ -80,14 +88,18 @@ Chinese versions:
 | `product-entry-and-mgw-init.zh.md` / `product-entry-and-mgw-init.en.md` | Defines the v0.7 product entry, `mgw-init` / `mgw init` command contract, shared initialization state, minimal project structure, tool adapter rules, and MCP adapter rules. |
 | `zero-to-one-game-creation.zh.md` / `zero-to-one-game-creation.en.md` | Defines the day-one guided flow from empty folder and rough idea to Game Start, `muse.project.yaml`, `continue mgw-init`, production loops, review gate, and prototype-ready plan. |
 | `user-journey.zh.md` / `user-journey.en.md` | Defines the user flow from getting Muse, initializing a game workspace, and choosing an AI tool through concept, pre-production, prototype, vertical slice, playtesting, assets, and release readiness. |
-| `technical-architecture.zh.md` / `technical-architecture.en.md` | Defines layered architecture, Godot/Unreal adapters, execution layer, and evidence layer. |
-| `godot-unreal-workflow.zh.md` / `godot-unreal-workflow.en.md` | Defines the practical workflow from idea to release gate. |
+| `technical-architecture.zh.md` / `technical-architecture.en.md` | Defines layered architecture, four production-target adapters, execution layer, and evidence layer. |
+| `godot-unreal-workflow.zh.md` / `godot-unreal-workflow.en.md` | Defines the practical multi-target workflow from idea to release gate; the filename is retained for compatibility. |
+| `production-target-contract.zh.md` / `production-target-contract.en.md` | Defines first-playable and final-production targets plus a shared contract across all four targets. |
+| `threejs-web-runtime.zh.md` / `threejs-web-runtime.en.md` | Defines the v0.9.3 Three.js WebGPU production path, WebGL 2 fallback, and browser validation. |
+| `unity-workflow.zh.md` / `unity-workflow.en.md` | Defines v0.9.4 Unity project mapping, EditMode/PlayMode tests, and build validation. |
 | `skill-pack-spec.zh.md` / `skill-pack-spec.en.md` | Defines the first tool-neutral workflow skills and maps them to production disciplines. |
 | `production-language-guide.zh.md` / `production-language-guide.en.md` | Defines the two-layer naming rule for game-industry language and AI workflow terms. |
 | `bilingual-audience-strategy.zh.md` / `bilingual-audience-strategy.en.md` | Defines Chinese and English audience surfaces, documentation localization, template metadata, and bilingual tests. |
 | `terminology-glossary.zh.md` / `terminology-glossary.en.md` | Maps English terms to Chinese game-industry terminology. |
 | `handoff-contracts.zh.md` / `handoff-contracts.en.md` | Defines deliverables, delivery forms, acceptance gates, and evidence between roles, processes, and AI tools. |
 | `ai-art-asset-pipeline.zh.md` / `ai-art-asset-pipeline.en.md` | Defines the AI art asset flow from art direction, brief, generation, human edit, provenance, and review to engine validation. |
+| `ai-3d-asset-production.zh.md` / `ai-3d-asset-production.en.md` | Defines a tool-agnostic contract for AI 3D inputs, production, multi-view review, cost, fallback, and validation across four production targets. |
 | `godot-prototype-asset-kit.zh.md` / `godot-prototype-asset-kit.en.md` | Defines the Godot prototype asset strategy, readable proxy asset states, default `.glb` / `.gltf` direction, candidate CC0 sources, and AI 3D asset validation path. |
 | `genre-tracks.zh.md` / `genre-tracks.en.md` | Defines the v0.8 first genre workflow branches and the Tactics dry-run validation path. |
 | `economy-progression.zh.md` / `economy-progression.en.md` | Defines the v0.9 economy model, progression map, resource/reward tables, tuning loop, and Tactics dry-run validation path. |
@@ -100,7 +112,7 @@ Chinese versions:
 | `v0.1-execution-plan.zh.md` / `v0.1-execution-plan.en.md` | Defines the pre-implementation review plan, file plan, test method, and review decisions for v0.1. |
 | `p0-skill-skeleton-plan.zh.md` / `p0-skill-skeleton-plan.en.md` | Defines the pre-implementation review plan, shared structure, acceptance, and exclusions for the 14 P0 skill skeletons. |
 | `v0.1-manifest.zh.md` / `v0.1-manifest.en.md` | Defines the single v0.1 delivery list for initial skills, templates, checks, and dry-run evidence. |
-| `testing-strategy.zh.md` / `testing-strategy.en.md` | Defines quality gates for docs, skills, templates, AI tool adapters, creative pipeline, Godot/Unreal, and release readiness. |
+| `testing-strategy.zh.md` / `testing-strategy.en.md` | Defines quality gates for docs, skills, templates, AI tool adapters, creative pipeline, all four production targets, and release readiness. |
 | `mvp-roadmap.zh.md` / `mvp-roadmap.en.md` | Defines the versioned MVP roadmap, v0.1 sub-stages, milestones, and implementation order. |
 
 Research notes:
@@ -117,12 +129,13 @@ Research notes:
 | `research/ziva-research.zh.md` / `research/ziva-research.en.md` | Studies Ziva as a Godot in-editor AI product-experience reference. |
 | `research/ee0pdt-godot-mcp-research.zh.md` / `research/ee0pdt-godot-mcp-research.en.md` | Studies ee0pdt/Godot-MCP as a basic Godot MCP command-surface reference. |
 | `research/engine-ai-user-feedback-scan.zh.md` / `research/engine-ai-user-feedback-scan.en.md` | Scans real user feedback from GitHub, Reddit, Godot/Unreal communities, and review sites as maturity evidence for adapter design. |
+| `research/img2threejs-research.zh.md` / `research/img2threejs-research.en.md` | Reviews `img2threejs` procedural Three.js production, quality gates, cost, license, feedback, and Muse adapter boundaries. |
 
 ## 4. Project Positioning
 
 One sentence:
 
-> An AI tool-agnostic game design, content production, engineering, validation, and release workflow system for Godot and Unreal.
+> An AI tool-agnostic game design, content production, engineering, validation, and release workflow system for Three.js WebGPU, Unity, Unreal Engine, and Godot.
 
 Core capabilities:
 
@@ -131,7 +144,7 @@ Core capabilities:
 - Mechanic specification.
 - Game design and systems design.
 - Content matrix.
-- Godot/Unreal engine mapping.
+- Three.js Web, Unity, Unreal, and Godot production-target mapping.
 - Vertical slice planning.
 - Playtest report.
 - Balance check.
@@ -166,6 +179,7 @@ Muse-Game-Workshop/
     localization/
     evidence/
   examples/
+    threejs-boss-rush/
     godot-boss-rush/
     unreal-third-person-combat/
     shared-design/
@@ -192,7 +206,9 @@ Do not start by writing game code. Every implementation task and structural chan
 13. After v0.9 is complete, run `tools/checks/check-v0.9-economy-progression` to validate economy and progression.
 14. After v0.9.1 is complete, run `tools/checks/check-v0.9.1-numerical-planning` to validate numerical planning.
 15. After v0.9.2 is complete, run `tools/checks/check-v0.9.2-design-skills` to validate specialized design skills and Agent Skill Composition.
-16. After v0.9.2 is complete, enter v0.10 Telemetry & Playtest Analytics.
+16. After v0.9.3, run `tools/checks/check-v0.9.3-threejs-runtime`.
+17. After v0.9.4, run `tools/checks/check-v0.9.4-unity`.
+18. After v0.9.4, enter v0.10 Telemetry & Playtest Analytics.
 
 P0 workflow skills:
 
@@ -203,10 +219,13 @@ P0 workflow skills:
 - `engine-portability`
 - `godot-workflow`
 - `unreal-workflow`
+- `threejs-workflow`
+- `unity-workflow`
 - `playtest-report`
 - `creative-asset-pipeline`
 - `art-direction`
 - `asset-brief`
+- `ai-3d-asset-production`
 - `asset-review`
 - `ux-flow`
 - `level-blockout`
@@ -214,7 +233,7 @@ P0 workflow skills:
 ## 7. Recommended Starting Prompt
 
 ```text
-We are creating Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, Product Entry & mgw init, Zero-to-One Game Creation, User Journey, technical architecture, workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, game design systems, Godot Prototype Asset Kit, Genre Tracks, Economy & Progression, Numerical Planning, Agent Skill Composition, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. v0.9.2 Specialized Design Skills is complete; `mgw-init` is the guided initialization entry and `continue mgw-init` resumes it inside an AI coding tool; next enter v0.10 Telemetry & Playtest Analytics. Do not implement the real mgw CLI, do not install MCP, do not create new engine projects, do not implement commercial backend, payment, or real telemetry services, do not generate or import final / release-candidate assets, and do not approve release balance.
+We are creating Muse Game Workshop. Target language: English. Target audience: English-speaking indie developers and small game teams. Locale: en-US unless otherwise stated. First read README, overall project plan, Vision, PRD, Product Entry & mgw init, Zero-to-One Game Creation, User Journey, technical architecture, Production Target Contract, Three.js Web Runtime, Unity Workflow, multi-target workflow, skill spec, production language guide, bilingual audience strategy, terminology glossary, handoff contracts, templates, game design systems, Godot Prototype Asset Kit, Genre Tracks, Economy & Progression, Numerical Planning, Agent Skill Composition, delivery plan, v0.1 execution plan, P0 skill skeleton plan, v0.1 manifest, testing strategy, and roadmap. v0.9.2 Specialized Design Skills, v0.9.3 Multi-target Production Foundation and Three.js Web Runtime, and v0.9.4 Unity Workflow are complete; `mgw-init` is the guided initialization entry and `continue mgw-init` resumes it inside an AI coding tool; next enter v0.10 Telemetry & Playtest Analytics. Do not implement the real mgw CLI, install MCP, create new Unity, Unreal, or Godot projects, implement commercial backend, payment, or real telemetry services, generate or import final / release-candidate assets, or approve release balance.
 ```
 
 ## 8. References

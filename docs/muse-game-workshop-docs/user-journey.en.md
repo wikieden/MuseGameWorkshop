@@ -80,7 +80,7 @@ continue mgw-init
 `mgw init` is the future standard CLI subcommand or equivalent alias:
 
 ```sh
-mgw init ember-tactics --lang zh-CN --tool codex --engine godot --genre tactics --profile docs-only --mcp none
+mgw init ember-tactics --lang zh-CN --tool codex --first-playable threejs-web --production-target godot --genre tactics --profile docs-only --mcp none
 ```
 
 After initialization, the user should get:
@@ -92,7 +92,7 @@ After initialization, the user should get:
 - Optional `AGENTS.md` or `CLAUDE.md`.
 - Current stage and `next_action`.
 
-By default, do not create the full design, production, creative asset, template, check, Godot, or Unreal structure.
+By default, do not create the full design, production, creative asset, template, check, Three.js, Unity, Godot, or Unreal structure.
 
 ## 4. Step 2: Choose An AI Tool
 
@@ -155,7 +155,7 @@ Outputs:
 - System design.
 - Combat / encounter / tuning specs.
 - Engine-neutral design.
-- Godot/Unreal mapping.
+- Three.js / Unity / Godot / Unreal production-target mapping.
 
 Completion bar:
 
@@ -187,7 +187,7 @@ After initialization and concept work, Muse does not move through a single line.
 | Prototype Design Gate | Decide whether the prototype is ready for implementation | prototype goal, playable promise, mechanic readiness, content scope, placeholder policy, prototype visual quality floor, engine mapping, validation plan, cut list |
 | Narrative Loop | Connect world, characters, and story flow to the game | world bible, character briefs, narrative flow, quest/dialogue briefs |
 | Art Loop | Decide how the game should look and how assets enter safely | art direction, asset list, asset briefs, provenance, asset review |
-| Programming Loop | Map mechanics into Godot / Unreal | engine mapping, technical breakdown, prototype tasks, tests |
+| Programming Loop | Map mechanics into Three.js, Unity, Godot, or Unreal | production-target mapping, technical breakdown, prototype tasks, tests |
 | QA / Playtest Loop | Decide whether the game is playable and understandable | playtest checklist, bug reports, tuning notes, evidence |
 | Release Loop | Decide whether a demo can go public | demo readiness, store asset briefs, localization, AI asset disclosure |
 
@@ -204,7 +204,7 @@ ask questions
 
 Goal: validate core fun at low cost.
 
-Before entering Godot, Unreal, gameplay code, or editor automation, the project must pass the `prototype-design` Prototype Design Gate.
+Before entering Three.js, Unity, Godot, Unreal, gameplay code, or editor automation, the project must pass the `prototype-design` Prototype Design Gate.
 
 The Prototype Design Gate must produce:
 
@@ -215,7 +215,7 @@ The Prototype Design Gate must produce:
 - Content Scope: minimum characters, enemies, levels, items, skills, and UI.
 - Placeholder Policy: structural placeholders, readable prototype assets, reviewed demo assets, temp art, temp audio, and readability baseline.
 - Prototype Visual Quality Floor: characters, enemies, NPCs, and key interactables have readable silhouette, facing, faction, role, scale, state feedback, and camera readability.
-- Engine Mapping: expected Godot Scene/Script/Resource or Unreal Actor/Component/Data Asset shape.
+- Production Target Mapping: expected Three.js module/data/browser, Unity Scene/Prefab/ScriptableObject, Godot Scene/Script/Resource, or Unreal Actor/Component/Data Asset shape.
 - Validation Plan: playtest script, pass criteria, fail criteria, and evidence.
 - Cut List: what gets cut first and what cannot be cut.
 
@@ -318,8 +318,8 @@ A user succeeds with Muse Game Workshop when they can:
 
 - Start inside their own game repository, not only read the Muse source repo.
 - Enter guided initialization through `mgw-init` or `continue mgw-init`.
-- Have Codex, Claude Code, Kiro CLI, opencode, or similar tools read the same rules.
+- Have Codex, Claude Code, Kimi Code, Kiro CLI, opencode, RoboCode, CliHub, or similar tools read the same rules.
 - Move from a vague idea to a reviewable mechanic spec.
-- Enter Godot or Unreal only after a review gate.
+- Enter Three.js, Unity, Godot, or Unreal only after a review gate.
 - Keep source and human review records for AI-generated or AI-assisted assets.
 - Use evidence to explain each important production decision.
