@@ -1,0 +1,20 @@
+---
+description: Muse Game Workshop production workflow, review gate, and shared skill routing
+globs:
+alwaysApply: true
+---
+
+# Muse Game Workshop
+
+Read and follow @AGENTS.md as the authoritative repository rule file. Read @CLAUDE.md as a thin tool-adapter summary and use @README.md as the product entry point.
+
+Before modifying code, assets, skills, templates, examples, or project structure:
+
+1. State the production stage.
+2. Provide a design summary, execution plan, impact scope, file list, review decisions, and validation plan.
+3. Wait for `Approved`.
+4. Stop on `Needs revision` or `Rejected`.
+
+The canonical workflow skills live under `.agents/skills/`. Read the matching `SKILL.md` completely before acting. Cursor rules and commands are adapters only; they must not fork the workflow core, bypass evidence requirements, or change production stages and terminology.
+
+Keep engine-neutral design truth separate from Three.js, Unity, Unreal, and Godot mappings. Preserve unrelated changes and run the smallest relevant checks under `tools/checks/` after approved work.
