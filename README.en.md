@@ -30,7 +30,7 @@ tools/checks/check-doc-pairs
 tools/checks/check-startup-prompts
 ```
 
-The GitHub repository is currently private. Cloning requires repository access.
+The GitHub repository is public, so anyone can clone it.
 
 ## Usage Paths
 

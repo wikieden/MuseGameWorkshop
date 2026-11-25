@@ -19,7 +19,7 @@ tools/checks/check-doc-pairs
 tools/checks/check-startup-prompts
 ```
 
-The repository is currently private. Access requires permission from the repository owner.
+The repository is public. Clone it directly; no access request is needed.
 
 ## Use This Repo
 

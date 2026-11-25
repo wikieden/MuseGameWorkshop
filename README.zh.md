@@ -30,7 +30,7 @@ tools/checks/check-doc-pairs
 tools/checks/check-startup-prompts
 ```
 
-当前 GitHub 仓库是 private，clone 需要仓库权限。
+GitHub 仓库已公开，可以直接 clone。
 
 ## 使用路线
 
